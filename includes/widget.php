@@ -34,12 +34,12 @@ class FAU_ORGA_Breadcrumb_Widget extends \WP_Widget {
 
         $form_org   = (!empty($instance['org'])) ? $instance['org'] :'';
         $title      = ! empty( $instance['title'] ) ? $instance['title'] : '';
-        if( !empty( $form_org ) ) {
+       // if( !empty( $form_org ) ) {
             wp_enqueue_style( 'fau-orga-breadcrumb');
             echo $before_widget;
             include( plugin_dir_path( __DIR__ ) . 'templates/widget-template.php');
             echo $after_widget;
-        } 
+      //  } 
 
     }
 
@@ -69,7 +69,7 @@ class FAU_ORGA_Breadcrumb_Widget extends \WP_Widget {
             <option value=""><?php _e('Auswählen', 'fau-orga-breadcrumb' ) ?></option>
         <?php        
         
-        foreach($default_fau_orga_data as $key => $listdata) {
+        foreach($fau_orga_breadcrumb_data as $key => $listdata) {
  
         }
         ?>

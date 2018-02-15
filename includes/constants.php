@@ -2,14 +2,20 @@
 
 /* 
  * Constants
- *  - Later hopefully via API.... 
+ */
+$fau_orga_breadcrumb_config = array(
+    'devider'   => '<span>/</span>'
+);
+
+
+/* 
+ * Orgas - Later hopefully via API.... 
  * ... An we really hope that this "later" means in a lifetime.
  * ... Of a human!
  * .. already born!!!
  */
 
-
-$default_fau_orga_data = array(
+$fau_orga_breadcrumb_data = array(
    'home' => array(
 	    'title'		=> __('Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)', 'fau-orga-breadcrumb'),
 	    'shorttitle'	=> __('FAU', 'fau-orga-breadcrumb'),

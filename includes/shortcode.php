@@ -5,6 +5,7 @@ add_shortcode('fauorga', 'FAU\ORGA\Breadcrumb\show_breadcrumb');
 
 function show_breadcrumb( $atts ) {
     global $post;
+    global $fau_orga_breadcrumb_config;
     
     $shortcode_attr = shortcode_atts( array(
         'org'                   => '',
