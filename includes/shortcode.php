@@ -11,9 +11,9 @@ function show_breadcrumb( $atts ) {
         'org'                   => '',
     ), $atts );
     
-    $org = $shortcode_attr['org'];
-  
-    if( !empty( $org ) ) { 
+    $form_org = $shortcode_attr['org'];
+  echo "ORG: ".$form_org;
+    if(isset( $form_org ) ) { 
         wp_enqueue_style( 'fau-orga-breadcrumb');
         ob_start();
         include( plugin_dir_path( __DIR__ ) . 'templates/shortcode-template.php');

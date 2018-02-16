@@ -29,17 +29,16 @@ class FAU_ORGA_Breadcrumb_Widget extends \WP_Widget {
     public function widget( $args, $instance ) {
         global $post;
         
-        $yt_options             =   get_option('fau_orga_breadcrumb_plugin_options'); 
         extract( $args );
 
         $form_org   = (!empty($instance['org'])) ? $instance['org'] :'';
         $title      = ! empty( $instance['title'] ) ? $instance['title'] : '';
-       // if( !empty( $form_org ) ) {
+        if( isset( $form_org ) ) {
             wp_enqueue_style( 'fau-orga-breadcrumb');
             echo $before_widget;
             include( plugin_dir_path( __DIR__ ) . 'templates/widget-template.php');
             echo $after_widget;
-      //  } 
+        } 
 
     }
 
@@ -50,9 +49,9 @@ class FAU_ORGA_Breadcrumb_Widget extends \WP_Widget {
      * @param array $instance The widget options
      */
     public function form( $instance ) {
-        global $default_fau_orga_data;
+        global $fau_orga_breadcrumb_data;
         $title      = ! empty( $instance['title'] ) ? $instance['title'] : '';
-        
+        $org      = ! empty( $instance['org'] ) ? $instance['org'] : '';
         ?>
         
         <p>
@@ -62,16 +61,33 @@ class FAU_ORGA_Breadcrumb_Widget extends \WP_Widget {
         </p>
         
         <p>
-            
         <label for="<?php echo $this->get_field_id('org'); ?>"><?php esc_attr_e( 'Organisatorische Zuordnung:', 'fau-orga-breadcrumb' ); ?></label>
         <select class='widefat' id="<?php echo $this->get_field_id('org'); ?>"
         name="<?php echo $this->get_field_name('org'); ?>" type="text">
-            <option value=""><?php _e('Auswählen', 'fau-orga-breadcrumb' ) ?></option>
+            <option value=""><?php _e('Keine (Keine Fakulätszuordnung oder Zentralbereich)', 'fau-orga-breadcrumb' ) ?></option>
         <?php        
+	
+	$startorg = '000000000';
+	$firstlevel = get_fau_orga_childs('000000000');
+	if (!empty($firstlevel)) {
+	    foreach($firstlevel as $key) {
+		
+		echo '<option value="'.$key.'" '.selected( $org, $sub ).'>'.$fau_orga_breadcrumb_data[$key]['title'].'</option>';
+		
+		$sublist = get_fau_orga_childs($key);
+		if (!empty($sublist)) {
+		    echo '<optgroup label="'.__('Untergeordnete Einrichtungen:','fau-orga-breadcrumb').'">';
+			 foreach($sublist as $sub) {
+			     echo '<option value="'.$sub.'" '.selected( $org, $sub ).'>'.$fau_orga_breadcrumb_data[$sub]['title'].'</option>';
+			 }
+		    echo '</optgroup>';
+		}
+	
+	    }
+	}
+	
+	
         
-        foreach($fau_orga_breadcrumb_data as $key => $listdata) {
- 
-        }
         ?>
         </select>   
         </p>
@@ -94,5 +110,6 @@ class FAU_ORGA_Breadcrumb_Widget extends \WP_Widget {
 
         return $instance;
     } 
+
 
 }

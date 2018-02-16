@@ -2,20 +2,24 @@
 /* base
 / *************************************************************************/
 .fau-orga-breadcrumb {
-    nav, h4, ul, ul li{ 
-        display: inline;
-    }
-  
+    
     ul { 
+	
         margin: 0;
         padding: 0; 
+	li {
+	     display: inline;
+	     padding: 0;
+	}
     }
     nav {
+	display: block;
         h4{ 
+	    display: inline;
             font-size: 1em;
         }
         span {
-            margin: 0 1em;
+            margin: 0 5px;
         }
     }
 }
@@ -23,6 +27,10 @@
 .fau-orga-breadcrumb-shortcode {
     
 }
-.fau-orga-breadcrumb-widget {
-    
+
+.widget .fau-orga-breadcrumb-widget li {
+    &:before {
+	display: none;
+	content: "";
+    }
 }
