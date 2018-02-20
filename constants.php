@@ -284,16 +284,3 @@ $fau_orga_breadcrumb_data = array(
 
 );
 
-
-function get_fau_orga_childs( $fauorg = '000000000') {
-	global $fau_orga_breadcrumb_data;
-	$res = array();
-	if (isset($fauorg)) {
-	    foreach($fau_orga_breadcrumb_data as $key => $listdata) {
-		if ($listdata['parent'] == $fauorg) {
-		    $res[] = $key;
-		}
-	    }
-	}
-	return $res;
-}

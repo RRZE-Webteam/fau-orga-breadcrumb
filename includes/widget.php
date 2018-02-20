@@ -68,26 +68,8 @@ class FAU_ORGA_Breadcrumb_Widget extends \WP_Widget {
         <?php        
 	
 	$startorg = '000000000';
-	$firstlevel = get_fau_orga_childs('000000000');
-	if (!empty($firstlevel)) {
-	    foreach($firstlevel as $key) {
-		
-		echo '<option value="'.$key.'" '.selected( $org, $sub ).'>'.$fau_orga_breadcrumb_data[$key]['title'].'</option>';
-		
-		$sublist = get_fau_orga_childs($key);
-		if (!empty($sublist)) {
-		    echo '<optgroup label="'.__('Untergeordnete Einrichtungen:','fau-orga-breadcrumb').'">';
-			 foreach($sublist as $sub) {
-			     echo '<option value="'.$sub.'" '.selected( $org, $sub ).'>'.$fau_orga_breadcrumb_data[$sub]['title'].'</option>';
-			 }
-		    echo '</optgroup>';
-		}
-	
-	    }
-	}
-	
-	
-        
+	echo get_fau_orga_form_optionlist($startorg,$org,0,3);
+
         ?>
         </select>   
         </p>

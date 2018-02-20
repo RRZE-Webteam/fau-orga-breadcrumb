@@ -4,7 +4,7 @@
 Plugin Name: FAU ORGA Breadcrumb
 Plugin URI: https://github.com/RRZE-Webteam/fau-orga-breadcrumb
 Description: Displays an organisational breadcrumb
-Version: 1.0.4
+Version: 1.0.5
 Author: RRZE-Webteam
 Author URI: http://blogs.fau.de/webworking/
 License: GNU GPLv2
@@ -34,6 +34,10 @@ const RRZE_WP_VERSION = '4.7';
 
 include('constants.php');
         // get all constants
+
+include('includes/functions.php');
+        // Global functions
+
 add_action('plugins_loaded', 'FAU\ORGA\Breadcrumb\init');
 register_activation_hook(__FILE__, 'FAU\ORGA\Breadcrumb\activation');
 
