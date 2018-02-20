@@ -22,18 +22,21 @@ if (isset($form_org)) {
     
     while(!empty($parent)) {
 	if (isset($fau_orga_breadcrumb_data[$parent])) {
-	    $thisentry = '<li>';
-	    if (isset($fau_orga_breadcrumb_data[$parent]['url'])) {
-		$thisentry .= '<a href="'.esc_url($fau_orga_breadcrumb_data[$parent]['url']).'">';
-	    }
-	    $thisentry .= $fau_orga_breadcrumb_data[$parent]['title'];
-	    if (isset($fau_orga_breadcrumb_data[$parent]['url'])) {
-		$thisentry .= '</a>';
-	    }
+	    if ((isset($fau_orga_breadcrumb_data[$parent]['hide'])) && ($fau_orga_breadcrumb_data[$parent]['hide']==true)) {
+	       $thisentry = '';
+	    } else {
+		$thisentry = '<li>';
+		if (isset($fau_orga_breadcrumb_data[$parent]['url'])) {
+		    $thisentry .= '<a href="'.esc_url($fau_orga_breadcrumb_data[$parent]['url']).'">';
+		}
+		$thisentry .= $fau_orga_breadcrumb_data[$parent]['title'];
+		if (isset($fau_orga_breadcrumb_data[$parent]['url'])) {
+		    $thisentry .= '</a>';
+		}
 
-	    $thisentry .= $fau_orga_breadcrumb_config['devider'];
-	    $thisentry .= '</li>';
-
+		$thisentry .= $fau_orga_breadcrumb_config['devider'];
+		$thisentry .= '</li>';
+	    }
 	    if (isset($fau_orga_breadcrumb_data[$parent]['parent'])) {
 		$parent = $fau_orga_breadcrumb_data[$parent]['parent'];
 	    } else {

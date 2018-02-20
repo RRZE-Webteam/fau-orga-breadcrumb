@@ -24,13 +24,14 @@ $fau_orga_breadcrumb_data = array(
 	'url'		=> 'https://www.fau.de',
 	'url_en'	=> 'https://www.fau.eu',
     ),
-  //  '1000000000'	=> array(
-//	'title'	=> 'Friedrich-Alexander-Universität Erlangen-Nürnberg Zentralbereich',
-//	'parent'    => '0000000000'
-  //  ),
+    '1000000000'	=> array(
+	'title'	=> 'Friedrich-Alexander-Universität Erlangen-Nürnberg Zentralbereich',
+	'parent'    => '0000000000',
+	'hide'	    => true,
+    ),
     '1011000000'	=> array(
 	'title'	=> 'Zentrale Einrichtungen',
-	'parent'    => '0000000000'
+	'parent'    => '1000000000',
     ),
     '1011120000' => array(
 	'title'	    => __('Regionales Rechenzentrum Erlangen (RRZE)', 'fau-orga-breadcrumb'),
@@ -134,7 +135,8 @@ $fau_orga_breadcrumb_data = array(
     ),
     '1311000000' => array(
 	    'title'	    => __('Einrichtungen, die nicht zum Universitätsklinikum Erlangen gehören', 'fau-orga-breadcrumb'),
-	    'parent'    => '1300000000'
+	    'parent'    => '1300000000',
+	    'hide'	    => true,
     ),
     '1311110000' => array(
 	    'title'	    => __('Institut für Anatomie', 'fau-orga-breadcrumb'),

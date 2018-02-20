@@ -56,6 +56,20 @@ function get_fau_orga_form_optionlist ( $fauorg = '000000000', $preorg = '000000
     return $res;
 }
 /*-----------------------------------------------------------------------------------*/
+/* create list fpor customizer
+/*-----------------------------------------------------------------------------------*/
+function get_fau_orga_breadcrumb_customizer_choices() {
+    global $fau_orga_breadcrumb_data;
+    
+    $res = array();
+    foreach($fau_orga_breadcrumb_data as $key => $listdata) {
+	if (isset($listdata['title'])) {
+	    $res[$key] =  $listdata['title'];
+	}
+    }
+    return $res;
+}
+/*-----------------------------------------------------------------------------------*/
 /* sanitize FAU.ORG Number
 /*-----------------------------------------------------------------------------------*/
 if ( ! function_exists( 'san_fauorg_number' ) ) :  
