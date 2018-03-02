@@ -56,7 +56,7 @@ if (isset($form_org)) {
     ?>
     
 <nav aria-labelledby="bc-title">
-    <h4 class="screen-reader-text" id="bc-title"><?php _e('Organisatorische Navigation','fau-orga-breadcrumb');?></h4>
+    <h2 class="screen-reader-text" id="bc-title"><?php _e('Organisatorische Navigation','fau-orga-breadcrumb');?></h2>
     <?php echo $line; ?>
 </nav>
 </div>
