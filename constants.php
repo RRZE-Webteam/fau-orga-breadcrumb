@@ -37,7 +37,7 @@ $fau_orga_breadcrumb_data = array(
 	'title'	    => __('Regionales Rechenzentrum Erlangen (RRZE)', 'fau-orga-breadcrumb'),
 	'shorttitle'    => __('RRZE', 'fau-orga-breadcrumb'),
 	'url'	    => 'https://rrze.fau.de',
-	'parent'    => '1011000000'
+	'parent'    => '0000000000'
     ),
     
     '1100000000' => array(
@@ -115,14 +115,14 @@ $fau_orga_breadcrumb_data = array(
 	'title'	    => __('Fachbereich Rechtswissenschaften', 'fau-orga-breadcrumb'),
 	'shorttitle'    => __('Jura', 'fau-orga-breadcrumb'),
 	'url'	    => 'https://jura.rw.fau.de',
-	'parent'    => '1200000000'           
+	'parent'    => '0000000000'           
     ),
     '1212000000' => array(
 	'title'	    => __('Fachbereich Wirtschaftswissenschaften', 'fau-orga-breadcrumb'),
 	'shorttitle'    => __('WiSo', 'fau-orga-breadcrumb'),
 	'url'	    => 'https://wiso.rw.fau.de',
 	'url_en'    => 'https://wiso.rw.fau.eu',
-	'parent'    => '1200000000'      
+	'parent'    => '0000000000'      
     ),
     
     

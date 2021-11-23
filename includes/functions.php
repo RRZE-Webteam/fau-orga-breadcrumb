@@ -13,7 +13,7 @@ function get_fau_orga_childs( $fauorg = '000000000') {
    // $fauorg = san_fauorg_number($fauorg);
     if (isset($fauorg)) {
 	foreach($fau_orga_breadcrumb_data as $key => $listdata) {
-	    if ($listdata['parent'] == $fauorg) {
+	    if (isset($listdata['parent']) && ($listdata['parent'] == $fauorg)) {
 		$res[] = $key;
 	    }
 	}

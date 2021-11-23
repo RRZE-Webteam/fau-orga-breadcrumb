@@ -1,42 +1,64 @@
 <?php 
 global $fau_orga_breadcrumb_config;
 global $fau_orga_breadcrumb_data;
+
+$schema_listattr = ' itemprop="itemListElement" itemscope  itemtype="https://schema.org/ListItem"';
+$position = 1;
+
 if (isset($form_org)) {
 ?>
 
 <div class="fau-orga-breadcrumb fau-orga-breadcrumb-widget">
     <?php 
     $root = $fau_orga_breadcrumb_config['root']; 
-    $parent = $fau_orga_breadcrumb_data[$form_org]['parent'];
-    
-    $entry = '<li>';
-    if (isset($fau_orga_breadcrumb_data[$form_org]['url'])) {
-	$entry .= '<a href="'.esc_url($fau_orga_breadcrumb_data[$form_org]['url']).'">';
+    $parent = '';
+    if (isset($fau_orga_breadcrumb_data[$form_org]['parent'])) {
+        $parent = $fau_orga_breadcrumb_data[$form_org]['parent'];
     }
-    $entry .= $fau_orga_breadcrumb_data[$form_org]['title'];
+    $entry = '<li'.$schema_listattr.'>';
+    if (isset($fau_orga_breadcrumb_data[$form_org]['url'])) {
+	$entry .= '<a itemprop="item"  href="'.esc_url($fau_orga_breadcrumb_data[$form_org]['url']).'">';
+    } else {
+	$entry .= '<span itemprop="item">';
+    }
+    $entry .= '<span itemprop="name">'.$fau_orga_breadcrumb_data[$form_org]['title'].'</span>';
     if (isset($fau_orga_breadcrumb_data[$form_org]['url'])) {
 	$entry .= '</a>';
+    } else {
+        $thisentry .= '</span>';
     }
+    
+    $entry .= '<meta itemprop="position" content="'.$position.'" />';
+    $position++;
     $entry .= '</li>';
     $line = $entry;
     
     while(!empty($parent)) {
 	if (isset($fau_orga_breadcrumb_data[$parent])) {
+	    
+	    
 	    if ((isset($fau_orga_breadcrumb_data[$parent]['hide'])) && ($fau_orga_breadcrumb_data[$parent]['hide']==true)) {
 	       $thisentry = '';
 	    } else {
-		$thisentry = '<li>';
+		$thisentry = '<li'.$schema_listattr.'>';
 		if (isset($fau_orga_breadcrumb_data[$parent]['url'])) {
-		    $thisentry .= '<a href="'.esc_url($fau_orga_breadcrumb_data[$parent]['url']).'">';
+		    $thisentry .= '<a itemprop="item"  href="'.esc_url($fau_orga_breadcrumb_data[$parent]['url']).'">';
+		} else {
+		     $thisentry .= '<span itemprop="item">';
 		}
-		$thisentry .= $fau_orga_breadcrumb_data[$parent]['title'];
+		$thisentry .= '<span itemprop="name">'.$fau_orga_breadcrumb_data[$parent]['title'].'</span>';
+		
 		if (isset($fau_orga_breadcrumb_data[$parent]['url'])) {
 		    $thisentry .= '</a>';
+		} else {
+		      $thisentry .= '</span>';
 		}
+		$thisentry .= '<meta itemprop="position" content="'.$position.'" />';
+		$position++;
 
-		$thisentry .= $fau_orga_breadcrumb_config['devider'];
 		$thisentry .= '</li>';
 	    }
+	    
 	    if (isset($fau_orga_breadcrumb_data[$parent]['parent'])) {
 		$parent = $fau_orga_breadcrumb_data[$parent]['parent'];
 	    } else {
@@ -48,16 +70,13 @@ if (isset($form_org)) {
 	}
     }
     
-    if (!empty($line)) {
-	$line = '<ul>'.$line.'</ul>';
-    }
-    
     
     ?>
     
-<nav aria-labelledby="bc-title">
-    <h2 class="screen-reader-text" id="bc-title"><?php _e('Organisatorische Navigation','fau-orga-breadcrumb');?></h2>
+<nav aria-label="<?php _e('Organisatorische Navigation','fau-orga-breadcrumb');?>">
+    <ol class="breadcrumblist" itemscope itemtype="https://schema.org/BreadcrumbList">
     <?php echo $line; ?>
+    </ol>	
 </nav>
 </div>
 
