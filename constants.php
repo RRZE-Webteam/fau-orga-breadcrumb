@@ -194,12 +194,7 @@ $fau_orga_breadcrumb_data = array(
 	    'url'	    => 'http://www.molmed.uni-erlangen.de/',
 	    'parent'	    => '1311000000'
     ),
-    '1311380000' => array(
-	    'title'	    => __('Orthopädische Abteilung des Waldkrankenhauses St. Marien, Erlangen, Orthopädische Klinik mit Poliklinik der Friedrich-Alexander-Universität Erlangen-Nürnberg', 'fau-orga-breadcrumb'),
-	    'url'	    => 'http://www.waldkrankenhaus.de/',
-	    'parent'	    => '1311000000'
-    ),
-    
+   
     
     
     '1400000000' => array(

@@ -15,275 +15,191 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: constants.php:22
-msgid "Friedrich-Alexander-Universität Erlangen-Nürnberg"
-msgstr ""
-
-#: constants.php:23
-msgid "FAU"
-msgstr ""
-
-#: constants.php:37
+#: constants.php:32
 msgid "Regionales Rechenzentrum Erlangen (RRZE)"
 msgstr ""
 
-#: constants.php:38
-msgid "RRZE"
-msgstr ""
-
-#: constants.php:44
+#: constants.php:39
 msgid "Philosophische Fakultät"
 msgstr ""
 
-#: constants.php:45
-msgid "Phil"
-msgstr ""
-
-#: constants.php:51
+#: constants.php:47
 msgid "Department Alte Welt und Asiatische Kulturen"
 msgstr ""
 
-#: constants.php:55
+#: constants.php:51
 msgid "Department Anglistik/Amerikanistik und Romanistik"
 msgstr ""
 
-#: constants.php:59
+#: constants.php:55
 msgid "Department Fachdidaktiken"
 msgstr ""
 
-#: constants.php:64
+#: constants.php:60
 msgid "Department Germanistik und Komparatistik"
 msgstr ""
 
-#: constants.php:69
+#: constants.php:65
 msgid "Department Geschichte"
 msgstr ""
 
-#: constants.php:74
+#: constants.php:70
 msgid "Department Medienwissenschaften und Kunstgeschichte"
 msgstr ""
 
-#: constants.php:78
+#: constants.php:74
 msgid "Department Pädagogik"
 msgstr ""
 
-#: constants.php:83
+#: constants.php:79
 msgid "Department Psychologie"
 msgstr ""
 
-#: constants.php:87
+#: constants.php:83
 msgid "Department Sozialwissenschaften und Philosophie"
 msgstr ""
 
-#: constants.php:92
+#: constants.php:88
 msgid "Fachbereich Theologie"
 msgstr ""
 
-#: constants.php:97
+#: constants.php:93
 msgid "Department Islamisch-Religiöse Studien"
 msgstr ""
 
-#: constants.php:102
+#: constants.php:98
 msgid "Department Sportwissenschaft und Sport"
 msgstr ""
 
-#: constants.php:108
+#: constants.php:104
 msgid "Rechts- und Wirtschaftswissenschaftliche Fakultät"
 msgstr ""
 
-#: constants.php:109
-msgid "RW"
-msgstr ""
-
-#: constants.php:115
+#: constants.php:113
 msgid "Fachbereich Rechtswissenschaften"
 msgstr ""
 
-#: constants.php:116
+#: constants.php:114
 msgid "Jura"
 msgstr ""
 
-#: constants.php:121
+#: constants.php:120
 msgid "Fachbereich Wirtschaftswissenschaften"
-msgstr ""
-
-#: constants.php:122
-msgid "WiSo"
 msgstr ""
 
 #: constants.php:130
 msgid "Medizinische Fakultät"
 msgstr ""
 
-#: constants.php:131
-msgid "Med"
-msgstr ""
-
-#: constants.php:137
+#: constants.php:138
 msgid "Einrichtungen, die nicht zum Universitätsklinikum Erlangen gehören"
 msgstr ""
 
-#: constants.php:142
+#: constants.php:143
 msgid "Institut für Anatomie"
 msgstr ""
 
-#: constants.php:147
+#: constants.php:148
 msgid "Institut für Physiologie und Pathophysiologie"
 msgstr ""
 
-#: constants.php:152
+#: constants.php:153
 msgid "Institut für Zelluläre und Molekulare Physiologie"
 msgstr ""
 
-#: constants.php:157
+#: constants.php:158
 msgid "Institut für Biochemie"
 msgstr ""
 
-#: constants.php:162
+#: constants.php:163
 msgid "Institut für Medizininformatik, Biometrie und Epidemiologie"
 msgstr ""
 
-#: constants.php:167
+#: constants.php:168
 msgid "Institut für Geschichte und Ethik der Medizin"
 msgstr ""
 
-#: constants.php:172
+#: constants.php:173
 msgid "Institut für Rechtsmedizin"
 msgstr ""
 
-#: constants.php:177
+#: constants.php:178
 msgid "Institut für Experimentelle und Klinische Pharmakologie und Toxikologie"
 msgstr ""
 
-#: constants.php:182
+#: constants.php:183
 msgid "Institut und Poliklinik für Arbeits-, Sozial- und Umweltmedizin"
 msgstr ""
 
-#: constants.php:187
+#: constants.php:188
 msgid "Institut für Biomedizin des Alterns"
 msgstr ""
 
-#: constants.php:192
+#: constants.php:193
 msgid "Klinisch-Molekularbiologisches Forschungszentrum"
 msgstr ""
 
-#: constants.php:197
-msgid "Orthopädische Abteilung des Waldkrankenhauses St. Marien, Erlangen, Orthopädische Klinik mit Poliklinik der Friedrich-Alexander-Universität Erlangen-Nürnberg"
-msgstr ""
-
-#: constants.php:205
+#: constants.php:201
 msgid "Naturwissenschaftliche Fakultät"
 msgstr ""
 
-#: constants.php:206
-msgid "Nat"
-msgstr ""
-
-#: constants.php:212
+#: constants.php:209
 msgid "Department Biologie"
 msgstr ""
 
-#: constants.php:213
-msgid "Bio"
-msgstr ""
-
-#: constants.php:218
+#: constants.php:215
 msgid "Department Chemie und Pharmazie"
 msgstr ""
 
-#: constants.php:219
-msgid "NN"
-msgstr ""
-
-#: constants.php:224
+#: constants.php:220
 msgid "Department Geographie und Geowissenschaften"
 msgstr ""
 
 #: constants.php:225
-msgid "Geo"
-msgstr ""
-
-#: constants.php:230
 msgid "Department Mathematik"
 msgstr ""
 
-#: constants.php:231
-msgid "Mathe"
-msgstr ""
-
-#: constants.php:236
+#: constants.php:230
 msgid "Department Physik"
 msgstr ""
 
 #: constants.php:237
-msgid "Physik"
-msgstr ""
-
-#: constants.php:244
 msgid "Technische Fakultät"
 msgstr ""
 
 #: constants.php:245
-msgid "TF"
-msgstr ""
-
-#: constants.php:251
 msgid "Department Chemie- und Bioingenieurwesen"
 msgstr ""
 
-#: constants.php:252
-msgid "CBI"
-msgstr ""
-
-#: constants.php:257
+#: constants.php:251
 msgid "Department Elektrotechnik-Elektronik-Informationstechnik"
 msgstr ""
 
-#: constants.php:258
-msgid "EEI"
-msgstr ""
-
-#: constants.php:263, constants.php:271
+#: constants.php:257
 msgid "Department Informatik"
 msgstr ""
 
-#: constants.php:264
-msgid "Department Computer Science"
-msgstr ""
-
-#: constants.php:265
-msgid "CS"
-msgstr ""
-
-#: constants.php:270
+#: constants.php:263
 msgid "Department Maschinenbau"
 msgstr ""
 
-#: constants.php:272
-msgid "MB"
-msgstr ""
-
-#: constants.php:278
+#: constants.php:270
 msgid "Department Werkstoffwissenschaften"
 msgstr ""
 
-#: constants.php:279
-msgid "Department of Materials Science and Engineering"
+#: fau-orga-breadcrumb.php:82
+msgid "Your server is running PHP version %s. Please upgrade at least to PHP version %s."
 msgstr ""
 
-#: constants.php:280
-msgid "WW"
+#: fau-orga-breadcrumb.php:86
+msgid "Your Wordpress version is %s. Please upgrade at least to Wordpress version %s."
 msgstr ""
 
-#: includes/functions.php:48
-msgid "Untergeordnete Einrichtungen:"
-msgstr ""
-
-#: includes/settings.php:56, includes/widget.php:67
+#: includes/settings.php:65, includes/widget.php:67
 msgid "Keine (Keine Fakulätszuordnung oder Zentralbereich)"
 msgstr ""
 
-#: includes/settings.php:69
+#: includes/settings.php:78
 msgid "Organisatorische Zuordnung. Bitte wählen Sie hier die nächsthöhere Organisationseinheit aus."
 msgstr ""
 
