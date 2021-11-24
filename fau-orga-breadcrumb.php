@@ -4,7 +4,7 @@
 Plugin Name: FAU ORGA Breadcrumb
 Plugin URI: https://github.com/RRZE-Webteam/fau-orga-breadcrumb
 Description: Displays an organisational breadcrumb
-Version: 1.0.7
+Version: 1.0.9-8
 Author: RRZE-Webteam
 Author URI: http://blogs.fau.de/webworking/
 License: GNU GPLv2
@@ -46,7 +46,7 @@ register_activation_hook(__FILE__, 'FAU\ORGA\Breadcrumb\activation');
 /*-----------------------------------------------------------------------------------*/
 function init() {
     textdomain();
-
+    register_styles();
 
  
     include_once('includes/shortcode.php');
@@ -55,8 +55,8 @@ function init() {
         // define widgets
 
     include_once('includes/settings.php');
-    
-    add_action( 'wp_enqueue_scripts', 'FAU\ORGA\Breadcrumb\custom_libraries_scripts');
+	// admin settings
+
 }
 /*-----------------------------------------------------------------------------------*/
 /* Load textdomain
@@ -79,11 +79,11 @@ function system_requirements() {
     $error = '';
 
     if (version_compare(PHP_VERSION, RRZE_PHP_VERSION, '<')) {
-        $error = sprintf(__('Your server is running PHP version %s. Please upgrade at least to PHP version %s.', 'rrze-test'), PHP_VERSION, RRZE_PHP_VERSION);
+        $error = sprintf(__('Your server is running PHP version %s. Please upgrade at least to PHP version %s.', 'fau-orga-breadcrumb'), PHP_VERSION, RRZE_PHP_VERSION);
     }
 
     if (version_compare($GLOBALS['wp_version'], RRZE_WP_VERSION, '<')) {
-        $error = sprintf(__('Your Wordpress version is %s. Please upgrade at least to Wordpress version %s.', 'rrze-test'), $GLOBALS['wp_version'], RRZE_WP_VERSION);
+        $error = sprintf(__('Your Wordpress version is %s. Please upgrade at least to Wordpress version %s.', 'fau-orga-breadcrumb'), $GLOBALS['wp_version'], RRZE_WP_VERSION);
     }
 
     // Wenn die Überprüfung fehlschlägt, dann wird das Plugin automatisch deaktiviert.
@@ -95,10 +95,10 @@ function system_requirements() {
 /*-----------------------------------------------------------------------------------*/
 /* Register styles and scripts
 /*-----------------------------------------------------------------------------------*/
-function custom_libraries_scripts() { 
-    global $post;
-     
+function register_styles() { 
     wp_register_style( 'fau-orga-breadcrumb', plugins_url( 'fau-orga-breadcrumb/css/fau-orga-breadcrumb.css', dirname(__FILE__) ) );    
+    wp_register_style( 'fau-orga-breadcrumb-admin', plugins_url( 'fau-orga-breadcrumb/css/fau-orga-breadcrumb-admin.css', dirname(__FILE__) ) );    
+
 }
 /*-----------------------------------------------------------------------------------*/
 /*EOF

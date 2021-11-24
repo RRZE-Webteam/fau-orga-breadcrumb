@@ -8,13 +8,22 @@ add_action('admin_menu', 'FAU\ORGA\Breadcrumb\fau_orga_breadcrumb_plugin_admin_s
 function fau_orga_breadcrumb_plugin_admin_settings() {
     add_options_page('FAU ORGA Breadcrumb', 'FAU.ORG Breadcrumb', 'manage_options', 'fau_orga_breadcrumb_settings', 'FAU\ORGA\Breadcrumb\fau_orga_breadcrumb_option_page');
     add_action('admin_init', 'FAU\ORGA\Breadcrumb\fau_orga_breadcrumb_settings');
-
 }
+
+function fau_orga_enqueue_admin_script( $hook ) {
+     if ( 'options-general.php' != $hook ) {
+  //      return;
+    }
+    wp_enqueue_style( 'fau-orga-breadcrumb-admin');
+}
+add_action( 'admin_enqueue_scripts', 'FAU\ORGA\Breadcrumb\fau_orga_enqueue_admin_script' );
+
 /*-----------------------------------------------------------------------------------*/
 /* generate option page
 /*-----------------------------------------------------------------------------------*/
-function fau_orga_breadcrumb_option_page(){?>
-<div>
+function fau_orga_breadcrumb_option_page(){
+    ?>
+<div class="fau_orga_breadcrumb_optionpage">
     <form action="options.php" method="post">
 
         <?php settings_fields('fau_orga_breadcrumb_options');?>
@@ -51,11 +60,11 @@ function fau_orga_breadcrumb_field_callback() {
 	$orga = '0000000000';
     }
     ?>
-     <select id="fau_orga_breadcrumb_options[site-orga]"
+     <select size="10" id="fau_orga_breadcrumb_options[site-orga]"
         name="fau_orga_breadcrumb_options[site-orga]" type="text">
             <option value=""><?php _e('Keine (Keine Fakulätszuordnung oder Zentralbereich)', 'fau-orga-breadcrumb' ) ?></option>
         <?php        
-	echo get_fau_orga_form_optionlist('000000000',$orga,0,3);
+	echo get_fau_orga_form_optionlist('000000000',$orga,0);
         ?>
         </select>
 	<?php 

@@ -20,11 +20,51 @@ function get_fau_orga_childs( $fauorg = '000000000') {
     }
     return $res;
 }
+/*-----------------------------------------------------------------------------------*/
+/* get next upper class
+/*-----------------------------------------------------------------------------------*/
+function get_fau_orga_upperclass( $fauorg = '') {
+    global $fau_orga_breadcrumb_data;
+    $res = '';
+    $fauorg = san_fauorg_number($fauorg);
+    
+    if (isset($fauorg)) {
+	
+	if (isset($fau_orga_breadcrumb_data[$fauorg])) {
+	    
+	    if (isset($fau_orga_breadcrumb_data[$fauorg]['class'])) {
+		$res = $fau_orga_breadcrumb_data[$fauorg]['class'];
+	    } else {
+		$parent = '';
+		if (isset($fau_orga_breadcrumb_data[$fauorg]['parent'])) {
+		    $parent = $fau_orga_breadcrumb_data[$fauorg]['parent'];
+		} 
+		
+		while ($parent) {
+		    
+		    if (isset($fau_orga_breadcrumb_data[$parent]['class'])) {
+			$res = $fau_orga_breadcrumb_data[$parent]['class'];
+			$parent = '';
+			break;
+		    }
+		    if (isset($fau_orga_breadcrumb_data[$parent]['parent'])) {
+			 $parent = $fau_orga_breadcrumb_data[$parent]['parent'];
+		    } else {
+			$parent = '';
+			break;
+		    }
+		}
+	    }
 
+	}
+	
+    }
+    return $res;
+}
 /*-----------------------------------------------------------------------------------*/
 /* create option list for forms
 /*-----------------------------------------------------------------------------------*/
-function get_fau_orga_form_optionlist ( $fauorg = '000000000', $preorg = '000000000', $level = 0, $depth = 4, $lang = '') {
+function get_fau_orga_form_optionlist ( $fauorg = '000000000', $preorg = '000000000', $level = 0, $maxdepth = 4, $lang = '') {
     global $fau_orga_breadcrumb_data;
     
     $fauorg = san_fauorg_number($fauorg);
@@ -38,16 +78,27 @@ function get_fau_orga_form_optionlist ( $fauorg = '000000000', $preorg = '000000
     
     if (!empty($firstlevel)) {
 	foreach($firstlevel as $key) {
+	    $orgclass = get_fau_orga_upperclass($key);
+	    if ($orgclass) {
+		$class = 'depth-'.$level.' '.$orgclass;
+	    } else {
+		$class = 'depth-'.$level;
+	    }
 	    
-	    $res .= '<option value="'.$key.'" '.selected( $org, $key ).'>'.$fau_orga_breadcrumb_data[$key]['title'].'</option>';
-	    if ($level < $depth) {
+	    $res .= '<option class="'.$class.'" value="'.$key.'" '.selected( $org, $key );
+	    if (isset($fau_orga_breadcrumb_data[$key]['hide']) && ($fau_orga_breadcrumb_data[$key]['hide']==true)) {
+		 $res .= ' disabled';
+	    }
+	    
+	    $res .= '>'.$fau_orga_breadcrumb_data[$key]['title'].'</option>';
+	    
+	    
+	    if ($level < $maxdepth) {
 		
 		$nextlevel = $level + 1;
 		$sublist = get_fau_orga_childs($key);
 		if (!empty($sublist)) {
-		    $res .= '<optgroup label="'.__('Untergeordnete Einrichtungen:','fau-orga-breadcrumb').'">';
-		    $res .= get_fau_orga_form_optionlist($key, $preorg, $nextlevel, $depth, $lang);
-		    $res .=  '</optgroup>';
+		    $res .= get_fau_orga_form_optionlist($key, $preorg, $nextlevel, $maxdepth, $lang);
 		}
 	    }
 

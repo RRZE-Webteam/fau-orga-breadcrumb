@@ -21,7 +21,7 @@ if ((isset($form_org)) && (isset($fau_orga_breadcrumb_data[$form_org]))) {
     if (isset($fau_orga_breadcrumb_data[$form_org]['url'])) {
 	$entry .= '</a>';
     } else {
-        $thisentry .= '</span>';
+        $entry .= '</span>';
     }
     
     $entry .= '<meta itemprop="position" content="'.$position.'" />';
