@@ -4,7 +4,7 @@
 Plugin Name: FAU ORGA Breadcrumb
 Plugin URI: https://github.com/RRZE-Webteam/fau-orga-breadcrumb
 Description: Displays an organisational breadcrumb
-Version: 1.0.9-9
+Version: 1.1.1
 Author: RRZE-Webteam
 Author URI: http://blogs.fau.de/webworking/
 License: GNU GPLv2
@@ -46,7 +46,6 @@ register_activation_hook(__FILE__, 'FAU\ORGA\Breadcrumb\activation');
 /*-----------------------------------------------------------------------------------*/
 function init() {
     textdomain();
-    register_styles();
 
  
     include_once('includes/shortcode.php');
@@ -56,6 +55,12 @@ function init() {
 
     include_once('includes/settings.php');
 	// admin settings
+    
+    
+    add_action( 'wp_enqueue_scripts', 'FAU\ORGA\Breadcrumb\register_styles');
+    add_action( 'customize_register', 'FAU\ORGA\Breadcrumb\fau_orga_customizer_settings' );
+    add_action( 'admin_enqueue_scripts', 'FAU\ORGA\Breadcrumb\fau_orga_enqueue_admin_script' );
+
 
 }
 /*-----------------------------------------------------------------------------------*/
@@ -97,9 +102,17 @@ function system_requirements() {
 /*-----------------------------------------------------------------------------------*/
 function register_styles() { 
     wp_register_style( 'fau-orga-breadcrumb', plugins_url( 'fau-orga-breadcrumb/css/fau-orga-breadcrumb.css', dirname(__FILE__) ) );    
-    wp_register_style( 'fau-orga-breadcrumb-admin', plugins_url( 'fau-orga-breadcrumb/css/fau-orga-breadcrumb-admin.css', dirname(__FILE__) ) );    
-
+    
 }
+
+/*-----------------------------------------------------------------------------------*/
+/* Register and enqueue admin scripts
+/*-----------------------------------------------------------------------------------*/
+function fau_orga_enqueue_admin_script( $hook ) {
+    wp_register_style( 'fau-orga-breadcrumb-admin', plugins_url( 'fau-orga-breadcrumb/css/fau-orga-breadcrumb-admin.css', dirname(__FILE__) ) );    
+    wp_enqueue_style( 'fau-orga-breadcrumb-admin');
+}
+
 /*-----------------------------------------------------------------------------------*/
 /*EOF
 /*-----------------------------------------------------------------------------------*/

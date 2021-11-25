@@ -34,9 +34,9 @@ class FAU_ORGA_Breadcrumb_Widget extends \WP_Widget {
         $form_org   = (!empty($instance['org'])) ? $instance['org'] :'';
         $title      = ! empty( $instance['title'] ) ? $instance['title'] : '';
         if( isset( $form_org ) ) {
-            wp_enqueue_style( 'fau-orga-breadcrumb');
+            fau_orga_enqueue_style( 'fau-orga-breadcrumb');
             echo $before_widget;
-            include( plugin_dir_path( __DIR__ ) . 'templates/widget-template.php');
+	    echo get_fau_orga_breadcrumb($form_org);
             echo $after_widget;
         } 
 
