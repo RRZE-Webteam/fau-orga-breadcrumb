@@ -4,7 +4,7 @@
 Plugin Name: FAU ORGA Breadcrumb
 Plugin URI: https://github.com/RRZE-Webteam/fau-orga-breadcrumb
 Description: Displays an organisational breadcrumb
-Version: 1.0.7
+Version: 1.1.1
 Author: RRZE-Webteam
 Author URI: http://blogs.fau.de/webworking/
 License: GNU GPLv2
@@ -47,7 +47,6 @@ register_activation_hook(__FILE__, 'FAU\ORGA\Breadcrumb\activation');
 function init() {
     textdomain();
 
-
  
     include_once('includes/shortcode.php');
         // define shortcodes
@@ -55,8 +54,14 @@ function init() {
         // define widgets
 
     include_once('includes/settings.php');
+	// admin settings
     
-    add_action( 'wp_enqueue_scripts', 'FAU\ORGA\Breadcrumb\custom_libraries_scripts');
+    
+    add_action( 'wp_enqueue_scripts', 'FAU\ORGA\Breadcrumb\register_styles');
+    add_action( 'customize_register', 'FAU\ORGA\Breadcrumb\fau_orga_customizer_settings' );
+    add_action( 'admin_enqueue_scripts', 'FAU\ORGA\Breadcrumb\fau_orga_enqueue_admin_script' );
+
+
 }
 /*-----------------------------------------------------------------------------------*/
 /* Load textdomain
@@ -79,11 +84,11 @@ function system_requirements() {
     $error = '';
 
     if (version_compare(PHP_VERSION, RRZE_PHP_VERSION, '<')) {
-        $error = sprintf(__('Your server is running PHP version %s. Please upgrade at least to PHP version %s.', 'rrze-test'), PHP_VERSION, RRZE_PHP_VERSION);
+        $error = sprintf(__('Your server is running PHP version %s. Please upgrade at least to PHP version %s.', 'fau-orga-breadcrumb'), PHP_VERSION, RRZE_PHP_VERSION);
     }
 
     if (version_compare($GLOBALS['wp_version'], RRZE_WP_VERSION, '<')) {
-        $error = sprintf(__('Your Wordpress version is %s. Please upgrade at least to Wordpress version %s.', 'rrze-test'), $GLOBALS['wp_version'], RRZE_WP_VERSION);
+        $error = sprintf(__('Your Wordpress version is %s. Please upgrade at least to Wordpress version %s.', 'fau-orga-breadcrumb'), $GLOBALS['wp_version'], RRZE_WP_VERSION);
     }
 
     // Wenn die Überprüfung fehlschlägt, dann wird das Plugin automatisch deaktiviert.
@@ -95,11 +100,19 @@ function system_requirements() {
 /*-----------------------------------------------------------------------------------*/
 /* Register styles and scripts
 /*-----------------------------------------------------------------------------------*/
-function custom_libraries_scripts() { 
-    global $post;
-     
+function register_styles() { 
     wp_register_style( 'fau-orga-breadcrumb', plugins_url( 'fau-orga-breadcrumb/css/fau-orga-breadcrumb.css', dirname(__FILE__) ) );    
+    
 }
+
+/*-----------------------------------------------------------------------------------*/
+/* Register and enqueue admin scripts
+/*-----------------------------------------------------------------------------------*/
+function fau_orga_enqueue_admin_script( $hook ) {
+    wp_register_style( 'fau-orga-breadcrumb-admin', plugins_url( 'fau-orga-breadcrumb/css/fau-orga-breadcrumb-admin.css', dirname(__FILE__) ) );    
+    wp_enqueue_style( 'fau-orga-breadcrumb-admin');
+}
+
 /*-----------------------------------------------------------------------------------*/
 /*EOF
 /*-----------------------------------------------------------------------------------*/

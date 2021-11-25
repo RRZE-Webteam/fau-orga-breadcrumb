@@ -1,0 +1,408 @@
+# Copyright (C) 2021 FAU ORGA Breadcrumb
+# This file is distributed under the same license as the FAU ORGA Breadcrumb package.
+msgid ""
+msgstr ""
+"Project-Id-Version: FAU ORGA Breadcrumb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: [object Object]\n"
+"Report-Msgid-Bugs-To: https://github.com/RRZE-Webteam/fau-orga-breadcrumb/issues\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: constants.php:37
+msgid "https://www.fau.de"
+msgstr ""
+
+#: constants.php:45
+msgid "Regionales Rechenzentrum Erlangen"
+msgstr ""
+
+#: constants.php:47
+msgid "https://rrze.fau.de"
+msgstr ""
+
+#: constants.php:52
+msgid "Philosophische Fakultät"
+msgstr ""
+
+#: constants.php:54
+msgid "https://phil.fau.de"
+msgstr ""
+
+#: constants.php:59
+msgid "Department Alte Welt und Asiatische Kulturen"
+msgstr ""
+
+#: constants.php:63
+msgid "Department Anglistik/Amerikanistik und Romanistik"
+msgstr ""
+
+#: constants.php:67
+msgid "Department Fachdidaktiken"
+msgstr ""
+
+#: constants.php:68
+msgid "http://www.fachdidaktiken.uni-erlangen.de/"
+msgstr ""
+
+#: constants.php:72
+msgid "Department Germanistik und Komparatistik"
+msgstr ""
+
+#: constants.php:73
+msgid "https://www.germanistik.phil.fau.de/"
+msgstr ""
+
+#: constants.php:77
+msgid "Department Geschichte"
+msgstr ""
+
+#: constants.php:78
+msgid "https://www.geschichte.phil.fau.de/"
+msgstr ""
+
+#: constants.php:82
+msgid "Department Medienwissenschaften und Kunstgeschichte"
+msgstr ""
+
+#: constants.php:86
+msgid "Department Pädagogik"
+msgstr ""
+
+#: constants.php:87
+msgid "https://www.department-paedagogik.phil.fau.de/"
+msgstr ""
+
+#: constants.php:91
+msgid "Department Psychologie"
+msgstr ""
+
+#: constants.php:95
+msgid "Department Sozialwissenschaften und Philosophie"
+msgstr ""
+
+#: constants.php:99
+msgid "Fachbereich Theologie"
+msgstr ""
+
+#: constants.php:100
+msgid "https://www.theologie.fau.de"
+msgstr ""
+
+#: constants.php:104
+msgid "Department Islamisch-Religiöse Studien"
+msgstr ""
+
+#: constants.php:105
+msgid "https://www.dirs.phil.fau.de/"
+msgstr ""
+
+#: constants.php:109
+msgid "Department Sportwissenschaft und Sport"
+msgstr ""
+
+#: constants.php:110
+msgid "https://www.sport.fau.de"
+msgstr ""
+
+#: constants.php:114
+msgid "Department Digital Humanities and Social Studies"
+msgstr ""
+
+#: constants.php:115
+msgid "https://www.dhss.phil.fau.de/"
+msgstr ""
+
+#: constants.php:120
+msgid "Rechts- und Wirtschaftswissenschaftliche Fakultät"
+msgstr ""
+
+#: constants.php:122
+msgid "https://rw.fau.de"
+msgstr ""
+
+#: constants.php:128
+msgid "Fachbereich Rechtswissenschaften"
+msgstr ""
+
+#: constants.php:129
+msgid "Jura"
+msgstr ""
+
+#: constants.php:130
+msgid "https://jura.rw.fau.de"
+msgstr ""
+
+#: constants.php:135
+msgid "Fachbereich Wirtschaftswissenschaften"
+msgstr ""
+
+#: constants.php:137
+msgid "https://wiso.rw.fau.de"
+msgstr ""
+
+#: constants.php:144
+msgid "Medizinische Fakultät"
+msgstr ""
+
+#: constants.php:146
+msgid "https://med.fau.de"
+msgstr ""
+
+#: constants.php:151
+msgid "Einrichtungen, die nicht zum Universitätsklinikum Erlangen gehören"
+msgstr ""
+
+#: constants.php:156
+msgid "Institut für Anatomie"
+msgstr ""
+
+#: constants.php:157
+msgid "https://www.anatomie.med.fau.de/"
+msgstr ""
+
+#: constants.php:161
+msgid "Institut für Physiologie und Pathophysiologie"
+msgstr ""
+
+#: constants.php:162
+msgid "https://www.physiologie1.uni-erlangen.de/"
+msgstr ""
+
+#: constants.php:166
+msgid "Institut für Zelluläre und Molekulare Physiologie"
+msgstr ""
+
+#: constants.php:167
+msgid "https://www.physiologie2.med.fau.de/"
+msgstr ""
+
+#: constants.php:171
+msgid "Institut für Biochemie"
+msgstr ""
+
+#: constants.php:172
+msgid "https://www.biochemie.med.fau.de/"
+msgstr ""
+
+#: constants.php:176
+msgid "Institut für Medizininformatik, Biometrie und Epidemiologie"
+msgstr ""
+
+#: constants.php:177
+msgid "http://www.imbe.med.uni-erlangen.de/"
+msgstr ""
+
+#: constants.php:181
+msgid "Institut für Geschichte und Ethik der Medizin"
+msgstr ""
+
+#: constants.php:182
+msgid "https://www.igem.med.fau.de/"
+msgstr ""
+
+#: constants.php:186
+msgid "Institut für Rechtsmedizin"
+msgstr ""
+
+#: constants.php:187
+msgid "http://www.recht.med.uni-erlangen.de/"
+msgstr ""
+
+#: constants.php:191
+msgid "Institut für Experimentelle und Klinische Pharmakologie und Toxikologie"
+msgstr ""
+
+#: constants.php:192
+msgid "https://www.pharmakologie.med.fau.de/"
+msgstr ""
+
+#: constants.php:196
+msgid "Institut und Poliklinik für Arbeits-, Sozial- und Umweltmedizin"
+msgstr ""
+
+#: constants.php:197
+msgid "https://www.ipasum.med.fau.de/"
+msgstr ""
+
+#: constants.php:201
+msgid "Institut für Biomedizin des Alterns"
+msgstr ""
+
+#: constants.php:202
+msgid "https://www.iba.med.fau.de/"
+msgstr ""
+
+#: constants.php:206
+msgid "Klinisch-Molekularbiologisches Forschungszentrum"
+msgstr ""
+
+#: constants.php:207
+msgid "http://www.molmed.uni-erlangen.de/"
+msgstr ""
+
+#: constants.php:214
+msgid "Naturwissenschaftliche Fakultät"
+msgstr ""
+
+#: constants.php:216
+msgid "https://nat.fau.de"
+msgstr ""
+
+#: constants.php:221
+msgid "Department Biologie"
+msgstr ""
+
+#: constants.php:223
+msgid "https://www.biologie.nat.fau.de/"
+msgstr ""
+
+#: constants.php:227
+msgid "Department Chemie und Pharmazie"
+msgstr ""
+
+#: constants.php:228
+msgid "https://www.chemie.nat.fau.de/"
+msgstr ""
+
+#: constants.php:232
+msgid "Department Geographie und Geowissenschaften"
+msgstr ""
+
+#: constants.php:233
+msgid "https://www.geographie.nat.fau.de/"
+msgstr ""
+
+#: constants.php:237
+msgid "Department Mathematik"
+msgstr ""
+
+#: constants.php:238
+msgid "http://www.math.fau.de/"
+msgstr ""
+
+#: constants.php:242
+msgid "Department Physik"
+msgstr ""
+
+#: constants.php:243
+msgid "https://www.physik.nat.fau.de/"
+msgstr ""
+
+#: constants.php:247
+msgid "Department of Data Science"
+msgstr ""
+
+#: constants.php:248
+msgid "https://www.datascience.nat.fau.eu/"
+msgstr ""
+
+#: constants.php:254
+msgid "Technische Fakultät"
+msgstr ""
+
+#: constants.php:256
+msgid "https://tf.fau.de"
+msgstr ""
+
+#: constants.php:261
+msgid "Department Chemie- und Bioingenieurwesen"
+msgstr ""
+
+#: constants.php:263
+msgid "https://www.cbi.tf.fau.de/"
+msgstr ""
+
+#: constants.php:267
+msgid "Department Elektrotechnik-Elektronik-Informationstechnik"
+msgstr ""
+
+#: constants.php:269
+msgid "https://www.eei.tf.fau.de/"
+msgstr ""
+
+#: constants.php:273
+msgid "Department Informatik"
+msgstr ""
+
+#: constants.php:275
+msgid "http://www.cs.fau.de/DE"
+msgstr ""
+
+#: constants.php:279
+msgid "Department Maschinenbau"
+msgstr ""
+
+#: constants.php:281
+msgid "https://www.department.mb.tf.fau.de/"
+msgstr ""
+
+#: constants.php:285
+msgid "Department Werkstoffwissenschaften"
+msgstr ""
+
+#: constants.php:286
+msgid "https://www.ww.tf.fau.de"
+msgstr ""
+
+#: constants.php:290
+msgid "Department Artificial Intelligence in Biomedical Engineering"
+msgstr ""
+
+#: constants.php:291
+msgid "https://www.aibe.tf.fau.de/"
+msgstr ""
+
+#: fau-orga-breadcrumb.php:87
+msgid "Your server is running PHP version %s. Please upgrade at least to PHP version %s."
+msgstr ""
+
+#: fau-orga-breadcrumb.php:91
+msgid "Your Wordpress version is %s. Please upgrade at least to Wordpress version %s."
+msgstr ""
+
+#: includes/functions.php:198
+msgid "Organisatorische Navigation"
+msgstr ""
+
+#: includes/settings.php:58, includes/settings.php:113, includes/widget.php:67
+msgid "Keine (Keine Fakulätszuordnung oder Zentralbereich)"
+msgstr ""
+
+#: includes/settings.php:73
+msgid "Organisatorische Zuordnung: Bitte wählen Sie hier die <strong>nächsthöhere</strong> Organisationseinheit aus, zu der die Website zugeordnet werden kann."
+msgstr ""
+
+#: includes/settings.php:78
+msgid "Aktuell gewählt"
+msgstr ""
+
+#: includes/settings.php:81
+msgid "Breadcrumb"
+msgstr ""
+
+#: includes/widget.php:17
+msgid "Anzeige der organisatorischen Breadcrumb."
+msgstr ""
+
+#: includes/widget.php:58
+msgid "Titel:"
+msgstr ""
+
+#: includes/widget.php:60
+msgid "Optionaler Titel für die Anzeige der Breadcrumb in Widget-Bereichen."
+msgstr ""
+
+#: includes/widget.php:64
+msgid "Organisatorische Zuordnung:"
+msgstr ""
+
+#: includes/widget.php:77
+msgid "Bitte wählen Sie hier die Einrichtung aus, zu dem der aktuelle Webauftritte organisatorisch direkt untergeordnet ist."
+msgstr ""

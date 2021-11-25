@@ -8,13 +8,15 @@ add_action('admin_menu', 'FAU\ORGA\Breadcrumb\fau_orga_breadcrumb_plugin_admin_s
 function fau_orga_breadcrumb_plugin_admin_settings() {
     add_options_page('FAU ORGA Breadcrumb', 'FAU.ORG Breadcrumb', 'manage_options', 'fau_orga_breadcrumb_settings', 'FAU\ORGA\Breadcrumb\fau_orga_breadcrumb_option_page');
     add_action('admin_init', 'FAU\ORGA\Breadcrumb\fau_orga_breadcrumb_settings');
-
+   
 }
+
 /*-----------------------------------------------------------------------------------*/
 /* generate option page
 /*-----------------------------------------------------------------------------------*/
-function fau_orga_breadcrumb_option_page(){?>
-<div>
+function fau_orga_breadcrumb_option_page(){
+    ?>
+<div class="fau_orga_breadcrumb_optionpage">
     <form action="options.php" method="post">
 
         <?php settings_fields('fau_orga_breadcrumb_options');?>
@@ -51,11 +53,11 @@ function fau_orga_breadcrumb_field_callback() {
 	$orga = '0000000000';
     }
     ?>
-     <select id="fau_orga_breadcrumb_options[site-orga]"
+     <select size="10" id="fau_orga_breadcrumb_options[site-orga]"
         name="fau_orga_breadcrumb_options[site-orga]" type="text">
             <option value=""><?php _e('Keine (Keine Fakulätszuordnung oder Zentralbereich)', 'fau-orga-breadcrumb' ) ?></option>
         <?php        
-	echo get_fau_orga_form_optionlist('000000000',$orga,0,3);
+	echo get_fau_orga_form_optionlist('000000000',$orga,0);
         ?>
         </select>
 	<?php 
@@ -66,14 +68,100 @@ function fau_orga_breadcrumb_field_callback() {
 /* Infotext
 /*-----------------------------------------------------------------------------------*/
 function fau_orga_breadcrumb_section_text() {
-    echo '<p>' . esc_html_e('Organisatorische Zuordnung. Bitte wählen Sie hier die nächsthöhere Organisationseinheit aus.','fau-orga-breadcrumb') . '</p>';
+    global $fau_orga_breadcrumb_data;
+
+    echo '<p>' . __('Organisatorische Zuordnung: Bitte wählen Sie hier die <strong>nächsthöhere</strong> Organisationseinheit aus, zu der die Website zugeordnet werden kann.','fau-orga-breadcrumb') . '</p>';
+    
+    $options = get_option( 'fau_orga_breadcrumb_options' );
+    if ((isset($options['site-orga'])) && (!empty($options['site-orga']))) {
+	 $orga = esc_attr($options['site-orga']);
+	 echo '<p><strong>'.__('Aktuell gewählt','fau-orga-breadcrumb').': </strong><em>'.$fau_orga_breadcrumb_data[$orga]['title'].'</em></p>';
+	
+	 echo '<div class="fau_org_breadcrumb_preview">';
+	 echo '<strong>'.__('Breadcrumb','fau-orga-breadcrumb').': &nbsp; &nbsp; &nbsp; </strong>';
+	 echo get_fau_orga_breadcrumb($orga);
+	  echo '</div>';
+    }
+   
 }
 
+/*-----------------------------------------------------------------------------------*/
+/* Add settings also to customizer
+/*-----------------------------------------------------------------------------------*/
 
-/*-----------------------------------------------------------------------------------*/
-/* Register styles and scripts
-/*-----------------------------------------------------------------------------------*/
-function plugin_rvce_options_validate($input) {  
-    $options = get_option('fau_orga_breadcrumb_options');
-    return $options;
+function fau_orga_customizer_settings( $wp_customize ) {
+
+	// Wenn das FAU.ORG Plugin vorhanden und aktiv ist, erlaube es hier, die Option
+	// dazu zu verwalten
+	$options = get_option( 'fau_orga_breadcrumb_options' );
+	   if (isset($options['site-orga'])) {
+		$orga = esc_attr($options['site-orga']);
+	   } else {
+	       $orga = '0000000000';
+	   }
+	   
+	   $website_type = get_theme_mod("website_type");
+	   if (isset($website_type)) {
+	       if (($website_type==-1) || ($website_type==3)) {
+		   return;
+		   // No orga breadcrumb for these website types
+	       }
+		   
+	   }
+	   
+	   
+	  $optionlist = '<option value="">'.__('Keine (Keine Fakulätszuordnung oder Zentralbereich)', 'fau-orga-breadcrumb' ).'</option>'; 
+	  $optionlist .= get_fau_orga_form_optionlist('000000000',$orga,0);
+	   
+       $wp_customize->add_setting( 'fau_orga_breadcrumb_options[site-orga]', array(
+	    'default'		    => '',
+	    'capability'	    => 'edit_theme_options',
+	   'type'		    => 'option'
+	) );
+	$wp_customize->add_control( new FAU_ORGA_Customize_Control_Select( $wp_customize, 'fau_orga_site-orga', array(
+	      'settings' => 'fau_orga_breadcrumb_options[site-orga]',
+		'label'		    => esc_html__( 'Organisatorische Zuordnung', 'fau'),
+		'description'	    => esc_html__( 'Wählen Sie hier die organisatorische Einheit aus, zu der Ihre Einrichtung oder Ihr Webauftritt gehört.', 'fau'),
+		'section'	    => 'title_tagline',
+		'type'		    => 'select',
+		'choices'	    => $optionlist,
+		'priority'	    => 11,
+	) ) );
+	
+	
+	
+  
+}
+/*--------------------------------------------------------------------*/
+/* Special selection for customizer
+/*--------------------------------------------------------------------*/
+if (class_exists('WP_Customize_Control')) {
+    class FAU_ORGA_Customize_Control_Select extends \WP_Customize_Control {
+	// The type of customize control being rendered.
+	public $type = 'select';
+
+	//Displays the multiple select on the customize screen.
+	public function render_content() {
+	    $input_id         = '_customize-input-' . $this->id;
+	    $description_id   = '_customize-description-' . $this->id;
+	    $describedby_attr = ( ! empty( $this->description ) ) ? ' aria-describedby="' . esc_attr( $description_id ) . '" ' : '';
+
+	    if ( empty( $this->choices ) )
+		return;
+	    ?>
+		<label class="fau_orga_breadcrumb_optionpage">
+		    <?php if ( ! empty( $this->label ) ) : ?>
+                    <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+		    <?php endif;
+		    if ( ! empty( $this->description ) ) : ?>
+			<span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
+		    <?php endif; ?>
+		    <select size="5" id="<?php echo esc_attr( $input_id); ?>" class="" <?php echo $describedby_attr; ?> <?php $this->link(); ?>><?php 
+			
+			    echo  $this->choices;
+			?>
+		    </select>
+		</label>
+	<?php }
+    }
 }

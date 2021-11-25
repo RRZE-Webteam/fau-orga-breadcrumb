@@ -1,1 +1,17 @@
-.fau-orga-breadcrumb ul{margin:0;padding:0}.fau-orga-breadcrumb ul li{display:inline;padding:0}.fau-orga-breadcrumb nav{display:block}.fau-orga-breadcrumb nav h4{display:inline;font-size:1em}.fau-orga-breadcrumb nav span{margin:0 5px}.widget .fau-orga-breadcrumb-widget li:before{display:none;content:""}
+/*!
+Plugin Name: FAU ORGA Breadcrumb
+Version: 1.1.0
+Requires at least: 5.0
+Tested up to: 5.8
+Requires PHP: 7.4
+Description: Displays an organisational breadcrumb
+Theme URI: https://github.com/RRZE-Webteam/fau-orga-breadcrumb
+GitHub Plugin URI: https://github.com/RRZE-Webteam/fau-orga-breadcrumb
+GitHub Issue URL: https://github.com/RRZE-Webteam/fau-orga-breadcrumb/issues
+Author: RRZE-Webteam <webmaster@fau.de> (https://www.rrze.fau.de)
+Author URI: https://www.wordpress.rrze.fau.de
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Tags: breadcrumb, navigation, FAU
+Text Domain: fau-orga-breadcrumb
+*/ul.breadcrumblist,ol.breadcrumblist{margin:0}ul.breadcrumblist li,ol.breadcrumblist li{list-style:none;margin:0;padding:0;background:none;display:inline}ul.breadcrumblist li:before,ol.breadcrumblist li:before{display:none}ul.breadcrumblist li:after,ol.breadcrumblist li:after{content:" / "}ul.breadcrumblist li:last-child::after,ol.breadcrumblist li:last-child::after{content:""}
