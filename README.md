@@ -1,4 +1,20 @@
-#FAU Orga Breadcrumb
+# FAU Orga Breadcrumb
+
+## Download
+
+GitHub-Repo: https://github.com/RRZE-Webteam/fau-orga-breadcrumb
+
+## Autor
+
+RRZE-Webteam , http://www.rrze.fau.de
+
+## Copryright
+
+GNU General Public License (GPL) Version 3
+
+
+## Beschreibung
+
 
 Dieses Plugin erstellt eine organisatorische Breadcrumb für Einrichtungen
 der Friedrich-Alexaner-Universität Erlangen-Nürnberg (FAU). 
@@ -7,6 +23,25 @@ Als Provisorum werden dabei organisatorischen Daten zunächst aus einem
 in diesem Plugin definierten Array vordefiniert. Später ist geplant, die
 organisatorischen Daten über eine zu schaffende Schnittstelle zum
 Organisationsverwaltungssystem  FAU.ORG abzurufen.
+
+## Verwendung
+
+Die FAU ORG Breadcrumb kann mittels Shortcode ausgegeben werden:
+
+```html
+[fauorga]
+```
+Bei der Default-Nutzung wird der Eintrag in den Settings resp. aus dem Customizer verwendet.
+Zu beachten ist, dass dieser auch abhängig vom gewählten Website-Type sein kann. 
+Bei Wahl des Website-Types als zentrales FAU-Portal, als Fakultätsportal oder als externe Kooperation wird der Shortcode keine Ausgabe liefern.
+
+Aufruf mit Angabe einer FAU.ORG-Nummer:
+
+```html
+[fauorga org="1514000000"]
+```
+
+Mit dem Attribut org lässt sich auch der Pfad zu anderen Organisationen darstellen. Als Eingabe dient dabei die FAU.ORG Id.
 
 
 ## Entwickler-Hinweise

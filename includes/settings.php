@@ -22,7 +22,7 @@ function fau_orga_breadcrumb_option_page(){
         <?php settings_fields('fau_orga_breadcrumb_options');?>
         <?php do_settings_sections('fau_orga_textfield');?>
         <p>
-            <input type="submit" name="submit" id="submit" class="button button-primary" value="<?php esc_html_e('Änderungen speichern') ?>"  />
+            <input type="submit" name="submit" id="submit" class="button button-primary" value="<?php esc_html_e('Speichern', 'fau-orga-breadcrumb') ?>"  />
         </p>
     </form>
 </div>
@@ -52,12 +52,17 @@ function fau_orga_breadcrumb_field_callback() {
     } else {
 	$orga = '0000000000';
     }
+    $website_type = get_theme_mod("website_type");
+      $optionlist = '';
+	  if (isset($website_type) && ($website_type <> 1)) { 
+	    $optionlist .= '<option value="">'.__('Keine (Keine Fakulätszuordnung oder Zentralbereich)', 'fau-orga-breadcrumb' ).'</option>'; 
+	  }
+	  $optionlist .= get_fau_orga_form_optionlist('000000000',$orga,0);
     ?>
      <select size="10" id="fau_orga_breadcrumb_options[site-orga]"
         name="fau_orga_breadcrumb_options[site-orga]" type="text">
-            <option value=""><?php _e('Keine (Keine Fakulätszuordnung oder Zentralbereich)', 'fau-orga-breadcrumb' ) ?></option>
         <?php        
-	echo get_fau_orga_form_optionlist('000000000',$orga,0);
+	echo $optionlist
         ?>
         </select>
 	<?php 
@@ -71,7 +76,28 @@ function fau_orga_breadcrumb_section_text() {
     global $fau_orga_breadcrumb_data;
 
     echo '<p>' . __('Organisatorische Zuordnung: Bitte wählen Sie hier die <strong>nächsthöhere</strong> Organisationseinheit aus, zu der die Website zugeordnet werden kann.','fau-orga-breadcrumb') . '</p>';
-    
+        $website_type = get_theme_mod("website_type");
+/*
+ *     0 => __('Fakultätsportal','fau'), 
+	1 => __('Department, Lehrstuhl, Einrichtung','fau'),  
+	2 => __('Zentrale Einrichtung','fau') ,
+	3 => __('Website für uniübergreifende Kooperationen mit Externen','fau') ,
+	-1 => __('Zentrales FAU-Portal www.fau.de','fau') 
+ */
+	    if ($website_type) {
+		if ($website_type==0) {
+		    echo '<p class="notice notice-warning is-dismissible">'.__('Achtung: Die Website wurde im Customizer als Fakultätsportal definiert. Daher stehen der Fakultät ungeordnete Einrichtungen nicht zur Auswahl zur Verfügung. <strong>Die Orga Breadcrumb wird nicht angezeigt.</strong>','fau-orga-breadcrumb').'</p>';
+		} elseif ($website_type==1) {
+		    echo '<p class="notice notice-info is-dismissible">'.__('Die Website wurde im Customizer als Einrichtung einer Fakultät definiert. Daher stehen nur zentrale Einrichtungen und der Fakultät ungeordnete Einrichtungen  zur Auswahl zur Verfügung.','fau-orga-breadcrumb').'</p>';
+		} elseif ($website_type==2) {
+		    echo '<p class="notice notice-info is-dismissible">'.__('Die Website wurde im Customizer als zentrale Einrichtung definiert. Daher stehen nur zentrale Einrichtungen  zur Auswahl zur Verfügung.','fau-orga-breadcrumb').'</p>';
+		} elseif ($website_type==3) {
+		    echo '<p class="notice notice-warning is-dismissible">'.__('Achtung: Die Website wurde im Customizer als Kooperation definiert. D<strong>Die Orga Breadcrumb wird nicht angezeigt.</strong>','fau-orga-breadcrumb').'</p>';
+		} elseif ($website_type==-1) {
+		    echo '<p class="notice notice-warning is-dismissible">'.__('Achtung: Die Website wurde als zentrales FAU Portal definiert. <strong>Die Orga Breadcrumb wird nicht angezeigt.</strong>','fau-orga-breadcrumb').'</p>';
+		}
+	    }
+	
     $options = get_option( 'fau_orga_breadcrumb_options' );
     if ((isset($options['site-orga'])) && (!empty($options['site-orga']))) {
 	 $orga = esc_attr($options['site-orga']);
@@ -108,9 +134,11 @@ function fau_orga_customizer_settings( $wp_customize ) {
 	       }
 		   
 	   }
-	   
-	   
-	  $optionlist = '<option value="">'.__('Keine (Keine Fakulätszuordnung oder Zentralbereich)', 'fau-orga-breadcrumb' ).'</option>'; 
+	   $optionlist = '';
+	  if (isset($website_type) && ($website_type <> 1)) { 
+
+	    $optionlist .= '<option value="">'.__('Keine (Keine Fakulätszuordnung oder Zentralbereich)', 'fau-orga-breadcrumb' ).'</option>'; 
+	  }
 	  $optionlist .= get_fau_orga_form_optionlist('000000000',$orga,0);
 	   
        $wp_customize->add_setting( 'fau_orga_breadcrumb_options[site-orga]', array(

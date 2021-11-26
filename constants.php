@@ -36,7 +36,14 @@ $fau_orga_breadcrumb_data = array(
 	'shorttitle'	=> 'FAU', 
 	'url'		=> __('https://www.fau.de', 'fau-orga-breadcrumb'),
     ),
-    '1011000000'	=> array(
+
+    '1005000000' => array(
+	'title'	    => __('Zentrale Universitätsverwaltung', 'fau-orga-breadcrumb'),
+	'shorttitle'    => 'ZUV',
+	'url'	    => __('https://www.fau.de', 'fau-orga-breadcrumb'),
+	'parent'    => '1005000000'
+    ),
+     '1011000000'	=> array(
 	'title'	=> 'Zentrale Einrichtungen',
 	'parent'    => '0000000000',
 	'hide'	    => true,
@@ -53,7 +60,8 @@ $fau_orga_breadcrumb_data = array(
 	'shorttitle'    => 'Phil',
 	'url'	    => __('https://phil.fau.de', 'fau-orga-breadcrumb'),
 	'parent'    => '0000000000',
-	'class'	    => 'phil'
+	'class'	    => 'phil',
+	'faculty'   => 'phil'
     ),
     '1111000000' => array(
 	'title'	    => __('Department Alte Welt und Asiatische Kulturen', 'fau-orga-breadcrumb'),
@@ -116,27 +124,30 @@ $fau_orga_breadcrumb_data = array(
 	'parent'    => '1100000000'
     ),
     
+    
     '1200000000' => array(
 	'title'	    => __('Rechts- und Wirtschaftswissenschaftliche Fakultät', 'fau-orga-breadcrumb'),
 	'shorttitle'    => 'RW',
 	'url'	    => __('https://rw.fau.de', 'fau-orga-breadcrumb'),
 	'parent'    => '0000000000',
-	'class'	    => 'rw'
-
+	'class'	    => 'rw',
+	'faculty'   => 'rw'
     ),
     '1211000000' => array(
 	'title'	    => __('Fachbereich Rechtswissenschaften', 'fau-orga-breadcrumb'),
 	'shorttitle'    => __('Jura', 'fau-orga-breadcrumb'),
 	'url'	    => __('https://jura.rw.fau.de', 'fau-orga-breadcrumb'),
 	'parent'    => '0000000000',
-	'class'	    => 'rw'
+	'class'	    => 'rw',
+	'faculty'   => 'rw'
     ),
     '1212000000' => array(
 	'title'	    => __('Fachbereich Wirtschaftswissenschaften', 'fau-orga-breadcrumb'),
 	'shorttitle'    => 'WiSo',
 	'url'	    => __('https://wiso.rw.fau.de', 'fau-orga-breadcrumb'),
 	'parent'    => '0000000000',
-	'class'	    => 'rw'
+	'class'	    => 'rw',
+	'faculty'   => 'rw'
     ),
     
     
@@ -145,7 +156,8 @@ $fau_orga_breadcrumb_data = array(
 	    'shorttitle'    => 'Med', 
 	    'url'	    => __('https://med.fau.de', 'fau-orga-breadcrumb'),
 	    'parent'    => '0000000000',
-	'class'	    => 'med'
+	'class'	    => 'med',
+	'faculty'   => 'medl'
     ),
     '1311000000' => array(
 	    'title'	    => __('Einrichtungen, die nicht zum Universitätsklinikum Erlangen gehören', 'fau-orga-breadcrumb'),
@@ -215,7 +227,8 @@ $fau_orga_breadcrumb_data = array(
 	    'shorttitle'    => 'Nat', 
 	    'url'	    => __('https://nat.fau.de', 'fau-orga-breadcrumb'),
 	    'parent'    => '0000000000',
-	    'class'	    => 'nat'
+	    'class'	    => 'nat',
+	    'faculty'   => 'nat'
     ),
     '1411000000' => array(
 	    'title'	    => __('Department Biologie', 'fau-orga-breadcrumb'),
@@ -255,7 +268,8 @@ $fau_orga_breadcrumb_data = array(
 	'shorttitle'    =>  'TF', 
 	'url'           => __('https://tf.fau.de', 'fau-orga-breadcrumb'),
 	'parent'    => '0000000000',
-	    'class'	    => 'tf'
+	'class'	    => 'tf',
+	'faculty'   => 'tf'
     ),    
     '1511000000'   => array(
 	'title'          => __('Department Chemie- und Bioingenieurwesen', 'fau-orga-breadcrumb'),
