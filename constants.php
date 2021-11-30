@@ -157,7 +157,7 @@ $fau_orga_breadcrumb_data = array(
 	    'url'	    => __('https://med.fau.de', 'fau-orga-breadcrumb'),
 	    'parent'    => '0000000000',
 	'class'	    => 'med',
-	'faculty'   => 'medl'
+	'faculty'   => 'med'
     ),
     '1311000000' => array(
 	    'title'	    => __('Einrichtungen, die nicht zum Universitätsklinikum Erlangen gehören', 'fau-orga-breadcrumb'),
