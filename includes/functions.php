@@ -278,8 +278,8 @@ function get_fau_orga_breadcrumb($form_org) {
 	    
 	    $line .= $entry;
 	}
-	
-	$res = '<nav aria-label="'.__('Organisatorische Navigation','fau-orga-breadcrumb').'">';
+
+	$res = '<nav class="orga-breadcrumb" aria-label="'.__('Organisatorische Navigation','fau-orga-breadcrumb').'">';
 	$res .= '<ol class="breadcrumblist" itemscope itemtype="https://schema.org/BreadcrumbList">';
 	$res .= $line;
 	$res .= '</ol>';
