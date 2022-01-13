@@ -278,8 +278,8 @@ function get_fau_orga_breadcrumb($form_org) {
 	    
 	    $line .= $entry;
 	}
-	
-	$res = '<nav aria-label="'.__('Organisatorische Navigation','fau-orga-breadcrumb').'">';
+
+	$res = '<nav class="orga-breadcrumb" aria-label="'.__('Organisatorische Navigation','fau-orga-breadcrumb').'">';
 	$res .= '<ol class="breadcrumblist" itemscope itemtype="https://schema.org/BreadcrumbList">';
 	$res .= $line;
 	$res .= '</ol>';
@@ -300,34 +300,37 @@ function get_fau_orga_breadcrumb($form_org) {
 function get_fau_orga_fautheme() {
     
     $active_theme = wp_get_theme();
-    $active_theme = $active_theme->get( 'Name' );
-    
-    
-    global $known_themes;
-    
-    if (in_array($active_theme, $known_themes['fauthemes'])) {
+    if ( $active_theme->exists() ) {
+	$themename = $active_theme->get( 'Name' );
 
-	switch($active_theme) {
-	    case 'FAU-Philfak':
-		$res = 'phil';
-		break;
-	    case 'FAU-RWFak':
-		$res = 'rw';
-		break;
-	    case 'FAU-Natfak':
-		$res = 'nat';
-		break;
-	    case 'FAU-Medfak':
-		$res = 'med';
-		break;
-	    case 'FAU-Techfak':
-		$res = 'tf';
-		break;
-	    default:	
-		$res = 'zentral';
+
+	global $known_themes;
+	if (isset($known_themes) && isset($known_themes['fauthemes'])) {
+	    if (in_array($themename, $known_themes['fauthemes'])) {
+
+		switch($active_theme) {
+		    case 'FAU-Philfak':
+			$res = 'phil';
+			break;
+		    case 'FAU-RWFak':
+			$res = 'rw';
+			break;
+		    case 'FAU-Natfak':
+			$res = 'nat';
+			break;
+		    case 'FAU-Medfak':
+			$res = 'med';
+			break;
+		    case 'FAU-Techfak':
+			$res = 'tf';
+			break;
+		    default:	
+			$res = 'zentral';
+		}
+		return $res;
+	    } 
 	}
-	return $res;
-    } 
+    }
     return false;
   
 }
