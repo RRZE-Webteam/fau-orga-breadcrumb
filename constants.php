@@ -41,22 +41,68 @@ $fau_orga_breadcrumb_data = array(
 	'title'	    => __('Zentrale Universitätsverwaltung', 'fau-orga-breadcrumb'),
 	'shorttitle'    => 'ZUV',
 	'url'	    => __('https://www.fau.de', 'fau-orga-breadcrumb'),
-	'parent'    => '1005000000'
+	'parent'    => '0000000000'
     ),
      '1011000000'	=> array(
-	'title'	=> 'Zentrale Einrichtungen',
+	'title'	=> __('Zentrale Einrichtungen', 'fau-orga-breadcrumb'),
 	'parent'    => '0000000000',
 	'hide'	    => true,
     ),
-    '1011120000' => array(
+    '1011110000' => array(
+	'title'	    => __('Universitätsbibliothek', 'fau-orga-breadcrumb'),
+	'shorttitle'    => 'UB',
+	'url'	    => __('https://ub.fau.de', 'fau-orga-breadcrumb'),
+	'parent'    => '1011000000'
+    ),
+     '1011120000' => array(
 	'title'	    => __('Regionales Rechenzentrum Erlangen', 'fau-orga-breadcrumb'),
 	'shorttitle'    => 'RRZE',
 	'url'	    => __('https://rrze.fau.de', 'fau-orga-breadcrumb'),
 	'parent'    => '1011000000'
     ),
-    
+     '1011130000' => array(
+	'title'	    => __('Zentralinstitut für Regionenforschung', 'fau-orga-breadcrumb'),
+	'parent'    => '1011000000'
+    ),
+    '1011200000' => array(
+	'title'	    => __('Graduiertenzentrum der FAU', 'fau-orga-breadcrumb'),
+	'parent'    => '1011000000'
+    ),
+     '1011290000' => array(
+	'title'	    => __('Zentrum für Lehr-/Lernforschung, -innovation und Transfer', 'fau-orga-breadcrumb'),
+	'shorttitle'    => 'ZeLLIT',
+	'parent'    => '1011000000'
+    ),
+     '1011320000' => array(
+	'title'	    => __('FAU Forschungszentren', 'fau-orga-breadcrumb'),
+	'parent'    => '1011000000'
+    ),
+    '1011330000' => array(
+	'title'	    => __('FAU Kompetenzzentren', 'fau-orga-breadcrumb'),
+	'parent'    => '1011000000'
+    ),
+    '1013000000'	=> array(
+	'title'	=> __('Interdisziplinäre Zentren', 'fau-orga-breadcrumb'),
+	'parent'    => '0000000000',
+    ),
+     '1014000000'	=> array(
+	'title'	=> __('Museen und Sammlungen', 'fau-orga-breadcrumb'),
+	'parent'    => '0000000000',
+    ),
+    '1015000000'	=> array(
+	'title'	=> __('DFG-Sonderforschungsbereiche/ Transregios/Transferbereiche', 'fau-orga-breadcrumb'),
+	'parent'    => '0000000000',
+    ),
+    '1016000000'	=> array(
+	'title'	=> __('DFG-Graduiertenkollegs', 'fau-orga-breadcrumb'),
+	'parent'    => '0000000000',
+    ),
+    '1040000000'	=> array(
+	'title'	=> __('Zentrale Serviceeinrichtungen', 'fau-orga-breadcrumb'),
+	'parent'    => '0000000000',
+    ),
     '1100000000' => array(
-	'title'	    => __('Philosophische Fakultät', 'fau-orga-breadcrumb'),
+	'title'	    => __('Philosophische Fakultät und Fachbereich Theologie', 'fau-orga-breadcrumb'),
 	'shorttitle'    => 'Phil',
 	'url'	    => __('https://phil.fau.de', 'fau-orga-breadcrumb'),
 	'parent'    => '0000000000',
@@ -305,7 +351,9 @@ $fau_orga_breadcrumb_data = array(
 	'url'            => __('https://www.aibe.tf.fau.de/', 'fau-orga-breadcrumb'),
 	'parent'    => '1500000000'
     ), 
-                    
-
+	
+    '9900000000' => array(
+	'title'		=> 'Externe Einrichtungen',
+    ),
 );
 
