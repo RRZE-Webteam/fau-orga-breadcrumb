@@ -43,6 +43,19 @@ Aufruf mit Angabe einer FAU.ORG-Nummer:
 
 Mit dem Attribut org lässt sich auch der Pfad zu anderen Organisationen darstellen. Als Eingabe dient dabei die FAU.ORG Id.
 
+Das Plugin ist nur mit bei Nutzung der Themes
+    'FAU-Einrichtungen',
+    'FAU-Einrichtungen-BETA',
+    'FAU-Medfak',
+    'FAU-RWFak',
+    'FAU-Philfak',
+    'FAU-Techfak',
+    'FAU-Natfak',
+    'FAU-Blog',
+    'FAU-Jobs'
+
+einsatzfähig.
+
 
 ## Entwickler-Hinweise
 

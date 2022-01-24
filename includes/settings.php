@@ -119,6 +119,12 @@ function fau_orga_customizer_settings( $wp_customize ) {
 
 	// Wenn das FAU.ORG Plugin vorhanden und aktiv ist, erlaube es hier, die Option
 	// dazu zu verwalten
+    
+	global $fau_orga_fautheme;
+	if ($fau_orga_fautheme === false) {
+	    return;
+	}
+    
 	$options = get_option( 'fau_orga_breadcrumb_options' );
 	   if (isset($options['site-orga'])) {
 		$orga = esc_attr($options['site-orga']);
