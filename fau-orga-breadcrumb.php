@@ -4,7 +4,7 @@
 Plugin Name: FAU ORGA Breadcrumb
 Plugin URI: https://github.com/RRZE-Webteam/fau-orga-breadcrumb
 Description: Displays an organisational breadcrumb
-Version: 1.1.7
+Version: 1.1.8
 Author: RRZE-Webteam
 Author URI: http://blogs.fau.de/webworking/
 License: GNU GPLv2
@@ -38,8 +38,10 @@ include('constants.php');
 include('includes/functions.php');
         // Global functions
 
-add_action('plugins_loaded', 'FAU\ORGA\Breadcrumb\init');
-register_activation_hook(__FILE__, 'FAU\ORGA\Breadcrumb\activation');
+
+ add_action('plugins_loaded', 'FAU\ORGA\Breadcrumb\init');
+ register_activation_hook(__FILE__, 'FAU\ORGA\Breadcrumb\activation');
+
 
 /*-----------------------------------------------------------------------------------*/
 /* Init
@@ -47,18 +49,21 @@ register_activation_hook(__FILE__, 'FAU\ORGA\Breadcrumb\activation');
 function init() {
     textdomain();
 
- 
-    include_once('includes/shortcode.php');
-        // define shortcodes
-    
-    include_once('includes/settings.php');
-	// admin settings
-    
-    
-    add_action( 'wp_enqueue_scripts', 'FAU\ORGA\Breadcrumb\register_styles');
-    add_action( 'customize_register', 'FAU\ORGA\Breadcrumb\fau_orga_customizer_settings' );
-    add_action( 'admin_enqueue_scripts', 'FAU\ORGA\Breadcrumb\fau_orga_enqueue_admin_script' );
+    global $fau_orga_fautheme;
+    if ($fau_orga_fautheme ) {
 
+	include_once('includes/shortcode.php');
+	    // define shortcodes
+
+	include_once('includes/settings.php');
+	    // admin settings
+
+
+	add_action( 'wp_enqueue_scripts', 'FAU\ORGA\Breadcrumb\register_styles');
+	add_action( 'customize_register', 'FAU\ORGA\Breadcrumb\fau_orga_customizer_settings' );
+	add_action( 'admin_enqueue_scripts', 'FAU\ORGA\Breadcrumb\fau_orga_enqueue_admin_script' );
+	
+    }
 
 }
 /*-----------------------------------------------------------------------------------*/
@@ -89,6 +94,11 @@ function system_requirements() {
         $error = sprintf(__('Your Wordpress version is %s. Please upgrade at least to Wordpress version %s.', 'fau-orga-breadcrumb'), $GLOBALS['wp_version'], RRZE_WP_VERSION);
     }
 
+    global $fau_orga_fautheme;
+    if ($fau_orga_fautheme === false) {
+            $error = __('This Plugin is only used for FAU Themes yet', 'fau-orga-breadcrumb');
+    }
+    
     // Wenn die Überprüfung fehlschlägt, dann wird das Plugin automatisch deaktiviert.
     if (!empty($error)) {
         deactivate_plugins(plugin_basename(__FILE__), FALSE, TRUE);
