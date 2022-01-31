@@ -1,7 +1,7 @@
 {
   "name": "FAU ORGA Breadcrumb",
   "textdomain": "fau-orga-breadcrumb",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "keywords": [
     "WordPress",
     "Plugin",
@@ -9,8 +9,8 @@
     "RRZE"
   ],
   "compatibility": {
-    "wprequires": "5.0",
-    "wptestedup": "5.8",
+    "wprequires": "5.8",
+    "wptestedup": "5.9",
     "phprequires": "7.4"
   },
   "author": {

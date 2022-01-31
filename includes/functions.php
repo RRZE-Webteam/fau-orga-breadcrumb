@@ -13,6 +13,12 @@ function fau_orga_admin_notice(){
     global $fau_orga_fautheme;
     
     $website_type = get_theme_mod("website_type");
+    
+    if (isset($website_type)) {
+	if (($website_type==-1) || ($website_type==3) || ($website_type==0)) {
+	    return;
+	}	
+    }
     $form_org = '';
     $options = get_option( 'fau_orga_breadcrumb_options' );
     if (isset($options['site-orga'])) {
@@ -24,7 +30,7 @@ function fau_orga_admin_notice(){
     // dann zeige den Hinweis, dass man doch bitte eine Zuordnung machen soll
     
     
-    if (isset($website_type) && ($website_type == 1) && (empty($form_org))) {
+    if (empty($form_org)) {
 	if ( $pagenow == 'index.php' ) {
 	    $user = wp_get_current_user();
 	    if ( in_array( 'administrator', (array) $user->roles ) ) {
