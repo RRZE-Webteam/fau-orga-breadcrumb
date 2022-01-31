@@ -115,7 +115,7 @@ $fau_orga_breadcrumb_data = array(
     ),
     '1112000000' => array(
 	'title'	    => __('Department Anglistik/Amerikanistik und Romanistik', 'fau-orga-breadcrumb'),
-	'parent'    => '110000000'
+	'parent'    => '1100000000'
     ),
     '1113000000' => array(
 	'title'	    => __('Department Fachdidaktiken', 'fau-orga-breadcrumb'),
