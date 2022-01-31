@@ -41,7 +41,8 @@ function show_breadcrumb( $atts ) {
 	if (empty($form_org)) {
 	    // Es handelt sich um eine Website, die ein Lehrstuhl ist und einer Fakultät zugeordnet ist, 
 	    // aber (noch) keinen Wert ausgewählt hat. Daher nehme als Oberpunkt die aktuelle Fakultät
-	    global $fau_orga_fautheme;
+	    $fau_orga_fautheme = get_fau_orga_fautheme();
+
 	    if ($fau_orga_fautheme) {
 		$faculty = $fau_orga_fautheme;
 		$debug_website_fakultaet = get_theme_mod('debug_website_fakultaet');
