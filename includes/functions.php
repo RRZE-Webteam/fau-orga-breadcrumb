@@ -337,7 +337,9 @@ function get_fau_faculty_by_theme() {
 		$res = '<option value="'.$key.'" '.selected( $org, $key , false).'>'.$fau_orga_breadcrumb_data[$key]['title'].'</option>';
 		  return $res;
 	      }
-	} elseif ($website_type===1) {
+	} elseif ($website_type==2) {
+	    $faculty = 'zentral';
+	} else { 
 	    $fau_orga_fautheme = get_fau_orga_fautheme();
 	    if ($fau_orga_fautheme) {
 		$faculty = $fau_orga_fautheme;
@@ -346,9 +348,13 @@ function get_fau_faculty_by_theme() {
 		    $faculty = $debug_website_fakultaet;
 		}
 	    }
-	} elseif ($website_type==2) {
-	    $faculty = 'zentral';
+	
 	}
+    } else {
+	$fau_orga_fautheme = get_fau_orga_fautheme();
+	    if ($fau_orga_fautheme) {
+		$faculty = $fau_orga_fautheme;
+	    }
     }
     return $faculty;
 }
