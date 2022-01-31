@@ -148,7 +148,8 @@ function get_fau_orga_form_optionlist( $fauorg = '000000000', $preorg = '0000000
 		  return $res;
 	      }
 	} elseif ($website_type==1) {
-	    global $fau_orga_fautheme;
+	    $fau_orga_fautheme = get_fau_orga_fautheme();
+
 	    if ($fau_orga_fautheme) {
 		$faculty = $fau_orga_fautheme;
 		$debug_website_fakultaet = get_theme_mod('debug_website_fakultaet');
