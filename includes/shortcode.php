@@ -39,19 +39,9 @@ function show_breadcrumb( $atts ) {
              $form_org = esc_attr($options['site-orga']);
         }
         if (empty($form_org)) {
-            // Es handelt sich um eine Website, die ein Lehrstuhl ist und einer Fakultät zugeordnet ist,
-            // aber (noch) keinen Wert ausgewählt hat. Daher nehme als Oberpunkt die aktuelle Fakultät
-            $fau_orga_fautheme = get_fau_orga_fautheme();
-
-            if ($fau_orga_fautheme) {
-                $faculty = $fau_orga_fautheme;
-                $debug_website_fakultaet = get_theme_mod('debug_website_fakultaet');
-                if (isset($debug_website_fakultaet)) {
-                    $faculty = $debug_website_fakultaet;
-                }
-                // Suche nach der FAU ORG
-                $form_org = get_fau_orga_fauorg_by_faculty($faculty);
-            }
+            // Es handelt sich um eine Website, die ein Lehrstuhl ist und einer Fakultät zugeordnet ist
+	 
+	    $form_org = get_fau_orga_by_theme();
         }
     }
     

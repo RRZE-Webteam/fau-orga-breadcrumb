@@ -188,7 +188,7 @@ $fau_orga_breadcrumb_data = array(
 	'faculty'   => 'rw'
     ),
     '1212000000' => array(
-	'title'	    => __('Fachbereich Wirtschaftswissenschaften', 'fau-orga-breadcrumb'),
+	'title'	    => __('Fachbereich Wirtschafts- und Sozialwissenschaften', 'fau-orga-breadcrumb'),
 	'shorttitle'    => 'WiSo',
 	'url'	    => __('https://wiso.rw.fau.de', 'fau-orga-breadcrumb'),
 	'parent'    => '0000000000',
