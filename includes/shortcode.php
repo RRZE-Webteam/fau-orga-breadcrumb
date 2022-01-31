@@ -38,7 +38,7 @@ function show_breadcrumb( $atts ) {
 	if (isset($options['site-orga'])) {
 	     $form_org = esc_attr($options['site-orga']);     
 	} 
-	if (($website_type==1) && (empty($form_org))) {
+	if (empty($form_org)) {
 	    // Es handelt sich um eine Website, die ein Lehrstuhl ist und einer Fakultät zugeordnet ist, 
 	    // aber (noch) keinen Wert ausgewählt hat. Daher nehme als Oberpunkt die aktuelle Fakultät
 	    global $fau_orga_fautheme;
