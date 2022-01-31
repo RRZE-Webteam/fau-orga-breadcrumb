@@ -140,20 +140,20 @@ function get_fau_orga_form_optionlist( $fauorg = '000000000', $preorg = '0000000
     $website_type = get_theme_mod("website_type");
   
     if (isset($website_type) ) {
-	if ($website_type==0 ) {
+	if ($website_type===0 ) {
 	    // Fakultaetsportal. Kann nur oberste Ebene auswählen.
 	      $key = $fau_orga_breadcrumb_config['root'];
 	      if (isset($fau_orga_breadcrumb_data[$key])) {
 		$res = '<option value="'.$key.'" '.selected( $org, $key , false).'>'.$fau_orga_breadcrumb_data[$key]['title'].'</option>';
 		  return $res;
 	      }
-	} elseif ($website_type==1) {
+	} elseif ($website_type===1) {
 	    $fau_orga_fautheme = get_fau_orga_fautheme();
 
 	    if ($fau_orga_fautheme) {
 		$faculty = $fau_orga_fautheme;
 		$debug_website_fakultaet = get_theme_mod('debug_website_fakultaet');
-		if (isset($debug_website_fakultaet)) {
+		if (isset($debug_website_fakultaet) && ($debug_website_fakultaet !== false))  {
 		    $faculty = $debug_website_fakultaet;
 		}
 
@@ -189,7 +189,7 @@ function get_fau_orga_form_optionlist( $fauorg = '000000000', $preorg = '0000000
 	    }
 	    
 	    $res .= '<option class="'.$class.'" value="'.$key.'" '.selected( $org, $key , false);
-	    if (isset($fau_orga_breadcrumb_data[$key]['hide']) && ($fau_orga_breadcrumb_data[$key]['hide']==true)) {
+	    if (isset($fau_orga_breadcrumb_data[$key]['hide']) && ($fau_orga_breadcrumb_data[$key]['hide']===true)) {
 		 $res .= ' disabled';
 	    }
 	    
@@ -237,6 +237,10 @@ endif;
 function get_fau_orga_breadcrumb($form_org) {
     global $fau_orga_breadcrumb_data;
 
+    if (empty($form_org)) {
+	$form_org = get_fau_orga_by_theme();
+    }
+   
     $schema_listattr = ' itemprop="itemListElement" itemscope  itemtype="https://schema.org/ListItem"';
     
 
@@ -341,7 +345,39 @@ function get_fau_orga_fautheme() {
     return false;
   
 }
-
+/*-----------------------------------------------------------------------------------*/
+/* enqueue with filter by theme
+/*-----------------------------------------------------------------------------------*/
+function get_fau_orga_by_theme() {
+    
+    $website_type = get_theme_mod("website_type");
+    $faculty = '';
+    if (isset($website_type) ) {
+	if ($website_type===0 ) {
+	    // Fakultaetsportal. Kann nur oberste Ebene auswählen.
+	      $key = $fau_orga_breadcrumb_config['root'];
+	      if (isset($fau_orga_breadcrumb_data[$key])) {
+		$res = '<option value="'.$key.'" '.selected( $org, $key , false).'>'.$fau_orga_breadcrumb_data[$key]['title'].'</option>';
+		  return $res;
+	      }
+	} elseif ($website_type===1) {
+	    $fau_orga_fautheme = get_fau_orga_fautheme();
+	    if ($fau_orga_fautheme) {
+		$faculty = $fau_orga_fautheme;
+		$debug_website_fakultaet = get_theme_mod('debug_website_fakultaet');
+		if (isset($debug_website_fakultaet) && ($debug_website_fakultaet !== false))  {
+		    $faculty = $debug_website_fakultaet;
+		}
+	    }
+	} elseif ($website_type==2) {
+	    $faculty = 'zentral';
+	}
+		
+	return get_fau_orga_fauorg_by_faculty($faculty);
+	
+    }
+  
+}
 /*-----------------------------------------------------------------------------------*/
 /* enqueue with filter by theme
 /*-----------------------------------------------------------------------------------*/
