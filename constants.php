@@ -17,7 +17,7 @@ $known_themes = array(
 		'FAU-Techfak',
 		'FAU-Natfak',
 		'FAU-Blog',
-	    	'FAU-Jobs'
+        'FAU Jobportal'
 	],
 	'rrzethemes' => [
 		'RRZE 2019',

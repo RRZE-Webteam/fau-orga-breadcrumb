@@ -236,63 +236,59 @@ endif;
 /*-----------------------------------------------------------------------------------*/
 function get_fau_orga_breadcrumb($form_org) {
     global $fau_orga_breadcrumb_data;
-
     $schema_listattr = ' itemprop="itemListElement" itemscope  itemtype="https://schema.org/ListItem"';
-    
 
     if ((isset($form_org)) && (isset($fau_orga_breadcrumb_data[$form_org]))) {
-	$path = array();
-	$path[] = $fau_orga_breadcrumb_data[$form_org];
-	if (isset($fau_orga_breadcrumb_data[$form_org]['parent'])) {
-	    $parent = $fau_orga_breadcrumb_data[$form_org]['parent'];
-	    
-	    
-	    while(!empty($parent)) {
-		if ((isset($fau_orga_breadcrumb_data[$parent]['hide'])) && ($fau_orga_breadcrumb_data[$parent]['hide']==true)) {
-		    // dont add this to the path
-		} else {
-		    $path[] = $fau_orga_breadcrumb_data[$parent];
-		}
-		if (isset($fau_orga_breadcrumb_data[$parent]['parent'])) {
-		    $parent = $fau_orga_breadcrumb_data[$parent]['parent'];
-		} else {
-		    $parent = '';
-		}
-	    }
-	}
-	
-	$breadcrumb = array_reverse($path);
-	$position = 1;
-	$entry = '';
-	$line = '';
-	
-	foreach ($breadcrumb as  $value) {
-	    $entry = '<li'.$schema_listattr.'>';
-	    if (isset($value['url'])) {
-		$entry .= '<a itemprop="item"  href="'.esc_url($value['url']).'">';
-	    } else {
-		$entry .= '<span itemprop="item">';
-	    }
-	    $entry .= '<span itemprop="name">'.$value['title'].'</span>';
-	    if (isset($value['url'])) {
-		$entry .= '</a>';
-	    } else {
-		$entry .= '</span>';
-	    }
-	    $entry .= '<meta itemprop="position" content="'.$position.'" />';
-	    $position++;
-	    $entry .= '</li>';
-	    
-	    $line .= $entry;
-	}
+        $path = array();
+        $path[] = $fau_orga_breadcrumb_data[$form_org];
+        if (isset($fau_orga_breadcrumb_data[$form_org]['parent'])) {
+            $parent = $fau_orga_breadcrumb_data[$form_org]['parent'];
+            while(!empty($parent)) {
+                if ((isset($fau_orga_breadcrumb_data[$parent]['hide'])) && ($fau_orga_breadcrumb_data[$parent]['hide']==true)) {
+                    // dont add this to the path
+                } else {
+                    $path[] = $fau_orga_breadcrumb_data[$parent];
+                }
+                if (isset($fau_orga_breadcrumb_data[$parent]['parent'])) {
+                    $parent = $fau_orga_breadcrumb_data[$parent]['parent'];
+                } else {
+                    $parent = '';
+                }
+            }
+        }
 
-	$res = '<nav class="orga-breadcrumb" aria-label="'.__('Organisatorische Navigation','fau-orga-breadcrumb').'">';
-	$res .= '<ol class="breadcrumblist" itemscope itemtype="https://schema.org/BreadcrumbList">';
-	$res .= $line;
-	$res .= '</ol>';
-	$res .= '</nav>';
-	
-	return $res;
+        $breadcrumb = array_reverse($path);
+        $position = 1;
+        $entry = '';
+        $line = '';
+
+        foreach ($breadcrumb as  $value) {
+            $entry = '<li'.$schema_listattr.'>';
+            if (isset($value['url'])) {
+                $entry .= '<a itemprop="item"  href="'.esc_url($value['url']).'">';
+            } else {
+                $entry .= '<span itemprop="item">';
+            }
+            $entry .= '<span itemprop="name">'.$value['title'].'</span>';
+            if (isset($value['url'])) {
+                $entry .= '</a>';
+            } else {
+                $entry .= '</span>';
+            }
+            $entry .= '<meta itemprop="position" content="'.$position.'" />';
+            $position++;
+            $entry .= '</li>';
+
+            $line .= $entry;
+        }
+
+        $res = '<nav class="orga-breadcrumb" aria-label="'.__('Organisatorische Navigation','fau-orga-breadcrumb').'">';
+        $res .= '<ol class="breadcrumblist" itemscope itemtype="https://schema.org/BreadcrumbList">';
+        $res .= $line;
+        $res .= '</ol>';
+        $res .= '</nav>';
+
+        return $res;
     }
     return;
 }
