@@ -136,32 +136,9 @@ function get_fau_orga_form_optionlist( $fauorg = '000000000', $preorg = '0000000
     }
     
     $res = '';
-    $faculty = '';
+    $faculty = get_fau_faculty_by_theme();
     $website_type = get_theme_mod("website_type");
-  
-    if (isset($website_type) ) {
-	if ($website_type===0 ) {
-	    // Fakultaetsportal. Kann nur oberste Ebene auswählen.
-	      $key = $fau_orga_breadcrumb_config['root'];
-	      if (isset($fau_orga_breadcrumb_data[$key])) {
-		$res = '<option value="'.$key.'" '.selected( $org, $key , false).'>'.$fau_orga_breadcrumb_data[$key]['title'].'</option>';
-		  return $res;
-	      }
-	} elseif ($website_type===1) {
-	    $fau_orga_fautheme = get_fau_orga_fautheme();
 
-	    if ($fau_orga_fautheme) {
-		$faculty = $fau_orga_fautheme;
-		$debug_website_fakultaet = get_theme_mod('debug_website_fakultaet');
-		if (isset($debug_website_fakultaet) && ($debug_website_fakultaet !== false))  {
-		    $faculty = $debug_website_fakultaet;
-		}
-
-	    }
-	} elseif ($website_type==2) {
-	    $faculty = 'zentral';
-	}
-    }
     $firstlevel = get_fau_orga_childs($fauorg);
     
     if (!empty($firstlevel)) {
@@ -346,9 +323,9 @@ function get_fau_orga_fautheme() {
   
 }
 /*-----------------------------------------------------------------------------------*/
-/* enqueue with filter by theme
+/* get faculty by theme
 /*-----------------------------------------------------------------------------------*/
-function get_fau_orga_by_theme() {
+function get_fau_faculty_by_theme() {
     
     $website_type = get_theme_mod("website_type");
     $faculty = '';
@@ -372,11 +349,15 @@ function get_fau_orga_by_theme() {
 	} elseif ($website_type==2) {
 	    $faculty = 'zentral';
 	}
-		
-	return get_fau_orga_fauorg_by_faculty($faculty);
-	
     }
-  
+    return $faculty;
+}
+/*-----------------------------------------------------------------------------------*/
+/* get fau orga by theme
+/*-----------------------------------------------------------------------------------*/
+function get_fau_orga_by_theme() {
+    $faculty = get_fau_faculty_by_theme();
+    return get_fau_orga_fauorg_by_faculty($faculty);
 }
 /*-----------------------------------------------------------------------------------*/
 /* enqueue with filter by theme
