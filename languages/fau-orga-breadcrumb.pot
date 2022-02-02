@@ -1,4 +1,4 @@
-# Copyright (C) 2021 FAU ORGA Breadcrumb
+# Copyright (C) 2022 FAU ORGA Breadcrumb
 # This file is distributed under the same license as the FAU ORGA Breadcrumb package.
 msgid ""
 msgstr ""
@@ -15,367 +15,423 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: constants.php:37, constants.php:43
+#: constants.php:22, constants.php:28
 msgid "https://www.fau.de"
 msgstr ""
 
-#: constants.php:41
+#: constants.php:26
 msgid "Zentrale Universitätsverwaltung"
 msgstr ""
 
-#: constants.php:52
+#: constants.php:32
+msgid "Zentrale Einrichtungen"
+msgstr ""
+
+#: constants.php:37
+msgid "Universitätsbibliothek"
+msgstr ""
+
+#: constants.php:39
+msgid "https://ub.fau.de"
+msgstr ""
+
+#: constants.php:43
 msgid "Regionales Rechenzentrum Erlangen"
 msgstr ""
 
-#: constants.php:54
+#: constants.php:45
 msgid "https://rrze.fau.de"
 msgstr ""
 
-#: constants.php:59
-msgid "Philosophische Fakultät"
+#: constants.php:49
+msgid "Zentralinstitut für Regionenforschung"
 msgstr ""
 
-#: constants.php:61
-msgid "https://phil.fau.de"
+#: constants.php:53
+msgid "Graduiertenzentrum der FAU"
 msgstr ""
 
-#: constants.php:67
-msgid "Department Alte Welt und Asiatische Kulturen"
+#: constants.php:57
+msgid "Zentrum für Lehr-/Lernforschung, -innovation und Transfer"
 msgstr ""
 
-#: constants.php:71
-msgid "Department Anglistik/Amerikanistik und Romanistik"
+#: constants.php:62
+msgid "FAU Forschungszentren"
 msgstr ""
 
-#: constants.php:75
-msgid "Department Fachdidaktiken"
+#: constants.php:66
+msgid "FAU Kompetenzzentren"
 msgstr ""
 
-#: constants.php:76
-msgid "http://www.fachdidaktiken.uni-erlangen.de/"
+#: constants.php:70
+msgid "Interdisziplinäre Zentren"
 msgstr ""
 
-#: constants.php:80
-msgid "Department Germanistik und Komparatistik"
+#: constants.php:74
+msgid "Museen und Sammlungen"
 msgstr ""
 
-#: constants.php:81
-msgid "https://www.germanistik.phil.fau.de/"
+#: constants.php:78
+msgid "DFG-Sonderforschungsbereiche/ Transregios/Transferbereiche"
 msgstr ""
 
-#: constants.php:85
-msgid "Department Geschichte"
+#: constants.php:82
+msgid "DFG-Graduiertenkollegs"
 msgstr ""
 
 #: constants.php:86
-msgid "https://www.geschichte.phil.fau.de/"
+msgid "Zentrale Serviceeinrichtungen"
 msgstr ""
 
 #: constants.php:90
-msgid "Department Medienwissenschaften und Kunstgeschichte"
+msgid "Philosophische Fakultät und Fachbereich Theologie"
 msgstr ""
 
-#: constants.php:94
-msgid "Department Pädagogik"
+#: constants.php:92
+msgid "https://phil.fau.de"
 msgstr ""
 
-#: constants.php:95
-msgid "https://www.department-paedagogik.phil.fau.de/"
+#: constants.php:98
+msgid "Department Alte Welt und Asiatische Kulturen"
 msgstr ""
 
-#: constants.php:99
-msgid "Department Psychologie"
+#: constants.php:102
+msgid "Department Anglistik/Amerikanistik und Romanistik"
 msgstr ""
 
-#: constants.php:103
-msgid "Department Sozialwissenschaften und Philosophie"
+#: constants.php:106
+msgid "Department Fachdidaktiken"
 msgstr ""
 
 #: constants.php:107
-msgid "Fachbereich Theologie"
+msgid "http://www.fachdidaktiken.uni-erlangen.de/"
 msgstr ""
 
-#: constants.php:108
-msgid "https://www.theologie.fau.de"
+#: constants.php:111
+msgid "Department Germanistik und Komparatistik"
 msgstr ""
 
 #: constants.php:112
-msgid "Department Islamisch-Religiöse Studien"
+msgid "https://www.germanistik.phil.fau.de/"
 msgstr ""
 
-#: constants.php:113
-msgid "https://www.dirs.phil.fau.de/"
+#: constants.php:116
+msgid "Department Geschichte"
 msgstr ""
 
 #: constants.php:117
-msgid "Department Sportwissenschaft und Sport"
+msgid "https://www.geschichte.phil.fau.de/"
 msgstr ""
 
-#: constants.php:118
-msgid "https://www.sport.fau.de"
+#: constants.php:121
+msgid "Department Medienwissenschaften und Kunstgeschichte"
 msgstr ""
 
-#: constants.php:122
-msgid "Department Digital Humanities and Social Studies"
+#: constants.php:125
+msgid "Department Pädagogik"
 msgstr ""
 
-#: constants.php:123
-msgid "https://www.dhss.phil.fau.de/"
+#: constants.php:126
+msgid "https://www.department-paedagogik.phil.fau.de/"
 msgstr ""
 
-#: constants.php:129
-msgid "Rechts- und Wirtschaftswissenschaftliche Fakultät"
+#: constants.php:130
+msgid "Department Psychologie"
 msgstr ""
 
-#: constants.php:131
-msgid "https://rw.fau.de"
-msgstr ""
-
-#: constants.php:137
-msgid "Fachbereich Rechtswissenschaften"
+#: constants.php:134
+msgid "Department Sozialwissenschaften und Philosophie"
 msgstr ""
 
 #: constants.php:138
-msgid "Jura"
+msgid "Fachbereich Theologie"
 msgstr ""
 
 #: constants.php:139
-msgid "https://jura.rw.fau.de"
+msgid "https://www.theologie.fau.de"
 msgstr ""
 
-#: constants.php:145
-msgid "Fachbereich Wirtschaftswissenschaften"
+#: constants.php:143
+msgid "Department Islamisch-Religiöse Studien"
 msgstr ""
 
-#: constants.php:147
-msgid "https://wiso.rw.fau.de"
+#: constants.php:144
+msgid "https://www.dirs.phil.fau.de/"
 msgstr ""
 
-#: constants.php:155
-msgid "Medizinische Fakultät"
+#: constants.php:148
+msgid "Department Sportwissenschaft und Sport"
 msgstr ""
 
-#: constants.php:157
-msgid "https://med.fau.de"
+#: constants.php:149
+msgid "https://www.sport.fau.de"
 msgstr ""
 
-#: constants.php:163
-msgid "Einrichtungen, die nicht zum Universitätsklinikum Erlangen gehören"
+#: constants.php:153
+msgid "Department Digital Humanities and Social Studies"
+msgstr ""
+
+#: constants.php:154
+msgid "https://www.dhss.phil.fau.de/"
+msgstr ""
+
+#: constants.php:160
+msgid "Rechts- und Wirtschaftswissenschaftliche Fakultät"
+msgstr ""
+
+#: constants.php:162
+msgid "https://rw.fau.de"
 msgstr ""
 
 #: constants.php:168
-msgid "Institut für Anatomie"
+msgid "Fachbereich Rechtswissenschaften"
 msgstr ""
 
 #: constants.php:169
-msgid "https://www.anatomie.med.fau.de/"
+msgid "Jura"
 msgstr ""
 
-#: constants.php:173
-msgid "Institut für Physiologie und Pathophysiologie"
+#: constants.php:170
+msgid "https://jura.rw.fau.de"
 msgstr ""
 
-#: constants.php:174
-msgid "https://www.physiologie1.uni-erlangen.de/"
+#: constants.php:176
+msgid "Fachbereich Wirtschafts- und Sozialwissenschaften"
 msgstr ""
 
 #: constants.php:178
-msgid "Institut für Zelluläre und Molekulare Physiologie"
+msgid "https://wiso.rw.fau.de"
 msgstr ""
 
-#: constants.php:179
-msgid "https://www.physiologie2.med.fau.de/"
-msgstr ""
-
-#: constants.php:183
-msgid "Institut für Biochemie"
-msgstr ""
-
-#: constants.php:184
-msgid "https://www.biochemie.med.fau.de/"
+#: constants.php:186
+msgid "Medizinische Fakultät"
 msgstr ""
 
 #: constants.php:188
-msgid "Institut für Medizininformatik, Biometrie und Epidemiologie"
-msgstr ""
-
-#: constants.php:189
-msgid "http://www.imbe.med.uni-erlangen.de/"
-msgstr ""
-
-#: constants.php:193
-msgid "Institut für Geschichte und Ethik der Medizin"
+msgid "https://med.fau.de"
 msgstr ""
 
 #: constants.php:194
-msgid "https://www.igem.med.fau.de/"
-msgstr ""
-
-#: constants.php:198
-msgid "Institut für Rechtsmedizin"
+msgid "Einrichtungen, die nicht zum Universitätsklinikum Erlangen gehören"
 msgstr ""
 
 #: constants.php:199
-msgid "http://www.recht.med.uni-erlangen.de/"
+msgid "Institut für Anatomie"
 msgstr ""
 
-#: constants.php:203
-msgid "Institut für Experimentelle und Klinische Pharmakologie und Toxikologie"
+#: constants.php:200
+msgid "https://www.anatomie.med.fau.de/"
 msgstr ""
 
 #: constants.php:204
-msgid "https://www.pharmakologie.med.fau.de/"
+msgid "Institut für Physiologie und Pathophysiologie"
 msgstr ""
 
-#: constants.php:208
-msgid "Institut und Poliklinik für Arbeits-, Sozial- und Umweltmedizin"
+#: constants.php:205
+msgid "https://www.physiologie1.uni-erlangen.de/"
 msgstr ""
 
 #: constants.php:209
-msgid "https://www.ipasum.med.fau.de/"
+msgid "Institut für Zelluläre und Molekulare Physiologie"
 msgstr ""
 
-#: constants.php:213
-msgid "Institut für Biomedizin des Alterns"
+#: constants.php:210
+msgid "https://www.physiologie2.med.fau.de/"
 msgstr ""
 
 #: constants.php:214
-msgid "https://www.iba.med.fau.de/"
+msgid "Institut für Biochemie"
 msgstr ""
 
-#: constants.php:218
-msgid "Klinisch-Molekularbiologisches Forschungszentrum"
+#: constants.php:215
+msgid "https://www.biochemie.med.fau.de/"
 msgstr ""
 
 #: constants.php:219
-msgid "http://www.molmed.uni-erlangen.de/"
+msgid "Institut für Medizininformatik, Biometrie und Epidemiologie"
 msgstr ""
 
-#: constants.php:226
-msgid "Naturwissenschaftliche Fakultät"
+#: constants.php:220
+msgid "http://www.imbe.med.uni-erlangen.de/"
 msgstr ""
 
-#: constants.php:228
-msgid "https://nat.fau.de"
+#: constants.php:224
+msgid "Institut für Geschichte und Ethik der Medizin"
+msgstr ""
+
+#: constants.php:225
+msgid "https://www.igem.med.fau.de/"
+msgstr ""
+
+#: constants.php:229
+msgid "Institut für Rechtsmedizin"
+msgstr ""
+
+#: constants.php:230
+msgid "http://www.recht.med.uni-erlangen.de/"
 msgstr ""
 
 #: constants.php:234
-msgid "Department Biologie"
+msgid "Institut für Experimentelle und Klinische Pharmakologie und Toxikologie"
 msgstr ""
 
-#: constants.php:236
-msgid "https://www.biologie.nat.fau.de/"
+#: constants.php:235
+msgid "https://www.pharmakologie.med.fau.de/"
+msgstr ""
+
+#: constants.php:239
+msgid "Institut und Poliklinik für Arbeits-, Sozial- und Umweltmedizin"
 msgstr ""
 
 #: constants.php:240
-msgid "Department Chemie und Pharmazie"
+msgid "https://www.ipasum.med.fau.de/"
 msgstr ""
 
-#: constants.php:241
-msgid "https://www.chemie.nat.fau.de/"
+#: constants.php:244
+msgid "Institut für Biomedizin des Alterns"
 msgstr ""
 
 #: constants.php:245
-msgid "Department Geographie und Geowissenschaften"
+msgid "https://www.iba.med.fau.de/"
 msgstr ""
 
-#: constants.php:246
-msgid "https://www.geographie.nat.fau.de/"
+#: constants.php:249
+msgid "Klinisch-Molekularbiologisches Forschungszentrum"
 msgstr ""
 
 #: constants.php:250
-msgid "Department Mathematik"
+msgid "http://www.molmed.uni-erlangen.de/"
 msgstr ""
 
-#: constants.php:251
-msgid "http://www.math.fau.de/"
+#: constants.php:257
+msgid "Naturwissenschaftliche Fakultät"
 msgstr ""
 
-#: constants.php:255
-msgid "Department Physik"
+#: constants.php:259
+msgid "https://nat.fau.de"
 msgstr ""
 
-#: constants.php:256
-msgid "https://www.physik.nat.fau.de/"
-msgstr ""
-
-#: constants.php:260
-msgid "Department of Data Science"
-msgstr ""
-
-#: constants.php:261
-msgid "https://www.datascience.nat.fau.eu/"
+#: constants.php:265
+msgid "Department Biologie"
 msgstr ""
 
 #: constants.php:267
-msgid "Technische Fakultät"
+msgid "https://www.biologie.nat.fau.de/"
 msgstr ""
 
-#: constants.php:269
-msgid "https://tf.fau.de"
+#: constants.php:271
+msgid "Department Chemie und Pharmazie"
 msgstr ""
 
-#: constants.php:275
-msgid "Department Chemie- und Bioingenieurwesen"
+#: constants.php:272
+msgid "https://www.chemie.nat.fau.de/"
+msgstr ""
+
+#: constants.php:276
+msgid "Department Geographie und Geowissenschaften"
 msgstr ""
 
 #: constants.php:277
-msgid "https://www.cbi.tf.fau.de/"
+msgid "https://www.geographie.nat.fau.de/"
 msgstr ""
 
 #: constants.php:281
-msgid "Department Elektrotechnik-Elektronik-Informationstechnik"
+msgid "Department Mathematik"
 msgstr ""
 
-#: constants.php:283
-msgid "https://www.eei.tf.fau.de/"
+#: constants.php:282
+msgid "http://www.math.fau.de/"
+msgstr ""
+
+#: constants.php:286
+msgid "Department Physik"
 msgstr ""
 
 #: constants.php:287
-msgid "Department Informatik"
+msgid "https://www.physik.nat.fau.de/"
 msgstr ""
 
-#: constants.php:289
-msgid "http://www.cs.fau.de/DE"
+#: constants.php:291
+msgid "Department of Data Science"
 msgstr ""
 
-#: constants.php:293
-msgid "Department Maschinenbau"
+#: constants.php:292
+msgid "https://www.datascience.nat.fau.eu/"
 msgstr ""
 
-#: constants.php:295
-msgid "https://www.department.mb.tf.fau.de/"
-msgstr ""
-
-#: constants.php:299
-msgid "Department Werkstoffwissenschaften"
+#: constants.php:298
+msgid "Technische Fakultät"
 msgstr ""
 
 #: constants.php:300
+msgid "https://tf.fau.de"
+msgstr ""
+
+#: constants.php:306
+msgid "Department Chemie- und Bioingenieurwesen"
+msgstr ""
+
+#: constants.php:308
+msgid "https://www.cbi.tf.fau.de/"
+msgstr ""
+
+#: constants.php:312
+msgid "Department Elektrotechnik-Elektronik-Informationstechnik"
+msgstr ""
+
+#: constants.php:314
+msgid "https://www.eei.tf.fau.de/"
+msgstr ""
+
+#: constants.php:318
+msgid "Department Informatik"
+msgstr ""
+
+#: constants.php:320
+msgid "http://www.cs.fau.de/DE"
+msgstr ""
+
+#: constants.php:324
+msgid "Department Maschinenbau"
+msgstr ""
+
+#: constants.php:326
+msgid "https://www.department.mb.tf.fau.de/"
+msgstr ""
+
+#: constants.php:330
+msgid "Department Werkstoffwissenschaften"
+msgstr ""
+
+#: constants.php:331
 msgid "https://www.ww.tf.fau.de"
 msgstr ""
 
-#: constants.php:304
+#: constants.php:335
 msgid "Department Artificial Intelligence in Biomedical Engineering"
 msgstr ""
 
-#: constants.php:305
+#: constants.php:336
 msgid "https://www.aibe.tf.fau.de/"
 msgstr ""
 
-#: fau-orga-breadcrumb.php:85
+#: fau-orga-breadcrumb.php:90
 msgid "Your server is running PHP version %s. Please upgrade at least to PHP version %s."
 msgstr ""
 
-#: fau-orga-breadcrumb.php:89
+#: fau-orga-breadcrumb.php:94
 msgid "Your Wordpress version is %s. Please upgrade at least to Wordpress version %s."
 msgstr ""
 
-#: includes/functions.php:32
+#: fau-orga-breadcrumb.php:99
+msgid "This Plugin is only used for FAU Themes yet"
+msgstr ""
+
+#: includes/functions.php:39
 msgid "Der Webauftritt ist noch nicht organisatorisch eingeordnet. <br>Bitte rufen Sie die <a href=\"options-general.php?page=fau_orga_breadcrumb_settings\">Einstellung FAU.ORG Breadcrumb</a> auf und geben Sie an, welcher organisatorischen Einheit der Webauftritt angehört."
 msgstr ""
 
-#: includes/functions.php:282
+#: includes/functions.php:271
 msgid "Organisatorische Navigation"
 msgstr ""
 
@@ -383,38 +439,38 @@ msgstr ""
 msgid "Speichern"
 msgstr ""
 
-#: includes/settings.php:58, includes/settings.php:140
+#: includes/settings.php:58, includes/settings.php:150
 msgid "Keine (Keine Fakulätszuordnung oder Zentralbereich)"
 msgstr ""
 
-#: includes/settings.php:78
+#: includes/settings.php:79
 msgid "Organisatorische Zuordnung: Bitte wählen Sie hier die <strong>nächsthöhere</strong> Organisationseinheit aus, zu der die Website zugeordnet werden kann."
 msgstr ""
 
-#: includes/settings.php:97
+#: includes/settings.php:98
 msgid "Achtung: Die Website wurde als zentrales FAU Portal definiert. <strong>Die Orga Breadcrumb wird nicht angezeigt.</strong>"
 msgstr ""
 
-#: includes/settings.php:95
+#: includes/settings.php:96
 msgid "Achtung: Die Website wurde im Customizer als Kooperation definiert. D<strong>Die Orga Breadcrumb wird nicht angezeigt.</strong>"
 msgstr ""
 
-#: includes/settings.php:93
+#: includes/settings.php:94
 msgid "Die Website wurde im Customizer als zentrale Einrichtung definiert. Daher stehen nur zentrale Einrichtungen  zur Auswahl zur Verfügung."
 msgstr ""
 
-#: includes/settings.php:91
+#: includes/settings.php:92
 msgid "Die Website wurde im Customizer als Einrichtung einer Fakultät definiert. Daher stehen nur zentrale Einrichtungen und der Fakultät ungeordnete Einrichtungen  zur Auswahl zur Verfügung."
 msgstr ""
 
-#: includes/settings.php:89
+#: includes/settings.php:90
 msgid "Achtung: Die Website wurde im Customizer als Fakultätsportal definiert. Daher stehen der Fakultät ungeordnete Einrichtungen nicht zur Auswahl zur Verfügung. <strong>Die Orga Breadcrumb wird nicht angezeigt.</strong>"
 msgstr ""
 
-#: includes/settings.php:104
+#: includes/settings.php:108
 msgid "Aktuell gewählt"
 msgstr ""
 
-#: includes/settings.php:107
+#: includes/settings.php:111
 msgid "Breadcrumb"
 msgstr ""

@@ -7,22 +7,7 @@ $fau_orga_breadcrumb_config = array(
     'root'  => '0000000000',
 );
 
-$known_themes = array(
-	'fauthemes' => [
-		'FAU-Einrichtungen',
-		'FAU-Einrichtungen-BETA',
-		'FAU-Medfak',
-		'FAU-RWFak',
-		'FAU-Philfak',
-		'FAU-Techfak',
-		'FAU-Natfak',
-		'FAU-Blog',
-        'FAU Jobportal'
-	],
-	'rrzethemes' => [
-		'RRZE 2019',
-	],
-    );
+
 /* 
  * Orgas - Later hopefully via API.... 
  * ... An we really hope that this "later" means in a lifetime.

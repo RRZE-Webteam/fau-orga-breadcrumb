@@ -3,6 +3,22 @@
 /*-----------------------------------------------------------------------------------*/
 /* Global functions for plugin
 /*-----------------------------------------------------------------------------------*/
+$known_themes = array(
+	'fauthemes' => [
+		'FAU-Einrichtungen',
+		'FAU-Einrichtungen-BETA',
+		'FAU-Medfak',
+		'FAU-RWFak',
+		'FAU-Philfak',
+		'FAU-Techfak',
+		'FAU-Natfak',
+		'FAU-Blog',
+        'FAU Jobportal'
+	],
+	'rrzethemes' => [
+		'RRZE 2019',
+	],
+    );
 $fau_orga_fautheme = get_fau_orga_fautheme();
 
 /*-----------------------------------------------------------------------------------*/
@@ -286,13 +302,13 @@ function get_fau_orga_breadcrumb($form_org) {
  */
 /*-----------------------------------------------------------------------------------*/
 function get_fau_orga_fautheme() {
+    global $known_themes;
     
     $active_theme = wp_get_theme();
     if ( $active_theme->exists() ) {
 	$themename = $active_theme->get( 'Name' );
 
 
-	global $known_themes;
 	if (isset($known_themes) && isset($known_themes['fauthemes'])) {
 	    if (in_array($themename, $known_themes['fauthemes'])) {
 
