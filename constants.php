@@ -274,7 +274,7 @@ $fau_orga_breadcrumb_data = array(
     ),
     '1413000000' => array(
 	    'title'	    => __('Department Geographie und Geowissenschaften', 'fau-orga-breadcrumb'),
-	    'url'	    => __('https://www.geographie.nat.fau.de/', 'fau-orga-breadcrumb'),
+	    'url'	    => __('https://www.geo.nat.fau.de/', 'fau-orga-breadcrumb'),
 	    'parent'    => '1400000000'
     ),
     '1414000000' => array(
