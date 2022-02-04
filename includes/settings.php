@@ -87,11 +87,11 @@ function fau_orga_breadcrumb_section_text() {
  */
 	    if ($website_type) {
 		if ($website_type==0) {
-		    echo '<p class="notice notice-warning is-dismissible">'.__('Achtung: Die Website wurde im Customizer als Fakultätsportal definiert. Daher stehen der Fakultät ungeordnete Einrichtungen nicht zur Auswahl zur Verfügung. <strong>Die Orga Breadcrumb wird nicht angezeigt.</strong>','fau-orga-breadcrumb').'</p>';
+		    echo '<p class="notice notice-warning is-dismissible">'.__('Achtung: Die Website wurde im Customizer als Fakultätsportal definiert. Daher stehen der Fakultät untergeordnete Einrichtungen nicht zur Auswahl zur Verfügung. <strong>Die Orga Breadcrumb wird nicht angezeigt.</strong>','fau-orga-breadcrumb').'</p>';
 		} elseif ($website_type==1) {
-		    echo '<p class="notice notice-info is-dismissible">'.__('Die Website wurde im Customizer als Einrichtung einer Fakultät definiert. Daher stehen nur zentrale Einrichtungen und der Fakultät ungeordnete Einrichtungen  zur Auswahl zur Verfügung.','fau-orga-breadcrumb').'</p>';
+		    echo '<p class="notice notice-info is-dismissible">'.__('Die Website wurde im Customizer als Einrichtung einer Fakultät definiert. Daher stehen nur zentrale Einrichtungen und der Fakultät untergeordnete Einrichtungen  zur Auswahl zur Verfügung.','fau-orga-breadcrumb').'</p>';
 		} elseif ($website_type==2) {
-		    echo '<p class="notice notice-info is-dismissible">'.__('Die Website wurde im Customizer als zentrale Einrichtung definiert. Daher stehen nur zentrale Einrichtungen  zur Auswahl zur Verfügung.','fau-orga-breadcrumb').'</p>';
+		    echo '<p class="notice notice-info is-dismissible">'.__('Die Website wurde im Customizer als zentrale Einrichtung definiert. Daher stehen nur zentrale Einrichtungen zur Auswahl zur Verfügung.','fau-orga-breadcrumb').'</p>';
 		} elseif ($website_type==3) {
 		    echo '<p class="notice notice-warning is-dismissible">'.__('Achtung: Die Website wurde im Customizer als Kooperation definiert. D<strong>Die Orga Breadcrumb wird nicht angezeigt.</strong>','fau-orga-breadcrumb').'</p>';
 		} elseif ($website_type==-1) {
