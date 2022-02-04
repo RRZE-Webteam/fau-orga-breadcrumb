@@ -317,7 +317,7 @@ $fau_orga_breadcrumb_data = array(
     '1513000000'   => array(
 	'title'          => __('Department Informatik', 'fau-orga-breadcrumb'),
 	'shorttitle'     => 'CS',
-	'url'            => __('http://www.cs.fau.de/DE', 'fau-orga-breadcrumb'),
+	'url'            => __('https://cs.fau.de/', 'fau-orga-breadcrumb'),
 	'parent'    => '1500000000'
     ),
     '1514000000'   => array(
