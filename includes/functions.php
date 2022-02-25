@@ -266,7 +266,7 @@ function get_fau_orga_breadcrumb($form_org) {
 	foreach ($breadcrumb as  $value) {
 	    $entry = '<li'.$schema_listattr.'>';
 	    if (isset($value['url'])) {
-		$entry .= '<a itemprop="item"  href="'.esc_url($value['url']).'">';
+		$entry .= '<a itemprop="item"  href="'.esc_url($value['url']).'" data-wpel-link="internal">';
 	    } else {
 		$entry .= '<span itemprop="item">';
 	    }
