@@ -25,7 +25,6 @@ $fau_orga_breadcrumb_data = array(
     '1005000000' => array(
 	'title'	    => __('Zentrale Universitätsverwaltung', 'fau-orga-breadcrumb'),
 	'shorttitle'    => 'ZUV',
-	'url'	    => __('https://www.fau.de', 'fau-orga-breadcrumb'),
 	'parent'    => '0000000000'
     ),
      '1011000000'	=> array(
