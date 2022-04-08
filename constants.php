@@ -164,8 +164,8 @@ $fau_orga_breadcrumb_data = array(
 	'faculty'   => 'rw'
     ),
     '1211000000' => array(
-	'title'	    => __('Fachbereich Rechtswissenschaften', 'fau-orga-breadcrumb'),
-	'shorttitle'    => __('Jura', 'fau-orga-breadcrumb'),
+	'title'	    => __('Fachbereich Rechtswissenschaft', 'fau-orga-breadcrumb'),
+	'shorttitle'    => __('FB Rechtsw.', 'fau-orga-breadcrumb'),
 	'url'	    => __('https://jura.rw.fau.de', 'fau-orga-breadcrumb'),
 	'parent'    => '0000000000',
 	'class'	    => 'rw',
@@ -173,7 +173,7 @@ $fau_orga_breadcrumb_data = array(
     ),
     '1212000000' => array(
 	'title'	    => __('Fachbereich Wirtschafts- und Sozialwissenschaften', 'fau-orga-breadcrumb'),
-	'shorttitle'    => 'WiSo',
+	'shorttitle'    => 'FB WiSo',
 	'url'	    => __('https://wiso.rw.fau.de', 'fau-orga-breadcrumb'),
 	'parent'    => '0000000000',
 	'class'	    => 'rw',
