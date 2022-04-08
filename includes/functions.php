@@ -342,7 +342,8 @@ function get_fau_orga_fautheme() {
 /* get faculty by theme
 /*-----------------------------------------------------------------------------------*/
 function get_fau_faculty_by_theme() {
-    
+
+    global $fau_orga_breadcrumb_config;
     $website_type = get_theme_mod("website_type");
     $faculty = '';
     if (isset($website_type) ) {
