@@ -55,7 +55,7 @@ function fau_orga_breadcrumb_field_callback() {
     $website_type = get_theme_mod("website_type");
       $optionlist = '';
 	  if (isset($website_type) && ($website_type <> 1)) { 
-	    $optionlist .= '<option value="">'.__('Keine (Keine Fakulätszuordnung oder Zentralbereich)', 'fau-orga-breadcrumb' ).'</option>'; 
+	    $optionlist .= '<option value="">'.__('Keine (Keine Fakultätszuordnung oder Zentralbereich)', 'fau-orga-breadcrumb' ).'</option>';
 	  }
 	  $optionlist .= get_fau_orga_form_optionlist('000000000',$orga,0);
 	  $fau_orga_fautheme = get_fau_orga_fautheme();
@@ -147,7 +147,7 @@ function fau_orga_customizer_settings( $wp_customize ) {
 	   $optionlist = '';
 	  if (isset($website_type) && ($website_type <> 1)) { 
 
-	    $optionlist .= '<option value="">'.__('Keine (Keine Fakulätszuordnung oder Zentralbereich)', 'fau-orga-breadcrumb' ).'</option>'; 
+	    $optionlist .= '<option value="">'.__('Keine (Keine Fakultätszuordnung oder Zentralbereich)', 'fau-orga-breadcrumb' ).'</option>';
 	  }
 	  $optionlist .= get_fau_orga_form_optionlist('000000000',$orga,0);
 	   
