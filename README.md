@@ -1,5 +1,12 @@
 # FAU Orga Breadcrumb
 
+Plugin zur einer organisatorischen Breadcrumb an der FAU
+
+[![Aktuelle Version](https://img.shields.io/github/package-json/v/rrze-webteam/fau-orga-breadcrumb/master?label=Version)](https://github.com/RRZE-Webteam/fau-orga-breadcrumb)
+[![Release Version](https://img.shields.io/github/v/release/rrze-webteam/fau-orga-breadcrumb?label=Release+Version)](https://github.com/rrze-webteam/fau-orga-breadcrumb/releases/)
+[![GitHub License](https://img.shields.io/github/license/rrze-webteam/fau-orga-breadcrumb)](https://github.com/RRZE-Webteam/fau-orga-breadcrumb)
+[![GitHub issues](https://img.shields.io/github/issues/RRZE-Webteam/fau-orga-breadcrumb)](https://github.com/RRZE-Webteam/fau-orga-breadcrumb/issues)
+
 ## Download
 
 GitHub-Repo: https://github.com/RRZE-Webteam/fau-orga-breadcrumb
