@@ -41,7 +41,7 @@ function show_breadcrumb( $atts ) {
         if (empty($form_org)) {
             // Es handelt sich um eine Website, die ein Lehrstuhl ist und einer Fakultät zugeordnet ist
 	 
-	    $form_org = get_fau_orga_by_theme();
+            $form_org = get_fau_orga_by_theme();
         }
     }
     
