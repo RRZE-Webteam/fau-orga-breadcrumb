@@ -341,3 +341,146 @@ $fau_orga_breadcrumb_data = array(
     ),
 );
 
+
+// ===== NEUE ERGÄNZUNG FÜR FAU-ELEMENTAL MENÜ - START =====
+
+/**
+ * Hardcodierte Menüstruktur für FAU-Elemental Theme
+ */
+$fau_elemental_menu_structure = array(
+
+    // 1. Fakultäten
+    array(
+        'id' => 'fakultaeten',
+        'title' => __('Fakultäten', 'fau-orga-breadcrumb'),
+        'url' => '',
+        'children' => array(
+            array(
+                'id' => '1100000000',
+                'title' => __('Philosophische Fakultät und Fachbereich Theologie', 'fau-orga-breadcrumb'),
+                'url' => __('https://www.phil.fau.de', 'fau-orga-breadcrumb'),
+            ),
+            array(
+                'id' => '1200000000',
+                'title' => __('Rechts- und Wirtschaftswissenschaftliche Fakultät', 'fau-orga-breadcrumb'),
+                'url' => __('https://www.rw.fau.de', 'fau-orga-breadcrumb'),
+            ),
+            array(
+                'id' => '1300000000',
+                'title' => __('Medizinische Fakultät', 'fau-orga-breadcrumb'),
+                'url' => __('https://www.med.fau.de', 'fau-orga-breadcrumb'),
+            ),
+            array(
+                'id' => '1400000000',
+                'title' => __('Naturwissenschaftliche Fakultät', 'fau-orga-breadcrumb'),
+                'url' => __('https://www.nat.fau.de', 'fau-orga-breadcrumb'),
+            ),
+            array(
+                'id' => '1500000000',
+                'title' => __('Technische Fakultät', 'fau-orga-breadcrumb'),
+                'url' => __('https://www.tf.fau.de', 'fau-orga-breadcrumb'),
+            ),
+        ),
+    ),
+
+    // 2. Zentrale Einrichtungen
+    array(
+        'id' => 'zentrale_einrichtungen',
+        'title' => __('Zentrale Einrichtungen', 'fau-orga-breadcrumb'),
+        'url' => '',
+        'children' => array(
+            array(
+                'id' => '1011110000',
+                'title' => __('Universitätsbibliothek', 'fau-orga-breadcrumb'),
+                'url' => __('https://ub.fau.de', 'fau-orga-breadcrumb'),
+            ),
+            array(
+                'id' => '1011120000',
+                'title' => __('Rechenzentrum', 'fau-orga-breadcrumb'),
+                'url' => __('https://www.rrze.fau.de', 'fau-orga-breadcrumb'),
+            ),
+            array(
+                'id' => '1011200000',
+                'title' => __('Graduiertenzentrum', 'fau-orga-breadcrumb'),
+                'url' => '',
+            ),
+            array(
+                'id' => 'sprachenzentrum',
+                'title' => __('Sprachenzentrum', 'fau-orga-breadcrumb'),
+                'url' => '',
+            ),
+            array(
+                'id' => 'universitaetsklinikum',
+                'title' => __('Universitätsklinikum', 'fau-orga-breadcrumb'),
+                'url' => '',
+            ),
+        ),
+    ),
+
+    // 3. Profilzentren
+    array(
+        'id' => 'profilzentren',
+        'title' => __('Profilzentren', 'fau-orga-breadcrumb'),
+        'url' => '',
+        'children' => array(
+            array(
+                'id' => '1013000000',
+                'title' => __('Interdisziplinäre Zentren', 'fau-orga-breadcrumb'),
+                'url' => '',
+            ),
+        ),
+    ),
+
+    // 4. Forschungszentren
+    array(
+        'id' => 'forschungszentren',
+        'title' => __('Forschungszentren', 'fau-orga-breadcrumb'),
+        'url' => '',
+        'children' => array(
+            array(
+                'id' => '1011320000',
+                'title' => __('FAU Forschungszentren', 'fau-orga-breadcrumb'),
+                'url' => '',
+            ),
+            array(
+                'id' => '1015000000',
+                'title' => __('DFG-Sonderforschungsbereiche/ Transregios/Transferbereiche', 'fau-orga-breadcrumb'),
+                'url' => '',
+            ),
+            array(
+                'id' => '1016000000',
+                'title' => __('DFG-Graduiertenkollegs', 'fau-orga-breadcrumb'),
+                'url' => '',
+            ),
+        ),
+    ),
+
+    // 5. Kompetenzzentren
+    array(
+        'id' => 'kompetenzzentren',
+        'title' => __('Kompetenzzentren', 'fau-orga-breadcrumb'),
+        'url' => '',
+        'children' => array(
+            array(
+                'id' => '1011330000',
+                'title' => __('FAU Kompetenzzentren', 'fau-orga-breadcrumb'),
+                'url' => '',
+            ),
+        ),
+    ),
+
+    // 6. Innovationsorte
+    array(
+        'id' => 'innovationsorte',
+        'title' => __('Innovationsorte', 'fau-orga-breadcrumb'),
+        'url' => '',
+        'children' => array(
+            // Hier können spezifische Innovationsorte hinzugefügt werden
+            array(
+                'id' => 'innovationsort_1',
+                'title' => __('Innovationsort Beispiel', 'fau-orga-breadcrumb'),
+                'url' => '',
+            ),
+        ),
+    ),
+);
