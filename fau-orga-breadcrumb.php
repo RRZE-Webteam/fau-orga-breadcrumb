@@ -26,58 +26,63 @@ along with this plugin. If not, see https://gnu.org/licenses/gpl.html
 */
 
 
+
 namespace FAU\ORGA\Breadcrumb;
 
 const RRZE_PHP_VERSION = '7.4';
 const RRZE_WP_VERSION = '5.8';
 
 include('constants.php');
+    // get all constants
+
 include('includes/functions.php');
-include('includes/menu-elemental.php');
-include('includes/shortcode.php');
-include('includes/settings.php');
+    // Global functions
 
 
 add_action('plugins_loaded', 'FAU\ORGA\Breadcrumb\init');
-register_activation_hook(__FILE__, 'FAU\ORGA\Breadcrumb\activation');
+ register_activation_hook(__FILE__, 'FAU\ORGA\Breadcrumb\activation');
 
 
 /*-----------------------------------------------------------------------------------*/
 /* Init
 /*-----------------------------------------------------------------------------------*/
-function init()
-{
+function init() {
     textdomain();
+    global $fau_orga_fautheme;
+    if ($fau_orga_fautheme ) {
 
-    add_action('wp_enqueue_scripts', 'FAU\ORGA\Breadcrumb\register_styles');
-    add_action('customize_register', 'FAU\ORGA\Breadcrumb\fau_orga_customizer_settings');
-    add_action('admin_enqueue_scripts', 'FAU\ORGA\Breadcrumb\fau_orga_enqueue_admin_script');
+	include_once('includes/shortcode.php');
+	    // define shortcodes
+
+	include_once('includes/settings.php');
+	    // admin settings
+
+
+	add_action( 'wp_enqueue_scripts', 'FAU\ORGA\Breadcrumb\register_styles');
+	add_action( 'customize_register', 'FAU\ORGA\Breadcrumb\fau_orga_customizer_settings' );
+	add_action( 'admin_enqueue_scripts', 'FAU\ORGA\Breadcrumb\fau_orga_enqueue_admin_script' );
+	
+    }
 
 }
-
 /*-----------------------------------------------------------------------------------*/
 /* Load textdomain
 /*-----------------------------------------------------------------------------------*/
-function textdomain()
-{
+function textdomain() {
     load_plugin_textdomain('fau-orga-breadcrumb', FALSE, sprintf('%s/languages/', dirname(plugin_basename(__FILE__))));
 }
-
 /*-----------------------------------------------------------------------------------*/
 /* On plugin activation
 /*-----------------------------------------------------------------------------------*/
-function activation()
-{
+function activation() {
     textdomain();
     system_requirements();
-
+    
 }
-
 /*-----------------------------------------------------------------------------------*/
 /* Check requirements
 /*-----------------------------------------------------------------------------------*/
-function system_requirements()
-{
+function system_requirements() {
     $error = '';
 
     if (version_compare(PHP_VERSION, RRZE_PHP_VERSION, '<')) {
@@ -90,32 +95,29 @@ function system_requirements()
 
     global $fau_orga_fautheme;
     if ($fau_orga_fautheme === false) {
-        $error = __('This Plugin is only used for FAU Themes yet', 'fau-orga-breadcrumb');
+            $error = __('This Plugin is only used for FAU Themes yet', 'fau-orga-breadcrumb');
     }
-
+    
     // Wenn die Überprüfung fehlschlägt, dann wird das Plugin automatisch deaktiviert.
     if (!empty($error)) {
         deactivate_plugins(plugin_basename(__FILE__), FALSE, TRUE);
         wp_die($error);
     }
 }
-
 /*-----------------------------------------------------------------------------------*/
 /* Register styles and scripts
 /*-----------------------------------------------------------------------------------*/
-function register_styles()
-{
-    wp_register_style('fau-orga-breadcrumb', plugins_url('fau-orga-breadcrumb/css/fau-orga-breadcrumb.css', dirname(__FILE__)));
-
+function register_styles() { 
+    wp_register_style( 'fau-orga-breadcrumb', plugins_url( 'fau-orga-breadcrumb/css/fau-orga-breadcrumb.css', dirname(__FILE__) ) );    
+    
 }
 
 /*-----------------------------------------------------------------------------------*/
 /* Register and enqueue admin scripts
 /*-----------------------------------------------------------------------------------*/
-function fau_orga_enqueue_admin_script($hook)
-{
-    wp_register_style('fau-orga-breadcrumb-admin', plugins_url('fau-orga-breadcrumb/css/fau-orga-breadcrumb-admin.css', dirname(__FILE__)));
-    wp_enqueue_style('fau-orga-breadcrumb-admin');
+function fau_orga_enqueue_admin_script( $hook ) {
+    wp_register_style( 'fau-orga-breadcrumb-admin', plugins_url( 'fau-orga-breadcrumb/css/fau-orga-breadcrumb-admin.css', dirname(__FILE__) ) );    
+    wp_enqueue_style( 'fau-orga-breadcrumb-admin');
 }
 
 /*-----------------------------------------------------------------------------------*/
