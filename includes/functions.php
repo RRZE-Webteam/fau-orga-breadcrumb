@@ -13,7 +13,8 @@ $known_themes = array(
 		'FAU-Techfak',
 		'FAU-Natfak',
 		'FAU-Blog',
-        'FAU Jobportal'
+        'FAU Jobportal',
+        'FAU-Elemental'
 	],
 	'rrzethemes' => [
 		'RRZE 2019',
@@ -21,10 +22,12 @@ $known_themes = array(
     );
 $fau_orga_fautheme = get_fau_orga_fautheme();
 
+
 /*-----------------------------------------------------------------------------------*/
 /* Admin Notice auf der Dashboard, damit man die ORGA Breadcrumb setzt
 /*-----------------------------------------------------------------------------------*/
-function fau_orga_admin_notice(){
+function fau_orga_admin_notice(): void
+{
     global $pagenow;
     global $fau_orga_fautheme;
     
@@ -392,7 +395,7 @@ function fau_orga_enqueue_style($style = 'fau-orga-breadcrumb') {
     
     
     global $known_themes;
-    
+
     if (in_array($active_theme, $known_themes['fauthemes'])) {
 	// No CSS for frontend
    // } elseif (in_array($active_theme, $known_themes['rrzethemes'])) {
@@ -400,5 +403,5 @@ function fau_orga_enqueue_style($style = 'fau-orga-breadcrumb') {
     } else{
 	wp_enqueue_style($style);
     }
-    
+
 }

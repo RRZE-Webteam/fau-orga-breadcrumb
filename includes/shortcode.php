@@ -1,7 +1,13 @@
 <?php
 namespace FAU\ORGA\Breadcrumb;
 
-add_shortcode('fauorga', 'FAU\ORGA\Breadcrumb\show_breadcrumb'); 
+add_shortcode('fauorga', 'FAU\ORGA\Breadcrumb\show_breadcrumb');
+
+
+/**
+ * Shortcodes zur Darstellung der Breadcrumb sowie zur Darstellung des hardcodierten Strukturmenüs
+ * in FAU-Elemental
+ */
 
 function show_breadcrumb( $atts ) {
     global $post;
@@ -10,10 +16,18 @@ function show_breadcrumb( $atts ) {
     
     $shortcode_attr = shortcode_atts( array(
         'org'                   => '',
+        'show' => 'breadcrumb',
     ), $atts );
     
 
     $form_org = $shortcode_attr['org'];
+    $show_type = $shortcode_attr['show'];
+
+
+    // Wenn show="menu" dann einfach das hardcodierte Menü ausgeben
+    if ($show_type === 'menu') {
+        return get_fau_elemental_menu_html();
+    }
 
     if (empty($form_org)) {
 	
@@ -44,8 +58,8 @@ function show_breadcrumb( $atts ) {
             $form_org = get_fau_orga_by_theme();
         }
     }
-    
-    if (isset( $form_org ) ) { 
+
+    if (isset( $form_org ) ) {
         fau_orga_enqueue_style( 'fau-orga-breadcrumb');
 	    return get_fau_orga_breadcrumb($form_org);
     }
