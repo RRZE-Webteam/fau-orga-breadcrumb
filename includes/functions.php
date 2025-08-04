@@ -388,20 +388,54 @@ function get_fau_orga_by_theme() {
 /*-----------------------------------------------------------------------------------*/
 /* enqueue with filter by theme
 /*-----------------------------------------------------------------------------------*/
+//function fau_orga_enqueue_style($style = 'fau-orga-breadcrumb') {
+//
+//    $active_theme = wp_get_theme();
+//    $active_theme = $active_theme->get( 'Name' );
+//
+//
+//    global $known_themes;
+//
+//    if (in_array($active_theme, $known_themes['fauthemes'])) {
+//	// No CSS for frontend
+//   // } elseif (in_array($active_theme, $known_themes['rrzethemes'])) {
+//       // No CSS for frontend
+//    } else{
+//	wp_enqueue_style($style);
+//    }
+//
+//}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* enqueue with filter by theme
+/*-----------------------------------------------------------------------------------*/
 function fau_orga_enqueue_style($style = 'fau-orga-breadcrumb') {
-    
+
     $active_theme = wp_get_theme();
-    $active_theme = $active_theme->get( 'Name' );
-    
-    
+    $theme_name   = $active_theme->get('Name');
+
     global $known_themes;
 
-    if (in_array($active_theme, $known_themes['fauthemes'])) {
-	// No CSS for frontend
-   // } elseif (in_array($active_theme, $known_themes['rrzethemes'])) {
-       // No CSS for frontend
-    } else{
-	wp_enqueue_style($style);
-    }
+    // 1️⃣ Wenn FAU Elemental aktiv ist → spezielles CSS laden
+    if ($theme_name === 'FAU-Elemental') {
+        wp_enqueue_style(
+            'fau-orga-breadcrumb-elemental',
+            plugin_dir_url(__DIR__) . 'css/fau-orga-breadcrumb.css',
+            [],
+            '1.0'
+        );
 
+        // 2️⃣ Wenn andere FAU-Themes aktiv sind → KEIN CSS (wie bisher)
+    } elseif (in_array($theme_name, $known_themes['fauthemes'])) {
+        return;
+
+        // 3️⃣ Alle anderen Themes → Standard-Breadcrumb-CSS laden
+    } else {
+        wp_enqueue_style($style);
+    }
 }
+// Enqueue Breadcrumb Styles im Frontend laden
+add_action('wp_enqueue_scripts', 'fau_orga_enqueue_style', 99);
+
+
