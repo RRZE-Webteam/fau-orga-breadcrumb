@@ -55,10 +55,10 @@ $fau_orga_breadcrumb_data = [
         'url' => __('https://sz.fau.de', 'fau-orga-breadcrumb'),
         'parent' => '1011000000'
     ],
-//     '1011130000' => array(
-//	'title'	    => __('Zentralinstitut für Regionenforschung', 'fau-orga-breadcrumb'),
-//	'parent'    => '1011000000'
-//    ),
+     '1011130000' => array[
+	'title'	    => __('Zentralinstitut für Regionenforschung', 'fau-orga-breadcrumb'),
+	'parent'    => '1011000000'
+    ],
     '1011200000' => [
         'title' => __('Graduiertenzentrum der FAU', 'fau-orga-breadcrumb'),
         'parent' => '1011000000'
@@ -678,27 +678,27 @@ $elemental_menu = [
         'parent' => null,
     ],
     '1011311500 ' => [
-        'title' => __('FAU Profilzentrum Immunmedizin (FAU I-MED)', 'fau-orga-breadcrumb'),
+        'title' => __('Immunmedizin (FAU I-MED)', 'fau-orga-breadcrumb'),
         'url' => __('https://www.immunology.fau.de', 'fau-orga-breadcrumb'),
         'parent' => 'profilzentren',
     ],
     '1011311400' => [
-        'title' => __('FAU Profilzentrum Licht.Materia.Quantentechnologien (FAU LMQ)', 'fau-orga-breadcrumb'),
+        'title' => __('Licht.Materia.Quantentechnologien (FAU LMQ)', 'fau-orga-breadcrumb'),
         'url' => __('https://www.lightmatter.fau.de', 'fau-orga-breadcrumb'),
         'parent' => 'profilzentren',
     ],
     '1011311200' => [
-        'title' => __('FAU Profilzentrum Medizintechnik (FAU MT)', 'fau-orga-breadcrumb'),
+        'title' => __('Medizintechnik (FAU MT)', 'fau-orga-breadcrumb'),
         'url' => __('https://www.medicalengineering.fau.de', 'fau-orga-breadcrumb'),
         'parent' => 'profilzentren',
     ],
     '1011311100' => [
-        'title' => __('FAU Profilzentrum Neue Materialien und Prozesse (FAU NMP)', 'fau-orga-breadcrumb'),
+        'title' => __('Neue Materialien und Prozesse (FAU NMP)', 'fau-orga-breadcrumb'),
         'url' => __('https://www.newmaterials.fau.de', 'fau-orga-breadcrumb'),
         'parent' => 'profilzentren',
     ],
     '1011311300' => [
-        'title' => __('FAU Profilzentrum Solar (FAU Solar)', 'fau-orga-breadcrumb'),
+        'title' => __('Solar (FAU Solar)', 'fau-orga-breadcrumb'),
         'url' => __('https://www.solar.fau.de', 'fau-orga-breadcrumb'),
         'parent' => 'profilzentren',
     ],
@@ -710,27 +710,27 @@ $elemental_menu = [
         'parent' => null,
     ],
     '1011321400' => [
-        'title' => __('FAU Forschungszentrum Center for Human Rights Erlangen-Nürnberg (FAU CHREN)', 'fau-orga-breadcrumb'),
+        'title' => __('Center for Human Rights Erlangen-Nürnberg (FAU CHREN)', 'fau-orga-breadcrumb'),
         'url' => __('https://www.humanrights.fau.de', 'fau-orga-breadcrumb'),
         'parent' => 'forschungszentren',
     ],
     '1011321200' => [
-        'title' => __('FAU Forschungszentrum Embedded Systems Initiative (FAU ESI)', 'fau-orga-breadcrumb'),
+        'title' => __('Embedded Systems Initiative (FAU ESI)', 'fau-orga-breadcrumb'),
         'url' => __('https://www.esi.fau.de', 'fau-orga-breadcrumb'),
         'parent' => 'forschungszentren',
     ],
     '1011321500' => [
-        'title' => __('FAU Forschungszentrum für Islam und Recht in Europa (FAU EZIRE)', 'fau-orga-breadcrumb'),
+        'title' => __('Islam und Recht in Europa (FAU EZIRE)', 'fau-orga-breadcrumb'),
         'url' => __('https://www.ezire.fau.de', 'fau-orga-breadcrumb'),
         'parent' => 'forschungszentren',
     ],
     '1011321100' => [
-        'title' => __('FAU Forschungszentrum Mathematics of Data (FAU MoD)', 'fau-orga-breadcrumb'),
+        'title' => __('Mathematics of Data (FAU MoD)', 'fau-orga-breadcrumb'),
         'url' => __('https://mod.fau.eu', 'fau-orga-breadcrumb'),
         'parent' => 'forschungszentren',
     ],
     '1011321300' => [
-        'title' => __('FAU Forschungszentrum Neue Wirkstoffe (FAU NeW)', 'fau-orga-breadcrumb'),
+        'title' => __('Neue Wirkstoffe (FAU NeW)', 'fau-orga-breadcrumb'),
         'url' => __('https://www.new.fau.eu', 'fau-orga-breadcrumb'),
         'parent' => 'forschungszentren',
     ],
@@ -742,32 +742,32 @@ $elemental_menu = [
         'parent' => null,
     ],
     '1011331300' => [
-        'title' => __('FAU Kompetenzzentrum Engineering of Advanced Materials (FAU EAM)', 'fau-orga-breadcrumb'),
+        'title' => __('Engineering of Advanced Materials (FAU EAM)', 'fau-orga-breadcrumb'),
         'url' => __('https://www.eam.fau.eu', 'fau-orga-breadcrumb'),
         'parent' => 'kompetenzzentren',
     ],
     '1011331500' => [
-        'title' => __('FAU Kompetenzzentrum für interdisziplinäre Wissenschaftsreflexion (FAU ZIWIS)', 'fau-orga-breadcrumb'),
+        'title' => __('Interdisziplinäre Wissenschaftsreflexion (FAU ZIWIS)', 'fau-orga-breadcrumb'),
         'url' => __('https://www.ziwis.fau.de', 'fau-orga-breadcrumb'),
         'parent' => 'kompetenzzentren',
     ],
     '1011331600' => [
-        'title' => __('FAU Kompetenzzentrum Lehre (FAU Lehre)', 'fau-orga-breadcrumb'),
+        'title' => __(' Lehre (FAU Lehre)', 'fau-orga-breadcrumb'),
         'url' => __('https://www.lehre.fau.de', 'fau-orga-breadcrumb'),
         'parent' => 'kompetenzzentren',
     ],
     '1011331400' => [
-        'title' => __('FAU Kompetenzzentrum Optical Imaging Compentence Center (FAU OICE)', 'fau-orga-breadcrumb'),
+        'title' => __('Optical Imaging Compentence Center (FAU OICE)', 'fau-orga-breadcrumb'),
         'url' => __('https://www.oice.fau.de', 'fau-orga-breadcrumb'),
         'parent' => 'kompetenzzentren',
     ],
     '1011331100' => [
-        'title' => __('FAU Kompetenzzentrum Research Data and Information (FAU CDI)', 'fau-orga-breadcrumb'),
+        'title' => __('Research Data and Information (FAU CDI)', 'fau-orga-breadcrumb'),
         'url' => __('https://www.cdi.fau.de', 'fau-orga-breadcrumb'),
         'parent' => 'kompetenzzentren',
     ],
     '1011331200' => [
-        'title' => __('FAU Kompetenzzentrum Scientific Computing (FAU CSC)', 'fau-orga-breadcrumb'),
+        'title' => __('Scientific Computing (FAU CSC)', 'fau-orga-breadcrumb'),
         'url' => __('https://www.csc.fau.eu', 'fau-orga-breadcrumb'),
         'parent' => 'kompetenzzentren',
     ],

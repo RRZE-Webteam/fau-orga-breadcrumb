@@ -39,9 +39,9 @@ ol.breadcrumblist {
 	padding: 1.3rem 1.1rem 0.3rem 1.2rem;
 
 	nav.orga-breadcrumb {
-		font-size: 1rem;
+		font-size: 0.9rem;
 		line-height: 1.4;
-		color: #041E42;
+		color: #04316a;
 
 		ol.breadcrumblist {
 			margin: 0;
@@ -54,22 +54,23 @@ ol.breadcrumblist {
 			li {
 				display: flex;
 				align-items: center;
-				font-weight: 700;
+				font-weight: 400;
 
 				a {
 					text-decoration: none;
-					color: #002855;
-					font-weight: 700;
+					color: #04316a;
+					font-weight: 400;
 
 					&:hover {
 						text-decoration: underline;
+						text-decoration-thickness: 1px;
 					}
 				}
 
 				/* Trenner */
 				&:after {
 					content: "/";
-					margin: 0 0.4rem; /* ✅ mehr Luft links & rechts */
+					margin: 0 0.4rem;
 					color: #041E42;
 				}
 
