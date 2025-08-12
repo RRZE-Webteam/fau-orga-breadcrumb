@@ -41,9 +41,9 @@ ol.breadcrumblist li:last-child::after {
   padding: 1.3rem 1.1rem 0.3rem 1.2rem;
 }
 .fau-elemental-breadcrumb nav.orga-breadcrumb {
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.4;
-  color: #041E42;
+  color: #04316a;
 }
 .fau-elemental-breadcrumb nav.orga-breadcrumb ol.breadcrumblist {
   margin: 0;
@@ -55,20 +55,21 @@ ol.breadcrumblist li:last-child::after {
 .fau-elemental-breadcrumb nav.orga-breadcrumb ol.breadcrumblist li {
   display: flex;
   align-items: center;
-  font-weight: 700;
+  font-weight: 400;
   /* Trenner */
 }
 .fau-elemental-breadcrumb nav.orga-breadcrumb ol.breadcrumblist li a {
   text-decoration: none;
-  color: #002855;
-  font-weight: 700;
+  color: #04316a;
+  font-weight: 400;
 }
 .fau-elemental-breadcrumb nav.orga-breadcrumb ol.breadcrumblist li a:hover {
   text-decoration: underline;
+  text-decoration-thickness: 1px;
 }
 .fau-elemental-breadcrumb nav.orga-breadcrumb ol.breadcrumblist li:after {
   content: "/";
-  margin: 0 0.4rem; /* ✅ mehr Luft links & rechts */
+  margin: 0 0.4rem;
   color: #041E42;
 }
 .fau-elemental-breadcrumb nav.orga-breadcrumb ol.breadcrumblist li:last-child:after {

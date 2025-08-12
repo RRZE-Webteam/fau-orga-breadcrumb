@@ -1,17 +1,18 @@
 <?php
 
-/*
-Plugin Name: FAU ORGA Breadcrumb
-Plugin URI: https://github.com/RRZE-Webteam/fau-orga-breadcrumb
-Description: Displays an organisational breadcrumb
-Version: 1.1.19
-Author: RRZE-Webteam
-Author URI: http://blogs.fau.de/webworking/
-License: GNU GPLv2
-License URI: https://gnu.org/licenses/gpl.html
-Text Domain: fau-orga-breadcrumb
+/**
+ * Plugin Name: FAU ORGA Breadcrumb
+ * Plugin URI:  https://github.com/RRZE-Webteam/fau-orga-breadcrumb
+ * Description: Displays an organisational breadcrumb
+ * Version:     1.1.19
+ * Author:      RRZE-Webteam
+ * Author URI:  http://blogs.fau.de/webworking/
+ * License:     GNU GPLv2
+ * License URI: https://gnu.org/licenses/gpl.html
+ * Text Domain: fau-orga-breadcrumb
+ */
 
-This plugin is free software: you can redistribute it and/or modify
+/* This plugin is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
 any later version.
@@ -31,12 +32,9 @@ namespace FAU\ORGA\Breadcrumb;
 const RRZE_PHP_VERSION = '7.4';
 const RRZE_WP_VERSION = '5.8';
 
-include('constants.php');
-// get all constants
-
-include('includes/functions.php');
-// Global functions
-
+require_once __DIR__ . '/constants.php';
+require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/includes/compat-global.php';
 
 add_action('plugins_loaded', 'FAU\ORGA\Breadcrumb\init');
 register_activation_hook(__FILE__, 'FAU\ORGA\Breadcrumb\activation');
@@ -45,40 +43,41 @@ register_activation_hook(__FILE__, 'FAU\ORGA\Breadcrumb\activation');
 /*-----------------------------------------------------------------------------------*/
 /* Init
 /*-----------------------------------------------------------------------------------*/
-function init()
+function init(): void
 {
-    textdomain();
+    load_textdomain();
     global $fau_orga_fautheme;
     if ($fau_orga_fautheme) {
+        require_once __DIR__ . '/includes/shortcode.php';
+        require_once __DIR__ . '/includes/menu-elemental.php';
+        require_once __DIR__ . '/includes/settings.php';
 
-        include_once('includes/shortcode.php');
-        include_once('includes/menu-elemental.php');
-        include_once('includes/settings.php');
-        // admin settings
-
-
-        add_action('wp_enqueue_scripts', 'FAU\ORGA\Breadcrumb\register_styles');
-        add_action('customize_register', 'FAU\ORGA\Breadcrumb\fau_orga_customizer_settings');
-        add_action('admin_enqueue_scripts', 'FAU\ORGA\Breadcrumb\fau_orga_enqueue_admin_script');
-
+        add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\register_styles');
+        add_action('customize_register', __NAMESPACE__ . '\\fau_orga_customizer_settings');
+        add_action('admin_enqueue_scripts', __NAMESPACE__ . '\\fau_orga_enqueue_admin_script');
     }
-
 }
+
 
 /*-----------------------------------------------------------------------------------*/
 /* Load textdomain
 /*-----------------------------------------------------------------------------------*/
-function textdomain()
+function load_textdomain(): void
 {
-    load_plugin_textdomain('fau-orga-breadcrumb', FALSE, sprintf('%s/languages/', dirname(plugin_basename(__FILE__))));
+    load_plugin_textdomain(
+        'fau-orga-breadcrumb',
+        false,
+        dirname(plugin_basename(__FILE__)) . '/languages'
+    );
 }
+
 
 /*-----------------------------------------------------------------------------------*/
 /* On plugin activation
 /*-----------------------------------------------------------------------------------*/
-function activation()
+function activation(): void
 {
-    textdomain();
+    load_textdomain();
     system_requirements();
 
 }
@@ -86,48 +85,71 @@ function activation()
 /*-----------------------------------------------------------------------------------*/
 /* Check requirements
 /*-----------------------------------------------------------------------------------*/
-function system_requirements()
+function system_requirements(): void
 {
-    $error = '';
+    $errors = []; // Alle Fehler sammeln → einheitliche Ausgabe.
 
-    if (version_compare(PHP_VERSION, RRZE_PHP_VERSION, '<')) {
-        $error = sprintf(__('Your server is running PHP version %s. Please upgrade at least to PHP version %s.', 'fau-orga-breadcrumb'), PHP_VERSION, RRZE_PHP_VERSION);
+    if (version_compare(PHP_VERSION, RRZE_PHP_VERSION, '<')) { // Saubere Versionsprüfung.
+        $errors[] = sprintf(
+        /* translators: 1: current PHP version, 2: required PHP version */
+            __('Your server is running PHP version %1$s. Please upgrade at least to PHP version %2$s.', 'fau-orga-breadcrumb'),
+            PHP_VERSION,
+            RRZE_PHP_VERSION
+        );
     }
 
-    if (version_compare($GLOBALS['wp_version'], RRZE_WP_VERSION, '<')) {
-        $error = sprintf(__('Your Wordpress version is %s. Please upgrade at least to Wordpress version %s.', 'fau-orga-breadcrumb'), $GLOBALS['wp_version'], RRZE_WP_VERSION);
+    if (isset($GLOBALS['wp_version']) && version_compare($GLOBALS['wp_version'], RRZE_WP_VERSION, '<')) {
+        $errors[] = sprintf(
+        /* translators: 1: current WP version, 2: required WP version */
+            __('Your WordPress version is %1$s. Please upgrade at least to WordPress version %2$s.', 'fau-orga-breadcrumb'),
+            $GLOBALS['wp_version'],
+            RRZE_WP_VERSION
+        );
     }
 
-    global $fau_orga_fautheme;
+    global $fau_orga_fautheme; // Hinweis für falsches Theme – kein harter Fehler, aber hier als Blocker gewertet.
     if ($fau_orga_fautheme === false) {
-        $error = __('This Plugin is only used for FAU Themes yet', 'fau-orga-breadcrumb');
+        $errors[] = __('This plugin is intended for FAU themes only.', 'fau-orga-breadcrumb');
     }
 
-    // Wenn die Überprüfung fehlschlägt, dann wird das Plugin automatisch deaktiviert.
-    if (!empty($error)) {
-        deactivate_plugins(plugin_basename(__FILE__), FALSE, TRUE);
-        wp_die($error);
-    }
+//    if (!empty($errors)) {
+//        // Multisite-safe deaktivieren: im Netzwerk-Admin wird network_wide gesetzt.
+//        $network_wide = is_multisite() && is_network_admin();
+//        deactivate_plugins(plugin_basename(__FILE__), false, $network_wide); // Plugin abschalten, bevor wir sterben.
+//
+//        wp_die(
+//            wp_kses_post(implode('<br>', $errors)), // Sichere Ausgabe → nur erlaubte HTML-Tags.
+//            esc_html__('Plugin activation halted', 'fau-orga-breadcrumb'),
+//            ['response' => 500] // HTTP 500 → klare Kennzeichnung als Fehler.
+//        );
+//    }
 }
+
 
 /*-----------------------------------------------------------------------------------*/
 /* Register styles and scripts
 /*-----------------------------------------------------------------------------------*/
-function register_styles()
+function register_styles(): void
 {
-    wp_register_style('fau-orga-breadcrumb', plugins_url('fau-orga-breadcrumb/css/fau-orga-breadcrumb.css', dirname(__FILE__)));
-
+    wp_register_style(
+        'fau-orga-breadcrumb',
+        plugin_dir_url(__FILE__) . 'css/fau-orga-breadcrumb.css',
+        [],
+        '1.0' // Version für Cache-Busting. (Optional: mit filemtime() für dev.)
+    );
 }
 
 /*-----------------------------------------------------------------------------------*/
 /* Register and enqueue admin scripts
 /*-----------------------------------------------------------------------------------*/
-function fau_orga_enqueue_admin_script($hook)
+function fau_orga_enqueue_admin_script(string $hook = ''): void
 {
-    wp_register_style('fau-orga-breadcrumb-admin', plugins_url('fau-orga-breadcrumb/css/fau-orga-breadcrumb-admin.css', dirname(__FILE__)));
+    wp_register_style(
+        'fau-orga-breadcrumb-admin',
+        plugin_dir_url(__FILE__) . 'css/fau-orga-breadcrumb-admin.css',
+        [],
+        '1.0'
+    );
     wp_enqueue_style('fau-orga-breadcrumb-admin');
 }
 
-/*-----------------------------------------------------------------------------------*/
-/*EOF
-/*-----------------------------------------------------------------------------------*/

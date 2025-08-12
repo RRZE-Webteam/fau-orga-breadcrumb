@@ -55,10 +55,10 @@ $fau_orga_breadcrumb_data = [
         'url' => __('https://sz.fau.de', 'fau-orga-breadcrumb'),
         'parent' => '1011000000'
     ],
-     '1011130000' => array[
-	'title'	    => __('Zentralinstitut für Regionenforschung', 'fau-orga-breadcrumb'),
-	'parent'    => '1011000000'
-    ],
+//     '1011130000' => [
+//	'title'	    => __('Zentralinstitut für Regionenforschung', 'fau-orga-breadcrumb'),
+//	'parent'    => '1011000000'
+//    ],
     '1011200000' => [
         'title' => __('Graduiertenzentrum der FAU', 'fau-orga-breadcrumb'),
         'parent' => '1011000000'
@@ -97,24 +97,32 @@ $fau_orga_breadcrumb_data = [
         'title' => __('FAU Kompetenzzentren', 'fau-orga-breadcrumb'),
         'parent' => '1011000000'
     ],
-    '1013000000' => [
-        'title' => __('Interdisziplinäre Zentren', 'fau-orga-breadcrumb'),
-        'parent' => '0000000000',
-    ],
-    '1014000000' => [
-        'title' => __('Museen und Sammlungen', 'fau-orga-breadcrumb'),
-        'parent' => '0000000000',
-    ],
+//    '1013000000' => [
+//        'title' => __('Interdisziplinäre Zentren', 'fau-orga-breadcrumb'),
+//        'parent' => '0000000000',
+//    ],
     '1015000000' => [
-        'title' => __('DFG-Sonderforschungsbereiche/ Transregios/Transferbereiche', 'fau-orga-breadcrumb'),
+        'title' => __('DFG-Sonderforschungsbereiche/Transregios/Transferbereiche', 'fau-orga-breadcrumb'),
         'parent' => '0000000000',
     ],
     '1016000000' => [
         'title' => __('DFG-Graduiertenkollegs', 'fau-orga-breadcrumb'),
         'parent' => '0000000000',
     ],
+    '1019000000' => [
+        'title' => __('DFG-Kollegforschergruppen', 'fau-orga-breadcrumb'),
+        'parent' => '0000000000',
+    ],
+    '1017000000' => [
+        'title' => __('Institutionelle Kooperations- und Förderprojekte', 'fau-orga-breadcrumb'),
+        'parent' => '0000000000',
+    ],
     '1040000000' => [
         'title' => __('Zentrale Serviceeinrichtungen', 'fau-orga-breadcrumb'),
+        'parent' => '0000000000',
+    ],
+    '1014000000' => [
+        'title' => __('Museen und Sammlungen', 'fau-orga-breadcrumb'),
         'parent' => '0000000000',
     ],
     '1100000000' => [
@@ -397,6 +405,8 @@ $elemental_menu = [
         'title' => __('Philosophische Fakultät und Fachbereich Theologie', 'fau-orga-breadcrumb'),
         'url' => __('https://www.phil.fau.de', 'fau-orga-breadcrumb'),
         'parent' => 'fakultaeten',
+        'class' => 'phil', //wichtig für die farbliche Darstellung im Menü
+        'faculty' => 'phil' //wichtig für die farbliche Darstellung im Menü
     ],
     '1111000000' => [
         'title' => __('Department Alte Welt und Asiatische Kulturen', 'fau-orga-breadcrumb'),
@@ -470,6 +480,8 @@ $elemental_menu = [
         'title' => __('Rechts- und Wirtschaftswissenschaftliche Fakultät', 'fau-orga-breadcrumb'),
         'url' => __('https://www.rw.fau.de', 'fau-orga-breadcrumb'),
         'parent' => 'fakultaeten',
+        'class' => 'rw',
+        'faculty' => 'rw'
     ],
     '1211000000' => [
         'title' => __('Fachbereich Rechtswissenschaft', 'fau-orga-breadcrumb'),
@@ -487,6 +499,8 @@ $elemental_menu = [
         'title' => __('Medizinische Fakultät', 'fau-orga-breadcrumb'),
         'url' => __('https://www.med.fau.de', 'fau-orga-breadcrumb'),
         'parent' => 'fakultaeten',
+        'class' => 'med',
+        'faculty' => 'med'
     ],
     '1311110000' => [
         'title' => __('Institut für Anatomie', 'fau-orga-breadcrumb'),
@@ -555,6 +569,8 @@ $elemental_menu = [
         'title' => __('Naturwissenschaftliche Fakultät', 'fau-orga-breadcrumb'),
         'url' => __('https://www.nat.fau.de', 'fau-orga-breadcrumb'),
         'parent' => 'fakultaeten',
+        'class' => 'nat',
+        'faculty' => 'nat'
     ],
     '1411000000' => [
         'title' => __('Department Biologie', 'fau-orga-breadcrumb'),
@@ -592,6 +608,8 @@ $elemental_menu = [
         'title' => __('Technische Fakultät', 'fau-orga-breadcrumb'),
         'url' => __('https://www.tf.fau.de', 'fau-orga-breadcrumb'),
         'parent' => 'fakultaeten',
+        'class' => 'tf',
+        'faculty' => 'tf'
     ],
     '1518000000' => [
         'title' => __('Department Artificial Intelligence in Biomedical Engineering', 'fau-orga-breadcrumb'),

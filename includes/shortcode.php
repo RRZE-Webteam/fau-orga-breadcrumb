@@ -15,7 +15,7 @@ function show_breadcrumb( $atts ) {
     
     
     $shortcode_attr = shortcode_atts( array(
-        'org'                   => '',
+        'org'  => '',
         'show' => 'breadcrumb',
     ), $atts );
     
@@ -24,7 +24,7 @@ function show_breadcrumb( $atts ) {
     $show_type = $shortcode_attr['show'];
 
 
-    // Wenn show="menu" dann einfach das hardcodierte Menü ausgeben
+    // Wenn show="menu" dann das hardcodierte Menü ausgeben
     if ($show_type === 'menu') {
         return get_fau_elemental_menu_html();
     }
