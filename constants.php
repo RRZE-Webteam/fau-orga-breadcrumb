@@ -1,20 +1,19 @@
 <?php
 
-/* 
- * Constants
+
+// Plugin-Version
+define('FAU_ORGA_BREADCRUMB_VERSION', '1.1.19');
+
+/**
+ * Basis-Config
  */
 $fau_orga_breadcrumb_config = [
     'root' => '0000000000',
 ];
 
-
-/* 
- * Orgas - Later hopefully via API.... 
- * ... An we really hope that this "later" means in a lifetime.
- * ... Of a human!
- * .. already born!!!
+/**
+ * Organisatorische Daten (später idealerweise via API).
  */
-
 $fau_orga_breadcrumb_data = [
     '0000000000' => [
         'title' => 'Friedrich-Alexander-Universität',
@@ -256,7 +255,7 @@ $fau_orga_breadcrumb_data = [
     ],
     '1311310000' => [
         'title' => __('Institut für Medizininformatik, Biometrie und Epidemiologie', 'fau-orga-breadcrumb'),
-        'url' => __('http://www.imbe.med.uni-erlangen.de/', 'fau-orga-breadcrumb'),
+        'url' => __('https://www.imbe.med.uni-erlangen.de/', 'fau-orga-breadcrumb'),
         'parent' => '1311000000'
     ],
     '1311320000' => [
@@ -266,7 +265,7 @@ $fau_orga_breadcrumb_data = [
     ],
     '1311330000' => [
         'title' => __('Institut für Rechtsmedizin', 'fau-orga-breadcrumb'),
-        'url' => __('http://www.recht.med.uni-erlangen.de/', 'fau-orga-breadcrumb'),
+        'url' => __('https://www.recht.med.uni-erlangen.de/', 'fau-orga-breadcrumb'),
         'parent' => '1311000000'
     ],
     '1311340000' => [
@@ -316,7 +315,7 @@ $fau_orga_breadcrumb_data = [
     ],
     '1414000000' => [
         'title' => __('Department Mathematik', 'fau-orga-breadcrumb'),
-        'url' => __('http://www.math.fau.de/', 'fau-orga-breadcrumb'),
+        'url' => __('https://www.math.fau.de/', 'fau-orga-breadcrumb'),
         'parent' => '1400000000'
     ],
     '1415000000' => [
@@ -415,7 +414,7 @@ $elemental_menu = [
     ],
     '1112000000' => [
         'title' => __('Department Anglistik/Amerikanistik und Romanistik', 'fau-orga-breadcrumb'),
-        'url' => __('https://https://www.angam.phil.fau.de', 'fau-orga-breadcrumb'),
+        'url' => __('https://www.angam.phil.fau.de', 'fau-orga-breadcrumb'),
         'parent' => '1100000000',
     ],
     '1123000000' => [
@@ -535,7 +534,7 @@ $elemental_menu = [
     ],
     '1311310000' => [
         'title' => __('Institut für Medizininformatik, Biometrie und Epidemiologie', 'fau-orga-breadcrumb'),
-        'url' => __('http://www.imbe.med.uni-erlangen.de/', 'fau-orga-breadcrumb'),
+        'url' => __('https://www.imbe.med.uni-erlangen.de/', 'fau-orga-breadcrumb'),
         'parent' => '1300000000',
     ],
     '1311120000' => [
@@ -550,7 +549,7 @@ $elemental_menu = [
     ],
     '1311330000' => [
         'title' => __('Institut für Rechtsmedizin', 'fau-orga-breadcrumb'),
-        'url' => __('http://www.recht.med.uni-erlangen.de/', 'fau-orga-breadcrumb'),
+        'url' => __('https://www.recht.med.uni-erlangen.de/', 'fau-orga-breadcrumb'),
         'parent' => '1300000000',
     ],
     '1311130000' => [
@@ -594,7 +593,7 @@ $elemental_menu = [
     ],
     '1414000000' => [
         'title' => __('Department Mathematik', 'fau-orga-breadcrumb'),
-        'url' => __('http://www.math.fau.de/', 'fau-orga-breadcrumb'),
+        'url' => __('https://www.math.fau.de/', 'fau-orga-breadcrumb'),
         'parent' => '1400000000',
     ],
     '1415000000' => [
@@ -685,7 +684,7 @@ $elemental_menu = [
     ],
     '1011300000' => [
         'title' => __('Zentrum für Nationales Hochleistungsrechnen Erlangen', 'fau-orga-breadcrumb'),
-        'url' => __('https://hpc.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://hpc.fau.de',
         'parent' => 'zentrale_einrichtungen',
     ],
 
@@ -695,29 +694,29 @@ $elemental_menu = [
         'url' => '',
         'parent' => null,
     ],
-    '1011311500 ' => [
+    '1011311500' => [
         'title' => __('Immunmedizin (FAU I-MED)', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.immunology.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.immunology.fau.de',
         'parent' => 'profilzentren',
     ],
     '1011311400' => [
         'title' => __('Licht.Materia.Quantentechnologien (FAU LMQ)', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.lightmatter.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.lightmatter.fau.de',
         'parent' => 'profilzentren',
     ],
     '1011311200' => [
         'title' => __('Medizintechnik (FAU MT)', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.medicalengineering.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.medicalengineering.fau.de',
         'parent' => 'profilzentren',
     ],
     '1011311100' => [
         'title' => __('Neue Materialien und Prozesse (FAU NMP)', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.newmaterials.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.newmaterials.fau.de',
         'parent' => 'profilzentren',
     ],
     '1011311300' => [
         'title' => __('Solar (FAU Solar)', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.solar.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.solar.fau.de',
         'parent' => 'profilzentren',
     ],
 
@@ -729,27 +728,27 @@ $elemental_menu = [
     ],
     '1011321400' => [
         'title' => __('Center for Human Rights Erlangen-Nürnberg (FAU CHREN)', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.humanrights.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.humanrights.fau.de',
         'parent' => 'forschungszentren',
     ],
     '1011321200' => [
         'title' => __('Embedded Systems Initiative (FAU ESI)', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.esi.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.esi.fau.de',
         'parent' => 'forschungszentren',
     ],
     '1011321500' => [
         'title' => __('Islam und Recht in Europa (FAU EZIRE)', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.ezire.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.ezire.fau.de',
         'parent' => 'forschungszentren',
     ],
     '1011321100' => [
         'title' => __('Mathematics of Data (FAU MoD)', 'fau-orga-breadcrumb'),
-        'url' => __('https://mod.fau.eu', 'fau-orga-breadcrumb'),
+        'url' => 'https://mod.fau.eu',
         'parent' => 'forschungszentren',
     ],
     '1011321300' => [
         'title' => __('Neue Wirkstoffe (FAU NeW)', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.new.fau.eu', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.new.fau.eu',
         'parent' => 'forschungszentren',
     ],
 
@@ -761,32 +760,32 @@ $elemental_menu = [
     ],
     '1011331300' => [
         'title' => __('Engineering of Advanced Materials (FAU EAM)', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.eam.fau.eu', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.eam.fau.eu',
         'parent' => 'kompetenzzentren',
     ],
     '1011331500' => [
         'title' => __('Interdisziplinäre Wissenschaftsreflexion (FAU ZIWIS)', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.ziwis.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.ziwis.fau.de',
         'parent' => 'kompetenzzentren',
     ],
     '1011331600' => [
-        'title' => __(' Lehre (FAU Lehre)', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.lehre.fau.de', 'fau-orga-breadcrumb'),
+        'title' => __('Lehre (FAU Lehre)', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.lehre.fau.de',
         'parent' => 'kompetenzzentren',
     ],
     '1011331400' => [
         'title' => __('Optical Imaging Compentence Center (FAU OICE)', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.oice.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.oice.fau.de',
         'parent' => 'kompetenzzentren',
     ],
     '1011331100' => [
         'title' => __('Research Data and Information (FAU CDI)', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.cdi.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.cdi.fau.de',
         'parent' => 'kompetenzzentren',
     ],
     '1011331200' => [
         'title' => __('Scientific Computing (FAU CSC)', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.csc.fau.eu', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.csc.fau.eu',
         'parent' => 'kompetenzzentren',
     ],
 
@@ -798,27 +797,27 @@ $elemental_menu = [
     ],
     '001' => [
         'title' => __('JOSEPHS', 'fau-orga-breadcrumb'),
-        'url' => __('https://josephs-innovation.de/wp/', 'fau-orga-breadcrumb'),
+        'url' => 'https://josephs-innovation.de/wp/',
         'parent' => 'innovationsorte',
     ],
     '002' => [
         'title' => __('ZOLLHOF', 'fau-orga-breadcrumb'),
-        'url' => __('https://zollhof.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://zollhof.de',
         'parent' => 'innovationsorte',
     ],
     '003' => [
         'title' => __('d.hip – Digital Health Innovation Platform', 'fau-orga-breadcrumb'),
-        'url' => __('https://d-hip.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://d-hip.de',
         'parent' => 'innovationsorte',
     ],
     '004' => [
         'title' => __('Medical Valley Center', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.medical-valley-emn.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.medical-valley-emn.de',
         'parent' => 'innovationsorte',
     ],
     '005' => [
         'title' => __('FAU Innovationsökosystems', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.new.fau.eu', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.new.fau.eu',
         'parent' => 'innovationsorte',
     ],
 

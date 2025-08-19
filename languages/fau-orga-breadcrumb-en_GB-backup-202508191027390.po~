@@ -18,15 +18,15 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "POT-Creation-Date: 2021-11-25 16:20+0000\n"
-"PO-Revision-Date: 2025-08-19 10:30+0000\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2025-08-19 09:34+0000\n"
+"Last-Translator: Wolfgang Wiese <wolfgang.wiese@fau.de>\n"
 "Language: en_GB\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.8.0; wp-6.8.2; php-8.2.23"
+"X-Loco-Version: 2.5.5; wp-5.8.2"
 
 #: constants.php:772
 msgid " Lehre (FAU Lehre)"
-msgstr "Education (FAU Education)"
+msgstr ""
 
 #: includes/settings.php:172
 msgid ""
@@ -288,7 +288,7 @@ msgstr "FAU Profile Centers"
 
 #: constants.php:207
 msgid "FB Rechtsw."
-msgstr "School of Law"
+msgstr ""
 
 #: constants.php:725
 msgid "Forschungszentren"
@@ -633,7 +633,7 @@ msgstr "Institute of the History of Medicine and Medical Ethics"
 
 #: constants.php:531
 msgid "Institut für Lehre und Forschung am Medizincampus Oberfranken"
-msgstr "Institute of Research and Teaching, Medizincampus Oberfranken"
+msgstr ""
 
 #: constants.php:257 constants.php:536
 msgid "Institut für Medizininformatik, Biometrie und Epidemiologie"
@@ -659,15 +659,15 @@ msgstr ""
 
 #: constants.php:116
 msgid "Institutionelle Kooperations- und Förderprojekte"
-msgstr "Institutional cooperation and funding projects"
+msgstr ""
 
 #: constants.php:767
 msgid "Interdisziplinäre Wissenschaftsreflexion (FAU ZIWIS)"
-msgstr "Interdisciplinary reflection on science (FAU ZIWIS)"
+msgstr ""
 
 #: constants.php:740
 msgid "Islam und Recht in Europa (FAU EZIRE)"
-msgstr "Islam and Law in Europe (FAU EZIRE)"
+msgstr ""
 
 #: constants.php:799
 msgid "JOSEPHS"
@@ -685,11 +685,11 @@ msgstr "Center of Molecular Medicine"
 
 #: constants.php:757
 msgid "Kompetenzzentren"
-msgstr "Competence Centers"
+msgstr ""
 
 #: constants.php:703
 msgid "Licht.Materia.Quantentechnologien (FAU LMQ)"
-msgstr "Light.Matter.QuantumTechnologies (FAU LMQ)"
+msgstr ""
 
 #: constants.php:745
 msgid "Mathematics of Data (FAU MoD)"
@@ -705,7 +705,7 @@ msgstr "Faculty of Medicine"
 
 #: constants.php:708
 msgid "Medizintechnik (FAU MT)"
-msgstr "Medical Engineering (FAU MT)"
+msgstr ""
 
 #: constants.php:124
 msgid "Museen und Sammlungen"
@@ -717,15 +717,15 @@ msgstr "Faculty of Sciences"
 
 #: constants.php:713
 msgid "Neue Materialien und Prozesse (FAU NMP)"
-msgstr "New Materials and Processes (FAU NMP)"
+msgstr ""
 
 #: constants.php:750
 msgid "Neue Wirkstoffe (FAU NeW)"
-msgstr "New Bioactive Compounds (FAU NeW)"
+msgstr ""
 
 #: constants.php:777
 msgid "Optical Imaging Compentence Center (FAU OICE)"
-msgstr "Competence Center Optical Imaging (FAU OICE)"
+msgstr ""
 
 #: includes/functions.php:448
 msgid "Organisatorische Navigation"
@@ -746,7 +746,7 @@ msgstr "Faculty of Humanities, Social Sciences, and Theology"
 
 #: constants.php:693
 msgid "Profilzentren"
-msgstr "Profile Centers"
+msgstr ""
 
 #: constants.php:198 constants.php:479
 msgid "Rechts- und Wirtschaftswissenschaftliche Fakultät"
@@ -778,7 +778,7 @@ msgstr "Save"
 
 #: constants.php:53 constants.php:661
 msgid "Sprachenzentrum"
-msgstr "Language Centre"
+msgstr ""
 
 #: constants.php:334 constants.php:607
 msgid "Technische Fakultät"
@@ -832,11 +832,11 @@ msgstr "Central university administration"
 
 #: constants.php:48 constants.php:671
 msgid "Zentrum für Lehrerinnen- und Lehrerbildung"
-msgstr "Center for Teacher Education"
+msgstr ""
 
 #: constants.php:81 constants.php:686
 msgid "Zentrum für Nationales Hochleistungsrechnen Erlangen"
-msgstr "Erlangen National High-Performance Computing Center"
+msgstr ""
 
 #: constants.php:804
 msgid "ZOLLHOF"

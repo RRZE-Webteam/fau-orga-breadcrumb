@@ -36,13 +36,16 @@ require_once __DIR__ . '/constants.php';
 require_once __DIR__ . '/includes/functions.php';
 require_once __DIR__ . '/includes/compat-global.php';
 
-add_action('plugins_loaded', 'FAU\ORGA\Breadcrumb\init');
-register_activation_hook(__FILE__, 'FAU\ORGA\Breadcrumb\activation');
+add_action('init', 'FAU\ORGA\Breadcrumb\init');
+register_activation_hook(__FILE__, __NAMESPACE__ . '\activation');
 
 
 /*-----------------------------------------------------------------------------------*/
 /* Init
 /*-----------------------------------------------------------------------------------*/
+/**
+ * Initialisiert Plugin-Funktionalität.
+ */
 function init(): void
 {
     load_textdomain();
@@ -60,8 +63,11 @@ function init(): void
 
 
 /*-----------------------------------------------------------------------------------*/
-/* Load textdomain
+/* Textdomain
 /*-----------------------------------------------------------------------------------*/
+/**
+ * Lädt Sprachdateien.
+ */
 function load_textdomain(): void
 {
     load_plugin_textdomain(
@@ -72,9 +78,12 @@ function load_textdomain(): void
 }
 
 
-/*-----------------------------------------------------------------------------------*/
-/* On plugin activation
-/*-----------------------------------------------------------------------------------*/
+// -----------------------------------------------------------------------------
+// Aktivierung
+// -----------------------------------------------------------------------------
+/**
+ * Wird bei Aktivierung des Plugins ausgeführt.
+ */
 function activation(): void
 {
     load_textdomain();
@@ -83,11 +92,14 @@ function activation(): void
 }
 
 /*-----------------------------------------------------------------------------------*/
-/* Check requirements
+/* Anforderungen
 /*-----------------------------------------------------------------------------------*/
+/**
+ * Prüft Systemanforderungen (PHP, WP, Theme).
+ */
 function system_requirements(): void
 {
-    $errors = []; // Alle Fehler sammeln → einheitliche Ausgabe.
+    $errors = [];
 
     if (version_compare(PHP_VERSION, RRZE_PHP_VERSION, '<')) { // Saubere Versionsprüfung.
         $errors[] = sprintf(
@@ -112,43 +124,38 @@ function system_requirements(): void
         $errors[] = __('This plugin is intended for FAU themes only.', 'fau-orga-breadcrumb');
     }
 
-//    if (!empty($errors)) {
-//        // Multisite-safe deaktivieren: im Netzwerk-Admin wird network_wide gesetzt.
-//        $network_wide = is_multisite() && is_network_admin();
-//        deactivate_plugins(plugin_basename(__FILE__), false, $network_wide); // Plugin abschalten, bevor wir sterben.
-//
-//        wp_die(
-//            wp_kses_post(implode('<br>', $errors)), // Sichere Ausgabe → nur erlaubte HTML-Tags.
-//            esc_html__('Plugin activation halted', 'fau-orga-breadcrumb'),
-//            ['response' => 500] // HTTP 500 → klare Kennzeichnung als Fehler.
-//        );
-//    }
 }
 
 
 /*-----------------------------------------------------------------------------------*/
-/* Register styles and scripts
+/* Styles
 /*-----------------------------------------------------------------------------------*/
+/**
+ * Registriert Frontend-Styles.
+ */
 function register_styles(): void
 {
     wp_register_style(
         'fau-orga-breadcrumb',
         plugin_dir_url(__FILE__) . 'css/fau-orga-breadcrumb.css',
         [],
-        '1.0' // Version für Cache-Busting. (Optional: mit filemtime() für dev.)
+        FAU_ORGA_BREADCRUMB_VERSION
     );
 }
 
 /*-----------------------------------------------------------------------------------*/
-/* Register and enqueue admin scripts
+/* Admin Styles
 /*-----------------------------------------------------------------------------------*/
+/**
+ * Registriert & lädt Admin-Styles.
+ */
 function fau_orga_enqueue_admin_script(string $hook = ''): void
 {
     wp_register_style(
         'fau-orga-breadcrumb-admin',
         plugin_dir_url(__FILE__) . 'css/fau-orga-breadcrumb-admin.css',
         [],
-        '1.0'
+        FAU_ORGA_BREADCRUMB_VERSION
     );
     wp_enqueue_style('fau-orga-breadcrumb-admin');
 }

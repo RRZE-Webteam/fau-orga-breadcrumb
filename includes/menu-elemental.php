@@ -39,7 +39,7 @@ function render_elemental_menu(array $menu, ?string $parentId = null, int $depth
     $html = '<ul class="' . esc_attr($ulClass) . '">';
 
     foreach ($items as $id => $item) {
-        $title = $item['title'] ?? '❌ NO TITLE for ID ' . $id;
+        $title = $item['title'] ?? 'NO TITLE for ID ' . $id;
 
         // Prüfen, ob dieses Item Kinder hat
         $hasChildren = !empty(array_filter(
@@ -171,46 +171,9 @@ function generate_breadcrumb_for_menu(): string
         return '';
     }
 
-    // Website-Titel nur ergänzen, wenn organisatorische Zuordnung gesetzt
-    // UND die Zuordnung eine Fakultät ist (phil, rw, med, nat, tf)
-    $site_title = get_bloginfo('name');
-    if (!empty($site_title) && !empty($form_org) && $form_org !== '0000000000') {
-
-        global $fau_orga_breadcrumb_data;
-
-        // Prüfen, ob der Eintrag im Orga-Array existiert und eine Fakultät ist
-        if (isset($fau_orga_breadcrumb_data[$form_org]['faculty'])) {
-            $faculty_slug = $fau_orga_breadcrumb_data[$form_org]['faculty'];
-
-            // Fakultätsliste definieren
-            $valid_faculties = ['phil', 'rw', 'med', 'nat', 'tf'];
-
-            if (in_array($faculty_slug, $valid_faculties, true)) {
-                $breadcrumb_html = add_site_title_to_breadcrumb($breadcrumb_html, $site_title, false);
-            }
-        }
-    }
-
     return $breadcrumb_html;
 }
 
-
-/**
- * Fügt den Website-Titel zur bestehenden Breadcrumb hinzu
- *
- * @param string $breadcrumb_html Die bestehende Breadcrumb
- * @param string $site_title Der Website-Titel
- * @return string Die erweiterte Breadcrumb
- */
-function add_site_title_to_breadcrumb(string $breadcrumb_html, string $site_title, bool $hide = false): string
-{
-    if ($hide) {
-        return $breadcrumb_html;
-    }
-
-    $site_title_li = '<li><span>' . esc_html($site_title) . '</span></li>';
-    return str_replace('</ol>', $site_title_li . '</ol>', $breadcrumb_html);
-}
 
 /**
  * Zeigt den obersten Menüpunkt "FAU" nur auf Fakultäts-, Department- und Lehrstuhlebenen an.
@@ -233,3 +196,5 @@ function should_show_fau_menu_item(): bool
     // Sonst nicht anzeigen (inkl. fau / cooperation / leer)
     return false;
 }
+
+

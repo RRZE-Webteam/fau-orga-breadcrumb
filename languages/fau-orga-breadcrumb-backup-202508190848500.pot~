@@ -1,12 +1,13 @@
-# Copyright (C) 2021 FAU ORGA Breadcrumb
+# Copyright (C) 2022 FAU ORGA Breadcrumb
 # This file is distributed under the same license as the FAU ORGA Breadcrumb package.
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: FAU ORGA Breadcrumb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language-Team: English (UK)\n"
+"Language-Team: [object Object]\n"
 "Report-Msgid-Bugs-To: https://github.com/RRZE-Webteam/fau-orga-"
 "breadcrumb/issues\n"
 "X-Poedit-Basepath: ..\n"
@@ -16,168 +17,154 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"POT-Creation-Date: 2021-11-25 16:20+0000\n"
-"PO-Revision-Date: 2025-08-19 10:30+0000\n"
-"Last-Translator: \n"
-"Language: en_GB\n"
-"X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.8.0; wp-6.8.2; php-8.2.23"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Language: \n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2025-08-19 08:41+0000\n"
+"X-Generator: Loco https://localise.biz/"
 
 #: constants.php:772
 msgid " Lehre (FAU Lehre)"
-msgstr "Education (FAU Education)"
+msgstr ""
 
 #: includes/settings.php:172
 msgid ""
 "Achtung: Die Website wurde als zentrales FAU Portal definiert. <strong>Die "
 "Orga Breadcrumb wird nicht angezeigt.</strong>"
 msgstr ""
-"Attention: The website has been defined as the central FAU portal. <strong> "
-"The Orga Breadcrumb is not displayed. </strong>"
 
 #: includes/settings.php:164
-#, fuzzy
-#| msgid ""
-#| "Achtung: Die Website wurde im Customizer als Fakultätsportal definiert. "
-#| "Daher stehen der Fakultät ungeordnete Einrichtungen nicht zur Auswahl zur "
-#| "Verfügung. <strong>Die Orga Breadcrumb wird nicht angezeigt.</strong>"
 msgid ""
 "Achtung: Die Website wurde im Customizer als Fakultätsportal definiert. "
 "Daher stehen der Fakultät untergeordnete Einrichtungen nicht zur Auswahl zur "
 "Verfügung. <strong>Die Orga Breadcrumb wird nicht angezeigt.</strong>"
 msgstr ""
-"Attention: The website was defined as a faculty portal in the Customizer. "
-"Therefore, disordered facilities are not available to the faculty for "
-"selection. <strong> The Orga Breadcrumb is not displayed. </strong>"
 
 #: includes/settings.php:170
 msgid ""
 "Achtung: Die Website wurde im Customizer als Kooperation definiert. D<strong>"
 "Die Orga Breadcrumb wird nicht angezeigt.</strong>"
 msgstr ""
-"Attention: The website was defined as a cooperation in the customizer. D "
-"<strong> The organization breadcrumb is not displayed. </strong>"
 
 #: includes/settings.php:180
 msgid "Aktuell gewählt"
-msgstr "Current value"
+msgstr ""
 
 #: constants.php:71 constants.php:676
 msgid "Bayerisch-Kalifornisches Hochschulzentrum"
-msgstr "Bavaria California Technology Center "
+msgstr ""
 
 #: constants.php:76 constants.php:681
 msgid "Bayerisches Hochschulzentrum für Lateinamerika"
-msgstr "Bavarian University Center for Latin America"
+msgstr ""
 
 #: includes/settings.php:183
 msgid "Breadcrumb"
-msgstr "Breadcrumb"
+msgstr ""
 
 #: constants.php:730
 msgid "Center for Human Rights Erlangen-Nürnberg (FAU CHREN)"
-msgstr "Center for Human Rights Erlangen-Nürnberg (FAU CHREN)"
+msgstr ""
 
 #: constants.php:809
 msgid "d.hip – Digital Health Innovation Platform"
-msgstr "d.hip – Digital Health Innovation Platform"
+msgstr ""
 
 #: constants.php:136 constants.php:411
 msgid "Department Alte Welt und Asiatische Kulturen"
-msgstr "Department of Classical World and Asian Cultures"
+msgstr ""
 
 #: constants.php:140 constants.php:416
 msgid "Department Anglistik/Amerikanistik und Romanistik"
-msgstr "Department of English, American, and Romance Studies"
+msgstr ""
 
 #: constants.php:371 constants.php:614
 msgid "Department Artificial Intelligence in Biomedical Engineering"
-msgstr "Department Artificial Intelligence in Biomedical Engineering"
+msgstr ""
 
 #: constants.php:301 constants.php:575
 msgid "Department Biologie"
-msgstr "Department of Biology"
+msgstr ""
 
 #: constants.php:307 constants.php:580
 msgid "Department Chemie und Pharmazie"
-msgstr "Department of Chemistry and Pharmacy"
+msgstr ""
 
 #: constants.php:342 constants.php:619
 msgid "Department Chemie- und Bioingenieurwesen"
-msgstr "Department Chemical and Biological Engineering"
+msgstr ""
 
 #: constants.php:191 constants.php:421
 msgid "Department Digital Humanities and Social Studies"
-msgstr "Department Digital Humanities and Social Studies"
+msgstr ""
 
 #: constants.php:348 constants.php:624
 msgid "Department Elektrotechnik-Elektronik-Informationstechnik"
-msgstr "Department Electrical Engineering"
+msgstr ""
 
 #: constants.php:144 constants.php:426
 msgid "Department Fachdidaktiken"
-msgstr "Department of Didactics"
+msgstr ""
 
 #: constants.php:312 constants.php:590
 msgid "Department Geographie und Geowissenschaften"
-msgstr "Department of Geography and Geosciences"
+msgstr ""
 
 #: constants.php:149 constants.php:431
 msgid "Department Germanistik und Komparatistik"
-msgstr "Department of German and Comparative Studies"
+msgstr ""
 
 #: constants.php:154 constants.php:436
 msgid "Department Geschichte"
-msgstr "Department of History"
+msgstr ""
 
 #: constants.php:354 constants.php:629
 msgid "Department Informatik"
-msgstr "Department Computer Science"
+msgstr ""
 
 #: constants.php:181 constants.php:441
 msgid "Department Islamisch-Religiöse Studien"
-msgstr "Department Islamic-Religious Studies"
+msgstr ""
 
 #: constants.php:360 constants.php:634
 msgid "Department Maschinenbau"
-msgstr "Department of Mechanical Engineering"
+msgstr ""
 
 #: constants.php:317 constants.php:595
 msgid "Department Mathematik"
-msgstr "Department of Mathematics"
+msgstr ""
 
 #: constants.php:159 constants.php:446
 msgid "Department Medienwissenschaften und Kunstgeschichte"
-msgstr "Department of Media Studies and Art History"
+msgstr ""
 
 #: constants.php:327 constants.php:585
 msgid "Department of Data Science"
-msgstr "Department of Data Science"
+msgstr ""
 
 #: constants.php:322 constants.php:600
 msgid "Department Physik"
-msgstr "Department of Physics"
+msgstr ""
 
 #: constants.php:168 constants.php:456
 msgid "Department Psychologie"
-msgstr "Department of Psychology"
+msgstr ""
 
 #: constants.php:163 constants.php:451
 msgid "Department Pädagogik"
-msgstr "Department of Education"
+msgstr ""
 
 #: constants.php:172 constants.php:461
 msgid "Department Sozialwissenschaften und Philosophie"
-msgstr "Department of Social Sciences and Philosophy"
+msgstr ""
 
 #: constants.php:186 constants.php:466
 msgid "Department Sportwissenschaft und Sport"
-msgstr "Department of Sport Science"
+msgstr ""
 
 #: constants.php:366 constants.php:639
 msgid "Department Werkstoffwissenschaften"
-msgstr "Department Materials Science and Engineering"
+msgstr ""
 
 #: includes/functions.php:126
 msgid ""
@@ -186,51 +173,31 @@ msgid ""
 "Einstellung FAU.ORG Breadcrumb</a> auf und geben Sie an, welcher "
 "organisatorischen Einheit der Webauftritt angehört."
 msgstr ""
-"The website has not yet been organized in terms of organization. <br> Please "
-"call up the <a href=\"options-general.php?"
-"page=fau_orga_breadcrumb_settings\"> setting FAU.ORG Breadcrumb </a> and "
-"indicate to which organizational unit the website belongs."
 
 #: constants.php:108
 msgid "DFG-Graduiertenkollegs"
-msgstr "DFG Research training groups"
+msgstr ""
 
 #: constants.php:112
 msgid "DFG-Kollegforschergruppen"
-msgstr "DFG Centers For Advanced Studies In Humanities And Social Sciences"
+msgstr ""
 
 #: constants.php:104
-#, fuzzy
-#| msgid "DFG-Sonderforschungsbereiche/ Transregios/Transferbereiche"
 msgid "DFG-Sonderforschungsbereiche/Transregios/Transferbereiche"
-msgstr "Collaborative Research Centres and Transregios"
+msgstr ""
 
 #: includes/settings.php:166
-#, fuzzy
-#| msgid ""
-#| "Die Website wurde im Customizer als Einrichtung einer Fakultät definiert. "
-#| "Daher stehen nur zentrale Einrichtungen und der Fakultät ungeordnete "
-#| "Einrichtungen  zur Auswahl zur Verfügung."
 msgid ""
 "Die Website wurde im Customizer als Einrichtung einer Fakultät definiert. "
 "Daher stehen nur zentrale Einrichtungen und der Fakultät untergeordnete "
 "Einrichtungen  zur Auswahl zur Verfügung."
 msgstr ""
-"The website was defined as a faculty facility in the Customizer. Therefore, "
-"only central facilities and facilities that are not organized by the faculty "
-"are available for selection."
 
 #: includes/settings.php:168
-#, fuzzy
-#| msgid ""
-#| "Die Website wurde im Customizer als zentrale Einrichtung definiert. Daher "
-#| "stehen nur zentrale Einrichtungen  zur Auswahl zur Verfügung."
 msgid ""
 "Die Website wurde im Customizer als zentrale Einrichtung definiert. Daher "
 "stehen nur zentrale Einrichtungen zur Auswahl zur Verfügung."
 msgstr ""
-"The website was defined as a central facility in the Customizer. Therefore, "
-"only central facilities are available for selection."
 
 #. Description of the plugin
 msgid "Displays an organisational breadcrumb"
@@ -238,7 +205,7 @@ msgstr ""
 
 #: constants.php:232
 msgid "Einrichtungen, die nicht zum Universitätsklinikum Erlangen gehören"
-msgstr "Institutions that do not belong to the University Hospital Erlangen"
+msgstr ""
 
 #: constants.php:735
 msgid "Embedded Systems Initiative (FAU ESI)"
@@ -249,68 +216,76 @@ msgid "Engineering of Advanced Materials (FAU EAM)"
 msgstr ""
 
 #: constants.php:206 constants.php:486
-#, fuzzy
-#| msgid "Fachbereich Rechtswissenschaften"
 msgid "Fachbereich Rechtswissenschaft"
-msgstr "School of Law"
+msgstr ""
 
 #: constants.php:176 constants.php:472
 msgid "Fachbereich Theologie"
-msgstr "School of Theology"
+msgstr ""
 
 #: constants.php:214 constants.php:491
 msgid "Fachbereich Wirtschafts- und Sozialwissenschaften"
-msgstr "School of Business, Economics and Society"
+msgstr ""
 
 #: constants.php:397
 msgid "Fakultäten"
-msgstr "Faculties"
+msgstr ""
 
 #: constants.php:87
 msgid "FAU Forschungszentren"
-msgstr "FAU Research Centers"
+msgstr ""
 
 #: constants.php:819
 msgid "FAU Innovationsökosystems"
-msgstr "FAU Innovation Ecosystem"
+msgstr ""
 
 #: constants.php:96
 msgid "FAU Kompetenzzentren"
-msgstr "FAU Centers of Excellence"
+msgstr ""
 
 #. Name of the plugin
 msgid "FAU ORGA Breadcrumb"
-msgstr "FAU ORGA Breadcrumb"
+msgstr ""
 
 #: constants.php:92
 msgid "FAU Profilzentren"
-msgstr "FAU Profile Centers"
+msgstr ""
 
 #: constants.php:207
 msgid "FB Rechtsw."
-msgstr "School of Law"
+msgstr ""
 
 #: constants.php:725
 msgid "Forschungszentren"
-msgstr "Research Centers"
+msgstr ""
 
 #: constants.php:62 constants.php:651
 msgid "Graduiertenzentrum der FAU"
-msgstr "FAU Graduate Center"
+msgstr ""
 
 #. Author URI of the plugin
-msgid "http://blogs.fau.de/webworking/"
+msgid "https://blogs.fau.de/webworking/"
+msgstr ""
+
+#: constants.php:258 constants.php:537
+msgid "https://www.imbe.med.uni-erlangen.de/"
+msgstr ""
+
+#: constants.php:318 constants.php:596
+msgid "https://www.math.fau.de/"
 msgstr ""
 
 #: constants.php:288 constants.php:562
 msgid "http://www.molmed.uni-erlangen.de/"
 msgstr ""
 
+#: constants.php:268 constants.php:552
+msgid "https://www.recht.med.uni-erlangen.de/"
+msgstr ""
+
 #: constants.php:356 constants.php:630
-#, fuzzy
-#| msgid "https://tf.fau.de"
 msgid "https://cs.fau.de/"
-msgstr "https://www.tf.fau.eu/"
+msgstr ""
 
 #: constants.php:810
 msgid "https://d-hip.de"
@@ -321,10 +296,8 @@ msgid "https://github.com/RRZE-Webteam/fau-orga-breadcrumb"
 msgstr ""
 
 #: constants.php:82 constants.php:687
-#, fuzzy
-#| msgid "https://med.fau.de"
 msgid "https://hpc.fau.de"
-msgstr "https://med.fau.eu"
+msgstr ""
 
 #: constants.php:417
 msgid "https://https://www.angam.phil.fau.de"
@@ -339,14 +312,12 @@ msgid "https://mod.fau.eu"
 msgstr ""
 
 #: constants.php:54 constants.php:662
-#, fuzzy
-#| msgid "https://rw.fau.de"
 msgid "https://sz.fau.de"
-msgstr "https://rw.fau.eu"
+msgstr ""
 
 #: constants.php:37 constants.php:72 constants.php:667 constants.php:677
 msgid "https://ub.fau.de"
-msgstr "https://ub.fau.de/en/"
+msgstr ""
 
 #: constants.php:372 constants.php:615
 msgid "https://www.aibe.tf.fau.de/"
@@ -358,7 +329,7 @@ msgstr ""
 
 #: constants.php:77 constants.php:682
 msgid "https://www.bacatec.de/de/"
-msgstr "https://www.bacatec.de/en/"
+msgstr ""
 
 #: constants.php:253 constants.php:511
 msgid "https://www.biochemie.med.fau.de/"
@@ -366,7 +337,7 @@ msgstr ""
 
 #: constants.php:303 constants.php:576
 msgid "https://www.biologie.nat.fau.de/"
-msgstr "https://www.biology.nat.fau.eu/"
+msgstr ""
 
 #: constants.php:344 constants.php:620
 msgid "https://www.cbi.tf.fau.de/"
@@ -374,11 +345,11 @@ msgstr ""
 
 #: constants.php:783
 msgid "https://www.cdi.fau.de"
-msgstr "https://www.cdi.fau.de/en/"
+msgstr ""
 
 #: constants.php:308 constants.php:581
 msgid "https://www.chemie.nat.fau.de/"
-msgstr "https://www.chemistry.nat.fau.eu/"
+msgstr ""
 
 #: constants.php:788
 msgid "https://www.csc.fau.eu"
@@ -390,23 +361,23 @@ msgstr ""
 
 #: constants.php:164 constants.php:452
 msgid "https://www.department-paedagogik.phil.fau.de/"
-msgstr "https://www.department-paedagogik.phil.fau.eu/"
+msgstr ""
 
 #: constants.php:362 constants.php:635
 msgid "https://www.department.mb.tf.fau.de/"
-msgstr "https://www.department.mb.tf.fau.eu/"
+msgstr ""
 
 #: constants.php:192 constants.php:422
 msgid "https://www.dhss.phil.fau.de/"
-msgstr "https://www.dhss.phil.fau.eu/"
+msgstr ""
 
 #: constants.php:182 constants.php:442
 msgid "https://www.dirs.phil.fau.de/"
-msgstr "https://www.dirs.phil.fau.eu/"
+msgstr ""
 
 #: constants.php:763
 msgid "https://www.eam.fau.eu"
-msgstr "https://www.eam.fau.eu"
+msgstr ""
 
 #: constants.php:350 constants.php:625
 msgid "https://www.eei.tf.fau.de/"
@@ -414,11 +385,11 @@ msgstr ""
 
 #: constants.php:736
 msgid "https://www.esi.fau.de"
-msgstr "https://www.esi.fau.de/en/"
+msgstr ""
 
 #: constants.php:741
 msgid "https://www.ezire.fau.de"
-msgstr "https://www.ezire.fau.eu"
+msgstr ""
 
 #: constants.php:145 constants.php:427
 msgid "https://www.fachdidaktiken.phil.fau.de"
@@ -426,17 +397,15 @@ msgstr ""
 
 #: constants.php:21 constants.php:391
 msgid "https://www.fau.de"
-msgstr "https://www.fau.eu"
+msgstr ""
 
 #: constants.php:652
 msgid "https://www.fau.de/graduiertenzentrum/"
-msgstr "https://www.fau.eu/graduate-centre/"
+msgstr ""
 
 #: constants.php:313 constants.php:591
-#, fuzzy
-#| msgid "https://www.geographie.nat.fau.de/"
 msgid "https://www.geo.nat.fau.de/"
-msgstr "https://www.geography.nat.fau.eu/"
+msgstr ""
 
 #: constants.php:150 constants.php:432
 msgid "https://www.germanistik.phil.fau.de/"
@@ -458,17 +427,13 @@ msgstr ""
 msgid "https://www.igem.med.fau.de/"
 msgstr ""
 
-#: constants.php:258 constants.php:537
-msgid "https://www.imbe.med.uni-erlangen.de/"
-msgstr ""
-
 #: constants.php:699
 msgid "https://www.immunology.fau.de"
 msgstr ""
 
 #: constants.php:278 constants.php:547
 msgid "https://www.ipasum.med.fau.de/"
-msgstr "https://www.ipasum.med.fau.de/en/"
+msgstr ""
 
 #: constants.php:208 constants.php:487
 msgid "https://www.jura.rw.fau.de"
@@ -480,21 +445,15 @@ msgstr ""
 
 #: constants.php:773
 msgid "https://www.lehre.fau.de"
-msgstr "https://www.lehre.fau.de/en/"
+msgstr ""
 
 #: constants.php:704
 msgid "https://www.lightmatter.fau.de"
 msgstr ""
 
-#: constants.php:318 constants.php:596
-#, fuzzy
-#| msgid "http://www.math.fau.de/"
-msgid "https://www.math.fau.de/"
-msgstr "https://en.www.math.fau.de/"
-
 #: constants.php:226 constants.php:499
 msgid "https://www.med.fau.de"
-msgstr "https://www.med.fau.eu"
+msgstr ""
 
 #: constants.php:532
 msgid ""
@@ -503,17 +462,15 @@ msgstr ""
 
 #: constants.php:815
 msgid "https://www.medical-valley-emn.de"
-msgstr "https://www.medical-valley-emn.de/en/"
+msgstr ""
 
 #: constants.php:709
 msgid "https://www.medicalengineering.fau.de"
 msgstr ""
 
 #: constants.php:295 constants.php:569
-#, fuzzy
-#| msgid "https://nat.fau.de"
 msgid "https://www.nat.fau.de"
-msgstr "https://nat.fau.eu"
+msgstr ""
 
 #: constants.php:751 constants.php:820
 msgid "https://www.new.fau.eu"
@@ -532,29 +489,23 @@ msgid "https://www.pharmakologie.med.fau.de/"
 msgstr ""
 
 #: constants.php:130 constants.php:405
-#, fuzzy
-#| msgid "https://phil.fau.de"
 msgid "https://www.phil.fau.de"
-msgstr "https://phil.fau.eu"
+msgstr ""
 
 #: constants.php:412 constants.php:457 constants.php:462
 msgid "https://www.phil.fau.de/fakultaet/organisation-organe/departments"
-msgstr "https://www.phil.fau.eu/faculty/organisation/departments/"
+msgstr ""
 
 #: constants.php:323 constants.php:601
 msgid "https://www.physik.nat.fau.de/"
-msgstr "https://www.physics.nat.fau.eu/"
+msgstr ""
 
 #: constants.php:243 constants.php:542
 msgid "https://www.physiologie1.uni-erlangen.de/"
-msgstr "https://www.physiologie1.med.fau.de/en/"
+msgstr ""
 
 #: constants.php:248 constants.php:557
 msgid "https://www.physiologie2.med.fau.de/"
-msgstr "https://www.physiologie2.med.fau.de/en/"
-
-#: constants.php:268 constants.php:552
-msgid "https://www.recht.med.uni-erlangen.de/"
 msgstr ""
 
 #: constants.php:43 constants.php:657
@@ -562,10 +513,8 @@ msgid "https://www.rrze.fau.de"
 msgstr ""
 
 #: constants.php:200 constants.php:480
-#, fuzzy
-#| msgid "https://wiso.rw.fau.de"
 msgid "https://www.rw.fau.de"
-msgstr "https://www.wiso.rw.fau.eu/"
+msgstr ""
 
 #: constants.php:719
 msgid "https://www.solar.fau.de"
@@ -573,11 +522,11 @@ msgstr ""
 
 #: constants.php:187 constants.php:467
 msgid "https://www.sport.fau.de"
-msgstr "https://www.sport.fau.eu/"
+msgstr ""
 
 #: constants.php:336 constants.php:608
 msgid "https://www.tf.fau.de"
-msgstr "https://www.tf.fau.eu"
+msgstr ""
 
 #: constants.php:177 constants.php:473
 msgid "https://www.theologie.fau.de"
@@ -585,11 +534,11 @@ msgstr ""
 
 #: constants.php:216 constants.php:492
 msgid "https://www.wiso.rw.fau.de"
-msgstr "https://www.wiso.rw.fau.eu"
+msgstr ""
 
 #: constants.php:367 constants.php:640
 msgid "https://www.ww.tf.fau.de"
-msgstr "https://www.ww.tf.fau.eu/"
+msgstr ""
 
 #: constants.php:49 constants.php:672
 msgid "https://www.zfl.fau.de"
@@ -597,7 +546,7 @@ msgstr ""
 
 #: constants.php:768
 msgid "https://www.ziwis.fau.de"
-msgstr "https://www.ziwis.fau.eu"
+msgstr ""
 
 #: constants.php:805
 msgid "https://zollhof.de"
@@ -605,91 +554,87 @@ msgstr ""
 
 #: constants.php:698
 msgid "Immunmedizin (FAU I-MED)"
-msgstr "Immunomedicine (FAU I-MED)"
+msgstr ""
 
 #: constants.php:794
 msgid "Innovationsorte"
-msgstr "Places of innovation"
+msgstr ""
 
 #: constants.php:237 constants.php:505
 msgid "Institut für Anatomie"
-msgstr "Institute of Anatomy"
+msgstr ""
 
 #: constants.php:252 constants.php:510
 msgid "Institut für Biochemie"
-msgstr "Institute of Biochemistry"
+msgstr ""
 
 #: constants.php:282 constants.php:515
 msgid "Institut für Biomedizin des Alterns"
-msgstr "Institute for Biomedicine of Aging "
+msgstr ""
 
 #: constants.php:272 constants.php:520
 msgid "Institut für Experimentelle und Klinische Pharmakologie und Toxikologie"
-msgstr "Institute of Experimental and Clinical Pharmacology and Toxicology"
+msgstr ""
 
 #: constants.php:262 constants.php:525
 msgid "Institut für Geschichte und Ethik der Medizin"
-msgstr "Institute of the History of Medicine and Medical Ethics"
+msgstr ""
 
 #: constants.php:531
 msgid "Institut für Lehre und Forschung am Medizincampus Oberfranken"
-msgstr "Institute of Research and Teaching, Medizincampus Oberfranken"
+msgstr ""
 
 #: constants.php:257 constants.php:536
 msgid "Institut für Medizininformatik, Biometrie und Epidemiologie"
-msgstr "Institute of Medical Informatics, Biometry, and Epidemiology"
+msgstr ""
 
 #: constants.php:242 constants.php:541
 msgid "Institut für Physiologie und Pathophysiologie"
-msgstr "Institute of Physiology and Pathophysiology"
+msgstr ""
 
 #: constants.php:267 constants.php:551
 msgid "Institut für Rechtsmedizin"
-msgstr "Institute of Forensic Medicine"
+msgstr ""
 
 #: constants.php:247 constants.php:556
 msgid "Institut für Zelluläre und Molekulare Physiologie"
-msgstr "Institute of Cellular and Molecular Physiology"
+msgstr ""
 
 #: constants.php:277 constants.php:546
 msgid "Institut und Poliklinik für Arbeits-, Sozial- und Umweltmedizin"
 msgstr ""
-"Institute and Outpatient Clinic of Occupational, Social, and Environmental "
-"Medicine"
 
 #: constants.php:116
 msgid "Institutionelle Kooperations- und Förderprojekte"
-msgstr "Institutional cooperation and funding projects"
+msgstr ""
 
 #: constants.php:767
 msgid "Interdisziplinäre Wissenschaftsreflexion (FAU ZIWIS)"
-msgstr "Interdisciplinary reflection on science (FAU ZIWIS)"
+msgstr ""
 
 #: constants.php:740
 msgid "Islam und Recht in Europa (FAU EZIRE)"
-msgstr "Islam and Law in Europe (FAU EZIRE)"
+msgstr ""
 
 #: constants.php:799
 msgid "JOSEPHS"
 msgstr ""
 
 #: includes/settings.php:125 includes/settings.php:244
-#, fuzzy
-#| msgid "Keine (Keine Fakulätszuordnung oder Zentralbereich)"
 msgid "Keine (Keine Fakultätszuordnung oder Zentralbereich)"
-msgstr "None (no faculty or central area)"
+msgstr ""
 
 #: constants.php:287 constants.php:561
 msgid "Klinisch-Molekularbiologisches Forschungszentrum"
-msgstr "Center of Molecular Medicine"
+msgstr ""
 
 #: constants.php:757
 msgid "Kompetenzzentren"
-msgstr "Competence Centers"
+msgstr ""
 
 #: constants.php:703
 msgid "Licht.Materia.Quantentechnologien (FAU LMQ)"
-msgstr "Light.Matter.QuantumTechnologies (FAU LMQ)"
+msgstr ""
 
 #: constants.php:745
 msgid "Mathematics of Data (FAU MoD)"
@@ -701,35 +646,35 @@ msgstr ""
 
 #: constants.php:224 constants.php:498
 msgid "Medizinische Fakultät"
-msgstr "Faculty of Medicine"
+msgstr ""
 
 #: constants.php:708
 msgid "Medizintechnik (FAU MT)"
-msgstr "Medical Engineering (FAU MT)"
+msgstr ""
 
 #: constants.php:124
 msgid "Museen und Sammlungen"
-msgstr "Museums and Collections"
+msgstr ""
 
 #: constants.php:293 constants.php:568
 msgid "Naturwissenschaftliche Fakultät"
-msgstr "Faculty of Sciences"
+msgstr ""
 
 #: constants.php:713
 msgid "Neue Materialien und Prozesse (FAU NMP)"
-msgstr "New Materials and Processes (FAU NMP)"
+msgstr ""
 
 #: constants.php:750
 msgid "Neue Wirkstoffe (FAU NeW)"
-msgstr "New Bioactive Compounds (FAU NeW)"
+msgstr ""
 
 #: constants.php:777
 msgid "Optical Imaging Compentence Center (FAU OICE)"
-msgstr "Competence Center Optical Imaging (FAU OICE)"
+msgstr ""
 
 #: includes/functions.php:448
 msgid "Organisatorische Navigation"
-msgstr "Organizational navigation"
+msgstr ""
 
 #: includes/settings.php:153
 msgid ""
@@ -737,24 +682,22 @@ msgid ""
 "nächsthöhere</strong> Organisationseinheit aus, zu der die Website "
 "zugeordnet werden kann."
 msgstr ""
-"Organizational assignment: Please select the <strong> next higher </strong> "
-"organizational unit to which the website can be assigned."
 
 #: constants.php:128 constants.php:404
 msgid "Philosophische Fakultät und Fachbereich Theologie"
-msgstr "Faculty of Humanities, Social Sciences, and Theology"
+msgstr ""
 
 #: constants.php:693
 msgid "Profilzentren"
-msgstr "Profile Centers"
+msgstr ""
 
 #: constants.php:198 constants.php:479
 msgid "Rechts- und Wirtschaftswissenschaftliche Fakultät"
-msgstr "Faculty of Business, Economics, and Law"
+msgstr ""
 
 #: constants.php:41 constants.php:656
 msgid "Regionales Rechenzentrum Erlangen"
-msgstr "Regional Computer Lab"
+msgstr ""
 
 #: constants.php:782
 msgid "Research Data and Information (FAU CDI)"
@@ -774,15 +717,15 @@ msgstr ""
 
 #: includes/settings.php:45
 msgid "Speichern"
-msgstr "Save"
+msgstr ""
 
 #: constants.php:53 constants.php:661
 msgid "Sprachenzentrum"
-msgstr "Language Centre"
+msgstr ""
 
 #: constants.php:334 constants.php:607
 msgid "Technische Fakultät"
-msgstr "Faculty of Engineering"
+msgstr ""
 
 #: fau-orga-breadcrumb.php:124
 msgid "This plugin is intended for FAU themes only."
@@ -790,53 +733,43 @@ msgstr ""
 
 #: constants.php:35 constants.php:666
 msgid "Universitätsbibliothek"
-msgstr "University Library"
+msgstr ""
 
 #. 1: current PHP version, 2: required PHP version
 #: fau-orga-breadcrumb.php:107
-#, fuzzy, php-format
-#| msgid ""
-#| "Your server is running PHP version %s. Please upgrade at least to PHP "
-#| "version %s."
+#, php-format
 msgid ""
 "Your server is running PHP version %1$s. Please upgrade at least to PHP "
 "version %2$s."
 msgstr ""
-"Your server is running PHP version %s. Please upgrade at least to PHP "
-"version %s."
 
 #. 1: current WP version, 2: required WP version
 #: fau-orga-breadcrumb.php:116
-#, fuzzy, php-format
-#| msgid ""
-#| "Your Wordpress version is %s. Please upgrade at least to Wordpress "
-#| "version %s."
+#, php-format
 msgid ""
 "Your WordPress version is %1$s. Please upgrade at least to WordPress version "
 "%2$s."
 msgstr ""
-"Your Wordpress version is %s. Please upgrade at least to Wordpress version "
-"%s."
 
 #: constants.php:30 constants.php:646
 msgid "Zentrale Einrichtungen"
-msgstr "Central facilities"
+msgstr ""
 
 #: constants.php:120
 msgid "Zentrale Serviceeinrichtungen"
-msgstr "Central service facilities"
+msgstr ""
 
 #: constants.php:25
 msgid "Zentrale Universitätsverwaltung"
-msgstr "Central university administration"
+msgstr ""
 
 #: constants.php:48 constants.php:671
 msgid "Zentrum für Lehrerinnen- und Lehrerbildung"
-msgstr "Center for Teacher Education"
+msgstr ""
 
 #: constants.php:81 constants.php:686
 msgid "Zentrum für Nationales Hochleistungsrechnen Erlangen"
-msgstr "Erlangen National High-Performance Computing Center"
+msgstr ""
 
 #: constants.php:804
 msgid "ZOLLHOF"

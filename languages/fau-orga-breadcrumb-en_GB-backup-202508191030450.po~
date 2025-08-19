@@ -18,15 +18,15 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "POT-Creation-Date: 2021-11-25 16:20+0000\n"
-"PO-Revision-Date: 2025-08-19 10:30+0000\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2025-08-19 10:27+0000\n"
+"Last-Translator: Wolfgang Wiese <wolfgang.wiese@fau.de>\n"
 "Language: en_GB\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.8.0; wp-6.8.2; php-8.2.23"
+"X-Loco-Version: 2.5.5; wp-5.8.2"
 
 #: constants.php:772
 msgid " Lehre (FAU Lehre)"
-msgstr "Education (FAU Education)"
+msgstr ""
 
 #: includes/settings.php:172
 msgid ""
@@ -288,7 +288,7 @@ msgstr "FAU Profile Centers"
 
 #: constants.php:207
 msgid "FB Rechtsw."
-msgstr "School of Law"
+msgstr ""
 
 #: constants.php:725
 msgid "Forschungszentren"

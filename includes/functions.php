@@ -3,16 +3,10 @@
 namespace FAU\ORGA\Breadcrumb;
 
 
-add_action(
-    'customize_save_after',
-    __NAMESPACE__ . '\\fau_orga_sync_on_customize_save_elemental',
-    10,
-    1
-);
-
 /*-----------------------------------------------------------------------------------*/
-/* Globale Pluginfunktionen
+/* Globale Plugin-Variablen
 /*-----------------------------------------------------------------------------------*/
+/** @var array Namen bekannter FAU-/RRZE-Themes (für Erkennung/Kompatibilität) */
 $known_themes = array(
     'fauthemes' => [
         'FAU-Einrichtungen',
@@ -32,22 +26,27 @@ $known_themes = array(
 );
 $fau_orga_fautheme = get_fau_orga_fautheme();
 
+//*-----------------------------------------------------------------------------------*/
+/* Customizer-Sync für FAU-Elemental
+/*-----------------------------------------------------------------------------------*/
+
 /**
- * Synchronisiert die Plugin-Option "site-orga" nach dem Speichern im Customizer,
- * ausschließlich für das Theme FAU-Elemental.
+ * Synchronisiert die Plugin-Option "site-orga" nach dem Speichern im Customizer (nur FAU-Elemental).
  *
+ * @param \WP_Customize_Manager $manager
+ * @return void
  */
 function fau_orga_sync_on_customize_save_elemental(\WP_Customize_Manager $manager): void
 {
-    // Prüfen, ob das aktive Theme FAU-Elemental ist
+    // Aktives Theme prüfen
     $theme = wp_get_theme();
     if (!$theme) {
         return;
     }
 
-    $name       = (string) $theme->get('Name');
-    $template   = strtolower((string) $theme->get_template());
-    $stylesheet = strtolower((string) $theme->get_stylesheet());
+    $name = (string)$theme->get('Name');
+    $template = strtolower((string)$theme->get_template());
+    $stylesheet = strtolower((string)$theme->get_stylesheet());
 
     $isElemental = (strcasecmp($name, 'FAU-Elemental') === 0)
         || in_array($template, ['fau-elemental', 'fauelemental'], true)
@@ -57,17 +56,16 @@ function fau_orga_sync_on_customize_save_elemental(\WP_Customize_Manager $manage
         return;
     }
 
-    // Die frisch gespeicherten Werte aus dem Customizer laden.
-    // post_value() wird bevorzugt, um Werte auch während des Speichervorgangs korrekt zu erhalten.
-    $type    = (string) ($manager->post_value('faue_website_type') ?? get_theme_mod('faue_website_type', ''));
-    $faculty = (string) ($manager->post_value('faue_faculty') ?? get_theme_mod('faue_faculty', ''));
+    // Frisch gespeicherte Werte direkt aus dem Customizer lesen
+    $type = (string)($manager->post_value('faue_website_type') ?? get_theme_mod('faue_website_type', ''));
+    $faculty = (string)($manager->post_value('faue_faculty') ?? get_theme_mod('faue_faculty', ''));
 
     // Plugin-Optionen laden
-    $options     = get_option('fau_orga_breadcrumb_options', []);
-    $options     = is_array($options) ? $options : [];
-    $currentOrg  = isset($options['site-orga']) ? (string) $options['site-orga'] : '';
+    $options = get_option('fau_orga_breadcrumb_options', []);
+    $options = is_array($options) ? $options : [];
+    $currentOrg = isset($options['site-orga']) ? (string)$options['site-orga'] : '';
 
-    // Fall 1: Root-Seite der FAU oder Kooperation → Zuordnung löschen
+    // FAU-Root oder Kooperation → Zuordnung löschen
     if ($type === 'fau' || $type === 'cooperation') {
         if ($currentOrg !== '') {
             $options['site-orga'] = '';
@@ -76,13 +74,11 @@ function fau_orga_sync_on_customize_save_elemental(\WP_Customize_Manager $manage
         return;
     }
 
-    // Fall 2: Fakultätskontext → neue Orga ermitteln und ggf. speichern
+    // Fakultäts-Kontext → Orga ermitteln und aktualisieren
     $isFacultyContext = in_array($type, ['faculty', 'chair'], true) || ($type === 'other' && $faculty !== '');
     if ($isFacultyContext) {
         // Fakultäts-ID in FAU.ORG-Organisationseinheit umwandeln
-        $newOrg = $faculty !== '' ? (string) get_fau_orga_fauorg_by_faculty($faculty) : '';
-
-        // Nur aktualisieren, wenn sich der Wert geändert hat und nicht leer ist
+        $newOrg = $faculty !== '' ? (string)get_fau_orga_fauorg_by_faculty($faculty) : '';
         if ($newOrg !== '' && $newOrg !== $currentOrg) {
             $options['site-orga'] = $newOrg;
             update_option('fau_orga_breadcrumb_options', $options);
@@ -91,15 +87,21 @@ function fau_orga_sync_on_customize_save_elemental(\WP_Customize_Manager $manage
 }
 
 /*-----------------------------------------------------------------------------------*/
-/* Admin Notice auf Dashboard, damit man die ORGA Breadcrumb setzt
+/* Admin Notice – Hinweis, wenn Zuordnung fehlt
 /*-----------------------------------------------------------------------------------*/
+/**
+ * Zeigt Admin-Hinweis auf dem Dashboard, wenn noch keine Orga-Zuordnung gesetzt ist.
+ *
+ * @return void
+ */
 function fau_orga_admin_notice(): void
 {
     global $pagenow;
-    global $fau_orga_fautheme;
+//    global $fau_orga_fautheme;
 
     $website_type = get_theme_mod("website_type");
 
+    // Für zentrale Portale, Kooperationen und Fakultätsportale nicht anzeigen
     if (isset($website_type)) {
         if (($website_type == -1) || ($website_type == 3) || ($website_type == 0)) {
             return;
@@ -134,13 +136,14 @@ function fau_orga_admin_notice(): void
 add_action('admin_notices', __NAMESPACE__ . '\\fau_orga_admin_notice');
 
 
+/*-----------------------------------------------------------------------------------*/
+/* Theme-Erkennung FAU-Elemental
+/*-----------------------------------------------------------------------------------*/
+
 /**
- * Prüft, ob das aktuell aktive Theme das FAU-Elemental Theme ist.
+ * Prüft, ob FAU-Elemental (oder Child) aktiv ist.
  *
- * Erkennt sowohl das Parent Theme "FAU-Elemental" als auch Child Themes,
- * die auf dem Template-Verzeichnis "fau-elemental" basieren.
- *
- * @return bool true, wenn FAU-Elemental (oder Child-Theme davon) aktiv ist
+ * @return bool
  */
 function fau_is_elemental_theme(): bool
 {
@@ -150,30 +153,25 @@ function fau_is_elemental_theme(): bool
         return false;
     }
 
-    // Theme-Name aus style.css (z. B. "FAU-Elemental")
     $name = (string)$theme->get('Name');
+    $template = strtolower((string)$theme->get_template());
+    $stylesheet = strtolower((string)$theme->get_stylesheet());
 
-    // Template-Ordner (Parent Theme Slug, z. B. "fau-elemental")
-    $template = (string)$theme->get_template();
-
-    // Stylesheet-Ordner (aktives Theme-Verzeichnis, kann Child oder Parent sein)
-    $stylesheet = (string)$theme->get_stylesheet();
-
-    // Vergleich: Entweder Name exakt "FAU-Elemental" (Groß-/Kleinschreibung egal)
     $nameMatch = (strcasecmp($name, 'FAU-Elemental') === 0);
-
-    // Oder Template-/Stylesheet-Ordner ist "fau-elemental" (Slug)
-    $dirMatch = in_array(strtolower($template), ['fau-elemental', 'fauelemental'], true)
-        || in_array(strtolower($stylesheet), ['fau-elemental', 'fauelemental'], true);
+    $dirMatch = in_array($template, ['fau-elemental', 'fauelemental'], true)
+        || in_array($stylesheet, ['fau-elemental', 'fauelemental'], true);
 
     return $nameMatch || $dirMatch;
 }
 
+/*-----------------------------------------------------------------------------------*/
+/* Elemental-Helfer: Website-Typ & Fakultät
+/*-----------------------------------------------------------------------------------*/
+
 /**
- * Liefert den in den Theme-Einstellungen gesetzten Website-Typ.
- * Mögliche Werte: 'fau', 'faculty', 'chair', 'other', 'cooperation'
+ * Liefert den Elemental-Website-Typ: 'fau', 'faculty', 'chair', 'other', 'cooperation'.
  *
- * @return string Website-Typ aus Customizer
+ * @return string
  */
 function fau_elemental_site_type(): string
 {
@@ -181,10 +179,9 @@ function fau_elemental_site_type(): string
 }
 
 /**
- * Liefert die in den Theme-Einstellungen gesetzte Fakultät.
- * Mögliche Werte: 'phil', 'nat', 'med', 'rw', 'tf' oder leer
+ * Liefert die Elemental-Fakultät: 'phil','nat','med','rw','tf' oder ''.
  *
- * @return string Fakultäts-Slug aus Customizer
+ * @return string
  */
 function fau_elemental_faculty_slug(): string
 {
@@ -192,158 +189,182 @@ function fau_elemental_faculty_slug(): string
 }
 
 /*-----------------------------------------------------------------------------------*/
-/* Get FAU.ORG by faculty
+/* Mapping: Fakultät → FAU.ORG-ID
 /*-----------------------------------------------------------------------------------*/
-function get_fau_orga_fauorg_by_faculty($faculty = '')
+/**
+ * Ermittelt die FAU.ORG-ID für eine gegebene Fakultät (z. B. 'phil' → '1100000000').
+ *
+ * @param string $faculty Fakultäts-Slug.
+ * @return string FAU.ORG-ID oder ''.
+ */
+function get_fau_orga_fauorg_by_faculty($faculty = ''): string
 {
     global $fau_orga_breadcrumb_data;
-    $res = '';
-    // $fauorg = san_fauorg_number($fauorg);
-    if (isset($faculty)) {
-        foreach ($fau_orga_breadcrumb_data as $key => $listdata) {
-            if (isset($listdata['faculty']) && ($listdata['faculty'] == $faculty)) {
-                $res = $key;
-                break;
-            }
+
+    if (!isset($faculty) || $faculty === '') {
+        return '';
+    }
+
+    foreach ($fau_orga_breadcrumb_data as $key => $listdata) {
+        if (isset($listdata['faculty']) && ($listdata['faculty'] === $faculty)) {
+            return (string)$key;
+        }
+    }
+    return '';
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* Kinder einer Orga ermitteln
+/*-----------------------------------------------------------------------------------*/
+/**
+ * Liefert alle direkten Kind-IDs einer Orga.
+ *
+ * @param string $fauorg FAU.ORG-ID.
+ * @return array<string> Liste der Kind-IDs.
+ */
+function get_fau_orga_childs($fauorg = '000000000'): array
+{
+    global $fau_orga_breadcrumb_data;
+
+    $res = [];
+    if (!isset($fauorg) || $fauorg === '') {
+        return $res;
+    }
+
+    foreach ($fau_orga_breadcrumb_data as $key => $listdata) {
+        if (isset($listdata['parent']) && ($listdata['parent'] === $fauorg)) {
+            $res[] = $key;
         }
     }
     return $res;
 }
 
-/*-----------------------------------------------------------------------------------*/
-/* Get child elements
-/*-----------------------------------------------------------------------------------*/
-function get_fau_orga_childs($fauorg = '000000000')
-{
-    global $fau_orga_breadcrumb_data;
-    $res = array();
-    // $fauorg = san_fauorg_number($fauorg);
-    if (isset($fauorg)) {
-        foreach ($fau_orga_breadcrumb_data as $key => $listdata) {
-            if (isset($listdata['parent']) && ($listdata['parent'] == $fauorg)) {
-                $res[] = $key;
-            }
-        }
-    }
-    return $res;
-}
 
 /*-----------------------------------------------------------------------------------*/
-/* get next upper class
+/* Oberklasse (Farbklasse) ermitteln
 /*-----------------------------------------------------------------------------------*/
-function get_fau_orga_upperclass($fauorg = '')
+/**
+ * Ermittelt die nächsthöhere CSS-Klasse (z. B. 'phil','nat',...).
+ *
+ * @param string $fauorg FAU.ORG-ID.
+ * @return string Klasse oder ''.
+ */
+function get_fau_orga_upperclass($fauorg = ''): string
 {
     global $fau_orga_breadcrumb_data;
+
     $res = '';
     $fauorg = san_fauorg_number($fauorg);
 
-    if (isset($fauorg)) {
-
-        if (isset($fau_orga_breadcrumb_data[$fauorg])) {
-
-            if (isset($fau_orga_breadcrumb_data[$fauorg]['class'])) {
-                $res = $fau_orga_breadcrumb_data[$fauorg]['class'];
-            } else {
-                $parent = '';
-                if (isset($fau_orga_breadcrumb_data[$fauorg]['parent'])) {
-                    $parent = $fau_orga_breadcrumb_data[$fauorg]['parent'];
-                }
-
-                while ($parent) {
-
-                    if (isset($fau_orga_breadcrumb_data[$parent]['class'])) {
-                        $res = $fau_orga_breadcrumb_data[$parent]['class'];
-                        $parent = '';
-                        break;
-                    }
-                    if (isset($fau_orga_breadcrumb_data[$parent]['parent'])) {
-                        $parent = $fau_orga_breadcrumb_data[$parent]['parent'];
-                    } else {
-                        $parent = '';
-                        break;
-                    }
-                }
-            }
-
-        }
-
+    if (!isset($fauorg) || $fauorg === '') {
+        return '';
     }
+
+    if (!isset($fau_orga_breadcrumb_data[$fauorg])) {
+        return '';
+    }
+
+    if (isset($fau_orga_breadcrumb_data[$fauorg]['class'])) {
+        return (string)$fau_orga_breadcrumb_data[$fauorg]['class'];
+    }
+
+    $parent = $fau_orga_breadcrumb_data[$fauorg]['parent'] ?? '';
+
+    while ($parent !== '') {
+        if (isset($fau_orga_breadcrumb_data[$parent]['class'])) {
+            $res = (string)$fau_orga_breadcrumb_data[$parent]['class'];
+            $parent = '';
+            break;
+        }
+        $parent = $fau_orga_breadcrumb_data[$parent]['parent'] ?? '';
+    }
+
     return $res;
 }
 
+
 /*-----------------------------------------------------------------------------------*/
-/* create option list for forms
+/* Optionsliste (Select) aufbauen
 /*-----------------------------------------------------------------------------------*/
-function get_fau_orga_form_optionlist($fauorg = '000000000', $preorg = '000000000', $level = 0, $maxdepth = 4)
+/**
+ * Erzeugt die HTML-Options (<option>) rekursiv für das Select.
+ *
+ * @param string $fauorg Startknoten (Root).
+ * @param string $preorg Vorausgewählte Orga.
+ * @param int $level Rekursionstiefe.
+ * @param int $maxdepth Maximale Tiefe.
+ * @return string HTML mit <option>-Einträgen.
+ */
+function get_fau_orga_form_optionlist($fauorg = '0000000000', $preorg = '0000000000', $level = 0, $maxdepth = 4): string
 {
     global $fau_orga_breadcrumb_data;
-    global $fau_orga_breadcrumb_config;
-
 
     $fauorg = san_fauorg_number($fauorg);
-
-    if (isset($preorg)) {
-        $org = san_fauorg_number($preorg);
-    }
+    $org = isset($preorg) ? san_fauorg_number($preorg) : '';
 
     $res = '';
     $faculty = get_fau_faculty_by_theme();
-    $website_type = get_theme_mod("website_type");
+    $children = get_fau_orga_childs($fauorg);
+    if (empty($children)) {
+        return '';
+    }
 
-    $firstlevel = get_fau_orga_childs($fauorg);
+    foreach ($children as $key) {
+        // --- Filter / Verhalten je nach Kontext ---
+        $skip_render = false;
 
-    if (!empty($firstlevel)) {
-        foreach ($firstlevel as $key) {
-            if (!empty($faculty)) {
-                if (($faculty !== 'zentral') && isset($fau_orga_breadcrumb_data[$key]['faculty']) && ($fau_orga_breadcrumb_data[$key]['faculty'] !== $faculty)) {
-                    // wenn wir in einem Fakultatstheme sind, dann lasse alle Einrichtungen die zu anderen Fakultaeten gehören, weg
-                    continue;
-                }
-                if (($faculty == 'zentral') && isset($fau_orga_breadcrumb_data[$key]['faculty'])) {
-                    // wenn wir im Zentralbereich sind, dann lasse alle Einträge, die Fakultäten ungeordnet sind, weg
-                    continue;
-                }
+        if (!empty($faculty)) {
+            // Fakultätskontext: nur eigene Fakultät anzeigen
+            if ($faculty !== 'zentral'
+                && isset($fau_orga_breadcrumb_data[$key]['faculty'])
+                && $fau_orga_breadcrumb_data[$key]['faculty'] !== $faculty) {
+                continue;
             }
 
+            // Zentral: Fakultätsknoten NICHT rendern, aber in die Kinder absteigen
+            if ($faculty === 'zentral'
+                && isset($fau_orga_breadcrumb_data[$key]['faculty'])) {
+                $skip_render = true;
+            }
+        }
 
+        // --- Option rendern (falls nicht übersprungen) ---
+        if (!$skip_render) {
             $orgclass = get_fau_orga_upperclass($key);
+            $class = 'depth-' . $level . ($orgclass ? (' ' . $orgclass) : '');
 
-            if ($orgclass) {
-                $class = 'depth-' . $level . ' ' . $orgclass;
-            } else {
-                $class = 'depth-' . $level;
-            }
-
-            $res .= '<option class="' . $class . '" value="' . $key . '" ' . selected($org, $key, false);
-            if (isset($fau_orga_breadcrumb_data[$key]['hide']) && ($fau_orga_breadcrumb_data[$key]['hide'] === true)) {
+            $res .= '<option class="' . esc_attr($class) . '" value="' . esc_attr($key) . '" ' . selected($org, $key, false);
+            if (!empty($fau_orga_breadcrumb_data[$key]['hide'])) {
                 $res .= ' disabled';
             }
+            $title = isset($fau_orga_breadcrumb_data[$key]['title']) ? $fau_orga_breadcrumb_data[$key]['title'] : $key;
+            $res .= '>' . esc_html($title) . '</option>';
+        }
 
-            $res .= '>' . $fau_orga_breadcrumb_data[$key]['title'] . '</option>';
-
-
-            if ($level < $maxdepth) {
-
-                $nextlevel = $level + 1;
-                $sublist = get_fau_orga_childs($key);
-                if (!empty($sublist)) {
-                    $res .= get_fau_orga_form_optionlist($key, $preorg, $nextlevel, $maxdepth);
-                }
-            }
-
+        // --- IMMER weiter in die Tiefe gehen, auch wenn dieser Knoten nicht gerendert wurde ---
+        if ($level < $maxdepth) {
+            $nextlevel = $level + 1;
+            // direkt rekursiv in die Kinder dieses Knotens
+            $res .= get_fau_orga_form_optionlist($key, $preorg, $nextlevel, $maxdepth);
         }
     }
+
     return $res;
 }
 
 /*-----------------------------------------------------------------------------------*/
-/* create list for customizer
+/* Choices für den (Legacy-)Customizer
 /*-----------------------------------------------------------------------------------*/
-function get_fau_orga_breadcrumb_customizer_choices()
+/**
+ * Liefert eine flache Key=>Label-Liste aller Orgas (für alte Customizer-Controls).
+ *
+ * @return array<string,string>
+ */
+function get_fau_orga_breadcrumb_customizer_choices(): array
 {
     global $fau_orga_breadcrumb_data;
 
-    $res = array();
+    $res = [];
     foreach ($fau_orga_breadcrumb_data as $key => $listdata) {
         if (isset($listdata['title'])) {
             $res[$key] = $listdata['title'];
@@ -353,17 +374,30 @@ function get_fau_orga_breadcrumb_customizer_choices()
 }
 
 /*-----------------------------------------------------------------------------------*/
-/* sanitize FAU.ORG Number
+/* Sanitizer
 /*-----------------------------------------------------------------------------------*/
+/**
+ * Sanitize einer FAU.ORG-Nummer (nur Ziffern zulassen).
+ *
+ * @param string $s
+ * @return string
+ */
 if (!function_exists('san_fauorg_number')) :
-    function san_fauorg_number($s)
+    function san_fauorg_number($s): string
     {
-        return filter_var(trim($s), FILTER_SANITIZE_NUMBER_INT);
+        return (string)filter_var(trim((string)$s), FILTER_SANITIZE_NUMBER_INT);
     }
 endif;
+
 /*-----------------------------------------------------------------------------------*/
-/* create breadcrumb
+/* Breadcrumb erzeugen
 /*-----------------------------------------------------------------------------------*/
+/**
+ * Erzeugt die Breadcrumb-HTML für eine Orga (oder die aus dem Theme ermittelte).
+ *
+ * @param string $form_org FAU.ORG-ID, optional.
+ * @return string|null HTML der Breadcrumb oder null.
+ */
 function get_fau_orga_breadcrumb($form_org)
 {
     global $fau_orga_breadcrumb_data;
@@ -372,202 +406,113 @@ function get_fau_orga_breadcrumb($form_org)
         $form_org = get_fau_orga_by_theme();
     }
 
-    $schema_listattr = ' itemprop="itemListElement" itemscope  itemtype="https://schema.org/ListItem"';
-
-
-    if ((isset($form_org)) && (isset($fau_orga_breadcrumb_data[$form_org]))) {
-        $path = array();
-        $path[] = $fau_orga_breadcrumb_data[$form_org];
-        if (isset($fau_orga_breadcrumb_data[$form_org]['parent'])) {
-            $parent = $fau_orga_breadcrumb_data[$form_org]['parent'];
-
-
-            while (!empty($parent)) {
-                if ((isset($fau_orga_breadcrumb_data[$parent]['hide'])) && ($fau_orga_breadcrumb_data[$parent]['hide'] == true)) {
-                    // dont add this to the path
-                } else {
-                    $path[] = $fau_orga_breadcrumb_data[$parent];
-                }
-                if (isset($fau_orga_breadcrumb_data[$parent]['parent'])) {
-                    $parent = $fau_orga_breadcrumb_data[$parent]['parent'];
-                } else {
-                    $parent = '';
-                }
-            }
-        }
-
-        $breadcrumb = array_reverse($path);
-        $position = 1;
-        $entry = '';
-        $line = '';
-
-        foreach ($breadcrumb as $value) {
-            $entry = '<li' . $schema_listattr . '>';
-            if (isset($value['url'])) {
-                $entry .= '<a itemprop="item"  href="' . esc_url($value['url']) . '" data-wpel-link="internal">';
-            } else {
-                $entry .= '<span itemprop="item">';
-            }
-            $entry .= '<span itemprop="name">' . $value['title'] . '</span>';
-            if (isset($value['url'])) {
-                $entry .= '</a>';
-            } else {
-                $entry .= '</span>';
-            }
-            $entry .= '<meta itemprop="position" content="' . $position . '" />';
-            $position++;
-            $entry .= '</li>';
-
-            $line .= $entry;
-        }
-
-        $res = '<nav class="orga-breadcrumb" aria-label="' . __('Organisatorische Navigation', 'fau-orga-breadcrumb') . '">';
-        $res .= '<ol class="breadcrumblist" itemscope itemtype="https://schema.org/BreadcrumbList">';
-        $res .= $line;
-        $res .= '</ol>';
-        $res .= '</nav>';
-
-        return $res;
+    if (!isset($form_org) || !isset($fau_orga_breadcrumb_data[$form_org])) {
+        return null;
     }
-    return;
+
+    $schema_listattr = ' itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"';
+
+    // Pfad nach oben sammeln
+    $path = [];
+    $path[] = $fau_orga_breadcrumb_data[$form_org];
+
+    $parent = $fau_orga_breadcrumb_data[$form_org]['parent'] ?? '';
+    while ($parent !== '') {
+        if (empty($fau_orga_breadcrumb_data[$parent]['hide'])) {
+            $path[] = $fau_orga_breadcrumb_data[$parent];
+        }
+        $parent = $fau_orga_breadcrumb_data[$parent]['parent'] ?? '';
+    }
+
+    $breadcrumb = array_reverse($path);
+    $position = 1;
+    $line = '';
+
+    foreach ($breadcrumb as $value) {
+        $entry = '<li' . $schema_listattr . '>';
+        if (!empty($value['url'])) {
+            $entry .= '<a itemprop="item" href="' . esc_url($value['url']) . '">';
+        } else {
+            $entry .= '<span itemprop="item">';
+        }
+        $title = isset($value['title']) ? $value['title'] : '';
+        $entry .= '<span itemprop="name">' . esc_html($title) . '</span>'; // ✅ esc_html ergänzt
+        $entry .= !empty($value['url']) ? '</a>' : '</span>';
+        $entry .= '<meta itemprop="position" content="' . (int)$position . '" />';
+        $entry .= '</li>';
+        $position++;
+
+        $line .= $entry;
+    }
+
+    $res = '<nav class="orga-breadcrumb" aria-label="' . esc_attr__('Organisatorische Navigation', 'fau-orga-breadcrumb') . '">'; // ✅ esc_attr__
+    $res .= '<ol class="breadcrumblist" itemscope itemtype="https://schema.org/BreadcrumbList">';
+    $res .= $line;
+    $res .= '</ol>';
+    $res .= '</nav>';
+
+    return $res;
 }
 
+
 /*-----------------------------------------------------------------------------------*/
-/* get FAU Theme to find out if the website belongs to a faculty
- * returns
- *     false   if no FAU theme
- *        the string with the faculty nat,phil,tf,rw,med   if one of the faculty theme
- *        the string zentral  if other FAU Theme
- */
+/* FAU-Theme → Fakultät ableiten
 /*-----------------------------------------------------------------------------------*/
-function get_fau_orga_fautheme()
-{
-    global $known_themes;
-
-    $active_theme = wp_get_theme();
-    if ($active_theme->exists()) {
-        $themename = $active_theme->get('Name');
-
-
-        if (isset($known_themes) && isset($known_themes['fauthemes'])) {
-            if (in_array($themename, $known_themes['fauthemes'])) {
-
-                switch ($active_theme) {
-                    case 'FAU-Philfak':
-                        $res = 'phil';
-                        break;
-                    case 'FAU-RWFak':
-                        $res = 'rw';
-                        break;
-                    case 'FAU-Natfak':
-                        $res = 'nat';
-                        break;
-                    case 'FAU-Medfak':
-                        $res = 'med';
-                        break;
-                    case 'FAU-Techfak':
-                        $res = 'tf';
-                        break;
-                    default:
-                        $res = 'zentral';
-                }
-                return $res;
-            }
-        }
-    }
-    return false;
-
-}
-
 
 /**
- * Ermittelt das Fakultäts-Kürzel anhand des aktiven Themes.
- *
- * Funktioniert sowohl für alte FAU-Themes (Erkennung über Theme-Namen und website_type)
- * als auch für das neue FAU Elemental Theme (Erkennung über Customizer-Einstellungen).
+ * Liefert Fakultätskürzel basierend auf aktivem Theme / Customizer-Werten.
  *
  * Rückgabewerte:
  *  - 'phil','nat','med','rw','tf' → eine der Fakultäten
  *  - 'zentral' → zentrale Einrichtung / FAU.de
  *  - '' → keine Zuordnung möglich oder keine Anzeige gewünscht
  *
- * @return string Fakultäts-Kürzel oder leer.
+ * @return string
  */
 function get_fau_faculty_by_theme(): string
 {
-    // ------------------------------------------------------------
-    // 1) Prüfen, ob FAU-Elemental aktiv ist (Name oder Template/Stylesheet)
-    // ------------------------------------------------------------
+    // 1) Elemental?
     $theme = wp_get_theme();
     $isElemental = false;
 
     if ($theme) {
-        $name = (string)$theme->get('Name');        // z. B. "FAU-Elemental"
-        $template = (string)$theme->get_template();     // z. B. "fau-elemental"
-        $stylesheet = (string)$theme->get_stylesheet();   // z. B. "fau-elemental" oder Child
+        $name = (string)$theme->get('Name');
+        $template = strtolower((string)$theme->get_template());
+        $stylesheet = strtolower((string)$theme->get_stylesheet());
 
-        // Erkennung per Name (Groß-/Kleinschreibung ignorieren) ODER per Verzeichnis-Slug
-        if (strcasecmp($name, 'FAU-Elemental') === 0) {
-            $isElemental = true;
-        } elseif (in_array(strtolower($template), ['fau-elemental', 'fauelemental'], true)) {
-            $isElemental = true;
-        } elseif (in_array(strtolower($stylesheet), ['fau-elemental', 'fauelemental'], true)) {
-            $isElemental = true;
-        }
+        $isElemental = (strcasecmp($name, 'FAU-Elemental') === 0)
+            || in_array($template, ['fau-elemental', 'fauelemental'], true)
+            || in_array($stylesheet, ['fau-elemental', 'fauelemental'], true);
     }
 
-    // ------------------------------------------------------------
-    // 2) FAU-Elemental: Werte aus dem Customizer lesen und interpretieren
-    //    - faue_website_type: 'fau','faculty','chair','other','cooperation'
-    //    - faue_faculty:      'phil','nat','med','rw','tf' oder leer
-    // ------------------------------------------------------------
     if ($isElemental) {
         $siteType = (string)get_theme_mod('faue_website_type', '');
         $faculty = (string)get_theme_mod('faue_faculty', '');
 
-        // FAU.de (Root) → Zentralbereich
         if ($siteType === 'fau') {
             return 'zentral';
         }
-
-        // Fakultäts- oder Lehrstuhl-Auftritt → Fakultät muss gesetzt sein
         if (in_array($siteType, ['faculty', 'chair'], true) && $faculty !== '') {
             return $faculty;
         }
-
-        // Department-Ebene im Elemental (kein eigener Typ):
-        // "other" + gesetzte Fakultät wird als Department-Kontext interpretiert
         if ($siteType === 'other' && $faculty !== '') {
             return $faculty;
         }
-
-        // Kooperationen → keine Orga-Breadcrumb
         if ($siteType === 'cooperation') {
             return '';
         }
-
-        // Unbekannt/leer → keine Einschränkung
         return '';
     }
 
-    // ------------------------------------------------------------
-    // 3) Alte FAU-Themes (Legacy): numerischer website_type + ggf. Child-Theme-Erkennung
-    //    - 0 = Fakultätsportal (nur Root)  → 'zentral'
-    //    - 2 = Zentrale Einrichtung        → 'zentral'
-    //    - sonst: per get_fau_orga_fautheme() Fakultät ableiten
-    // ------------------------------------------------------------
+    // 2) Legacy
     $websiteType = get_theme_mod('website_type');
 
     if (isset($websiteType)) {
         if ($websiteType === 0 || $websiteType === 2) {
-            // Fakultätsportal oder Zentrale Einrichtung → Zentralbereich
             return 'zentral';
         }
-
-        // Versuche Fakultät über FAU-Child-Theme zu ermitteln
-        $fautheme = get_fau_orga_fautheme(); // liefert z. B. 'phil','nat','med','rw','tf' oder 'zentral' / false
+        $fautheme = get_fau_orga_fautheme();
         if ($fautheme) {
-            // Optionales Debug-Override (wie bisher)
             $debug = get_theme_mod('debug_website_fakultaet');
             if (isset($debug) && $debug !== false) {
                 return (string)$debug;
@@ -575,59 +520,113 @@ function get_fau_faculty_by_theme(): string
             return $fautheme;
         }
     } else {
-        // Kein website_type gesetzt → reine Child-Theme-Erkennung
         $fautheme = get_fau_orga_fautheme();
         if ($fautheme) {
             return $fautheme;
         }
     }
 
-    // ------------------------------------------------------------
-    // 4) Keine Zuordnung möglich
-    // ------------------------------------------------------------
     return '';
 }
 
+
 /*-----------------------------------------------------------------------------------*/
-/* get fau orga by theme
+/* Orga aus Theme ableiten
 /*-----------------------------------------------------------------------------------*/
-function get_fau_orga_by_theme()
+/**
+ * Liefert FAU.ORG-ID basierend auf der ermittelten Fakultät.
+ *
+ * @return string
+ */
+function get_fau_orga_by_theme(): string
 {
     $faculty = get_fau_faculty_by_theme();
-    return get_fau_orga_fauorg_by_faculty($faculty);
+    return (string)get_fau_orga_fauorg_by_faculty($faculty);
 }
 
 /*-----------------------------------------------------------------------------------*/
-/* enqueue with filter by theme
+/* Styles laden (theme-sensitiv)
 /*-----------------------------------------------------------------------------------*/
-function fau_orga_enqueue_style($style = 'fau-orga-breadcrumb')
+/**
+ * Enqueue der Breadcrumb-Styles – abhängig vom aktiven Theme.
+ *
+ * @param string $style Handle für Fallback.
+ * @return void
+ */
+function fau_orga_enqueue_style($style = 'fau-orga-breadcrumb'): void
 {
 
     $active_theme = wp_get_theme();
-    $theme_name = $active_theme->get('Name');
+    $theme_name = $active_theme ? $active_theme->get('Name') : '';
 
     global $known_themes;
 
-    // 1️⃣ Wenn FAU Elemental aktiv ist → spezielles CSS laden
+    // 1) FAU-Elemental → Plugin-CSS laden
     if ($theme_name === 'FAU-Elemental') {
+        // ✅ Korrektur der Pfadauflösung: plugin_dir_url() braucht eine Datei, nicht ein Verzeichnis
+        $plugin_url = plugin_dir_url(dirname(__DIR__) . '/fau-orga-breadcrumb.php'); // ✅
         wp_enqueue_style(
             'fau-orga-breadcrumb-elemental',
-            plugin_dir_url(__DIR__) . 'css/fau-orga-breadcrumb.css',
+            $plugin_url . 'css/fau-orga-breadcrumb.css',
             [],
-            '1.0'
+            FAU_ORGA_BREADCRUMB_VERSION // ✅ Version aus Konstante
         );
-
-        // 2️⃣ Wenn andere FAU-Themes aktiv sind → KEIN CSS (wie bisher)
-    } elseif (in_array($theme_name, $known_themes['fauthemes'])) {
         return;
-
-        // 3️⃣ Alle anderen Themes → Standard-Breadcrumb-CSS laden
-    } else {
-        wp_enqueue_style($style);
     }
+
+    // 2) Andere FAU-Themes → kein eigenes CSS (wie bisher)
+    if (in_array($theme_name, $known_themes['fauthemes'], true)) {
+        return;
+    }
+
+    // 3) Alle anderen Themes → Fallback-Handle enqueuen (falls registriert)
+    wp_enqueue_style($style);
 }
 
-// Enqueue Breadcrumb Styles im Frontend laden
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\fau_orga_enqueue_style', 99);
 
+/*-----------------------------------------------------------------------------------*/
+/* FAU-Theme → Fakultätskennung (alt)
+/*-----------------------------------------------------------------------------------*/
+
+/**
+ * Liefert die Fakultätskennung anhand alter FAU-Themes oder 'zentral'; false, wenn kein FAU-Theme.
+ *
+ * @return string|false
+ */
+function get_fau_orga_fautheme()
+{
+    global $known_themes;
+
+    $active_theme = wp_get_theme();
+    if (!$active_theme || !$active_theme->exists()) {
+        return false;
+    }
+
+    $themename = (string)$active_theme->get('Name');
+
+    if (!isset($known_themes['fauthemes'])) {
+        return false;
+    }
+
+    if (in_array($themename, $known_themes['fauthemes'], true)) {
+        // ✅ Bugfix: switch über Theme-NAMEN statt WP_Theme-Objekt
+        switch ($themename) { // ✅
+            case 'FAU-Philfak':
+                return 'phil';
+            case 'FAU-RWFak':
+                return 'rw';
+            case 'FAU-Natfak':
+                return 'nat';
+            case 'FAU-Medfak':
+                return 'med';
+            case 'FAU-Techfak':
+                return 'tf';
+            default:
+                return 'zentral';
+        }
+    }
+
+    return false;
+}
 
