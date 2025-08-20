@@ -31,12 +31,12 @@ namespace FAU\ORGA\Breadcrumb;
 
 const RRZE_PHP_VERSION = '7.4';
 const RRZE_WP_VERSION = '5.8';
-
+load_textdomain();// funktioniert aktuell nicht anders???
 require_once __DIR__ . '/constants.php';
 require_once __DIR__ . '/includes/functions.php';
 require_once __DIR__ . '/includes/compat-global.php';
 
-add_action('init', 'FAU\ORGA\Breadcrumb\init');
+add_action('plugins_loaded', 'FAU\ORGA\Breadcrumb\init');
 register_activation_hook(__FILE__, __NAMESPACE__ . '\activation');
 
 
@@ -48,7 +48,7 @@ register_activation_hook(__FILE__, __NAMESPACE__ . '\activation');
  */
 function init(): void
 {
-    load_textdomain();
+
     global $fau_orga_fautheme;
     if ($fau_orga_fautheme) {
         require_once __DIR__ . '/includes/shortcode.php';
@@ -86,9 +86,7 @@ function load_textdomain(): void
  */
 function activation(): void
 {
-    load_textdomain();
     system_requirements();
-
 }
 
 /*-----------------------------------------------------------------------------------*/
