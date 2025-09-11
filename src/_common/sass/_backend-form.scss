@@ -1,0 +1,52 @@
+/***************************************************************************
+/* Backend Form elements for admin settings
+/ *************************************************************************/
+
+.fau_orga_breadcrumb_optionpage {
+    @each $farbtyp, $map in $colormaps {
+        $colorcode: map-get($map, "basis");
+        --color-#{$farbtyp}-basis: #{$colorcode};
+        $colorcode: map-get($map, "basis-kontrast");
+        --color-#{$farbtyp}-basis-kontrast: #{$colorcode};
+        $colorcode: map-get($map, "ci-hell");
+        --color-#{$farbtyp}-ci-hell: #{$colorcode};
+        $colorcode: map-get($map, "ci-hell-kontrast");
+        --color-#{$farbtyp}-ci-hell-kontrast: #{$colorcode};
+    }
+
+    @each $farbtyp, $map in $colormaps {
+        option.#{$farbtyp} {
+            background-color: var(--color-#{$farbtyp}-ci-hell);
+            color: var(--color-#{$farbtyp}-ci-hell-kontrast);
+        }
+        option.#{$farbtyp}.depth-0 {
+            background-color: var(--color-#{$farbtyp}-basis);
+            color: var(--color-#{$farbtyp}-basis-kontrast);
+        }
+    }
+    @for $i from 0 through 5 {
+        select[size] option.depth-#{$i},
+        select[multiple] option.depth-#{$i} {
+            padding-left: calc(0.2em + calc(0.8em * #{$i}));
+        }
+        select[size] option.depth-#{$i}[label]:disabled,
+        select[multiple] option.depth-#{$i}[label]:disabled {
+            font-style: italic;
+            color: #ccc;
+            background-color: #fff;
+        }
+    }
+
+    select {
+        background: none;
+        max-width: 35rem;
+        padding: 0;
+    }
+
+    .fau_org_breadcrumb_preview {
+        nav {
+            display: inline-block;
+            font-style: italic;
+        }
+    }
+}
