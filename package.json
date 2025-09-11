@@ -1,62 +1,21 @@
 {
-  "name": "FAU ORGA Breadcrumb",
-  "textdomain": "fau-orga-breadcrumb",
-  "version": "1.1.19",
-  "keywords": [
-    "WordPress",
-    "Plugin",
-    "FAU",
-    "RRZE"
-  ],
-  "compatibility": {
-    "wprequires": "5.8",
-    "wptestedup": "6.7.1",
-    "phprequires": "7.4"
+  "engines": {
+    "node": ">=23.11.0",
+    "npm": ">=10.9.2"
   },
-  "author": {
-    "name": "RRZE-Webteam <webmaster@fau.de> (https://www.rrze.fau.de)",
-    "url": "https://www.wordpress.rrze.fau.de"
-  },
-  "description": "Displays an organisational breadcrumb",
-  "license": "GNU General Public License v3 or later",
-  "licenseurl": "http://www.gnu.org/licenses/gpl-3.0.html",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/RRZE-Webteam/fau-orga-breadcrumb",
-    "issues": "https://github.com/RRZE-Webteam/fau-orga-breadcrumb/issues",
-    "clone": "git+https://github.com/RRZE-Webteam/fau-orga-breadcrumb.git"
-  },
-  "tags": "breadcrumb, navigation, FAU",
   "browserslist": [
-    "last 3 years"
+    "extends @wordpress/browserslist-config"
   ],
-  "contributors": [],
-  "main": "fau-orga-breadcrumb.php",
   "scripts": {
-    "start": "gulp",
-    "dev": "gulp dev",
-    "build": "gulp build",
-    "pot": "gulp pot"
-  },
-  "source": {
-    "sass": "./src/sass/",
-    "cssmain": "fau-orga-breadcrumb",
-    "cssadmin": "fau-orga-breadcrumb-admin"
-  },
-  "dest": {
-    "css": "./css/"
+    "start": "wp-scripts start",
+    "build": "wp-scripts build",
+    "format": "wp-scripts format src",
+    "lint:js": "wp-scripts lint-js src",
+    "check-engines": "wp-scripts check-engines",
+    "check-licenses": "wp-scripts check-licenses --prod --gpl3",
+    "packages-update": "wp-scripts packages-update"
   },
   "devDependencies": {
-    "gulp": "^4.0.2",
-    "gulp-bump": "^3.2.0",
-    "gulp-dart-sass": "^1.0.2",
-    "gulp-header": "^2.0.9",
-    "gulp-rename": "^2.0.0",
-    "gulp-sass": "^5.0.0",
-    "gulp-touch-cmd": "0.0.1",
-    "gulp-wp-pot": "^2.5.0",
-    "sass": "^1.42.1",
-    "semver": "^7.3.4",
-    "yargs": "^16.2.0"
+    "@wordpress/scripts": "latest"
   }
 }
