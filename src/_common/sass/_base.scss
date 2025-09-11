@@ -1,0 +1,54 @@
+/***************************************************************************
+/* Base vars
+/ *************************************************************************/
+
+$colormap-zentral: (
+    "basis": #04316a,
+    "basis-kontrast": #fff,
+    "ci-hell": #04316a,
+    "ci-hell-kontrast": #fff,
+);
+
+$colormap-phil: (
+    "basis": #963b2f,
+    "basis-kontrast": #fff,
+    "ci-hell": #fdb735,
+    "ci-hell-kontrast": #000,
+);
+
+$colormap-med: (
+    "basis": #005287,
+    "basis-kontrast": #fff,
+    "ci-hell": #18b4f1,
+    "ci-hell-kontrast": #000,
+);
+
+$colormap-nat: (
+    "basis": #266141,
+    "basis-kontrast": #fff,
+    "ci-hell": #7bb725,
+    "ci-hell-kontrast": #000,
+);
+
+$colormap-rw: (
+    "basis": #971b2f,
+    "basis-kontrast": #fff,
+    "ci-hell": #c50f3c,
+    "ci-hell-kontrast": #fff,
+);
+
+$colormap-tf: (
+    "basis": #2f586e,
+    "basis-kontrast": #fff,
+    "ci-hell": #8c9fb1,
+    "ci-hell-kontrast": #000,
+);
+
+$colormaps: (
+    "zentral": $colormap-zentral,
+    "phil": $colormap-phil,
+    "med": $colormap-med,
+    "nat": $colormap-nat,
+    "rw": $colormap-rw,
+    "tf": $colormap-tf,
+);
