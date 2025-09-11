@@ -1,74 +1,100 @@
 <?php
 
-/**
- * Plugin Name: FAU ORGA Breadcrumb
- * Plugin URI:  https://github.com/RRZE-Webteam/fau-orga-breadcrumb
- * Description: Displays an organisational breadcrumb
- * Version:     1.1.19
- * Author:      RRZE-Webteam
- * Author URI:  http://blogs.fau.de/webworking/
- * License:     GNU GPLv2
- * License URI: https://gnu.org/licenses/gpl.html
- * Text Domain: fau-orga-breadcrumb
- */
-
-/* This plugin is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-any later version.
-
-This plugin is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this plugin. If not, see https://gnu.org/licenses/gpl.html 
+/*
+Plugin Name:        FAU ORGA Breadcrumb
+Plugin URI:         https://github.com/RRZE-Webteam/fau-orga-breadcrumb
+Version:            1.2.0
+Description:        Displays an organisational breadcrumb
+Author:             RRZE Webteam
+Author URI:         https://www.wp.rrze.fau.de/
+License:            GNU General Public License Version 3
+License URI:        https://www.gnu.org/licenses/gpl-3.0.html
+Text Domain:        fau-orga-breadcrumb
+Domain Path:        /languages
+Requires at least:  6.8
+Requires PHP:       8.2
 */
-
 
 namespace FAU\ORGA\Breadcrumb;
 
-const RRZE_PHP_VERSION = '7.4';
-const RRZE_WP_VERSION = '5.8';
-load_textdomain();// funktioniert aktuell nicht anders???
-require_once __DIR__ . '/constants.php';
-require_once __DIR__ . '/includes/functions.php';
-require_once __DIR__ . '/includes/compat-global.php';
+defined('ABSPATH') || exit;
 
-add_action('plugins_loaded', 'FAU\ORGA\Breadcrumb\init');
+/**
+ * SPL Autoloader (PSR-4).
+ * 
+ * @param string $class The fully-qualified class name.
+ * @return void
+ */
+spl_autoload_register(function ($class) {
+    $prefix = __NAMESPACE__;
+    $baseDir = __DIR__ . '/includes/';
+
+    $len = strlen($prefix);
+    if (strncmp($prefix, $class, $len) !== 0) {
+        return;
+    }
+
+    $relativeClass = substr($class, $len);
+    $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
+
+    if (file_exists($file)) {
+        require $file;
+    }
+});
+
+// Register activation hook for the plugin
 register_activation_hook(__FILE__, __NAMESPACE__ . '\activation');
 
+// Register deactivation hook for the plugin
+register_deactivation_hook(__FILE__, __NAMESPACE__ . '\deactivation');
 
-/*-----------------------------------------------------------------------------------*/
-/* Init
-/*-----------------------------------------------------------------------------------*/
 /**
- * Initialisiert Plugin-Funktionalität.
+ * Add an action hook for the 'plugins_loaded' hook.
+ * This code hooks into the 'plugins_loaded' action hook to execute a callback function when
+ * WordPress has fully loaded all active plugins and the theme's functions.php file.
  */
-function init(): void
+add_action('plugins_loaded', __NAMESPACE__ . '\loaded');
+
+/**
+ * Activation callback function.
+ * 
+ * @return void
+ */
+function activation()
 {
-
-    global $fau_orga_fautheme;
-    if ($fau_orga_fautheme) {
-        require_once __DIR__ . '/includes/shortcode.php';
-        require_once __DIR__ . '/includes/menu-elemental.php';
-        require_once __DIR__ . '/includes/settings.php';
-
-        add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\register_styles');
-        add_action('customize_register', __NAMESPACE__ . '\\fau_orga_customizer_settings');
-        add_action('admin_enqueue_scripts', __NAMESPACE__ . '\\fau_orga_enqueue_admin_script');
-    }
+    // No special actions are required upon activation.
 }
 
-
-/*-----------------------------------------------------------------------------------*/
-/* Textdomain
-/*-----------------------------------------------------------------------------------*/
 /**
- * Lädt Sprachdateien.
+ * Deactivation callback function.
+ * 
+ * @return void
  */
-function load_textdomain(): void
+function deactivation()
+{
+    // No special actions are required upon deactivation.
+}
+
+/**
+ * Instantiate Plugin class.
+ * 
+ * @return object Plugin
+ */
+function plugin()
+{
+    static $instance;
+    if (null === $instance) {
+        $instance = new Plugin(__FILE__);
+    }
+    return $instance;
+}
+
+/**
+ * Callback function to load the plugin textdomain.
+ * 
+ * @return void
+ */
+function loadTextdomain()
 {
     load_plugin_textdomain(
         'fau-orga-breadcrumb',
@@ -77,84 +103,85 @@ function load_textdomain(): void
     );
 }
 
-
-// -----------------------------------------------------------------------------
-// Aktivierung
-// -----------------------------------------------------------------------------
 /**
- * Wird bei Aktivierung des Plugins ausgeführt.
+ * Check system requirements for the plugin.
+ *
+ * This method checks if the server environment meets the minimum WordPress and PHP version requirements
+ * for the plugin to function properly.
+ *
+ * @return string An error message string if requirements are not met, or an empty string if requirements are satisfied.
  */
-function activation(): void
+function systemRequirements(): string
 {
-    system_requirements();
-}
+    // Initialize an error message string.
+    $error = '';
 
-/*-----------------------------------------------------------------------------------*/
-/* Anforderungen
-/*-----------------------------------------------------------------------------------*/
-/**
- * Prüft Systemanforderungen (PHP, WP, Theme).
- */
-function system_requirements(): void
-{
-    $errors = [];
-
-    if (version_compare(PHP_VERSION, RRZE_PHP_VERSION, '<')) { // Saubere Versionsprüfung.
-        $errors[] = sprintf(
-        /* translators: 1: current PHP version, 2: required PHP version */
-            __('Your server is running PHP version %1$s. Please upgrade at least to PHP version %2$s.', 'fau-orga-breadcrumb'),
-            PHP_VERSION,
-            RRZE_PHP_VERSION
+    // Check if the WordPress version is compatible with the plugin's requirement.
+    if (!is_wp_version_compatible(plugin()->getRequiresWP())) {
+        $error = sprintf(
+            /* translators: 1: Server WordPress version number, 2: Required WordPress version number. */
+            __('The server is running WordPress version %1$s. The plugin requires at least WordPress version %2$s.', 'fau-orga-breadcrumb'),
+            wp_get_wp_version(),
+            plugin()->getRequiresWP()
+        );
+    } elseif (!is_php_version_compatible(plugin()->getRequiresPHP())) {
+        // Check if the PHP version is compatible with the plugin's requirement.
+        $error = sprintf(
+            /* translators: 1: Server PHP version number, 2: Required PHP version number. */
+            __('The server is running PHP version %1$s. The plugin requires at least PHP version %2$s.', 'fau-orga-breadcrumb'),
+            phpversion(),
+            plugin()->getRequiresPHP()
         );
     }
 
-    if (isset($GLOBALS['wp_version']) && version_compare($GLOBALS['wp_version'], RRZE_WP_VERSION, '<')) {
-        $errors[] = sprintf(
-        /* translators: 1: current WP version, 2: required WP version */
-            __('Your WordPress version is %1$s. Please upgrade at least to WordPress version %2$s.', 'fau-orga-breadcrumb'),
-            $GLOBALS['wp_version'],
-            RRZE_WP_VERSION
-        );
+    // Return the error message string, which will be empty if requirements are satisfied.
+    return $error;
+}
+
+/**
+ * Handle the loading of the plugin.
+ *
+ * This function is responsible for initializing the plugin, loading text domains for localization,
+ * checking system requirements, and displaying error notices if necessary.
+ */
+function loaded()
+{
+    // Load the plugin text domain for translations.
+    loadTextDomain();
+
+    // Trigger the 'loaded' method of the main plugin instance.
+    plugin()->loaded();
+
+    // Check system requirements and store any error messages.
+    if ($error = systemRequirements()) {
+        // If there is an error, add an action to display an admin notice with the error message.
+        add_action('admin_init', function () use ($error) {
+            // Check if the current user has the capability to activate plugins.
+            if (current_user_can('activate_plugins')) {
+                // Get plugin data to retrieve the plugin's name.
+                $pluginName = plugin()->getName();
+
+                // Determine the admin notice tag based on network-wide activation.
+                $tag = is_plugin_active_for_network(plugin()->getBaseName()) ? 'network_admin_notices' : 'admin_notices';
+
+                // Add an action to display the admin notice.
+                add_action($tag, function () use ($pluginName, $error) {
+                    printf(
+                        '<div class="notice notice-error"><p>' .
+                            /* translators: 1: The plugin name, 2: The error string. */
+                            esc_html__('Plugins: %1$s: %2$s', 'fau-orga-breadcrumb') .
+                            '</p></div>',
+                        $pluginName,
+                        $error
+                    );
+                });
+            }
+        });
+
+        // Return to prevent further initialization if there is an error.
+        return;
     }
 
-    global $fau_orga_fautheme; // Hinweis für falsches Theme – kein harter Fehler, aber hier als Blocker gewertet.
-    if ($fau_orga_fautheme === false) {
-        $errors[] = __('This plugin is intended for FAU themes only.', 'fau-orga-breadcrumb');
-    }
-
+    // If there are no errors, create an instance of the 'Main' class and trigger its 'loaded' method.
+    new Main();
 }
-
-
-/*-----------------------------------------------------------------------------------*/
-/* Styles
-/*-----------------------------------------------------------------------------------*/
-/**
- * Registriert Frontend-Styles.
- */
-function register_styles(): void
-{
-    wp_register_style(
-        'fau-orga-breadcrumb',
-        plugin_dir_url(__FILE__) . 'css/fau-orga-breadcrumb.css',
-        [],
-        FAU_ORGA_BREADCRUMB_VERSION
-    );
-}
-
-/*-----------------------------------------------------------------------------------*/
-/* Admin Styles
-/*-----------------------------------------------------------------------------------*/
-/**
- * Registriert & lädt Admin-Styles.
- */
-function fau_orga_enqueue_admin_script(string $hook = ''): void
-{
-    wp_register_style(
-        'fau-orga-breadcrumb-admin',
-        plugin_dir_url(__FILE__) . 'css/fau-orga-breadcrumb-admin.css',
-        [],
-        FAU_ORGA_BREADCRUMB_VERSION
-    );
-    wp_enqueue_style('fau-orga-breadcrumb-admin');
-}
-
