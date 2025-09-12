@@ -19,53 +19,51 @@ defined('ABSPATH') || exit;
  */
 final class ElementalMenu
 {
-    /** @var array<string,array<string,mixed>> Flat menu array (id => item) */
-    private array $menu;
+    /** Injected org dataset */
+    private static array $data = [];
 
-    /**
-     * @param array<string,array<string,mixed>> $menu Flat menu data
-     */
-    public function __construct(array $menu)
+    public function __construct()
     {
-        $this->menu = $menu;
+        // Load fau elemental orga data
+        Data::read('fau-elemental-orga');
+
+        self::$data = $fau_elemental_orga_data ?? [];
     }
 
     /**
-     * Factory that uses the legacy global $elemental_menu for convenience.
-     * Prefer explicit construction where possible.
+     * Inject org data (keyed by FAU.ORG ID).
+     *
+     * @param array<string,array<string,mixed>> $data
      */
-    public static function fromGlobal(): self
+    public static function setData(array $data): void
     {
-        /** @var array<string,array<string,mixed>> $elemental_menu */
-        $elemental_menu = $GLOBALS['elemental_menu'] ?? [];
-        return new self(is_array($elemental_menu) ? $elemental_menu : []);
+        self::$data = $data;
     }
 
     /**
      * Builds ONLY the modal content (breadcrumb + hierarchical menu).
      * This mirrors the old get_fau_elemental_menu_html() behavior.
      */
-    public function renderContentHtml(): string
+    public static function renderContentHtml(): string
     {
         $html = '';
 
         // Render breadcrumb (omit when empty)
-        $breadcrumb = $this->renderBreadcrumb();
+        $breadcrumb = self::renderBreadcrumb();
         if ($breadcrumb !== '') {
             $html .= '<div class="fau-elemental-breadcrumb">' . $breadcrumb . '</div>';
         }
 
         // Optionally remove FAU top-level node from menu if conditions don't match
-        $menu = $this->menu;
-        $rootId = \class_exists(OrgaService::class) ? OrgaService::ROOT_ID : '0000000000';
+        $rootId = OrgaService::ROOT_ID;
 
-        if (!$this->shouldShowFauRoot()) {
-            unset($menu[$rootId]);
+        if (!self::shouldShowFauRoot()) {
+            unset(self::$data[$rootId]);
         }
 
         // Main container + hierarchical UL
         $html .= '<div class="menu-meta-nav__modal__content">';
-        $html .= $this->renderTree($menu);
+        $html .= self::renderTree();
         $html .= '</div>';
 
         return $html;
@@ -74,14 +72,13 @@ final class ElementalMenu
     /**
      * Renders the hierarchical <ul>/<li> structure starting at $parentId.
      *
-     * @param array<string,array<string,mixed>> $menu  Flat menu data to use for this render
      * @param string|null $parentId  Start node (null means top-level items without 'parent')
      * @param int $depth             Current depth for CSS classes
      */
-    public function renderTree(array $menu, ?string $parentId = null, int $depth = 0): string
+    public static function renderTree(?string $parentId = null, int $depth = 0): string
     {
         // Filter items by parent
-        $items = array_filter($menu, static function ($item) use ($parentId) {
+        $items = array_filter(self::$data, static function ($item) use ($parentId) {
             if ($parentId === null) {
                 return !isset($item['parent']);
             }
@@ -104,7 +101,7 @@ final class ElementalMenu
 
             // Determine if this item has children
             $hasChildren = !empty(array_filter(
-                $menu,
+                self::$data,
                 static fn($child) => isset($child['parent']) && (string) $child['parent'] === (string) $id
             ));
 
@@ -151,7 +148,7 @@ final class ElementalMenu
                 );
 
                 // Recurse into children
-                $html .= $this->renderTree($menu, (string) $id, $depth + 1);
+                $html .= self::renderTree((string) $id, $depth + 1);
             } else {
                 // Leaf node: anchor
                 $url = isset($item['url']) && $item['url'] !== '' ? (string) $item['url'] : '#';
@@ -169,7 +166,7 @@ final class ElementalMenu
      * Builds the breadcrumb HTML shown above the menu.
      * Uses plugin options and falls back to theme-based org resolution.
      */
-    public function renderBreadcrumb(): string
+    public static function renderBreadcrumb(): string
     {
         // Resolve current org from plugin option
         $options  = get_option('fau_orga_breadcrumb_options');
@@ -194,7 +191,7 @@ final class ElementalMenu
      * Whether the top-level FAU item should be shown in the modal menu.
      * Faculty/chair → show; "other" with faculty set → show; otherwise not.
      */
-    public function shouldShowFauRoot(): bool
+    public static function shouldShowFauRoot(): bool
     {
         // Prefer OrgaService when available
         if (\class_exists(OrgaService::class)) {
