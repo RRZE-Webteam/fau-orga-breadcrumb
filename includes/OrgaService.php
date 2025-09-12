@@ -342,7 +342,7 @@ final class OrgaService
             $line .= $entry;
         }
 
-        $res  = '<nav class="orga-breadcrumb" aria-label="' . esc_attr__('Organisatorische Navigation', 'fau-orga-breadcrumb') . '">';
+        $res  = '<nav class="orga-breadcrumb" aria-label="' . esc_attr__('Organizational Navigation', 'fau-orga-breadcrumb') . '">';
         $res .= '<ol class="breadcrumblist" itemscope itemtype="https://schema.org/BreadcrumbList">';
         $res .= $line;
         $res .= '</ol></nav>';
