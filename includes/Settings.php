@@ -45,19 +45,19 @@ class Settings
 
         // Section (printed above the field + help text)
         add_settings_section(
-            'plugin_main',                                                   // id
-            __('FAU.ORG Breadcrumb Einstellungen', 'fau-orga-breadcrumb'),   // title
-            [$this, 'print_section_text'],                                   // callback
-            'fau_orga_textfield'                                             // page (slug used in do_settings_sections)
+            'plugin_main',                                              // id
+            __('FAU.ORG Breadcrumb Settings', 'fau-orga-breadcrumb'),   // title
+            [$this, 'print_section_text'],                              // callback
+            'fau_orga_textfield'                                        // page (slug used in do_settings_sections)
         );
 
         // Field: the organization selector
         add_settings_field(
-            'fau_orga_site_orga',                            // id
-            __('Einrichtung', 'fau-orga-breadcrumb'),        // label (left column)
-            [$this, 'render_site_orga_field'],               // callback (prints the field)
-            'fau_orga_textfield',                            // page (same as section's page)
-            'plugin_main'                                    // section id
+            'fau_orga_site_orga',                       // id
+            __('Institution', 'fau-orga-breadcrumb'),   // label (left column)
+            [$this, 'render_site_orga_field'],          // callback (prints the field)
+            'fau_orga_textfield',                       // page (same as section's page)
+            'plugin_main'                               // section id
         );
     }
 
@@ -74,7 +74,7 @@ class Settings
                 <?php
                 settings_fields('fau_orga_breadcrumb_options');
                 do_settings_sections('fau_orga_textfield');
-                submit_button(__('Speichern', 'fau-orga-breadcrumb'));
+                submit_button(__('Save', 'fau-orga-breadcrumb'));
                 ?>
             </form>
         </div>
@@ -120,7 +120,7 @@ class Settings
         // Build <option> list using your existing helper that returns HTML
         $optionlist = '';
         if ($show_none) {
-            $optionlist .= '<option value="">' . esc_html__('Keine (Keine Fakultätszuordnung oder Zentralbereich)', 'fau-orga-breadcrumb') . '</option>';
+            $optionlist .= '<option value="">' . esc_html__('None (No faculty assignment or central unit)', 'fau-orga-breadcrumb') . '</option>';
         }
 
         // Append the org structure (expects HTML with <option>/<optgroup>)
@@ -151,7 +151,7 @@ class Settings
     {
         // Intro/help text
         echo '<p>' . wp_kses_post(
-            __('Organisatorische Zuordnung: Bitte wählen Sie hier die <strong>nächsthöhere</strong> Organisationseinheit aus, zu der die Website zugeordnet werden kann.', 'fau-orga-breadcrumb')
+            __('Organizational Assignment: Please select the <strong>next higher</strong> organizational unit to which the website can be assigned.', 'fau-orga-breadcrumb')
         ) . '</p>';
 
         // Website type notices (legacy numeric)
@@ -160,23 +160,23 @@ class Settings
         if ($website_type !== null && $website_type !== '') {
             if ((int) $website_type === 0) {
                 echo '<div class="notice notice-warning is-dismissible"><p>' .
-                    esc_html__('Achtung: Die Website wurde im Customizer als Fakultätsportal definiert. Daher stehen der Fakultät untergeordnete Einrichtungen nicht zur Auswahl zur Verfügung. Die Orga Breadcrumb wird nicht angezeigt.', 'fau-orga-breadcrumb') .
+                    esc_html__('Warning: The website has been defined in the Customizer as a faculty portal. Therefore, subunits of the faculty are not available for selection. The Orga Breadcrumb will not be displayed.', 'fau-orga-breadcrumb') .
                     '</p></div>';
             } elseif ((int) $website_type === 1) {
                 echo '<div class="notice notice-info is-dismissible"><p>' .
-                    esc_html__('Die Website wurde im Customizer als Einrichtung einer Fakultät definiert. Daher stehen nur zentrale Einrichtungen und der Fakultät untergeordnete Einrichtungen zur Auswahl zur Verfügung.', 'fau-orga-breadcrumb') .
+                    esc_html__('The website has been defined in the Customizer as a faculty subunit. Therefore, only central units and subunits of the faculty are available for selection.', 'fau-orga-breadcrumb') .
                     '</p></div>';
             } elseif ((int) $website_type === 2) {
                 echo '<div class="notice notice-info is-dismissible"><p>' .
-                    esc_html__('Die Website wurde im Customizer als zentrale Einrichtung definiert. Daher stehen nur zentrale Einrichtungen zur Auswahl zur Verfügung.', 'fau-orga-breadcrumb') .
+                    esc_html__('The website has been defined in the Customizer as a central unit. Therefore, only central units are available for selection.', 'fau-orga-breadcrumb') .
                     '</p></div>';
             } elseif ((int) $website_type === 3) {
                 echo '<div class="notice notice-warning is-dismissible"><p>' .
-                    esc_html__('Achtung: Die Website wurde im Customizer als Kooperation definiert. Die Orga Breadcrumb wird nicht angezeigt.', 'fau-orga-breadcrumb') .
+                    esc_html__('Warning: The website has been defined in the Customizer as a cooperation. The Orga Breadcrumb will not be displayed.', 'fau-orga-breadcrumb') .
                     '</p></div>';
             } elseif ((int) $website_type === -1) {
                 echo '<div class="notice notice-warning is-dismissible"><p>' .
-                    esc_html__('Achtung: Die Website wurde als zentrales FAU Portal definiert. Die Orga Breadcrumb wird nicht angezeigt.', 'fau-orga-breadcrumb') .
+                    esc_html__('Warning: The website has been defined as the central FAU portal. The Orga Breadcrumb will not be displayed.', 'fau-orga-breadcrumb') .
                     '</p></div>';
             }
         }
