@@ -16,6 +16,9 @@ class Customizer
     {
         // Hook into the Customizer
         add_action('customize_register', [$this, 'register']);
+
+        // Hook into save action to sanitize (only for FAU-Elemental or child)
+        add_action('customize_save_after', [$this, 'saveAfter']);
     }
 
     /**
@@ -98,6 +101,49 @@ class Customizer
                 return ! (isset($website_type) && ($website_type == -1 || $website_type == 3));
             },
         ]));
+    }
+
+    /**
+     * After the Customizer settings have been saved, update the plugin option
+     * to reflect the current theme context (only for FAU-Elemental or child).
+     * 
+     * @param \WP_Customize_Manager $manager
+     * @return void
+     */
+    public function saveAfter(\WP_Customize_Manager $manager): void
+    {
+        // Only run for Elemental themes
+        if (!OrgaService::isElementalTheme()) {
+            return;
+        }
+
+        // Read freshly saved values directly from the Customizer post values (with fallback)
+        $type    = (string) ($manager->post_value('faue_website_type') ?? get_theme_mod('faue_website_type', ''));
+        $faculty = (string) ($manager->post_value('faue_faculty') ?? get_theme_mod('faue_faculty', ''));
+
+        // Load current plugin option
+        $options    = get_option('fau_orga_breadcrumb_options', []);
+        $options    = is_array($options) ? $options : [];
+        $currentOrg = isset($options['site-orga']) ? (string) $options['site-orga'] : '';
+
+        // For FAU root or cooperation → clear assignment
+        if ($type === 'fau' || $type === 'cooperation') {
+            if ($currentOrg !== '') {
+                $options['site-orga'] = '';
+                update_option('fau_orga_breadcrumb_options', $options);
+            }
+            return;
+        }
+
+        // Faculty context → map faculty slug to FAU.ORG ID and store
+        $isFacultyContext = in_array($type, ['faculty', 'chair'], true) || ($type === 'other' && $faculty !== '');
+        if ($isFacultyContext) {
+            $newOrg = $faculty !== '' ? OrgaService::getOrgaByFaculty($faculty) : '';
+            if ($newOrg !== '' && $newOrg !== $currentOrg) {
+                $options['site-orga'] = $newOrg;
+                update_option('fau_orga_breadcrumb_options', $options);
+            }
+        }
     }
 
     /**
