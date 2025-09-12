@@ -176,7 +176,7 @@ if (!function_exists(__NAMESPACE__ . '\\get_fau_elemental_menu_html')) {
 
         // Prefer class-based renderer; fail soft if not available
         if (class_exists(\FAU\ORGA\Breadcrumb\ElementalMenu::class)) {
-            return ElementalMenu::fromGlobal()->renderContentHtml();
+            return ElementalMenu::renderContentHtml();
         }
 
         // Fallback: minimal safe output
@@ -231,8 +231,7 @@ if (!function_exists(__NAMESPACE__ . '\\generate_breadcrumb_for_menu')) {
         }
 
         if (class_exists(\FAU\ORGA\Breadcrumb\ElementalMenu::class)) {
-            $renderer = ElementalMenu::fromGlobal();
-            return $renderer->renderBreadcrumb();
+            return ElementalMenu::renderBreadcrumb();
         }
 
         return '';
@@ -257,7 +256,7 @@ if (!function_exists(__NAMESPACE__ . '\\should_show_fau_menu_item')) {
         }
 
         if (class_exists(\FAU\ORGA\Breadcrumb\ElementalMenu::class)) {
-            return ElementalMenu::fromGlobal()->shouldShowFauRoot();
+            return ElementalMenu::shouldShowFauRoot();
         }
 
         // Conservative default: hide when uncertain
