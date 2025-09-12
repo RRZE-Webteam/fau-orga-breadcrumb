@@ -8,52 +8,6 @@ namespace FAU\ORGA\Breadcrumb;
 
 defined('ABSPATH') || exit;
 
-// ---------------------------------------------------------
-// Customizer sync (Elemental only): mirror site type/faculty to plugin option
-// ---------------------------------------------------------
-add_action('customize_save_after', static function (\WP_Customize_Manager $manager) {
-    // Only act for FAU-Elemental (or child)
-    if (!OrgaService::isElementalTheme()) {
-        return;
-    }
-
-    // Read freshly saved values directly from the Customizer post values (with fallback)
-    $type    = (string) ($manager->post_value('faue_website_type') ?? get_theme_mod('faue_website_type', ''));
-    $faculty = (string) ($manager->post_value('faue_faculty')       ?? get_theme_mod('faue_faculty',       ''));
-
-    // Load current plugin option
-    $options    = get_option('fau_orga_breadcrumb_options', []);
-    $options    = is_array($options) ? $options : [];
-    $currentOrg = isset($options['site-orga']) ? (string) $options['site-orga'] : '';
-
-    // For FAU root or cooperation → clear assignment
-    if ($type === 'fau' || $type === 'cooperation') {
-        if ($currentOrg !== '') {
-            $options['site-orga'] = '';
-            update_option('fau_orga_breadcrumb_options', $options);
-        }
-        return;
-    }
-
-    // Faculty context → map faculty slug to FAU.ORG ID and store
-    $isFacultyContext = in_array($type, ['faculty', 'chair'], true) || ($type === 'other' && $faculty !== '');
-    if ($isFacultyContext) {
-        $newOrg = $faculty !== '' ? OrgaService::getOrgaByFaculty($faculty) : '';
-        if ($newOrg !== '' && $newOrg !== $currentOrg) {
-            $options['site-orga'] = $newOrg;
-            update_option('fau_orga_breadcrumb_options', $options);
-        }
-    }
-});
-
-// ---------------------------------------------------------
-// Enqueue CSS depending on active theme (Elemental/FAU/Other)
-// ---------------------------------------------------------
-add_action('wp_enqueue_scripts', static function () {
-    OrgaService::enqueueStyle('fau-orga-breadcrumb'); // fallback handle if not Elemental/FAU
-}, 99);
-
-
 // ===================================================================
 // Legacy wrappers (BC): keep old function names working transparently
 // ===================================================================
