@@ -70,7 +70,13 @@ class Main
                 $user = wp_get_current_user();
                 if (in_array('administrator', (array)$user->roles)) {
                     echo '<div class="notice notice-warning">';
-                    echo __('Der Webauftritt ist noch nicht organisatorisch eingeordnet. <br>Bitte rufen Sie die <a href="options-general.php?page=fau_orga_breadcrumb_settings">Einstellung FAU.ORG Breadcrumb</a> auf und geben Sie an, welcher organisatorischen Einheit der Webauftritt angehört.', 'fau-orga-breadcrumb');
+                    printf(
+                        /* translators: 1: Line break, 2: Link start tag, 3: Link end tag. */
+                        esc_html__('The website has not yet been organizationally assigned. %1$sPlease go to the %2$sFAU.ORG Breadcrumb settings%3$s and specify which organizational unit the website belongs to.', 'fau-orga-breadcrumb'),
+                        '<br>',
+                        '<a href="' . admin_url('options-general.php?page=fau_orga_breadcrumb_settings') . '">',
+                        '</a>'
+                    );
                     echo '</div>';
                 }
             }
