@@ -2,17 +2,24 @@
 
 namespace FAU\ORGA\Breadcrumb;
 
+use Dom\Element;
+
 defined('ABSPATH') || exit;
 
 class Main
 {
     public function __construct()
     {
-        require_once 'orga-data.php';
         require_once 'functions.php';
         require_once 'legacy-shim-global.php';
 
-        OrgaService::setData($fau_orga_breadcrumb_data ?? []);
+        // Load FAU ORGA data
+        $orgaData = Data::read('fau-orga');
+        OrgaService::setData($orgaData);
+
+        // Load FAU Elemental ORGA data
+        $elementalData = Data::read('fau-elemental-orga');
+        ElementalMenu::setData($elementalData);
 
         add_action('admin_enqueue_scripts', [$this, 'enqueueAdminScripts']);
         add_action('admin_notices', [$this, 'fau_orga_admin_notice']);
