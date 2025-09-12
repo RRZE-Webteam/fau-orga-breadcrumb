@@ -1,23 +1,21 @@
-# Copyright (C) 2025 RRZE Webteam
-# This file is distributed under the GNU General Public License Version 3.
 msgid ""
 msgstr ""
-"Project-Id-Version: FAU ORGA Breadcrumb 1.2.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fau-orga-breadcrumb\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fau-orga-"
+"breadcrumb\n"
+"POT-Creation-Date: 2025-09-12T16:05:15+00:00\n"
+"PO-Revision-Date: 2025-09-12 18:09+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-12T16:05:15+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.12.0\n"
-"X-Domain: fau-orga-breadcrumb\n"
+"X-Generator: Poedit 3.7\n"
+"X-Poedit-Basepath: .\n"
 
 #. Plugin Name of the plugin
-#: fau-orga-breadcrumb.php
-#: includes/Settings.php:27
-#: includes/Settings.php:72
+#: fau-orga-breadcrumb.php includes/Settings.php:27 includes/Settings.php:72
 msgid "FAU ORGA Breadcrumb"
 msgstr ""
 
@@ -44,13 +42,17 @@ msgstr ""
 #. translators: 1: Server WordPress version number, 2: Required WordPress version number.
 #: fau-orga-breadcrumb.php:123
 #, php-format
-msgid "The server is running WordPress version %1$s. The plugin requires at least WordPress version %2$s."
+msgid ""
+"The server is running WordPress version %1$s. The plugin requires at least "
+"WordPress version %2$s."
 msgstr ""
 
 #. translators: 1: Server PHP version number, 2: Required PHP version number.
 #: fau-orga-breadcrumb.php:131
 #, php-format
-msgid "The server is running PHP version %1$s. The plugin requires at least PHP version %2$s."
+msgid ""
+"The server is running PHP version %1$s. The plugin requires at least PHP "
+"version %2$s."
 msgstr ""
 
 #. translators: 1: The plugin name, 2: The error string.
@@ -68,13 +70,17 @@ msgid "Organizational Assignment"
 msgstr ""
 
 #: includes/Customizer.php:94
-msgid "Select the organizational unit to which your institution or website belongs."
+msgid ""
+"Select the organizational unit to which your institution or website belongs."
 msgstr ""
 
 #. translators: 1: Line break, 2: Link start tag, 3: Link end tag.
 #: includes/Main.php:75
 #, php-format
-msgid "The website has not yet been organizationally assigned. %1$sPlease go to the %2$sFAU.ORG Breadcrumb settings%3$s and specify which organizational unit the website belongs to."
+msgid ""
+"The website has not yet been organizationally assigned. %1$sPlease go to the "
+"%2$sFAU.ORG Breadcrumb settings%3$s and specify which organizational unit "
+"the website belongs to."
 msgstr ""
 
 #: includes/Main.php:97
@@ -106,27 +112,41 @@ msgid "None (No faculty assignment or central unit)"
 msgstr ""
 
 #: includes/Settings.php:154
-msgid "Organizational Assignment: Please select the <strong>next higher</strong> organizational unit to which the website can be assigned."
+msgid ""
+"Organizational Assignment: Please select the <strong>next higher</strong> "
+"organizational unit to which the website can be assigned."
 msgstr ""
 
 #: includes/Settings.php:163
-msgid "Warning: The website has been defined in the Customizer as a faculty portal. Therefore, subunits of the faculty are not available for selection. The Orga Breadcrumb will not be displayed."
+msgid ""
+"Warning: The website has been defined in the Customizer as a faculty portal. "
+"Therefore, subunits of the faculty are not available for selection. The Orga "
+"Breadcrumb will not be displayed."
 msgstr ""
 
 #: includes/Settings.php:167
-msgid "The website has been defined in the Customizer as a faculty subunit. Therefore, only central units and subunits of the faculty are available for selection."
+msgid ""
+"The website has been defined in the Customizer as a faculty subunit. "
+"Therefore, only central units and subunits of the faculty are available for "
+"selection."
 msgstr ""
 
 #: includes/Settings.php:171
-msgid "The website has been defined in the Customizer as a central unit. Therefore, only central units are available for selection."
+msgid ""
+"The website has been defined in the Customizer as a central unit. Therefore, "
+"only central units are available for selection."
 msgstr ""
 
 #: includes/Settings.php:175
-msgid "Warning: The website has been defined in the Customizer as a cooperation. The Orga Breadcrumb will not be displayed."
+msgid ""
+"Warning: The website has been defined in the Customizer as a cooperation. "
+"The Orga Breadcrumb will not be displayed."
 msgstr ""
 
 #: includes/Settings.php:179
-msgid "Warning: The website has been defined as the central FAU portal. The Orga Breadcrumb will not be displayed."
+msgid ""
+"Warning: The website has been defined as the central FAU portal. The Orga "
+"Breadcrumb will not be displayed."
 msgstr ""
 
 #: includes/Settings.php:193

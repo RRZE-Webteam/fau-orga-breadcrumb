@@ -1,0 +1,2 @@
+<?php
+return ['domain'=>NULL,'plural-forms'=>NULL,'language'=>'de_DE','project-id-version'=>'','pot-creation-date'=>'2025-09-12T16:05:15+00:00','po-revision-date'=>'2025-09-12 18:09+0200','x-generator'=>'Poedit 3.7','messages'=>[]];
