@@ -205,8 +205,7 @@ if (!function_exists(__NAMESPACE__ . '\\render_elemental_menu')) {
         }
 
         if (class_exists(\FAU\ORGA\Breadcrumb\ElementalMenu::class)) {
-            $renderer = new ElementalMenu($menu);
-            return $renderer->renderTree($menu, $parentId, $depth);
+            return ElementalMenu::renderTree($parentId, $depth);
         }
 
         return '';
