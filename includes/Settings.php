@@ -128,7 +128,7 @@ class Settings
         $optionlist .= OrgaService::buildOptionList($root, $orga ?: $root, 0);
 
         // This is only used for a debug comment; guard against missing function
-        $fau_orga_fautheme = function_exists('get_fau_orga_fautheme') ? get_fau_orga_fautheme() : '';
+        $fau_orga_fautheme = (string) OrgaService::getLegacyFauThemeFaculty();
 
         // Print the select (size unchanged from original)
     ?>
@@ -199,7 +199,7 @@ class Settings
             echo '<div class="fau_org_breadcrumb_preview">';
             echo '<strong>' . esc_html__('Breadcrumb', 'fau-orga-breadcrumb') . ': &nbsp; &nbsp; &nbsp; </strong>';
             // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-            echo get_fau_orga_breadcrumb($orga);
+            echo (string) OrgaService::breadcrumb($orga);
             echo '</div>';
         }
     }
