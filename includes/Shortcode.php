@@ -47,11 +47,7 @@ class Shortcode
 
         // If show="menu", output the hard-coded Elemental menu HTML
         if (strtolower($show_type) === 'menu') {
-            // Guard against missing helper to avoid fatal
-            if (function_exists('get_fau_elemental_menu_html')) {
-                return (string) get_fau_elemental_menu_html();
-            }
-            return '';
+            return (string) ElementalMenu::fromGlobal()->renderContentHtml();
         }
 
         // Resolve org if not explicitly provided
@@ -75,23 +71,18 @@ class Shortcode
             }
 
             // Fallback: infer from theme if still empty
-            if ($form_org === '' && function_exists('get_fau_orga_by_theme')) {
-                $form_org = (string) get_fau_orga_by_theme();
+            if ($form_org === '') {
+                $form_org = (string) OrgaService::orgByTheme();
             }
         }
 
         // Finally, render the breadcrumb for the resolved org
         if ($form_org !== '') {
             // Enqueue styles if available
-            wp_enqueue_style('fau-orga-breadcrumb-frontend');
-            if (function_exists('fau_orga_enqueue_style')) {
-                fau_orga_enqueue_style('fau-orga-breadcrumb');
-            }
+            OrgaService::enqueueStyle('fau-orga-breadcrumb');
 
             // Render breadcrumb HTML (guard against missing helper)
-            if (function_exists('get_fau_orga_breadcrumb')) {
-                return (string) get_fau_orga_breadcrumb($form_org);
-            }
+            return (string) OrgaService::breadcrumb($form_org);
         }
 
         // Nothing to show (missing org or helpers)
