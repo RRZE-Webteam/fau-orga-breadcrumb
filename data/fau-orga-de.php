@@ -11,202 +11,202 @@ return [
     '0000000000' => [
         'title' => 'Friedrich-Alexander-Universität',
         'shorttitle' => 'FAU',
-        'url' => __('https://www.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.fau.de',
     ],
 
     '1005000000' => [
-        'title' => __('Zentrale Universitätsverwaltung', 'fau-orga-breadcrumb'),
+        'title' => 'Zentrale Universitätsverwaltung',
         'shorttitle' => 'ZUV',
         'parent' => '0000000000'
     ],
     '1011000000' => [
-        'title' => __('Zentrale Einrichtungen', 'fau-orga-breadcrumb'),
+        'title' => 'Zentrale Einrichtungen',
         'parent' => '0000000000',
         'hide' => true,
     ],
     '1011110000' => [
-        'title' => __('Universitätsbibliothek', 'fau-orga-breadcrumb'),
+        'title' => 'Universitätsbibliothek',
         'shorttitle' => 'UB',
-        'url' => __('https://ub.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://ub.fau.de',
         'parent' => '1011000000'
     ],
     '1011120000' => [
-        'title' => __('Regionales Rechenzentrum Erlangen', 'fau-orga-breadcrumb'),
+        'title' => 'Regionales Rechenzentrum Erlangen',
         'shorttitle' => 'RRZE',
-        'url' => __('https://www.rrze.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.rrze.fau.de',
         'parent' => '1011000000'
     ],
 
     '1011190000' => [
-        'title' => __('Zentrum für Lehrerinnen- und Lehrerbildung', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.zfl.fau.de', 'fau-orga-breadcrumb'),
+        'title' => 'Zentrum für Lehrerinnen- und Lehrerbildung',
+        'url' => 'https://www.zfl.fau.de',
         'parent' => '1011000000'
     ],
     '1011400000' => [
-        'title' => __('Sprachenzentrum', 'fau-orga-breadcrumb'),
-        'url' => __('https://sz.fau.de', 'fau-orga-breadcrumb'),
+        'title' => 'Sprachenzentrum',
+        'url' => 'https://sz.fau.de',
         'parent' => '1011000000'
     ],
     //     '1011130000' => [
-    //	'title'	    => __('Zentralinstitut für Regionenforschung', 'fau-orga-breadcrumb'),
-    //	'parent'    => '1011000000'
-    //    ],
+    //     'title'     => 'Zentralinstitut für Regionenforschung',
+    //     'parent'    => '1011000000'
+    //     ],
     '1011200000' => [
-        'title' => __('Graduiertenzentrum der FAU', 'fau-orga-breadcrumb'),
+        'title' => 'Graduiertenzentrum der FAU',
         'parent' => '1011000000'
     ],
     //     '1011290000' => array(
-    //	'title'	    => __('Zentrum für Lehr-/Lernforschung, -innovation und Transfer', 'fau-orga-breadcrumb'),
-    //	'shorttitle'    => 'ZeLLIT',
-    //	'parent'    => '1011000000'
-    //    ),
+    //     'title'         => 'Zentrum für Lehr-/Lernforschung, -innovation und Transfer',
+    //     'shorttitle'    => 'ZeLLIT',
+    //     'parent'        => '1011000000'
+    //     ),
     '1011140000' => [
-        'title' => __('Bayerisch-Kalifornisches Hochschulzentrum', 'fau-orga-breadcrumb'),
-        'url' => __('https://ub.fau.de', 'fau-orga-breadcrumb'),
+        'title' => 'Bayerisch-Kalifornisches Hochschulzentrum',
+        'url' => 'https://ub.fau.de',
         'parent' => '1011000000'
     ],
     '1011430000' => [
-        'title' => __('Bayerisches Hochschulzentrum für Lateinamerika', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.bacatec.de/de/', 'fau-orga-breadcrumb'),
+        'title' => 'Bayerisches Hochschulzentrum für Lateinamerika',
+        'url' => 'https://www.bacatec.de/de/',
         'parent' => '1011000000'
     ],
     '1011300000' => [
-        'title' => __('Zentrum für Nationales Hochleistungsrechnen Erlangen', 'fau-orga-breadcrumb'),
-        'url' => __('https://hpc.fau.de', 'fau-orga-breadcrumb'),
+        'title' => 'Zentrum für Nationales Hochleistungsrechnen Erlangen',
+        'url' => 'https://hpc.fau.de',
         'parent' => '1011000000'
     ],
 
     '1011320000' => [
-        'title' => __('FAU Forschungszentren', 'fau-orga-breadcrumb'),
+        'title' => 'FAU Forschungszentren',
         'parent' => '1011000000'
     ],
 
     'profilzentren' => [
-        'title' => __('FAU Profilzentren', 'fau-orga-breadcrumb'),
+        'title' => 'FAU Profilzentren',
         'parent' => '1011000000'
     ],
     '1011330000' => [
-        'title' => __('FAU Kompetenzzentren', 'fau-orga-breadcrumb'),
+        'title' => 'FAU Kompetenzzentren',
         'parent' => '1011000000'
     ],
     //    '1013000000' => [
-    //        'title' => __('Interdisziplinäre Zentren', 'fau-orga-breadcrumb'),
+    //        'title' => 'Interdisziplinäre Zentren',
     //        'parent' => '0000000000',
     //    ],
     '1015000000' => [
-        'title' => __('DFG-Sonderforschungsbereiche/Transregios/Transferbereiche', 'fau-orga-breadcrumb'),
+        'title' => 'DFG-Sonderforschungsbereiche/Transregios/Transferbereiche',
         'parent' => '0000000000',
     ],
     '1016000000' => [
-        'title' => __('DFG-Graduiertenkollegs', 'fau-orga-breadcrumb'),
+        'title' => 'DFG-Graduiertenkollegs',
         'parent' => '0000000000',
     ],
     '1019000000' => [
-        'title' => __('DFG-Kollegforschergruppen', 'fau-orga-breadcrumb'),
+        'title' => 'DFG-Kollegforschergruppen',
         'parent' => '0000000000',
     ],
     '1017000000' => [
-        'title' => __('Institutionelle Kooperations- und Förderprojekte', 'fau-orga-breadcrumb'),
+        'title' => 'Institutionelle Kooperations- und Förderprojekte',
         'parent' => '0000000000',
     ],
     '1040000000' => [
-        'title' => __('Zentrale Serviceeinrichtungen', 'fau-orga-breadcrumb'),
+        'title' => 'Zentrale Serviceeinrichtungen',
         'parent' => '0000000000',
     ],
     '1014000000' => [
-        'title' => __('Museen und Sammlungen', 'fau-orga-breadcrumb'),
+        'title' => 'Museen und Sammlungen',
         'parent' => '0000000000',
     ],
     '1100000000' => [
-        'title' => __('Philosophische Fakultät und Fachbereich Theologie', 'fau-orga-breadcrumb'),
+        'title' => 'Philosophische Fakultät und Fachbereich Theologie',
         'shorttitle' => 'Phil',
-        'url' => __('https://www.phil.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.phil.fau.de',
         'parent' => '0000000000',
         'class' => 'phil',
         'faculty' => 'phil'
     ],
     '1111000000' => [
-        'title' => __('Department Alte Welt und Asiatische Kulturen', 'fau-orga-breadcrumb'),
+        'title' => 'Department Alte Welt und Asiatische Kulturen',
         'parent' => '1100000000'
     ],
     '1112000000' => [
-        'title' => __('Department Anglistik/Amerikanistik und Romanistik', 'fau-orga-breadcrumb'),
+        'title' => 'Department Anglistik/Amerikanistik und Romanistik',
         'parent' => '1100000000'
     ],
     '1113000000' => [
-        'title' => __('Department Fachdidaktiken', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.fachdidaktiken.phil.fau.de', 'fau-orga-breadcrumb'),
+        'title' => 'Department Fachdidaktiken',
+        'url' => 'https://www.fachdidaktiken.phil.fau.de',
         'parent' => '1100000000'
     ],
     '1114000000' => [
-        'title' => __('Department Germanistik und Komparatistik', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.germanistik.phil.fau.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Department Germanistik und Komparatistik',
+        'url' => 'https://www.germanistik.phil.fau.de/',
         'parent' => '1100000000'
     ],
     '1115000000' => [
-        'title' => __('Department Geschichte', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.geschichte.phil.fau.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Department Geschichte',
+        'url' => 'https://www.geschichte.phil.fau.de/',
         'parent' => '1100000000'
     ],
     '1116000000' => [
-        'title' => __('Department Medienwissenschaften und Kunstgeschichte', 'fau-orga-breadcrumb'),
+        'title' => 'Department Medienwissenschaften und Kunstgeschichte',
         'parent' => '1100000000'
     ],
     '1117000000' => [
-        'title' => __('Department Pädagogik', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.department-paedagogik.phil.fau.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Department Pädagogik',
+        'url' => 'https://www.department-paedagogik.phil.fau.de/',
         'parent' => '1100000000'
     ],
     '1118000000' => [
-        'title' => __('Department Psychologie', 'fau-orga-breadcrumb'),
+        'title' => 'Department Psychologie',
         'parent' => '1100000000'
     ],
     '1119000000' => [
-        'title' => __('Department Sozialwissenschaften und Philosophie', 'fau-orga-breadcrumb'),
+        'title' => 'Department Sozialwissenschaften und Philosophie',
         'parent' => '1100000000'
     ],
     '1120000000' => [
-        'title' => __('Fachbereich Theologie', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.theologie.fau.de', 'fau-orga-breadcrumb'),
+        'title' => 'Fachbereich Theologie',
+        'url' => 'https://www.theologie.fau.de',
         'parent' => '1100000000'
     ],
     '1121000000' => [
-        'title' => __('Department Islamisch-Religiöse Studien', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.dirs.phil.fau.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Department Islamisch-Religiöse Studien',
+        'url' => 'https://www.dirs.phil.fau.de/',
         'parent' => '1100000000'
     ],
     '1122000000' => [
-        'title' => __('Department Sportwissenschaft und Sport', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.sport.fau.de', 'fau-orga-breadcrumb'),
+        'title' => 'Department Sportwissenschaft und Sport',
+        'url' => 'https://www.sport.fau.de',
         'parent' => '1100000000'
     ],
     '1123000000' => [
-        'title' => __('Department Digital Humanities and Social Studies', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.dhss.phil.fau.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Department Digital Humanities and Social Studies',
+        'url' => 'https://www.dhss.phil.fau.de/',
         'parent' => '1100000000'
     ],
 
 
     '1200000000' => [
-        'title' => __('Rechts- und Wirtschaftswissenschaftliche Fakultät', 'fau-orga-breadcrumb'),
+        'title' => 'Rechts- und Wirtschaftswissenschaftliche Fakultät',
         'shorttitle' => 'RW',
-        'url' => __('https://www.rw.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.rw.fau.de',
         'parent' => '0000000000',
         'class' => 'rw',
         'faculty' => 'rw'
     ],
     '1211000000' => [
-        'title' => __('Fachbereich Rechtswissenschaft', 'fau-orga-breadcrumb'),
-        'shorttitle' => __('FB Rechtsw.', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.jura.rw.fau.de', 'fau-orga-breadcrumb'),
+        'title' => 'Fachbereich Rechtswissenschaft',
+        'shorttitle' => 'FB Rechtsw.',
+        'url' => 'https://www.jura.rw.fau.de',
         'parent' => '0000000000',
         'class' => 'rw',
         'faculty' => 'rw'
     ],
     '1212000000' => [
-        'title' => __('Fachbereich Wirtschafts- und Sozialwissenschaften', 'fau-orga-breadcrumb'),
+        'title' => 'Fachbereich Wirtschafts- und Sozialwissenschaften',
         'shorttitle' => 'FB WiSo',
-        'url' => __('https://www.wiso.rw.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.wiso.rw.fau.de',
         'parent' => '0000000000',
         'class' => 'rw',
         'faculty' => 'rw'
@@ -214,155 +214,155 @@ return [
 
 
     '1300000000' => [
-        'title' => __('Medizinische Fakultät', 'fau-orga-breadcrumb'),
+        'title' => 'Medizinische Fakultät',
         'shorttitle' => 'Med',
-        'url' => __('https://www.med.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.med.fau.de',
         'parent' => '0000000000',
         'class' => 'med',
         'faculty' => 'med'
     ],
     '1311000000' => [
-        'title' => __('Einrichtungen, die nicht zum Universitätsklinikum Erlangen gehören', 'fau-orga-breadcrumb'),
+        'title' => 'Einrichtungen, die nicht zum Universitätsklinikum Erlangen gehören',
         'parent' => '1300000000',
         'hide' => true,
     ],
     '1311110000' => [
-        'title' => __('Institut für Anatomie', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.anatomie.med.fau.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Institut für Anatomie',
+        'url' => 'https://www.anatomie.med.fau.de/',
         'parent' => '1311000000'
     ],
     '1311120000' => [
-        'title' => __('Institut für Physiologie und Pathophysiologie', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.physiologie1.uni-erlangen.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Institut für Physiologie und Pathophysiologie',
+        'url' => 'https://www.physiologie1.uni-erlangen.de/',
         'parent' => '1311000000'
     ],
     '1311130000' => [
-        'title' => __('Institut für Zelluläre und Molekulare Physiologie', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.physiologie2.med.fau.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Institut für Zelluläre und Molekulare Physiologie',
+        'url' => 'https://www.physiologie2.med.fau.de/',
         'parent' => '1311000000'
     ],
     '1311140000' => [
-        'title' => __('Institut für Biochemie', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.biochemie.med.fau.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Institut für Biochemie',
+        'url' => 'https://www.biochemie.med.fau.de/',
         'parent' => '1311000000'
     ],
     '1311310000' => [
-        'title' => __('Institut für Medizininformatik, Biometrie und Epidemiologie', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.imbe.med.uni-erlangen.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Institut für Medizininformatik, Biometrie und Epidemiologie',
+        'url' => 'https://www.imbe.med.uni-erlangen.de/',
         'parent' => '1311000000'
     ],
     '1311320000' => [
-        'title' => __('Institut für Geschichte und Ethik der Medizin', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.igem.med.fau.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Institut für Geschichte und Ethik der Medizin',
+        'url' => 'https://www.igem.med.fau.de/',
         'parent' => '1311000000'
     ],
     '1311330000' => [
-        'title' => __('Institut für Rechtsmedizin', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.recht.med.uni-erlangen.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Institut für Rechtsmedizin',
+        'url' => 'https://www.recht.med.uni-erlangen.de/',
         'parent' => '1311000000'
     ],
     '1311340000' => [
-        'title' => __('Institut für Experimentelle und Klinische Pharmakologie und Toxikologie', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.pharmakologie.med.fau.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Institut für Experimentelle und Klinische Pharmakologie und Toxikologie',
+        'url' => 'https://www.pharmakologie.med.fau.de/',
         'parent' => '1311000000'
     ],
     '1311350000' => [
-        'title' => __('Institut und Poliklinik für Arbeits-, Sozial- und Umweltmedizin', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.ipasum.med.fau.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Institut und Poliklinik für Arbeits-, Sozial- und Umweltmedizin',
+        'url' => 'https://www.ipasum.med.fau.de/',
         'parent' => '1311000000'
     ],
     '1311360000' => [
-        'title' => __('Institut für Biomedizin des Alterns', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.iba.med.fau.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Institut für Biomedizin des Alterns',
+        'url' => 'https://www.iba.med.fau.de/',
         'parent' => '1311000000'
     ],
     '1311370000' => [
-        'title' => __('Klinisch-Molekularbiologisches Forschungszentrum', 'fau-orga-breadcrumb'),
-        'url' => __('http://www.molmed.uni-erlangen.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Klinisch-Molekularbiologisches Forschungszentrum',
+        'url' => 'http://www.molmed.uni-erlangen.de/',
         'parent' => '1311000000'
     ],
 
     '1400000000' => [
-        'title' => __('Naturwissenschaftliche Fakultät', 'fau-orga-breadcrumb'),
+        'title' => 'Naturwissenschaftliche Fakultät',
         'shorttitle' => 'Nat',
-        'url' => __('https://www.nat.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.nat.fau.de',
         'parent' => '0000000000',
         'class' => 'nat',
         'faculty' => 'nat'
     ],
     '1411000000' => [
-        'title' => __('Department Biologie', 'fau-orga-breadcrumb'),
+        'title' => 'Department Biologie',
         'shorttitle' => 'Bio',
-        'url' => __('https://www.biologie.nat.fau.de/', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.biologie.nat.fau.de/',
         'parent' => '1400000000'
     ],
     '1412000000' => [
-        'title' => __('Department Chemie und Pharmazie', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.chemie.nat.fau.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Department Chemie und Pharmazie',
+        'url' => 'https://www.chemie.nat.fau.de/',
         'parent' => '1400000000'
     ],
     '1413000000' => [
-        'title' => __('Department Geographie und Geowissenschaften', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.geo.nat.fau.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Department Geographie und Geowissenschaften',
+        'url' => 'https://www.geo.nat.fau.de/',
         'parent' => '1400000000'
     ],
     '1414000000' => [
-        'title' => __('Department Mathematik', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.math.fau.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Department Mathematik',
+        'url' => 'https://www.math.fau.de/',
         'parent' => '1400000000'
     ],
     '1415000000' => [
-        'title' => __('Department Physik', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.physik.nat.fau.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Department Physik',
+        'url' => 'https://www.physik.nat.fau.de/',
         'parent' => '1400000000'
     ],
     '1416000000' => [
-        'title' => __('Department of Data Science', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.datascience.nat.fau.eu/', 'fau-orga-breadcrumb'),
+        'title' => 'Department of Data Science',
+        'url' => 'https://www.datascience.nat.fau.eu/',
         'parent' => '1400000000'
     ],
 
 
     '1500000000' => [
-        'title' => __('Technische Fakultät', 'fau-orga-breadcrumb'),
+        'title' => 'Technische Fakultät',
         'shorttitle' => 'TF',
-        'url' => __('https://www.tf.fau.de', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.tf.fau.de',
         'parent' => '0000000000',
         'class' => 'tf',
         'faculty' => 'tf'
     ],
     '1511000000' => [
-        'title' => __('Department Chemie- und Bioingenieurwesen', 'fau-orga-breadcrumb'),
+        'title' => 'Department Chemie- und Bioingenieurwesen',
         'shorttitle' => 'CBI',
-        'url' => __('https://www.cbi.tf.fau.de/', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.cbi.tf.fau.de/',
         'parent' => '1500000000'
     ],
     '1512000000' => [
-        'title' => __('Department Elektrotechnik-Elektronik-Informationstechnik', 'fau-orga-breadcrumb'),
+        'title' => 'Department Elektrotechnik-Elektronik-Informationstechnik',
         'shorttitle' => 'EEI',
-        'url' => __('https://www.eei.tf.fau.de/', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.eei.tf.fau.de/',
         'parent' => '1500000000'
     ],
     '1513000000' => [
-        'title' => __('Department Informatik', 'fau-orga-breadcrumb'),
+        'title' => 'Department Informatik',
         'shorttitle' => 'CS',
-        'url' => __('https://cs.fau.de/', 'fau-orga-breadcrumb'),
+        'url' => 'https://cs.fau.de/',
         'parent' => '1500000000'
     ],
     '1514000000' => [
-        'title' => __('Department Maschinenbau', 'fau-orga-breadcrumb'),
+        'title' => 'Department Maschinenbau',
         'shorttitle' => 'MB',
-        'url' => __('https://www.department.mb.tf.fau.de/', 'fau-orga-breadcrumb'),
+        'url' => 'https://www.department.mb.tf.fau.de/',
         'parent' => '1500000000'
     ],
     '1515000000' => [
-        'title' => __('Department Werkstoffwissenschaften', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.ww.tf.fau.de', 'fau-orga-breadcrumb'),
+        'title' => 'Department Werkstoffwissenschaften',
+        'url' => 'https://www.ww.tf.fau.de',
         'parent' => '1500000000'
     ],
     '1518000000' => [
-        'title' => __('Department Artificial Intelligence in Biomedical Engineering', 'fau-orga-breadcrumb'),
-        'url' => __('https://www.aibe.tf.fau.de/', 'fau-orga-breadcrumb'),
+        'title' => 'Department Artificial Intelligence in Biomedical Engineering',
+        'url' => 'https://www.aibe.tf.fau.de/',
         'parent' => '1500000000'
     ],
 
