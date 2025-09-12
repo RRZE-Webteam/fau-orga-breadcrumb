@@ -47,7 +47,7 @@ class Shortcode
 
         // If show="menu", output the hard-coded Elemental menu HTML
         if (strtolower($show_type) === 'menu') {
-            return (string) ElementalMenu::fromGlobal()->renderContentHtml();
+            return (string) ElementalMenu::renderContentHtml();
         }
 
         // Resolve org if not explicitly provided
