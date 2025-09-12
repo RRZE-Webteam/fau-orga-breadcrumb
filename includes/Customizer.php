@@ -75,7 +75,7 @@ class Customizer
         $optionlist = '';
         if (isset($website_type) && ($website_type <> 1)) {
 
-            $optionlist .= '<option value="">' . __('Keine (Keine Fakultätszuordnung oder Zentralbereich)', 'fau-orga-breadcrumb') . '</option>';
+            $optionlist .= '<option value="">' . __('None (no faculty assignment or central unit)', 'fau-orga-breadcrumb') . '</option>';
         }
         $optionlist .= OrgaService::buildOptionList(OrgaService::ROOT_ID, $orga);
 
@@ -89,13 +89,13 @@ class Customizer
 
         // Register the control (native select)
         $wp_customize->add_control(new CustomizeControlSelect($wp_customize, 'fau_orga_site-orga', [
-            'settings' => 'fau_orga_breadcrumb_options[site-orga]',
-            'label'            => esc_html__('Organisatorische Zuordnung', 'fau'),
-            'description'        => esc_html__('Wählen Sie hier die organisatorische Einheit aus, zu der Ihre Einrichtung oder Ihr Webauftritt gehört.', 'fau'),
-            'section'        => 'title_tagline',
-            'type'            => 'select',
-            'choices'        => $optionlist,
-            'priority'        => 11,
+            'settings'      => 'fau_orga_breadcrumb_options[site-orga]',
+            'label'         => esc_html__('Organizational Assignment', 'fau-orga-breadcrumb'),
+            'description'   => esc_html__('Select the organizational unit to which your institution or website belongs.', 'fau-orga-breadcrumb'),
+            'section'       => 'title_tagline',
+            'type'          => 'select',
+            'choices'       => $optionlist,
+            'priority'      => 11,
             // Optional: hide dynamically when website_type is disallowed
             'active_callback' => function () use ($website_type) {
                 return ! (isset($website_type) && ($website_type == -1 || $website_type == 3));
