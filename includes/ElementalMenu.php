@@ -177,13 +177,7 @@ final class ElementalMenu
 
         // Fallback via theme
         if ($formOrg === '') {
-            $formOrg = \class_exists(OrgaService::class)
-                ? OrgaService::orgByTheme()
-                : (string) \call_user_func(function () {
-                    return function_exists(__NAMESPACE__ . '\\get_fau_orga_by_theme')
-                        ? (string) get_fau_orga_by_theme()
-                        : '';
-                });
+            $formOrg = OrgaService::orgByTheme();
         }
 
         // No breadcrumb when at FAU root
@@ -192,16 +186,8 @@ final class ElementalMenu
             return '';
         }
 
-        // Generate breadcrumb HTML via OrgaService/legacy function
-        if (\class_exists(OrgaService::class)) {
-            return OrgaService::breadcrumb($formOrg) ?? '';
-        }
-
-        if (function_exists(__NAMESPACE__ . '\\get_fau_orga_breadcrumb')) {
-            return (string) get_fau_orga_breadcrumb($formOrg);
-        }
-
-        return '';
+        // Generate breadcrumb HTML
+        return (string) OrgaService::breadcrumb($formOrg);
     }
 
     /**
