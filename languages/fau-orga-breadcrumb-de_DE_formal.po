@@ -1,25 +1,28 @@
-# Copyright (C) 2025 RRZE Webteam
-# This file is distributed under the GNU General Public License Version 3.
 msgid ""
 msgstr ""
-"Project-Id-Version: FAU ORGA Breadcrumb 1.2.0\n"
+"Project-Id-Version: FAU ORGA Breadcrumb\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fau-orga-"
 "breadcrumb\n"
 "POT-Creation-Date: 2025-09-12T16:05:15+00:00\n"
-"PO-Revision-Date: 2025-09-12 18:10+0200\n"
+"PO-Revision-Date: 2025-09-18 09:25+0000\n"
 "Last-Translator: \n"
-"Language-Team: \n"
-"Language: de_DE@formal\n"
+"Language-Team: Deutsch (Sie)\n"
+"Language: de_DE_formal\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.7\n"
-"X-Domain: fau-orga-breadcrumb\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Loco-Version: 2.8.0; wp-6.8.2; php-8.2.23\n"
+"X-Loco-Fallback: de_DE\n"
+"X-Loco-Template: languages/fau-orga-breadcrumb-de_DE.po\n"
+"X-Loco-Template-Mode: PO,JSON"
 
 #. Plugin Name of the plugin
 #: fau-orga-breadcrumb.php includes/Settings.php:27 includes/Settings.php:72
 msgid "FAU ORGA Breadcrumb"
-msgstr ""
+msgstr "FAU ORGA Breadcrumb"
 
 #. Plugin URI of the plugin
 #: fau-orga-breadcrumb.php
@@ -29,7 +32,7 @@ msgstr ""
 #. Description of the plugin
 #: fau-orga-breadcrumb.php
 msgid "Displays an organisational breadcrumb"
-msgstr ""
+msgstr "Zeigt eine organisatorische Breadcrumb an"
 
 #. Author of the plugin
 #: fau-orga-breadcrumb.php
@@ -48,6 +51,8 @@ msgid ""
 "The server is running WordPress version %1$s. The plugin requires at least "
 "WordPress version %2$s."
 msgstr ""
+"Der Server läuft unter WordPress Version %1$s. Das Plugin erfordert "
+"mindestens WordPress Version %2$s."
 
 #. translators: 1: Server PHP version number, 2: Required PHP version number.
 #: fau-orga-breadcrumb.php:131
@@ -56,6 +61,8 @@ msgid ""
 "The server is running PHP version %1$s. The plugin requires at least PHP "
 "version %2$s."
 msgstr ""
+"Der Server läuft unter PHP Version %1$s. Das Plugin erfordert mindestens PHP "
+"Version %2$s."
 
 #. translators: 1: The plugin name, 2: The error string.
 #: fau-orga-breadcrumb.php:172
@@ -65,16 +72,18 @@ msgstr ""
 
 #: includes/Customizer.php:78
 msgid "None (no faculty assignment or central unit)"
-msgstr ""
+msgstr "Keine (keine Fakultätszuordnung oder zentrale Einheit)"
 
 #: includes/Customizer.php:93
 msgid "Organizational Assignment"
-msgstr ""
+msgstr "Organisatorische Zuordnung"
 
 #: includes/Customizer.php:94
 msgid ""
 "Select the organizational unit to which your institution or website belongs."
 msgstr ""
+"Wählen Sie hier die organisatorische Einheit aus, zu der Ihre Einrichtung "
+"oder Ihr Webauftritt gehört."
 
 #. translators: 1: Line break, 2: Link start tag, 3: Link end tag.
 #: includes/Main.php:75
@@ -84,22 +93,25 @@ msgid ""
 "%2$sFAU.ORG Breadcrumb settings%3$s and specify which organizational unit "
 "the website belongs to."
 msgstr ""
+"Die Website wurde noch keiner Einrichtung zugeordnet. %1$sBitte gehen Sie zu "
+"den %2$sFAU.ORG Breadcrumb-Einstellungen%3$s und geben Sie an, zu welcher "
+"Organisationseinheit die Website gehört."
 
 #: includes/Main.php:97
 msgid "Settings"
-msgstr ""
+msgstr "Einstellungen"
 
 #: includes/OrgaService.php:345
 msgid "Organizational Navigation"
-msgstr ""
+msgstr "Organisationsnavigation"
 
 #: includes/Settings.php:28
 msgid "FAU.ORG Breadcrumb"
-msgstr ""
+msgstr "FAU.ORGA Breadcrumb"
 
 #: includes/Settings.php:49
 msgid "FAU.ORG Breadcrumb Settings"
-msgstr ""
+msgstr "FAU.ORG Breadcrumb Einstellungen"
 
 #: includes/Settings.php:57
 msgid "Institution"
@@ -107,17 +119,20 @@ msgstr ""
 
 #: includes/Settings.php:77
 msgid "Save"
-msgstr ""
+msgstr "Speichern"
 
 #: includes/Settings.php:123
 msgid "None (No faculty assignment or central unit)"
-msgstr ""
+msgstr "Keine (keine Fakultätszuordnung oder zentrale Einheit)"
 
 #: includes/Settings.php:154
 msgid ""
 "Organizational Assignment: Please select the <strong>next higher</strong> "
 "organizational unit to which the website can be assigned."
 msgstr ""
+"Organisatorische Zuordnung: Bitte wählen Sie hier die <strong>"
+"nächsthöhere</strong> Organisationseinheit aus, zu der die Website "
+"zugeordnet werden kann"
 
 #: includes/Settings.php:163
 msgid ""
@@ -125,6 +140,9 @@ msgid ""
 "Therefore, subunits of the faculty are not available for selection. The Orga "
 "Breadcrumb will not be displayed."
 msgstr ""
+"Warnung: Die Website wurde im Customizer als Fakultätsportal definiert. "
+"Daher stehen Untereinheiten der Fakultät nicht zur Auswahl. Die Orga-"
+"Breadcrumb wird nicht angezeigt."
 
 #: includes/Settings.php:167
 msgid ""
@@ -132,24 +150,33 @@ msgid ""
 "Therefore, only central units and subunits of the faculty are available for "
 "selection."
 msgstr ""
+"Die Website wurde im Customizer als Einrichtung einer Fakultät definiert. "
+"Daher stehen nur zentrale Einrichtungen und der Fakultät untergeordnete "
+"Einrichtungen zur Auswahl zur Verfügung."
 
 #: includes/Settings.php:171
 msgid ""
 "The website has been defined in the Customizer as a central unit. Therefore, "
 "only central units are available for selection."
 msgstr ""
+"Die Website wurde im Customizer als zentrale Einheit definiert. Daher stehen "
+"nur zentrale Einheiten zur Auswahl."
 
 #: includes/Settings.php:175
 msgid ""
 "Warning: The website has been defined in the Customizer as a cooperation. "
 "The Orga Breadcrumb will not be displayed."
 msgstr ""
+"Warnung: Die Website wurde im Customizer als Kooperation definiert. Die Orga-"
+"Breadcrumb wird nicht angezeigt."
 
 #: includes/Settings.php:179
 msgid ""
 "Warning: The website has been defined as the central FAU portal. The Orga "
 "Breadcrumb will not be displayed."
 msgstr ""
+"Warnung: Die Website wurde als zentrales FAU-Portal definiert. Die Orga-"
+"Breadcrumb wird nicht angezeigt."
 
 #: includes/Settings.php:193
 msgid "Aktuell gewählt"
@@ -157,4 +184,4 @@ msgstr ""
 
 #: includes/Settings.php:200
 msgid "Breadcrumb"
-msgstr ""
+msgstr "Breadcrumb"

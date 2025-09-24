@@ -11,7 +11,7 @@ return [
     '0000000000' => [
         'title' => 'Friedrich-Alexander University',
         'shorttitle' => 'FAU',
-        'url' => 'https://www.fau.de',
+        'url' => 'https://www.fau.eu',
     ],
 
     '1005000000' => [
@@ -20,14 +20,14 @@ return [
         'parent' => '0000000000'
     ],
     '1011000000' => [
-        'title' => 'Central Facilities',
+        'title' => 'Central Institutions',
         'parent' => '0000000000',
         'hide' => true,
     ],
     '1011110000' => [
         'title' => 'University Library',
         'shorttitle' => 'UB',
-        'url' => 'https://ub.fau.de',
+        'url' => 'https://ub.fau.de/en/',
         'parent' => '1011000000'
     ],
     '1011120000' => [
@@ -36,33 +36,34 @@ return [
         'url' => 'https://www.rrze.fau.de',
         'parent' => '1011000000'
     ],
-
+    '1011140000' => [
+        'title' => 'Bavarian–California University Center',
+        'url' => 'https://ub.fau.de/en/',
+        'parent' => '1011000000'
+    ],
+    '1011400000' => [
+        'title' => 'Language Center',
+        'url' => 'https://sz.fau.eu',
+        'parent' => '1011000000'
+    ],
     '1011190000' => [
         'title' => 'Center for Teacher Education',
         'url' => 'https://www.zfl.fau.de',
         'parent' => '1011000000'
     ],
-    '1011400000' => [
-        'title' => 'Language Center',
-        'url' => 'https://sz.fau.de',
-        'parent' => '1011000000'
-    ],
+
     '1011200000' => [
         'title' => 'FAU Graduate Center',
-        'parent' => '1011000000'
-    ],
-    '1011140000' => [
-        'title' => 'Bavarian–California University Center',
-        'url' => 'https://ub.fau.de',
+        'url' => 'https://www.fau.eu/graduate-centre/',
         'parent' => '1011000000'
     ],
     '1011430000' => [
-        'title' => 'Bavarian Academic Center for Latin America',
-        'url' => 'https://www.bacatec.de/de/',
+        'title' => 'Bavarian University Center for Latin America (BAYLAT)',
+        'url' => 'https://www.bacatec.de/en/',
         'parent' => '1011000000'
     ],
     '1011300000' => [
-        'title' => 'Erlangen National High-Performance Computing Center',
+        'title' => 'Erlangen National High-Performance Computing Center (NHR)',
         'url' => 'https://hpc.fau.de',
         'parent' => '1011000000'
     ],
@@ -107,21 +108,23 @@ return [
     '1100000000' => [
         'title' => 'Faculty of Humanities, Social Sciences, and Theology',
         'shorttitle' => 'Phil',
-        'url' => 'https://www.phil.fau.de',
+        'url' => 'https://www.phil.fau.eu',
         'parent' => '0000000000',
         'class' => 'phil',
         'faculty' => 'phil'
     ],
     '1111000000' => [
         'title' => 'Department of Classical World and Asian Cultures',
+        'url' => 'https://www.phil.fau.eu/faculty/organisation/departments/',
         'parent' => '1100000000'
     ],
     '1112000000' => [
         'title' => 'Department of English/American Studies and Romance Studies',
+        'url' => 'https://www.angam.phil.fau.de',
         'parent' => '1100000000'
     ],
     '1113000000' => [
-        'title' => 'Department of Subject-Specific Didactics',
+        'title' => 'Department of Subject-specific Education Research',
         'url' => 'https://www.fachdidaktiken.phil.fau.de',
         'parent' => '1100000000'
     ],
@@ -137,19 +140,22 @@ return [
     ],
     '1116000000' => [
         'title' => 'Department of Media Studies and Art History',
+        'url' => 'https://www.kunstgeschichte.phil.fau.de',
         'parent' => '1100000000'
     ],
     '1117000000' => [
         'title' => 'Department of Educational Science',
-        'url' => 'https://www.department-paedagogik.phil.fau.de/',
+        'url' => 'https://www.department-paedagogik.phil.fau.eu',
         'parent' => '1100000000'
     ],
     '1118000000' => [
         'title' => 'Department of Psychology',
+        'url' => 'https://www.phil.fau.eu/faculty/organisation/departments/',
         'parent' => '1100000000'
     ],
     '1119000000' => [
         'title' => 'Department of Social Sciences and Philosophy',
+        'url' => 'https://www.phil.fau.eu/faculty/organisation/departments/',
         'parent' => '1100000000'
     ],
     '1120000000' => [
@@ -164,19 +170,19 @@ return [
     ],
     '1122000000' => [
         'title' => 'Department of Sport Science and Sport',
-        'url' => 'https://www.sport.fau.de',
+        'url' => 'https://www.sport.fau.eu',
         'parent' => '1100000000'
     ],
     '1123000000' => [
         'title' => 'Department of Digital Humanities and Social Studies',
-        'url' => 'https://www.dhss.phil.fau.de/',
+        'url' => 'https://www.dhss.phil.fau.eu',
         'parent' => '1100000000'
     ],
 
     '1200000000' => [
         'title' => 'School of Law and Economics',
         'shorttitle' => 'RW',
-        'url' => 'https://www.rw.fau.de',
+        'url' => 'https://www.rw.fau.eu',
         'parent' => '0000000000',
         'class' => 'rw',
         'faculty' => 'rw'
@@ -192,7 +198,7 @@ return [
     '1212000000' => [
         'title' => 'School of Business, Economics and Society',
         'shorttitle' => 'FB WiSo',
-        'url' => 'https://www.wiso.rw.fau.de',
+        'url' => 'https://www.wiso.rw.fau.eu',
         'parent' => '0000000000',
         'class' => 'rw',
         'faculty' => 'rw'
@@ -218,7 +224,7 @@ return [
     ],
     '1311120000' => [
         'title' => 'Institute of Physiology and Pathophysiology',
-        'url' => 'https://www.physiologie1.uni-erlangen.de/',
+        'url' => 'https://www.physiologie1.med.fau.de/en/',
         'parent' => '1311000000'
     ],
     '1311130000' => [
@@ -253,7 +259,7 @@ return [
     ],
     '1311350000' => [
         'title' => 'Institute and Outpatient Clinic of Occupational, Social and Environmental Medicine',
-        'url' => 'https://www.ipasum.med.fau.de/',
+        'url' => 'https://www.ipasum.med.fau.de/en/',
         'parent' => '1311000000'
     ],
     '1311360000' => [
@@ -262,15 +268,25 @@ return [
         'parent' => '1311000000'
     ],
     '1311370000' => [
-        'title' => 'Clinical-Molecular Biology Research Center',
-        'url' => 'http://www.molmed.uni-erlangen.de/',
+        'title' => 'Nikolaus Fiebiger Center of Molecular Medicine (NFZ)',
+        'url' => 'https://www.em1.med.fau.de/#collapse_12',
         'parent' => '1311000000'
+    ],
+    '1311390000' => [
+        'title' => 'Institute of Research and Teaching, Medizincampus Oberfranken',
+        'url' => 'https://www.med.fau.de/fakultaet/einrichtungen/medizincampus-oberfranken/',
+        'parent' => '1300000000',
+    ],
+    '1311400000' => [
+        'title' => 'Medical Institute of Biophysics',
+        'url' => 'https://www.med.fau.de/fakultaet/einrichtungen/klinisch-theoretische-institute/#collapse_4',
+        'parent' => '1300000000',
     ],
 
     '1400000000' => [
         'title' => 'Faculty of Sciences',
         'shorttitle' => 'Nat',
-        'url' => 'https://www.nat.fau.de',
+        'url' => 'https://www.nat.fau.eu',
         'parent' => '0000000000',
         'class' => 'nat',
         'faculty' => 'nat'
@@ -278,12 +294,12 @@ return [
     '1411000000' => [
         'title' => 'Department of Biology',
         'shorttitle' => 'Bio',
-        'url' => 'https://www.biologie.nat.fau.de/',
+        'url' => 'https://www.biologie.nat.fau.eu/',
         'parent' => '1400000000'
     ],
     '1412000000' => [
         'title' => 'Department of Chemistry and Pharmacy',
-        'url' => 'https://www.chemie.nat.fau.de/',
+        'url' => 'https://www.chemie.nat.fau.eu/',
         'parent' => '1400000000'
     ],
     '1413000000' => [
@@ -293,12 +309,12 @@ return [
     ],
     '1414000000' => [
         'title' => 'Department of Mathematics',
-        'url' => 'https://www.math.fau.de/',
+        'url' => 'https://en.www.math.fau.de',
         'parent' => '1400000000'
     ],
     '1415000000' => [
         'title' => 'Department of Physics',
-        'url' => 'https://www.physik.nat.fau.de/',
+        'url' => 'https://www.physics.nat.fau.eu',
         'parent' => '1400000000'
     ],
     '1416000000' => [
@@ -310,7 +326,7 @@ return [
     '1500000000' => [
         'title' => 'Faculty of Engineering',
         'shorttitle' => 'TF',
-        'url' => 'https://www.tf.fau.de',
+        'url' => 'https://www.tf.fau.eu',
         'parent' => '0000000000',
         'class' => 'tf',
         'faculty' => 'tf'
@@ -318,7 +334,7 @@ return [
     '1511000000' => [
         'title' => 'Department of Chemical and Biological Engineering',
         'shorttitle' => 'CBI',
-        'url' => 'https://www.cbi.tf.fau.de/',
+        'url' => 'https://www.cbi.tf.fau.eu',
         'parent' => '1500000000'
     ],
     '1512000000' => [
@@ -340,8 +356,8 @@ return [
         'parent' => '1500000000'
     ],
     '1515000000' => [
-        'title' => 'Department of Materials Science and Engineering',
-        'url' => 'https://www.ww.tf.fau.de',
+        'title' => 'Department of Materials Science',
+        'url' => 'https://www.ww.tf.fau.eu',
         'parent' => '1500000000'
     ],
     '1518000000' => [

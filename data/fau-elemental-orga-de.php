@@ -27,8 +27,8 @@ return [
         'title' => 'Philosophische Fakultät und Fachbereich Theologie',
         'url' => 'https://www.phil.fau.de',
         'parent' => 'fakultaeten',
-        'class' => 'phil', //wichtig für die farbliche Darstellung im Menü
-        'faculty' => 'phil' //wichtig für die farbliche Darstellung im Menü
+        'class' => 'phil', //important for the right menu color
+        'faculty' => 'phil' //important for the right menu color
     ],
     '1111000000' => [
         'title' => 'Department Alte Welt und Asiatische Kulturen',
@@ -38,11 +38,6 @@ return [
     '1112000000' => [
         'title' => 'Department Anglistik/Amerikanistik und Romanistik',
         'url' => 'https://www.angam.phil.fau.de',
-        'parent' => '1100000000',
-    ],
-    '1123000000' => [
-        'title' => 'Department Digital Humanities and Social Studies',
-        'url' => 'https://www.dhss.phil.fau.de/',
         'parent' => '1100000000',
     ],
     '1113000000' => [
@@ -60,11 +55,7 @@ return [
         'url' => 'https://www.geschichte.phil.fau.de/',
         'parent' => '1100000000',
     ],
-    '1121000000' => [
-        'title' => 'Department Islamisch-Religiöse Studien',
-        'url' => 'https://www.dirs.phil.fau.de/',
-        'parent' => '1100000000',
-    ],
+
     '1116000000' => [
         'title' => 'Department Medienwissenschaften und Kunstgeschichte',
         'url' => 'https://www.kunstgeschichte.phil.fau.de',
@@ -85,17 +76,27 @@ return [
         'url' => 'https://www.phil.fau.de/fakultaet/organisation-organe/departments',
         'parent' => '1100000000',
     ],
+        '1120000000' => [
+        'title' => 'Fachbereich Theologie',
+        'url' => 'https://www.theologie.fau.de',
+        'parent' => '1100000000',
+    ],
+    '1121000000' => [
+        'title' => 'Department Islamisch-Religiöse Studien',
+        'url' => 'https://www.dirs.phil.fau.de/',
+        'parent' => '1100000000',
+    ],
     '1122000000' => [
         'title' => 'Department Sportwissenschaft und Sport',
         'url' => 'https://www.sport.fau.de',
         'parent' => '1100000000',
     ],
-
-    '1120000000' => [
-        'title' => 'Fachbereich Theologie',
-        'url' => 'https://www.theologie.fau.de',
+    '1123000000' => [
+        'title' => 'Department Digital Humanities and Social Studies',
+        'url' => 'https://www.dhss.phil.fau.de/',
         'parent' => '1100000000',
     ],
+
 
     // === RECHTS- UND WIRTSCHAFTSWISSENSCHAFTLICHE FAKULTÄT ===
     '1200000000' => [
@@ -129,50 +130,9 @@ return [
         'url' => 'https://www.anatomie.med.fau.de/',
         'parent' => '1300000000',
     ],
-    '1311140000' => [
-        'title' => 'Institut für Biochemie',
-        'url' => 'https://www.biochemie.med.fau.de/',
-        'parent' => '1300000000',
-    ],
-    '1311360000' => [
-        'title' => 'Institut für Biomedizin des Alterns',
-        'url' => 'https://www.iba.med.fau.de/',
-        'parent' => '1300000000',
-    ],
-    '1311340000' => [
-        'title' => 'Institut für Experimentelle und Klinische Pharmakologie und Toxikologie',
-        'url' => 'https://www.pharmakologie.med.fau.de/',
-        'parent' => '1300000000',
-    ],
-    '1311320000' => [
-        'title' => 'Institut für Geschichte und Ethik der Medizin',
-        'url' => 'https://www.igem.med.fau.de/',
-        'parent' => '1300000000',
-    ],
-
-    '1311390000' => [
-        'title' => 'Institut für Lehre und Forschung am Medizincampus Oberfranken',
-        'url' => 'https://www.med.fau.de/fakultaet/einrichtungen/medizincampus-oberfranken/',
-        'parent' => '1300000000',
-    ],
-    '1311310000' => [
-        'title' => 'Institut für Medizininformatik, Biometrie und Epidemiologie',
-        'url' => 'https://www.imbe.med.uni-erlangen.de/',
-        'parent' => '1300000000',
-    ],
     '1311120000' => [
         'title' => 'Institut für Physiologie und Pathophysiologie',
         'url' => 'https://www.physiologie1.uni-erlangen.de/',
-        'parent' => '1300000000',
-    ],
-    '1311350000' => [
-        'title' => 'Institut und Poliklinik für Arbeits-, Sozial- und Umweltmedizin',
-        'url' => 'https://www.ipasum.med.fau.de/',
-        'parent' => '1300000000',
-    ],
-    '1311330000' => [
-        'title' => 'Institut für Rechtsmedizin',
-        'url' => 'https://www.recht.med.uni-erlangen.de/',
         'parent' => '1300000000',
     ],
     '1311130000' => [
@@ -180,11 +140,57 @@ return [
         'url' => 'https://www.physiologie2.med.fau.de/',
         'parent' => '1300000000',
     ],
+    '1311140000' => [
+        'title' => 'Institut für Biochemie',
+        'url' => 'https://www.biochemie.med.fau.de/',
+        'parent' => '1300000000',
+    ],
+    '1311310000' => [
+        'title' => 'Institut für Medizininformatik, Biometrie und Epidemiologie',
+        'url' => 'https://www.imbe.med.uni-erlangen.de/',
+        'parent' => '1300000000',
+    ],
+    '1311320000' => [
+        'title' => 'Institut für Geschichte und Ethik der Medizin',
+        'url' => 'https://www.igem.med.fau.de/',
+        'parent' => '1300000000',
+    ],
+    '1311330000' => [
+        'title' => 'Institut für Rechtsmedizin',
+        'url' => 'https://www.recht.med.uni-erlangen.de/',
+        'parent' => '1300000000',
+    ],
+    '1311340000' => [
+        'title' => 'Institut für Experimentelle und Klinische Pharmakologie und Toxikologie',
+        'url' => 'https://www.pharmakologie.med.fau.de/',
+        'parent' => '1300000000',
+    ],
+    '1311350000' => [
+        'title' => 'Institut und Poliklinik für Arbeits-, Sozial- und Umweltmedizin',
+        'url' => 'https://www.ipasum.med.fau.de/',
+        'parent' => '1300000000',
+    ],
+    '1311360000' => [
+        'title' => 'Institut für Biomedizin des Alterns',
+        'url' => 'https://www.iba.med.fau.de/',
+        'parent' => '1300000000',
+    ],
     '1311370000' => [
         'title' => 'Klinisch-Molekularbiologisches Forschungszentrum',
         'url' => 'http://www.molmed.uni-erlangen.de/',
         'parent' => '1300000000',
     ],
+    '1311390000' => [
+        'title' => 'Institut für Lehre und Forschung am Medizincampus Oberfranken',
+        'url' => 'https://www.med.fau.de/fakultaet/einrichtungen/medizincampus-oberfranken/',
+        'parent' => '1300000000',
+    ],
+    '1311400000' => [
+        'title' => 'Medizinisches Institut für Biophysik',
+        'url' => 'https://www.med.fau.de/fakultaet/einrichtungen/klinisch-theoretische-institute/#collapse_4',
+        'parent' => '1300000000',
+    ],
+
 
     // === NATURWISSENSCHAFTLICHE FAKULTÄT ===
     '1400000000' => [
@@ -204,11 +210,6 @@ return [
         'url' => 'https://www.chemie.nat.fau.de/',
         'parent' => '1400000000',
     ],
-    '1416000000' => [
-        'title' => 'Department of Data Science',
-        'url' => 'https://www.datascience.nat.fau.eu/',
-        'parent' => '1400000000',
-    ],
     '1413000000' => [
         'title' => 'Department Geographie und Geowissenschaften',
         'url' => 'https://www.geo.nat.fau.de/',
@@ -224,6 +225,11 @@ return [
         'url' => 'https://www.physik.nat.fau.de/',
         'parent' => '1400000000',
     ],
+    '1416000000' => [
+        'title' => 'Department of Data Science',
+        'url' => 'https://www.datascience.nat.fau.eu/',
+        'parent' => '1400000000',
+    ],
 
     // === TECHNISCHE FAKULTÄT ===
     '1500000000' => [
@@ -233,11 +239,7 @@ return [
         'class' => 'tf',
         'faculty' => 'tf'
     ],
-    '1518000000' => [
-        'title' => 'Department Artificial Intelligence in Biomedical Engineering',
-        'url' => 'https://www.aibe.tf.fau.de/',
-        'parent' => '1500000000',
-    ],
+
     '1511000000' => [
         'title' => 'Department Chemie- und Bioingenieurwesen',
         'url' => 'https://www.cbi.tf.fau.de/',
@@ -261,6 +263,11 @@ return [
     '1515000000' => [
         'title' => 'Department Werkstoffwissenschaften',
         'url' => 'https://www.ww.tf.fau.de',
+        'parent' => '1500000000',
+    ],
+    '1518000000' => [
+        'title' => 'Department Artificial Intelligence in Biomedical Engineering',
+        'url' => 'https://www.aibe.tf.fau.de/',
         'parent' => '1500000000',
     ],
 

@@ -1,6 +1,8 @@
 /***************************************************************************
 /* base
 / *************************************************************************/
+
+
 ul.breadcrumblist,
 ol.breadcrumblist {
     margin: 0;
@@ -27,14 +29,14 @@ ol.breadcrumblist {
 
 
 /* Theme-Breadcrumb ausblenden */
-.menu-modal__breadcrumbs {
+.menu-meta-nav__modal__content  .menu-modal__breadcrumbs {
 	display: none !important;
 }
 
 
 /* Styling für Plugin-Breadcrumb in FAU Elemental */
 
-.fau-elemental-breadcrumb {
+.fau-elemental-breadcrumb  {
 	margin: 0 0 1rem 0;
 	padding: 1.3rem 1.1rem 0.3rem 1.2rem;
 
@@ -82,3 +84,4 @@ ol.breadcrumblist {
 		}
 	}
 }
+

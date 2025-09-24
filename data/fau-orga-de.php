@@ -24,10 +24,9 @@ return [
         'parent' => '0000000000',
         'hide' => true,
     ],
-    '1011110000' => [
-        'title' => 'Universitätsbibliothek',
-        'shorttitle' => 'UB',
-        'url' => 'https://ub.fau.de',
+    '1011200000' => [
+        'title' => 'Graduiertenzentrum der FAU',
+        'url' => 'https://www.fau.de/graduiertenzentrum/',
         'parent' => '1011000000'
     ],
     '1011120000' => [
@@ -36,30 +35,21 @@ return [
         'url' => 'https://www.rrze.fau.de',
         'parent' => '1011000000'
     ],
-
-    '1011190000' => [
-        'title' => 'Zentrum für Lehrerinnen- und Lehrerbildung',
-        'url' => 'https://www.zfl.fau.de',
-        'parent' => '1011000000'
-    ],
     '1011400000' => [
         'title' => 'Sprachenzentrum',
         'url' => 'https://sz.fau.de',
         'parent' => '1011000000'
     ],
-    //     '1011130000' => [
-    //     'title'     => 'Zentralinstitut für Regionenforschung',
-    //     'parent'    => '1011000000'
-    //     ],
-    '1011200000' => [
-        'title' => 'Graduiertenzentrum der FAU',
+    '1011110000' => [
+        'title' => 'Universitätsbibliothek',
+        'url' => 'https://ub.fau.de',
         'parent' => '1011000000'
     ],
-    //     '1011290000' => array(
-    //     'title'         => 'Zentrum für Lehr-/Lernforschung, -innovation und Transfer',
-    //     'shorttitle'    => 'ZeLLIT',
-    //     'parent'        => '1011000000'
-    //     ),
+    '1011190000' => [
+        'title' => 'Zentrum für Lehrerinnen- und Lehrerbildung',
+        'url' => 'https://www.zfl.fau.de',
+        'parent' => '1011000000'
+    ],
     '1011140000' => [
         'title' => 'Bayerisch-Kalifornisches Hochschulzentrum',
         'url' => 'https://ub.fau.de',
@@ -89,10 +79,7 @@ return [
         'title' => 'FAU Kompetenzzentren',
         'parent' => '1011000000'
     ],
-    //    '1013000000' => [
-    //        'title' => 'Interdisziplinäre Zentren',
-    //        'parent' => '0000000000',
-    //    ],
+
     '1015000000' => [
         'title' => 'DFG-Sonderforschungsbereiche/Transregios/Transferbereiche',
         'parent' => '0000000000',
@@ -280,6 +267,16 @@ return [
         'title' => 'Klinisch-Molekularbiologisches Forschungszentrum',
         'url' => 'http://www.molmed.uni-erlangen.de/',
         'parent' => '1311000000'
+    ],
+    '1311390000' => [
+        'title' => 'Institut für Lehre und Forschung am Medizincampus Oberfranken',
+        'url' => 'https://www.med.fau.de/fakultaet/einrichtungen/medizincampus-oberfranken/',
+        'parent' => '1311000000',
+    ],
+    '1311400000' => [
+        'title' => 'Medizinisches Institut für Biophysik',
+        'url' => 'https://www.med.fau.de/fakultaet/einrichtungen/klinisch-theoretische-institute/#collapse_4',
+        'parent' => '1311000000',
     ],
 
     '1400000000' => [

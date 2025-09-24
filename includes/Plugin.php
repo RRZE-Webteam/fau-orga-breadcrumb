@@ -48,6 +48,7 @@ class Plugin
      * @var array
      */
     protected $data;
+    private $t;
 
     /**
      * Constructor
@@ -225,7 +226,8 @@ class Plugin
      */
     public function getRequiresPHP(): string
     {
-        return $this->data['RequiresPHP'];
+        $this->t = $this->data['RequiresPHP'];
+        return $this->t;
     }
 
     /**

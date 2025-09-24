@@ -62,9 +62,9 @@ final class OrgaService
         if (!$theme) {
             return false;
         }
-        $name       = (string) $theme->get('Name');
-        $template   = strtolower((string) $theme->get_template());
-        $stylesheet = strtolower((string) $theme->get_stylesheet());
+        $name = (string)$theme->get('Name');
+        $template = strtolower((string)$theme->get_template());
+        $stylesheet = strtolower((string)$theme->get_stylesheet());
 
         return (strcasecmp($name, 'FAU-Elemental') === 0)
             || in_array($template, ['fau-elemental', 'fauelemental'], true)
@@ -76,7 +76,7 @@ final class OrgaService
      */
     public static function elementalSiteType(): string
     {
-        return (string) get_theme_mod('faue_website_type', '');
+        return (string)get_theme_mod('faue_website_type', '');
     }
 
     /**
@@ -84,7 +84,7 @@ final class OrgaService
      */
     public static function elementalFaculty(): string
     {
-        return (string) get_theme_mod('faue_faculty', '');
+        return (string)get_theme_mod('faue_faculty', '');
     }
 
     /**
@@ -98,7 +98,7 @@ final class OrgaService
         if (!$theme || !$theme->exists()) {
             return false;
         }
-        $name = (string) $theme->get('Name');
+        $name = (string)$theme->get('Name');
 
         if (!in_array($name, self::KNOWN_THEMES['fauthemes'], true)) {
             return false;
@@ -127,7 +127,7 @@ final class OrgaService
      */
     public static function sanitizeFauOrgNumber($s): string
     {
-        $digits = preg_replace('/\D+/', '', (string) $s);
+        $digits = preg_replace('/\D+/', '', (string)$s);
         return $digits !== null ? $digits : '';
     }
 
@@ -141,7 +141,7 @@ final class OrgaService
         }
         foreach (self::$data as $id => $row) {
             if (!empty($row['faculty']) && $row['faculty'] === $faculty) {
-                return (string) $id;
+                return (string)$id;
             }
         }
         return '';
@@ -161,7 +161,7 @@ final class OrgaService
         $res = [];
         foreach (self::$data as $id => $row) {
             if (!empty($row['parent']) && $row['parent'] === $fauorg) {
-                $res[] = (string) $id;
+                $res[] = (string)$id;
             }
         }
         return $res;
@@ -177,12 +177,12 @@ final class OrgaService
             return '';
         }
         if (!empty(self::$data[$id]['class'])) {
-            return (string) self::$data[$id]['class'];
+            return (string)self::$data[$id]['class'];
         }
         $parent = self::$data[$id]['parent'] ?? '';
         while ($parent !== '') {
             if (!empty(self::$data[$parent]['class'])) {
-                return (string) self::$data[$parent]['class'];
+                return (string)self::$data[$parent]['class'];
             }
             $parent = self::$data[$parent]['parent'] ?? '';
         }
@@ -194,25 +194,31 @@ final class OrgaService
     /**
      * Recursively builds <option> HTML for a <select>.
      *
-     * @param string $root     start node
+     * @param string $root start node
      * @param string $preselect pre-selected org
-     * @param int    $level     current depth
-     * @param int    $maxDepth  maximum depth
+     * @param int $level current depth
+     * @param int $maxDepth maximum depth
+     * @param string|null $websiteTypeOverride
+     * @param string|null $facultyOverride
      */
     public static function buildOptionList(
         string $root = self::ROOT_ID,
         string $preselect = self::ROOT_ID,
-        int $level = 0,
-        int $maxDepth = 4
-    ): string {
+        int    $level = 0,
+        int    $maxDepth = 4,
+               $websiteTypeOverride = null,
+               $facultyOverride = null
+    ): string
+    {
         if (self::$data === []) {
             return '';
         }
 
-        $root      = self::sanitizeFauOrgNumber($root);
-        $selected  = self::sanitizeFauOrgNumber($preselect);
-        $faculty   = self::facultyByTheme(); // context filter
-        $children  = self::childrenOf($root);
+        $root = self::sanitizeFauOrgNumber($root);
+        $selected = self::sanitizeFauOrgNumber($preselect);
+
+        $faculty = self::facultyByTheme($websiteTypeOverride, $facultyOverride); // context filter
+        $children = self::childrenOf($root);
 
         if ($children === []) {
             return '';
@@ -226,25 +232,36 @@ final class OrgaService
                 continue;
             }
 
-            // --- Context-aware filtering ---
+            // Special Case: FAU-Einrichtungen" only shows Zentrale and FAU
+            if (self::isFauEinrichtungenMainTheme()) {
+                if (isset($row['faculty']) && !empty($row['faculty'])) {
+                    continue; // KEINE Fakultäten anzeigen!
+                }
+            }
+
+// --- Context-aware filtering ---
             $skipRender = false;
 
             if ($faculty !== '') {
-                // Faculty context: show only nodes matching faculty
-                if ($faculty !== 'zentral' && (!isset($row['faculty']) || $row['faculty'] !== $faculty)) {
-                    continue;
+                // In Faculty Child Theme/Elemental: only this faculty and its substructure
+                if ($faculty !== 'zentral') {
+                    // Only display if this organisation belongs to the desired faculty
+                    if (!self::belongsToFaculty($id, $faculty)) {
+                        continue;
+                    }
                 }
-                // Central: do not render faculty nodes themselves, but traverse into children
+                // In the main theme (‘central’): Do not display faculty nodes (only central ones!)
                 if ($faculty === 'zentral' && isset($row['faculty'])) {
                     $skipRender = true;
                 }
             }
 
+
             // --- Render option if not skipped ---
             if (!$skipRender) {
                 $orgClass = self::upperClass($id);
-                $class    = 'depth-' . $level . ($orgClass ? (' ' . $orgClass) : '');
-                $title    = isset($row['title']) ? (string) $row['title'] : $id;
+                $class = 'depth-' . $level . ($orgClass ? (' ' . $orgClass) : '');
+                $title = isset($row['title']) ? (string)$row['title'] : $id;
 
                 $html .= '<option class="' . esc_attr($class) . '" value="' . esc_attr($id) . '" ' .
                     selected($selected, $id, false);
@@ -258,19 +275,21 @@ final class OrgaService
 
             // Always traverse deeper (even if this node wasn't rendered)
             if ($level < $maxDepth) {
-                $html .= self::buildOptionList($id, $preselect, $level + 1, $maxDepth);
+                $html .= self::buildOptionList($id, $preselect, $level + 1, $maxDepth, $websiteTypeOverride, $facultyOverride);
             }
         }
 
         return $html;
     }
 
+
     /**
      * Flat key => label list for legacy Customizer controls.
      *
      * @return array<string,string>
      */
-    public static function customizerChoices(): array
+    public
+    static function customizerChoices(): array
     {
         if (self::$data === []) {
             return [];
@@ -278,7 +297,7 @@ final class OrgaService
         $res = [];
         foreach (self::$data as $id => $row) {
             if (isset($row['title'])) {
-                $res[(string) $id] = (string) $row['title'];
+                $res[(string)$id] = (string)$row['title'];
             }
         }
         return $res;
@@ -291,18 +310,19 @@ final class OrgaService
      *
      * @return string|null
      */
-    public static function breadcrumb(?string $org): ?string
+    public
+    static function breadcrumb(?string $org): ?string
     {
         $id = $org ?: self::orgByTheme();
-        $id = self::sanitizeFauOrgNumber((string) $id);
+        $id = self::sanitizeFauOrgNumber((string)$id);
 
         if ($id === '' || self::$data === [] || empty(self::$data[$id])) {
             return null;
         }
 
         // Collect path upwards (skipping hidden nodes), then reverse
-        $path   = [];
-        $node   = self::$data[$id];
+        $path = [];
+        $node = self::$data[$id];
 
         if (empty($node['hide'])) {
             $path[] = $node;
@@ -321,28 +341,28 @@ final class OrgaService
             }
         }
 
-        $crumbs   = array_reverse($path);
+        $crumbs = array_reverse($path);
         $position = 1;
-        $line     = '';
+        $line = '';
 
         foreach ($crumbs as $row) {
             $entry = '<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">';
             if (!empty($row['url'])) {
-                $entry .= '<a itemprop="item" href="' . esc_url((string) $row['url']) . '">';
+                $entry .= '<a itemprop="item" href="' . esc_url((string)$row['url']) . '">';
             } else {
                 $entry .= '<span itemprop="item">';
             }
-            $title  = isset($row['title']) ? (string) $row['title'] : '';
+            $title = isset($row['title']) ? (string)$row['title'] : '';
             $entry .= '<span itemprop="name">' . esc_html($title) . '</span>';
             $entry .= !empty($row['url']) ? '</a>' : '</span>';
-            $entry .= '<meta itemprop="position" content="' . (int) $position . '" />';
+            $entry .= '<meta itemprop="position" content="' . (int)$position . '" />';
             $entry .= '</li>';
 
             $position++;
             $line .= $entry;
         }
 
-        $res  = '<nav class="orga-breadcrumb" aria-label="' . esc_attr__('Organizational Navigation', 'fau-orga-breadcrumb') . '">';
+        $res = '<nav class="orga-breadcrumb" aria-label="' . esc_attr__('Organizational Navigation', 'fau-orga-breadcrumb') . '">';
         $res .= '<ol class="breadcrumblist" itemscope itemtype="https://schema.org/BreadcrumbList">';
         $res .= $line;
         $res .= '</ol></nav>';
@@ -359,12 +379,16 @@ final class OrgaService
      *  - 'phil','nat','med','rw','tf' → a faculty
      *  - 'zentral' → central unit / FAU.de
      *  - '' → no assignment / not to be shown
+     *
+     * @param string|null $websiteTypeOverride
+     * @param string|null $facultyOverride
      */
-    public static function facultyByTheme(): string
+    public
+    static function facultyByTheme($websiteTypeOverride = null, $facultyOverride = null): string
     {
         if (self::isElementalTheme()) {
-            $type    = self::elementalSiteType();
-            $faculty = self::elementalFaculty();
+            $type = $websiteTypeOverride ?? self::elementalSiteType();
+            $faculty = $facultyOverride ?? self::elementalFaculty();
 
             if ($type === 'fau') {
                 return 'zentral';
@@ -382,7 +406,7 @@ final class OrgaService
         }
 
         // Legacy: website_type may be string; cast to int for reliable comparisons
-        $websiteType = (int) get_theme_mod('website_type', -999);
+        $websiteType = (int)get_theme_mod('website_type', -999);
         if ($websiteType === 0 || $websiteType === 2) {
             return 'zentral';
         }
@@ -391,7 +415,7 @@ final class OrgaService
         if ($legacy !== false) {
             $debug = get_theme_mod('debug_website_fakultaet');
             if ($debug !== false && $debug !== null && $debug !== '') {
-                return (string) $debug;
+                return (string)$debug;
             }
             return $legacy;
         }
@@ -399,10 +423,31 @@ final class OrgaService
         return '';
     }
 
+
+    /**
+     * Checks whether an entry (ID) belongs to a faculty (recursively upwards).
+     */
+    private
+    static function belongsToFaculty($id, $faculty)
+    {
+        // If this org has a faculty and matches, return true
+        if (isset(self::$data[$id]['faculty']) && self::$data[$id]['faculty'] === $faculty) {
+            return true;
+        }
+        // Otherwise, check parent recursively (if any)
+        if (!empty(self::$data[$id]['parent'])) {
+            return self::belongsToFaculty(self::$data[$id]['parent'], $faculty);
+        }
+        // No match found up the tree
+        return false;
+    }
+
+
     /**
      * Resolve FAU.ORG ID from the resolved faculty.
      */
-    public static function orgByTheme(): string
+    public
+    static function orgByTheme(): string
     {
         $faculty = self::facultyByTheme();
         return self::getOrgaByFaculty($faculty);
@@ -415,21 +460,21 @@ final class OrgaService
      *
      * @param string $fallbackHandle Fallback handle to enqueue if not Elemental/FAU theme.
      */
-    public static function enqueueStyle(string $fallbackHandle = 'fau-orga-breadcrumb'): void
+    public
+    static function enqueueStyle(string $fallbackHandle = 'fau-orga-breadcrumb'): void
     {
         $theme = wp_get_theme();
-        $name  = $theme ? (string) $theme->get('Name') : '';
-
-        // 1) FAU-Elemental → load plugin CSS
-        if ($name === 'FAU-Elemental') {
+        $name = $theme ? (string)$theme->get('Name') : '';
+        if (stripos($name, 'FAU-Elemental') !== false) {
             wp_enqueue_style(
                 'fau-orga-breadcrumb-elemental',
-                plugins_url('build/frontend.css', plugin()->getBasename()),
+                FAU_ORGA_BREADCRUMB_PLUGIN_URL . 'build/frontend.css',
                 [],
-                plugin()->getVersion()
+                time()
             );
-            return;
+            return; //
         }
+
 
         // 2) Other FAU themes → no CSS (legacy behavior)
         if (in_array($name, self::KNOWN_THEMES['fauthemes'], true)) {
@@ -441,4 +486,45 @@ final class OrgaService
             wp_enqueue_style($fallbackHandle);
         }
     }
+
+// Returns true if the current theme is the FAU Einrichtungen main theme.
+    public static function isFauEinrichtungenMainTheme(): bool
+    {
+        $theme = wp_get_theme();
+        if (!$theme) {
+            return false;
+        }
+        $name = (string)$theme->get('Name');
+        return ($name === 'FAU-Einrichtungen');
+    }
 }
+
+
+//AJAX for Customizer updating plugin data
+add_action('wp_ajax_fau_orga_refresh_orga_options', function () {
+
+    if (!\FAU\ORGA\Breadcrumb\OrgaService::isElementalTheme()) {
+        wp_die(-1);
+    }
+
+    if (!current_user_can('edit_theme_options')) {
+        wp_die(-1);
+    }
+    check_ajax_referer('fau_orga_refresh');
+
+    $website_type = sanitize_text_field($_POST['website_type'] ?? '');
+    $faculty = sanitize_text_field($_POST['faculty'] ?? '');
+    $orga = sanitize_text_field($_POST['current_orga'] ?? '');
+
+    // Build option list – automatically filters by faculty/type
+    $options = '';
+    if (!in_array($website_type, ['1', 'faculty', 'chair'], true)) {
+        $options .= '<option value="">' . __('None (no faculty assignment or central unit)', 'fau-orga-breadcrumb') . '</option>';
+    }
+    $options .= \FAU\ORGA\Breadcrumb\OrgaService::buildOptionList(\FAU\ORGA\Breadcrumb\OrgaService::ROOT_ID, $orga, 0, 4, $website_type, $faculty);
+
+    echo $options;
+    wp_die();
+});
+
+add_action('wp_enqueue_scripts', [OrgaService::class, 'enqueueStyle']);

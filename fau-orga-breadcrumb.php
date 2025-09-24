@@ -19,6 +19,9 @@ namespace FAU\ORGA\Breadcrumb;
 
 defined('ABSPATH') || exit;
 
+define('FAU_ORGA_BREADCRUMB_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('FAU_ORGA_BREADCRUMB_PLUGIN_URL', plugin_dir_url(__FILE__));
+
 /**
  * SPL Autoloader (PSR-4).
  * 
@@ -185,3 +188,25 @@ function loaded()
     // If there are no errors, create an instance of the 'Main' class and trigger its 'loaded' method.
     new Main();
 }
+
+
+
+// Removing the FAU Elemental Theme Modal Breadcrumbs
+add_action('wp_footer', function() {
+    ?>
+    <script>
+        function removeThemeModalBreadcrumbs() {
+            document.querySelectorAll('.menu-meta-nav__modal__content .menu-modal__breadcrumbs').forEach(function(bc) {
+                bc.parentNode.removeChild(bc);
+            });
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            removeThemeModalBreadcrumbs();
+            var observer = new MutationObserver(function() {
+                removeThemeModalBreadcrumbs();
+            });
+            observer.observe(document.body, { childList: true, subtree: true });
+        });
+    </script>
+    <?php
+});
