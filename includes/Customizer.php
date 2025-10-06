@@ -29,13 +29,11 @@ class Customizer
      * @param \WP_Customize_Manager $wp_customize
      * @return void
      */
-
-
     public function register(\WP_Customize_Manager $wp_customize): void
     {
         $is_elemental = OrgaService::isElementalTheme();
 
-        $section = $is_elemental ? 'faue_theme_settings' : 'title_tagline';
+        $section = 'title_tagline';
 
         $website_type = $is_elemental ? (string)get_theme_mod('faue_website_type', '') : (string)get_theme_mod('website_type', '');
         $options = get_option('fau_orga_breadcrumb_options');
@@ -50,7 +48,7 @@ class Customizer
             $optionlist = '';
             $website_type = get_theme_mod('website_type');
             if (isset($website_type) && (int)$website_type !== 1) {
-                $optionlist .= '<option value="">' . __('Keine (Keine Fakultätszuordnung oder Zentralbereich)', 'fau-orga-breadcrumb') . '</option>';
+                $optionlist .= '<option value="">' . __('None (no faculty assignment or central unit)', 'fau-orga-breadcrumb') . '</option>';
             }
             $optionlist .= OrgaService::buildOptionList('0000000000', $orga, 0, 4, $website_type, $faculty);
             $choices = $optionlist;

@@ -104,20 +104,14 @@ final class OrgaService
             return false;
         }
 
-        switch ($name) {
-            case 'FAU-Philfak':
-                return 'phil';
-            case 'FAU-RWFak':
-                return 'rw';
-            case 'FAU-Natfak':
-                return 'nat';
-            case 'FAU-Medfak':
-                return 'med';
-            case 'FAU-Techfak':
-                return 'tf';
-            default:
-                return 'zentral';
-        }
+        return match ($name) {
+            'FAU-Philfak' => 'phil',
+            'FAU-RWFak'   => 'rw',
+            'FAU-Natfak'  => 'nat',
+            'FAU-Medfak'  => 'med',
+            'FAU-Techfak' => 'tf',
+            default       => 'zentral',
+        };
     }
 
     // ---------------------- Mapping / lookups ----------------------
@@ -427,8 +421,7 @@ final class OrgaService
     /**
      * Checks whether an entry (ID) belongs to a faculty (recursively upwards).
      */
-    private
-    static function belongsToFaculty($id, $faculty)
+    private static function belongsToFaculty($id, $faculty)
     {
         // If this org has a faculty and matches, return true
         if (isset(self::$data[$id]['faculty']) && self::$data[$id]['faculty'] === $faculty) {
@@ -446,8 +439,7 @@ final class OrgaService
     /**
      * Resolve FAU.ORG ID from the resolved faculty.
      */
-    public
-    static function orgByTheme(): string
+    public static function orgByTheme(): string
     {
         $faculty = self::facultyByTheme();
         return self::getOrgaByFaculty($faculty);
@@ -460,8 +452,7 @@ final class OrgaService
      *
      * @param string $fallbackHandle Fallback handle to enqueue if not Elemental/FAU theme.
      */
-    public
-    static function enqueueStyle(string $fallbackHandle = 'fau-orga-breadcrumb'): void
+    public static function enqueueStyle(string $fallbackHandle = 'fau-orga-breadcrumb'): void
     {
         $theme = wp_get_theme();
         $name = $theme ? (string)$theme->get('Name') : '';

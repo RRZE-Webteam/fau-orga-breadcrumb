@@ -1,6 +1,6 @@
 # FAU Orga Breadcrumb
 
-Plugin zur einer organisatorischen Breadcrumb an der FAU
+Plugin zur Darstellung einer organisatorischen Breadcrumb an der FAU
 
 [![Aktuelle Version](https://img.shields.io/github/package-json/v/rrze-webteam/fau-orga-breadcrumb/master?label=Version)](https://github.com/RRZE-Webteam/fau-orga-breadcrumb)
 [![Release Version](https://img.shields.io/github/v/release/rrze-webteam/fau-orga-breadcrumb?label=Release+Version)](https://github.com/rrze-webteam/fau-orga-breadcrumb/releases/)
@@ -8,75 +8,62 @@ Plugin zur einer organisatorischen Breadcrumb an der FAU
 [![GitHub issues](https://img.shields.io/github/issues/RRZE-Webteam/fau-orga-breadcrumb)](https://github.com/RRZE-Webteam/fau-orga-breadcrumb/issues)
 
 ## Download
-
 GitHub-Repo: https://github.com/RRZE-Webteam/fau-orga-breadcrumb
 
 ## Autor
-
 RRZE-Webteam , http://www.rrze.fau.de
 
 ## Copryright
-
 GNU General Public License (GPL) Version 3
 
 
 ## Beschreibung
 
+Das Plugin FAU ORGA Breadcrumb erzeugt eine organisatorische Breadcrumb für die Friedrich‑Alexander‑Universität Erlangen‑Nürnberg (FAU). 
+Es stellt die Breadcrumb im Frontend bereit und erzeugt das Strukturmenü für das FAU Elemental Theme. 
+Es bietet eine Administrationsseite sowie Customizer‑Integration zur Zuordnung der Website zu einer organisatorischen Einheit.
 
-Dieses Plugin erstellt eine organisatorische Breadcrumb für Einrichtungen
-der Friedrich-Alexaner-Universität Erlangen-Nürnberg (FAU). 
+Momentan werden die organisationsbezogenen Rohdaten lokal aus sprachsensitiven PHP‑Datenfiles geliefert; 
+das Plugin ist jedoch so strukturiert, dass eine spätere Anbindung an das FAU.ORG‑System via API möglich ist.
 
-Als Provisorum werden dabei organisatorischen Daten zunächst aus einem
-in diesem Plugin definierten Array vordefiniert. Später ist geplant, die
-organisatorischen Daten über eine zu schaffende Schnittstelle zum
-Organisationsverwaltungssystem  FAU.ORG abzurufen.
+
+## Funktionen
+
+- Ausgabe einer organisatorischen Breadcrumb per Shortcode: 
+[fauorga].
+
+- Shortcode‑Attribut show="menu" zur Ausgabe des hierarchischen Elemental‑Menüs (Modalinhalt): 
+[fauorga show="menu"].
+
+- Administrationsseite (Einstellungen) zur Auswahl der Organisationszuordnung.
+- Integration in den Theme‑Customizer (wenn Themes entsprechende Einstellungen verwenden).
+- Sprachabhängige Datenladefunktion: data/{name}-{lang}.php mit Fallback auf Englisch.
+- Admin CSS und optionales Frontend‑CSS werden über das Service‑Layer eingebunden.
+- Spezielle Integration für das FAU Elemental Theme: Erzeugung eines hierarchischen Menüs mit Toggle‑Buttons, fakultätsspezifischen Klassen und einem Breadcrumb‑Bereich.
+- Kleine JS‑Routine (im Bootstrap) entfernt doppelte Breadcrumbs, die vom Elemental‑Theme in Modalinhalten eingefügt werden können.
+
+
 
 ## Verwendung
 
-Die FAU ORG Breadcrumb kann mittels Shortcode ausgegeben werden:
-
-```html
+### Shortcode
+Standard‑Verwendung (nutzt konfigurierte Option oder Theme‑Inference):
 [fauorga]
-```
-Bei der Default-Nutzung wird der Eintrag in den Settings resp. aus dem Customizer verwendet.
-Zu beachten ist, dass dieser auch abhängig vom gewählten Website-Type sein kann. 
-Bei Wahl des Website-Types als zentrales FAU-Portal, als Fakultätsportal oder als externe Kooperation wird der Shortcode keine Ausgabe liefern.
 
-Aufruf mit Angabe einer FAU.ORG-Nummer:
+Elemental‑Menü / Modalinhalt:
+[fauorga show="menu"]
 
-```html
-[fauorga org="1514000000"]
-```
-
-Mit dem Attribut org lässt sich auch der Pfad zu anderen Organisationen darstellen. Als Eingabe dient dabei die FAU.ORG Id.
-
-Das Plugin ist nur mit bei Nutzung der Themes
-    'FAU-Einrichtungen',
-    'FAU-Einrichtungen-BETA',
-    'FAU-Medfak',
-    'FAU-RWFak',
-    'FAU-Philfak',
-    'FAU-Techfak',
-    'FAU-Natfak',
-    'FAU-Blog',
-    'FAU-Jobs'
-
-einsatzfähig.
+### Verhalten
+Die Ausgabe des Breadcrumbs hängt vom Site‑Typ ab (Customizer oder Legacy‑website_type). Bei bestimmten Typen (zentrale FAU‑Seite, Fakultätsportal, Kooperationen) wird bewusst keine Breadcrumb ausgegeben.
+Die Einstellungsseite zeigt eine Live‑Vorschau der gewählten Organisation sowie eine Breadcrumb‑Vorschau.
 
 
-## Entwickler-Hinweise
+## FAU Elemental Theme Integration
+ElementalMenu erzeugt eine hierarchische <ul>/<li>‑Struktur, die für das Elemental‑Theme‑Modal geeignet ist. 
+Die Ausgabe enthält Toggle‑Buttons für Untermenüs und fakultätsspezifische CSS‑Klassen (z. B. faculty-<slug>).
+Bei Verwendung von show="menu" liefert das Plugin den kompletten Modalinhalt (Breadcrumb + Menü) zurück, so dass Themes diesen Inhalt direkt verwenden können.
+Um doppelte Breadcrumbs im Elemental‑Modal zu vermeiden, entfernt das Plugin per kleinem JavaScript‑Skript vorhandene vom Theme erzeugte Breadcrumb‑Nodes im Footer.
 
-### CSS-Anweisungen
 
-Die CSS Anweisungen werden mittels SASS erzeugt. Hierzu werden im Verzeichnis
-  /css/sass/
-alle notwendien SASS und SCSS Dateien abgelegt. Die aktiven Dateien werden in
-der SCSS-Datei fau-orga-breadcrumb.scss includiert.
 
-Die für das Plugin zu erzeugende CSS-Datei fau-orga-breadcrumb.css wird im
-Verzeichnis /css abgelegt. 
-Als Quellverzeichnis zur SASS-Compilierung dient daher das Verzeichnis /css/sass,
-das Ausgabeverzeichnis ist /css .
-
-Zur Erstellung der CSS-Dateien liegt ein Gulp-Skript bereit.
  
