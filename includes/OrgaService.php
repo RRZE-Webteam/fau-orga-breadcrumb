@@ -307,6 +307,19 @@ final class OrgaService
     public
     static function breadcrumb(?string $org): ?string
     {
+        // no breadcrumb on type fau.de and cooparation
+        if (self::isElementalTheme()) {
+            $type = self::elementalSiteType();
+            if (in_array($type, ['fau', 'cooperation'], true)) {
+                return null;
+            }
+        } else {
+            $type = (int) get_theme_mod('website_type', -999);
+            if (in_array($type, [-1, 3], true)) {
+                return null;
+            }
+        }
+
         $id = $org ?: self::orgByTheme();
         $id = self::sanitizeFauOrgNumber((string)$id);
 
