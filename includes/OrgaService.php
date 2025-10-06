@@ -245,7 +245,7 @@ final class OrgaService
                     }
                 }
                 // In the main theme (‘central’): Do not display faculty nodes (only central ones!)
-                if ($faculty === 'zentral' && isset($row['faculty'])) {
+                if ($faculty === 'zentral' && self::belongsToAnyFaculty($id)) {
                     $skipRender = true;
                 }
             }
@@ -276,6 +276,38 @@ final class OrgaService
         return $html;
     }
 
+/**
+* Determines whether a given organization (by ID) belongs to any faculty.
+*
+* Used to filter out all faculty-related entries (direct or indirect)
+* when rendering "central" units only (e.g. for website type "other").
+*
+* This check is recursive: it walks up the parent chain until
+* a node with a 'faculty' attribute is found.
+*
+* @param string $id FAU.ORG ID to check
+* @return bool True if the entry belongs to any faculty, false otherwise
+*/
+    public static function belongsToAnyFaculty(string $id): bool
+    {
+        $id = self::sanitizeFauOrgNumber($id);
+        if ($id === '' || empty(self::$data[$id])) {
+            return false;
+        }
+
+        // Prüfe: gehört dieser Knoten direkt oder indirekt zu einer Fakultät?
+        $row = self::$data[$id];
+        if (!empty($row['faculty'])) {
+            return true;
+        }
+
+        $parent = $row['parent'] ?? '';
+        if ($parent !== '') {
+            return self::belongsToAnyFaculty($parent);
+        }
+
+        return false;
+    }
 
     /**
      * Flat key => label list for legacy Customizer controls.
@@ -403,8 +435,8 @@ final class OrgaService
             if (in_array($type, ['faculty', 'chair'], true) && $faculty !== '') {
                 return $faculty;
             }
-            if ($type === 'other' && $faculty !== '') {
-                return $faculty;
+            if ($type === 'other') {
+                return 'zentral';
             }
             if ($type === 'cooperation') {
                 return '';
