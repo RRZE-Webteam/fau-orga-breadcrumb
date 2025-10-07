@@ -38,10 +38,10 @@ return [
     ],
     '1011140000' => [
         'title' => 'Bavarian–California University Center',
-        'url' => 'https://ub.fau.de/en/',
+        'url' => 'https://www.bacatec.de/en/',
         'parent' => '1011000000'
     ],
-    '1011400000' => [
+    '1011180000' => [
         'title' => 'Language Center',
         'url' => 'https://sz.fau.eu',
         'parent' => '1011000000'
@@ -51,19 +51,18 @@ return [
         'url' => 'https://www.zfl.fau.de',
         'parent' => '1011000000'
     ],
-
     '1011200000' => [
         'title' => 'FAU Graduate Center',
         'url' => 'https://www.fau.eu/graduate-centre/',
         'parent' => '1011000000'
     ],
     '1011430000' => [
-        'title' => 'Bavarian University Center for Latin America (BAYLAT)',
-        'url' => 'https://www.bacatec.de/en/',
+        'title' => 'Bavarian University Center for Latin America',
+        'url' => 'https://www.baylat.org',
         'parent' => '1011000000'
     ],
     '1011300000' => [
-        'title' => 'Erlangen National High-Performance Computing Center (NHR)',
+        'title' => 'Erlangen National High-Performance Computing Center',
         'url' => 'https://hpc.fau.de',
         'parent' => '1011000000'
     ],
@@ -82,7 +81,7 @@ return [
         'parent' => '1011000000'
     ],
     '1015000000' => [
-        'title' => 'DFG Collaborative Research Centres / Transregios / Transfer Units',
+        'title' => 'DFG Collaborative Research Centres/Transregios/Transfer Units',
         'parent' => '0000000000',
     ],
     '1016000000' => [

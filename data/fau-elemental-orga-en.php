@@ -286,7 +286,7 @@ return [
     ],
     '1011140000' => [
         'title' => 'Bavaria California Technology Center (BaCaTeC)',
-        'url' => 'https://ub.fau.de/en/',
+        'url' => 'https://www.bacatec.de/en/',
         'parent' => 'zentrale_einrichtungen',
     ],
     '1011180000' => [
@@ -306,7 +306,7 @@ return [
     ],
     '1011430000' => [
         'title' => 'Bavarian University Center for Latin America (BAYLAT)',
-        'url' => 'https://www.bacatec.de/en/',
+        'url' => 'https://www.baylat.org',
         'parent' => 'zentrale_einrichtungen',
     ],
     '1011300000' => [

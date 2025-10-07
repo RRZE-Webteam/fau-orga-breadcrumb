@@ -277,9 +277,9 @@ return [
         'url' => '',
         'parent' => null,
     ],
-    '1011200000' => [
-        'title' => 'Graduiertenzentrum der FAU',
-        'url' => 'https://www.fau.de/graduiertenzentrum/',
+    '1011110000' => [
+        'title' => 'Universitätsbibliothek',
+        'url' => 'https://ub.fau.de',
         'parent' => 'zentrale_einrichtungen',
     ],
     '1011120000' => [
@@ -287,14 +287,14 @@ return [
         'url' => 'https://www.rrze.fau.de',
         'parent' => 'zentrale_einrichtungen',
     ],
-    '1011400000' => [
-        'title' => 'Sprachenzentrum',
-        'url' => 'https://sz.fau.de',
+    '1011140000' => [
+        'title' => 'Bayerisch-Kalifornisches Hochschulzentrum (BaCaTeC)',
+        'url' => 'https://www.bacatec.de/de/',
         'parent' => 'zentrale_einrichtungen',
     ],
-    '1011110000' => [
-        'title' => 'Universitätsbibliothek',
-        'url' => 'https://ub.fau.de',
+    '1011180000' => [
+        'title' => 'Sprachenzentrum',
+        'url' => 'https://sz.fau.de',
         'parent' => 'zentrale_einrichtungen',
     ],
     '1011190000' => [
@@ -302,14 +302,14 @@ return [
         'url' => 'https://www.zfl.fau.de',
         'parent' => 'zentrale_einrichtungen',
     ],
-    '1011140000' => [
-        'title' => 'Bayerisch-Kalifornisches Hochschulzentrum',
-        'url' => 'https://ub.fau.de',
+    '1011200000' => [
+        'title' => 'Graduiertenzentrum der FAU',
+        'url' => 'https://www.fau.de/graduiertenzentrum/',
         'parent' => 'zentrale_einrichtungen',
     ],
     '1011430000' => [
-        'title' => 'Bayerisches Hochschulzentrum für Lateinamerika',
-        'url' => 'https://www.bacatec.de/de/',
+        'title' => 'Bayerisches Hochschulzentrum für Lateinamerika (BAYLAT)',
+        'url' => 'https://www.baylat.org',
         'parent' => 'zentrale_einrichtungen',
     ],
     '1011300000' => [

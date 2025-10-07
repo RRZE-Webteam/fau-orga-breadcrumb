@@ -24,20 +24,10 @@ return [
         'parent' => '0000000000',
         'hide' => true,
     ],
-    '1011200000' => [
-        'title' => 'Graduiertenzentrum der FAU',
-        'url' => 'https://www.fau.de/graduiertenzentrum/',
-        'parent' => '1011000000'
-    ],
     '1011120000' => [
         'title' => 'Regionales Rechenzentrum Erlangen',
         'shorttitle' => 'RRZE',
         'url' => 'https://www.rrze.fau.de',
-        'parent' => '1011000000'
-    ],
-    '1011400000' => [
-        'title' => 'Sprachenzentrum',
-        'url' => 'https://sz.fau.de',
         'parent' => '1011000000'
     ],
     '1011110000' => [
@@ -45,19 +35,30 @@ return [
         'url' => 'https://ub.fau.de',
         'parent' => '1011000000'
     ],
+    '1011140000' => [
+        'title' => 'Bayerisch-Kalifornisches Hochschulzentrum',
+        'url' => 'https://www.bacatec.de/de/',
+        'parent' => '1011000000'
+    ],
+    '1011180000' => [
+        'title' => 'Sprachenzentrum',
+        'url' => 'https://sz.fau.de',
+        'parent' => '1011000000'
+    ],
     '1011190000' => [
         'title' => 'Zentrum für Lehrerinnen- und Lehrerbildung',
         'url' => 'https://www.zfl.fau.de',
         'parent' => '1011000000'
     ],
-    '1011140000' => [
-        'title' => 'Bayerisch-Kalifornisches Hochschulzentrum',
-        'url' => 'https://ub.fau.de',
+    '1011200000' => [
+        'title' => 'Graduiertenzentrum der FAU',
+        'url' => 'https://www.fau.de/graduiertenzentrum/',
         'parent' => '1011000000'
     ],
+
     '1011430000' => [
         'title' => 'Bayerisches Hochschulzentrum für Lateinamerika',
-        'url' => 'https://www.bacatec.de/de/',
+        'url' => 'https://www.baylat.org',
         'parent' => '1011000000'
     ],
     '1011300000' => [
@@ -65,12 +66,10 @@ return [
         'url' => 'https://hpc.fau.de',
         'parent' => '1011000000'
     ],
-
     '1011320000' => [
         'title' => 'FAU Forschungszentren',
         'parent' => '1011000000'
     ],
-
     'profilzentren' => [
         'title' => 'FAU Profilzentren',
         'parent' => '1011000000'
@@ -79,7 +78,6 @@ return [
         'title' => 'FAU Kompetenzzentren',
         'parent' => '1011000000'
     ],
-
     '1015000000' => [
         'title' => 'DFG-Sonderforschungsbereiche/Transregios/Transferbereiche',
         'parent' => '0000000000',
