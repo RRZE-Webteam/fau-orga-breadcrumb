@@ -13,6 +13,11 @@ class Settings
 
     public function __construct()
     {
+        // FAU Elemental no Settings Page
+        if (OrgaService::isElementalActive()) {
+            return;
+        }
+
         // Register admin page and settings on appropriate hooks
         add_action('admin_menu', [$this, 'register_admin_menu']);
         add_action('admin_init', [$this, 'register_settings']);

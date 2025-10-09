@@ -88,6 +88,21 @@ final class OrgaService
     }
 
     /**
+     * No Settings Page Helper
+     */
+    public static function isElementalActive(): bool
+    {
+        $theme    = wp_get_theme();
+        $name     = strtolower((string) $theme->get('Name'));
+        $template = strtolower((string) $theme->get_template());
+
+        // robust gegen abweichende Schreibweisen
+        return str_contains($name, 'fau elemental')
+            || str_contains($template, 'fau-elemental');
+    }
+
+
+    /**
      * Legacy FAU theme → returns faculty code ('phil','nat','med','rw','tf','zentral') or false if not an FAU theme.
      *
      * @return string|false

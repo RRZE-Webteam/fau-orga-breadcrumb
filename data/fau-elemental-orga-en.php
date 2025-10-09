@@ -31,7 +31,7 @@ return [
         'faculty' => 'phil'
     ],
     'virt_1100000000_overview' => [
-        'title' => 'Overview: Faculty of Humanities, Social Sciences, and Theology',
+        'title' => 'Faculty of Humanities, Social Sciences, and Theology',
         'url' => 'https://www.phil.fau.eu',
         'parent' => '1100000000',
     ],
@@ -110,7 +110,7 @@ return [
         'faculty' => 'rw'
     ],
     'virt_1200000000_overview' => [
-        'title' => 'Overview: School of Law and Economics',
+        'title' => 'School of Law and Economics',
         'url' => 'https://www.rw.fau.eu',
         'parent' => '1200000000',
     ],
@@ -134,7 +134,7 @@ return [
         'faculty' => 'med'
     ],
     'virt_1300000000_overview' => [
-        'title' => 'Overview: Faculty of Medicine',
+        'title' => 'Faculty of Medicine',
         'url' => 'https://www.med.fau.eu',
         'parent' => '1300000000',
     ],
@@ -214,7 +214,7 @@ return [
         'faculty' => 'nat'
     ],
     'virt_1400000000_overview' => [
-        'title' => 'Overview: Faculty of Sciences',
+        'title' => 'Faculty of Sciences',
         'url' => 'https://www.nat.fau.eu',
         'parent' => '1400000000',
     ],
@@ -258,7 +258,7 @@ return [
         'faculty' => 'tf'
     ],
     'virt_1500000000_overview' => [
-        'title' => 'Overview: Faculty of Engineering',
+        'title' => 'Faculty of Engineering',
         'url' => 'https://www.tf.fau.eu',
         'parent' => '1500000000',
     ],

@@ -31,7 +31,7 @@ return [
         'faculty' => 'phil' //important for the right menu color
     ],
     'virt_1100000000_overview' => [
-        'title' => 'Übersicht: Philosophische Fakultät und Fachbereich Theologie',
+        'title' => 'Philosophische Fakultät und Fachbereich Theologie',
         'url' => 'https://www.phil.fau.de',
         'parent' => '1100000000',
     ],
@@ -112,7 +112,7 @@ return [
         'faculty' => 'rw'
     ],
     'virt_1200000000_overview' => [
-        'title' => 'Übersicht: Rechts- und Wirtschaftswissenschaftliche Fakultät',
+        'title' => 'Rechts- und Wirtschaftswissenschaftliche Fakultät',
         'url' => 'https://www.rw.fau.de',
         'parent' => '1200000000',
     ],
@@ -136,7 +136,7 @@ return [
         'faculty' => 'med'
     ],
     'virt_1300000000_overview' => [
-        'title' => 'Übersicht: Medizinische Fakultät',
+        'title' => 'Medizinische Fakultät',
         'url' => 'https://www.med.fau.de',
         'parent' => '1300000000',
     ],
@@ -216,7 +216,7 @@ return [
         'faculty' => 'nat'
     ],
     'virt_1400000000_overview' => [
-        'title' => 'Übersicht: Naturwissenschaftliche Fakultät',
+        'title' => 'Naturwissenschaftliche Fakultät',
         'url' => 'https://www.nat.fau.de',
         'parent' => '1400000000',
     ],
@@ -260,7 +260,7 @@ return [
         'faculty' => 'tf'
     ],
     'virt_1500000000_overview' => [
-        'title' => 'Übersicht: Technische Fakultät',
+        'title' => 'Technische Fakultät',
         'url' => 'https://www.tf.fau.de',
         'parent' => '1500000000',
     ],

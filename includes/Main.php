@@ -24,7 +24,7 @@ class Main
         add_action('admin_enqueue_scripts', [$this, 'enqueueAdminScripts']);
         add_action('admin_notices', [$this, 'fau_orga_admin_notice']);
 
-        if (is_admin()) {
+        if (is_admin() && ! OrgaService::isElementalActive()) {
             new \FAU\ORGA\Breadcrumb\Settings();
         }
 
@@ -44,6 +44,11 @@ class Main
      */
     public function fau_orga_admin_notice()
     {
+        // No Settings-Page in FAU Elemental -> no notice and link
+        if (OrgaService::isElementalActive()) {
+            return;
+        }
+
         global $pagenow;
         //    global $fau_orga_fautheme;
 
@@ -91,6 +96,10 @@ class Main
      */
     public function settingsLink($links)
     {
+        if (OrgaService::isElementalActive()) {
+            return $links; // Unter Elemental keinen Link anhängen
+        }
+
         $settingsLink = sprintf(
             '<a href="%s">%s</a>',
             admin_url('options-general.php?page=fau_orga_breadcrumb_settings'),
