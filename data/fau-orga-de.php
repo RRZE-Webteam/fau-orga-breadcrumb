@@ -135,6 +135,7 @@ return [
     ],
     '1116000000' => [
         'title' => 'Department Medienwissenschaften und Kunstgeschichte',
+        'url' => 'https://www.kunstgeschichte.phil.fau.de',
         'parent' => '1100000000'
     ],
     '1117000000' => [

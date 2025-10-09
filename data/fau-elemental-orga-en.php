@@ -133,6 +133,11 @@ return [
         'class' => 'med',
         'faculty' => 'med'
     ],
+    'virt_1300000000_overview' => [
+        'title' => 'Overview: Faculty of Medicine',
+        'url' => 'https://www.med.fau.eu',
+        'parent' => '1300000000',
+    ],
     '1311110000' => [
         'title' => 'Institute of Anatomy',
         'url' => 'https://www.anatomie.med.fau.de/',
@@ -251,6 +256,11 @@ return [
         'parent' => 'fakultaeten',
         'class' => 'tf',
         'faculty' => 'tf'
+    ],
+    'virt_1500000000_overview' => [
+        'title' => 'Overview: Faculty of Engineering',
+        'url' => 'https://www.tf.fau.eu',
+        'parent' => '1500000000',
     ],
     '1511000000' => [
         'title' => 'Department of Chemical and Biological Engineering',
