@@ -422,8 +422,7 @@ final class OrgaService
      * @param string|null $websiteTypeOverride
      * @param string|null $facultyOverride
      */
-    public
-    static function facultyByTheme($websiteTypeOverride = null, $facultyOverride = null): string
+    public static function facultyByTheme($websiteTypeOverride = null, $facultyOverride = null): string
     {
         if (self::isElementalTheme()) {
             $type = $websiteTypeOverride ?? self::elementalSiteType();

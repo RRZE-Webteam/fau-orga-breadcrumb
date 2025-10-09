@@ -30,6 +30,11 @@ return [
         'class' => 'phil',
         'faculty' => 'phil'
     ],
+    'virt_1100000000_overview' => [
+        'title' => 'Overview: Faculty of Humanities, Social Sciences, and Theology',
+        'url' => 'https://www.phil.fau.eu',
+        'parent' => '1100000000',
+    ],
     '1111000000' => [
         'title' => 'Department of Classical World and Asian Cultures',
         'url' => 'https://www.phil.fau.eu/faculty/organisation/departments/',
@@ -103,6 +108,11 @@ return [
         'parent' => 'fakultaeten',
         'class' => 'rw',
         'faculty' => 'rw'
+    ],
+    'virt_1200000000_overview' => [
+        'title' => 'Overview: School of Law and Economics',
+        'url' => 'https://www.rw.fau.eu',
+        'parent' => '1200000000',
     ],
     '1211000000' => [
         'title' => 'School of Law',
@@ -197,6 +207,11 @@ return [
         'parent' => 'fakultaeten',
         'class' => 'nat',
         'faculty' => 'nat'
+    ],
+    'virt_1400000000_overview' => [
+        'title' => 'Overview: Faculty of Sciences',
+        'url' => 'https://www.nat.fau.eu',
+        'parent' => '1400000000',
     ],
     '1411000000' => [
         'title' => 'Department of Biology',

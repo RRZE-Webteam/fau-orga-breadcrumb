@@ -30,6 +30,11 @@ return [
         'class' => 'phil', //important for the right menu color
         'faculty' => 'phil' //important for the right menu color
     ],
+    'virt_1100000000_overview' => [
+        'title' => 'Übersicht: Philosophische Fakultät und Fachbereich Theologie',
+        'url' => 'https://www.phil.fau.de',
+        'parent' => '1100000000',
+    ],
     '1111000000' => [
         'title' => 'Department Alte Welt und Asiatische Kulturen',
         'url' => 'https://www.phil.fau.de/fakultaet/organisation-organe/departments',
@@ -106,6 +111,11 @@ return [
         'class' => 'rw',
         'faculty' => 'rw'
     ],
+    'virt_1200000000_overview' => [
+        'title' => 'Übersicht: Rechts- und Wirtschaftswissenschaftliche Fakultät',
+        'url' => 'https://www.rw.fau.de',
+        'parent' => '1200000000',
+    ],
     '1211000000' => [
         'title' => 'Fachbereich Rechtswissenschaft',
         'url' => 'https://www.jura.rw.fau.de',
@@ -124,6 +134,11 @@ return [
         'parent' => 'fakultaeten',
         'class' => 'med',
         'faculty' => 'med'
+    ],
+    'virt_1300000000_overview' => [
+        'title' => 'Übersicht: Medizinische Fakultät',
+        'url' => 'https://www.med.fau.de',
+        'parent' => '1300000000',
     ],
     '1311110000' => [
         'title' => 'Institut für Anatomie',
@@ -200,6 +215,11 @@ return [
         'class' => 'nat',
         'faculty' => 'nat'
     ],
+    'virt_1400000000_overview' => [
+        'title' => 'Übersicht: Naturwissenschaftliche Fakultät',
+        'url' => 'https://www.nat.fau.de',
+        'parent' => '1400000000',
+    ],
     '1411000000' => [
         'title' => 'Department Biologie',
         'url' => 'https://www.biologie.nat.fau.de/',
@@ -239,7 +259,11 @@ return [
         'class' => 'tf',
         'faculty' => 'tf'
     ],
-
+    'virt_1500000000_overview' => [
+        'title' => 'Übersicht: Technische Fakultät',
+        'url' => 'https://www.tf.fau.de',
+        'parent' => '1500000000',
+    ],
     '1511000000' => [
         'title' => 'Department Chemie- und Bioingenieurwesen',
         'url' => 'https://www.cbi.tf.fau.de/',
@@ -283,7 +307,7 @@ return [
         'parent' => 'zentrale_einrichtungen',
     ],
     '1011120000' => [
-        'title' => 'Regionales Rechenzentrum Erlangen',
+        'title' => 'Regionales Rechenzentrum Erlangen (RRZE)',
         'url' => 'https://www.rrze.fau.de',
         'parent' => 'zentrale_einrichtungen',
     ],
@@ -313,7 +337,7 @@ return [
         'parent' => 'zentrale_einrichtungen',
     ],
     '1011300000' => [
-        'title' => 'Zentrum für Nationales Hochleistungsrechnen Erlangen',
+        'title' => 'Zentrum für Nationales Hochleistungsrechnen Erlangen (NHR)',
         'url' => 'https://hpc.fau.de',
         'parent' => 'zentrale_einrichtungen',
     ],
