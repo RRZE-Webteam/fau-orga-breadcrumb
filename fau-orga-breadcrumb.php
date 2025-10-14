@@ -45,6 +45,10 @@ spl_autoload_register(function ($class) {
     }
 });
 
+// Register the AJAX handler for Customizer updating
+require_once __DIR__ . '/includes/Ajax.php';
+\FAU\ORGA\Breadcrumb\Ajax::register();
+
 // Register activation hook for the plugin
 register_activation_hook(__FILE__, __NAMESPACE__ . '\activation');
 

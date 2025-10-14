@@ -24,10 +24,9 @@ final class ElementalMenu
 
     public function __construct()
     {
-        // Load fau elemental orga data
-        Data::read('fau-elemental-orga');
-
-        self::$data = $fau_elemental_orga_data ?? [];
+        // optional fallback, if new ElementalMenu() is used
+        $data = Data::read('fau-elemental-orga');
+        self::$data = is_array($data) ? $data : [];
     }
 
     /**
@@ -44,27 +43,37 @@ final class ElementalMenu
      * Builds ONLY the modal content (breadcrumb + hierarchical menu).
      * This mirrors the old get_fau_elemental_menu_html() behavior.
      */
+
     public static function renderContentHtml(): string
     {
         $html = '';
 
-        // Render breadcrumb (omit when empty)
+        // Breadcrumb
         $breadcrumb = self::renderBreadcrumb();
         if ($breadcrumb !== '') {
             $html .= '<div class="fau-elemental-breadcrumb">' . $breadcrumb . '</div>';
         }
 
-        // Optionally remove FAU top-level node from menu if conditions don't match
+        // working copy + restore
         $rootId = OrgaService::ROOT_ID;
+        $original = self::$data;         // <-- backup of the original data
+        $working = self::$data;          // <-- working copy
 
         if (!self::shouldShowFauRoot()) {
-            unset(self::$data[$rootId]);
+            unset($working[$rootId]);    // <-- only filter the copy
         }
+
+        self::$data = $working;          // <-- set temporarily so renderTree() works
+
 
         // Main container + hierarchical UL
         $html .= '<div class="menu-meta-nav__modal__content">';
-        $html .= self::renderTree();
+        $html .= self::renderTree();     // <-- uses self::$data (now the working copy)
         $html .= '</div>';
+
+        //restore original
+        self::$data = $original;
+
 
         return $html;
     }
@@ -72,8 +81,8 @@ final class ElementalMenu
     /**
      * Renders the hierarchical <ul>/<li> structure starting at $parentId.
      *
-     * @param string|null $parentId  Start node (null means top-level items without 'parent')
-     * @param int $depth             Current depth for CSS classes
+     * @param string|null $parentId Start node (null means top-level items without 'parent')
+     * @param int $depth Current depth for CSS classes
      */
     public static function renderTree(?string $parentId = null, int $depth = 0): string
     {
@@ -82,7 +91,7 @@ final class ElementalMenu
             if ($parentId === null) {
                 return !isset($item['parent']);
             }
-            return isset($item['parent']) && (string) $item['parent'] === (string) $parentId;
+            return isset($item['parent']) && (string)$item['parent'] === (string)$parentId;
         });
 
         if (empty($items)) {
@@ -97,12 +106,12 @@ final class ElementalMenu
         $html = '<ul class="' . esc_attr($ulClass) . '">';
 
         foreach ($items as $id => $item) {
-            $title = isset($item['title']) && $item['title'] !== '' ? (string) $item['title'] : 'NO TITLE for ID ' . $id;
+            $title = isset($item['title']) && $item['title'] !== '' ? (string)$item['title'] : 'NO TITLE for ID ' . $id;
 
             // Determine if this item has children
             $hasChildren = !empty(array_filter(
                 self::$data,
-                static fn($child) => isset($child['parent']) && (string) $child['parent'] === (string) $id
+                static fn($child) => isset($child['parent']) && (string)$child['parent'] === (string)$id
             ));
 
             // Base <li> classes
@@ -130,28 +139,28 @@ final class ElementalMenu
             // Open <li>
             $html .= sprintf(
                 '<li id="menu-item-%s" class="%s" data-menu-item-id="%s">',
-                esc_attr((string) $id),
+                esc_attr((string)$id),
                 esc_attr(implode(' ', $classes)),
-                esc_attr((string) $id)
+                esc_attr((string)$id)
             );
 
             if ($hasChildren) {
                 // Parent node: toggle button + nested UL
                 $html .= sprintf(
                     '<button class="menu-modal__submenu-toggle menu-modal__submenu-row" aria-expanded="false" aria-label="%s" data-parent-title="%s">' .
-                        '<span class="menu-modal__item-title">%s</span>' .
-                        '<span class="menu-modal__submenu-arrow"></span>' .
-                        '</button>',
+                    '<span class="menu-modal__item-title">%s</span>' .
+                    '<span class="menu-modal__submenu-arrow"></span>' .
+                    '</button>',
                     esc_attr('Open ' . $title . ' submenu'),
                     esc_attr($title),
                     esc_html($title)
                 );
 
                 // Recurse into children
-                $html .= self::renderTree((string) $id, $depth + 1);
+                $html .= self::renderTree((string)$id, $depth + 1);
             } else {
                 // Leaf node: anchor
-                $url = isset($item['url']) && $item['url'] !== '' ? (string) $item['url'] : '#';
+                $url = isset($item['url']) && $item['url'] !== '' ? (string)$item['url'] : '#';
                 $html .= '<a href="' . esc_url($url) . '">' . esc_html($title) . '</a>';
             }
 
@@ -169,8 +178,8 @@ final class ElementalMenu
     public static function renderBreadcrumb(): string
     {
         // Resolve current org from plugin option
-        $options  = get_option('fau_orga_breadcrumb_options');
-        $formOrg  = isset($options['site-orga']) ? sanitize_text_field((string) $options['site-orga']) : '';
+        $options = get_option('fau_orga_breadcrumb_options');
+        $formOrg = isset($options['site-orga']) ? sanitize_text_field((string)$options['site-orga']) : '';
 
         // Fallback via theme
         if ($formOrg === '') {
@@ -184,7 +193,7 @@ final class ElementalMenu
         }
 
         // Generate breadcrumb HTML
-        return (string) OrgaService::breadcrumb($formOrg);
+        return (string)OrgaService::breadcrumb($formOrg);
     }
 
     /**
@@ -196,7 +205,7 @@ final class ElementalMenu
         // Prefer OrgaService when available
         if (\class_exists(OrgaService::class)) {
             $siteType = OrgaService::elementalSiteType();
-            $faculty  = OrgaService::elementalFaculty();
+            $faculty = OrgaService::elementalFaculty();
 
             if (\in_array($siteType, ['faculty', 'chair'], true)) {
                 return true;
@@ -208,8 +217,8 @@ final class ElementalMenu
         }
 
         // Legacy fallback via theme_mods
-        $siteType = (string) get_theme_mod('faue_website_type', '');
-        $faculty  = (string) get_theme_mod('faue_faculty', '');
+        $siteType = (string)get_theme_mod('faue_website_type', '');
+        $faculty = (string)get_theme_mod('faue_faculty', '');
 
         if (\in_array($siteType, ['faculty', 'chair'], true)) {
             return true;

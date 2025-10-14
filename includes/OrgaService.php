@@ -58,19 +58,35 @@ final class OrgaService
      */
     public static function isElementalTheme(): bool
     {
-        $theme = wp_get_theme();
-        if (!$theme) {
-            return false;
+        static $cache = null;
+        if ($cache !== null) {
+            return $cache;
         }
-        $name = (string)$theme->get('Name');
-        $template = strtolower((string)$theme->get_template());
-        $stylesheet = strtolower((string)$theme->get_stylesheet());
 
-        return (strcasecmp($name, 'FAU-Elemental') === 0)
-            || in_array($template, ['fau-elemental', 'fauelemental'], true)
-            || in_array($stylesheet, ['fau-elemental', 'fauelemental'], true);
+        $theme = wp_get_theme();
+        if (!$theme || !$theme->exists()) {
+            return $cache = false;
+        }
+
+        $tpl  = strtolower((string)$theme->get_template());
+        $css  = strtolower((string)$theme->get_stylesheet());
+        $ptpl = $theme->parent() ? strtolower((string)$theme->parent()->get_template()) : '';
+
+        return $cache = (
+            $tpl === 'fau-elemental' ||
+            $css === 'fau-elemental' ||
+            $ptpl === 'fau-elemental'
+        );
     }
 
+    /** @deprecated use OrgaService::isElementalTheme(). */
+    public static function isElementalActive(): bool
+    {
+        if (function_exists('_deprecated_function')) {
+            _deprecated_function(__METHOD__, '3.1.0', __CLASS__ . '::isElementalTheme');
+        }
+        return self::isElementalTheme();
+    }
     /**
      * Elemental site type: 'fau', 'faculty', 'chair', 'other', 'cooperation' ('' if unset).
      */
@@ -85,20 +101,6 @@ final class OrgaService
     public static function elementalFaculty(): string
     {
         return (string)get_theme_mod('faue_faculty', '');
-    }
-
-    /**
-     * No Settings Page Helper
-     */
-    public static function isElementalActive(): bool
-    {
-        $theme    = wp_get_theme();
-        $name     = strtolower((string) $theme->get('Name'));
-        $template = strtolower((string) $theme->get_template());
-
-        // robust gegen abweichende Schreibweisen
-        return str_contains($name, 'fau elemental')
-            || str_contains($template, 'fau-elemental');
     }
 
 
@@ -480,7 +482,7 @@ final class OrgaService
     /**
      * Checks whether an entry (ID) belongs to a faculty (recursively upwards).
      */
-    private static function belongsToFaculty($id, $faculty)
+    private static function belongsToFaculty(string $id, string $faculty):bool
     {
         // If this org has a faculty and matches, return true
         if (isset(self::$data[$id]['faculty']) && self::$data[$id]['faculty'] === $faculty) {
@@ -513,17 +515,18 @@ final class OrgaService
      */
     public static function enqueueStyle(string $fallbackHandle = 'fau-orga-breadcrumb'): void
     {
-        $theme = wp_get_theme();
-        $name = $theme ? (string)$theme->get('Name') : '';
-        if (stripos($name, 'FAU-Elemental') !== false) {
+        if (self::isElementalTheme()) {
             wp_enqueue_style(
                 'fau-orga-breadcrumb-elemental',
                 FAU_ORGA_BREADCRUMB_PLUGIN_URL . 'build/frontend.css',
                 [],
                 time()
             );
-            return; //
+            return;
         }
+
+        $theme = wp_get_theme();
+        $name  = $theme ? (string)$theme->get('Name') : '';
 
 
         // 2) Other FAU themes → no CSS (legacy behavior)
@@ -549,32 +552,5 @@ final class OrgaService
     }
 }
 
-
-//AJAX for Customizer updating plugin data
-add_action('wp_ajax_fau_orga_refresh_orga_options', function () {
-
-    if (!\FAU\ORGA\Breadcrumb\OrgaService::isElementalTheme()) {
-        wp_die(-1);
-    }
-
-    if (!current_user_can('edit_theme_options')) {
-        wp_die(-1);
-    }
-    check_ajax_referer('fau_orga_refresh');
-
-    $website_type = sanitize_text_field($_POST['website_type'] ?? '');
-    $faculty = sanitize_text_field($_POST['faculty'] ?? '');
-    $orga = sanitize_text_field($_POST['current_orga'] ?? '');
-
-    // Build option list – automatically filters by faculty/type
-    $options = '';
-    if (!in_array($website_type, ['1', 'faculty', 'chair'], true)) {
-        $options .= '<option value="">' . __('None (no faculty assignment or central unit)', 'fau-orga-breadcrumb') . '</option>';
-    }
-    $options .= \FAU\ORGA\Breadcrumb\OrgaService::buildOptionList(\FAU\ORGA\Breadcrumb\OrgaService::ROOT_ID, $orga, 0, 4, $website_type, $faculty);
-
-    echo $options;
-    wp_die();
-});
 
 add_action('wp_enqueue_scripts', [OrgaService::class, 'enqueueStyle']);
