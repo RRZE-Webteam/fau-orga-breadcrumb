@@ -60,7 +60,7 @@ final class ElementalMenu
         $working = self::$data;          // <-- working copy
 
         if (!self::shouldShowFauRoot()) {
-            unset($working[$rootId]);    // <-- only filter the copy
+            unset($working[$rootId]);    // <-- no FAU.de in structure menu
         }
 
         self::$data = $working;          // <-- set temporarily so renderTree() works
@@ -198,19 +198,15 @@ final class ElementalMenu
 
     /**
      * Whether the top-level FAU item should be shown in the modal menu.
-     * Faculty/chair → show; "other" with faculty set → show; otherwise not.
+     * Faculty/chair/other/cooperation → show; "fau.de" → don´t show
      */
-    public static function shouldShowFauRoot(): bool
+        public static function shouldShowFauRoot(): bool
     {
         // Prefer OrgaService when available
         if (\class_exists(OrgaService::class)) {
             $siteType = OrgaService::elementalSiteType();
-            $faculty = OrgaService::elementalFaculty();
 
-            if (\in_array($siteType, ['faculty', 'chair'], true)) {
-                return true;
-            }
-            if ($siteType === 'other' && $faculty !== '') {
+            if (\in_array($siteType, ['faculty', 'chair', 'cooperation', 'other'], true)) {
                 return true;
             }
             return false;
@@ -218,12 +214,8 @@ final class ElementalMenu
 
         // Legacy fallback via theme_mods
         $siteType = (string)get_theme_mod('faue_website_type', '');
-        $faculty = (string)get_theme_mod('faue_faculty', '');
 
-        if (\in_array($siteType, ['faculty', 'chair'], true)) {
-            return true;
-        }
-        if ($siteType === 'other' && $faculty !== '') {
+        if (\in_array($siteType, ['faculty', 'chair', 'cooperation', 'other'], true)) {
             return true;
         }
         return false;
