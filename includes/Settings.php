@@ -195,7 +195,7 @@ class Settings
             global $fau_orga_breadcrumb_data;
 
             if (isset($fau_orga_breadcrumb_data[$orga]['title'])) {
-                echo '<p><strong>' . esc_html__('Aktuell gewählt', 'fau-orga-breadcrumb') . ':</strong> <em>' .
+                echo '<p><strong>' . esc_html__('Currently selected', 'fau-orga-breadcrumb') . ':</strong> <em>' .
                     esc_html($fau_orga_breadcrumb_data[$orga]['title']) .
                     '</em></p>';
             }

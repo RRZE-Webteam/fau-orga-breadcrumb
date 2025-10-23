@@ -66,7 +66,7 @@ class Customizer
             'fau_orga_site-orga',
             [
                 'settings' => 'fau_orga_breadcrumb_options[site-orga]',
-                'label' => esc_html__('Organizational Assignment', 'fau-orga-breadcrumb'),
+                'label' => esc_html__('Organizational Breadcrumb', 'fau-orga-breadcrumb'),
                 'description' => esc_html__('Select the organizational unit to which your institution or website belongs.', 'fau-orga-breadcrumb'),
                 'section' => $section,
                 'type' => 'select',

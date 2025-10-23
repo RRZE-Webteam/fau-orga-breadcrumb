@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fau-orga-"
 "breadcrumb\n"
 "POT-Creation-Date: 2025-09-12T16:05:15+00:00\n"
-"PO-Revision-Date: 2025-10-23 10:03+0000\n"
+"PO-Revision-Date: 2025-10-23 10:55+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch (Sie)\n"
 "Language: de_DE_formal\n"
@@ -19,16 +19,18 @@ msgstr ""
 "X-Loco-Template: languages/fau-orga-breadcrumb-de_DE.po\n"
 "X-Loco-Template-Mode: PO,JSON"
 
-#: includes/Settings.php:198
-msgid "Aktuell gewählt"
-msgstr ""
-
 #: includes/Settings.php:205
 msgid "Breadcrumb"
 msgstr "Breadcrumb"
 
+#: includes/Settings.php:198
+msgid "Currently selected"
+msgstr "Aktuell gewählt"
+
 #. Description of the plugin
-msgid "Displays an organisational breadcrumb"
+#, fuzzy
+#| msgid "Displays an organisational breadcrumb"
+msgid "Displays an organizational breadcrumb"
 msgstr "Zeigt eine organisatorische Breadcrumb an"
 
 #. Name of the plugin
@@ -48,22 +50,22 @@ msgstr "FAU.ORG Breadcrumb Einstellungen"
 
 #. URI of the plugin
 msgid "https://github.com/RRZE-Webteam/fau-orga-breadcrumb"
-msgstr ""
+msgstr "https://github.com/RRZE-Webteam/fau-orga-breadcrumb"
 
 #. Author URI of the plugin
 msgid "https://www.wp.rrze.fau.de/"
-msgstr ""
+msgstr "https://www.wp.rrze.fau.de/"
 
 #. id
 #: includes/Settings.php:62
 msgid "Institution"
-msgstr ""
+msgstr "Einrichtung"
 
 #: includes/Settings.php:128
 msgid "None (No faculty assignment or central unit)"
 msgstr "Keine (keine Fakultätszuordnung oder zentrale Einheit)"
 
-#: includes/Ajax.php:32 includes/Customizer.php:54
+#: includes/Ajax.php:32 includes/Customizer.php:51
 msgid "None (no faculty assignment or central unit)"
 msgstr "Keine (keine Fakultätszuordnung oder zentrale Einheit)"
 
@@ -76,7 +78,7 @@ msgstr ""
 "nächsthöhere</strong> Organisationseinheit aus, zu der die Website "
 "zugeordnet werden kann"
 
-#: includes/Customizer.php:72
+#: includes/Customizer.php:69
 msgid "Organizational Breadcrumb"
 msgstr "Organisatorische Breadcrumb"
 
@@ -88,17 +90,17 @@ msgstr "Organisationsnavigation"
 #: fau-orga-breadcrumb.php:179
 #, php-format
 msgid "Plugins: %1$s: %2$s"
-msgstr ""
+msgstr "Plugins: %1$s: %2$s"
 
 #. Author of the plugin
 msgid "RRZE Webteam"
-msgstr ""
+msgstr "RRZE Webteam"
 
 #: includes/Settings.php:82
 msgid "Save"
 msgstr "Speichern"
 
-#: includes/Customizer.php:73
+#: includes/Customizer.php:70
 msgid ""
 "Select the organizational unit to which your institution or website belongs."
 msgstr ""
