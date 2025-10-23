@@ -135,7 +135,7 @@ return [
     ],
     '1116000000' => [
         'title' => 'Department Medienwissenschaften und Kunstgeschichte',
-        'url' => 'https://www.kunstgeschichte.phil.fau.de',
+        'url' => 'https://www.phil.fau.de/fakultaet/organisation-organe/departments/',
         'parent' => '1100000000'
     ],
     '1117000000' => [
@@ -264,7 +264,7 @@ return [
     ],
     '1311370000' => [
         'title' => 'Klinisch-Molekularbiologisches Forschungszentrum',
-        'url' => 'http://www.molmed.uni-erlangen.de/',
+        'url' => 'https://www.med.fau.de/fakultaet/einrichtungen/klinisch-theoretische-institute/#collapse_6',
         'parent' => '1311000000'
     ],
     '1311390000' => [
@@ -327,6 +327,11 @@ return [
         'class' => 'tf',
         'faculty' => 'tf'
     ],
+    '1518000000' => [
+        'title' => 'Department Artificial Intelligence in Biomedical Engineering',
+        'url' => 'https://www.aibe.tf.fau.de/',
+        'parent' => '1500000000'
+    ],
     '1511000000' => [
         'title' => 'Department Chemie- und Bioingenieurwesen',
         'shorttitle' => 'CBI',
@@ -354,11 +359,6 @@ return [
     '1515000000' => [
         'title' => 'Department Werkstoffwissenschaften',
         'url' => 'https://www.ww.tf.fau.de',
-        'parent' => '1500000000'
-    ],
-    '1518000000' => [
-        'title' => 'Department Artificial Intelligence in Biomedical Engineering',
-        'url' => 'https://www.aibe.tf.fau.de/',
         'parent' => '1500000000'
     ],
 

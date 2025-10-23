@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fau-orga-"
 "breadcrumb\n"
 "POT-Creation-Date: 2025-09-12T16:05:15+00:00\n"
-"PO-Revision-Date: 2025-09-18 09:25+0000\n"
+"PO-Revision-Date: 2025-10-23 10:03+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch (Sie)\n"
 "Language: de_DE_formal\n"
@@ -19,43 +19,98 @@ msgstr ""
 "X-Loco-Template: languages/fau-orga-breadcrumb-de_DE.po\n"
 "X-Loco-Template-Mode: PO,JSON"
 
-#. Plugin Name of the plugin
-#: fau-orga-breadcrumb.php includes/Settings.php:27 includes/Settings.php:72
-msgid "FAU ORGA Breadcrumb"
-msgstr "FAU ORGA Breadcrumb"
-
-#. Plugin URI of the plugin
-#: fau-orga-breadcrumb.php
-msgid "https://github.com/RRZE-Webteam/fau-orga-breadcrumb"
+#: includes/Settings.php:198
+msgid "Aktuell gewählt"
 msgstr ""
 
+#: includes/Settings.php:205
+msgid "Breadcrumb"
+msgstr "Breadcrumb"
+
 #. Description of the plugin
-#: fau-orga-breadcrumb.php
 msgid "Displays an organisational breadcrumb"
 msgstr "Zeigt eine organisatorische Breadcrumb an"
 
-#. Author of the plugin
-#: fau-orga-breadcrumb.php
-msgid "RRZE Webteam"
+#. Name of the plugin
+#: includes/Settings.php:32 includes/Settings.php:77
+msgid "FAU ORGA Breadcrumb"
+msgstr "FAU ORGA Breadcrumb"
+
+#. page title
+#: includes/Settings.php:33
+msgid "FAU.ORG Breadcrumb"
+msgstr "FAU.ORGA Breadcrumb"
+
+#. id
+#: includes/Settings.php:54
+msgid "FAU.ORG Breadcrumb Settings"
+msgstr "FAU.ORG Breadcrumb Einstellungen"
+
+#. URI of the plugin
+msgid "https://github.com/RRZE-Webteam/fau-orga-breadcrumb"
 msgstr ""
 
 #. Author URI of the plugin
-#: fau-orga-breadcrumb.php
 msgid "https://www.wp.rrze.fau.de/"
 msgstr ""
 
-#. translators: 1: Server WordPress version number, 2: Required WordPress version number.
-#: fau-orga-breadcrumb.php:123
-#, php-format
-msgid ""
-"The server is running WordPress version %1$s. The plugin requires at least "
-"WordPress version %2$s."
+#. id
+#: includes/Settings.php:62
+msgid "Institution"
 msgstr ""
-"Der Server läuft unter WordPress Version %1$s. Das Plugin erfordert "
-"mindestens WordPress Version %2$s."
 
-#. translators: 1: Server PHP version number, 2: Required PHP version number.
-#: fau-orga-breadcrumb.php:131
+#: includes/Settings.php:128
+msgid "None (No faculty assignment or central unit)"
+msgstr "Keine (keine Fakultätszuordnung oder zentrale Einheit)"
+
+#: includes/Ajax.php:32 includes/Customizer.php:54
+msgid "None (no faculty assignment or central unit)"
+msgstr "Keine (keine Fakultätszuordnung oder zentrale Einheit)"
+
+#: includes/Settings.php:159
+msgid ""
+"Organizational Assignment: Please select the <strong>next higher</strong> "
+"organizational unit to which the website can be assigned."
+msgstr ""
+"Organisatorische Zuordnung: Bitte wählen Sie hier die <strong>"
+"nächsthöhere</strong> Organisationseinheit aus, zu der die Website "
+"zugeordnet werden kann"
+
+#: includes/Customizer.php:72
+msgid "Organizational Breadcrumb"
+msgstr "Organisatorische Breadcrumb"
+
+#: includes/OrgaService.php:421
+msgid "Organizational Navigation"
+msgstr "Organisationsnavigation"
+
+#. 1: The plugin name, 2: The error string.
+#: fau-orga-breadcrumb.php:179
+#, php-format
+msgid "Plugins: %1$s: %2$s"
+msgstr ""
+
+#. Author of the plugin
+msgid "RRZE Webteam"
+msgstr ""
+
+#: includes/Settings.php:82
+msgid "Save"
+msgstr "Speichern"
+
+#: includes/Customizer.php:73
+msgid ""
+"Select the organizational unit to which your institution or website belongs."
+msgstr ""
+"Wählen Sie hier die organisatorische Einheit aus, zu der Ihre Einrichtung "
+"oder Ihr Webauftritt gehört."
+
+#: includes/Main.php:106
+msgid "Settings"
+msgstr "Einstellungen"
+
+#. 1: Server PHP version number, 2: Required PHP version number.
+#: fau-orga-breadcrumb.php:138
 #, php-format
 msgid ""
 "The server is running PHP version %1$s. The plugin requires at least PHP "
@@ -64,29 +119,36 @@ msgstr ""
 "Der Server läuft unter PHP Version %1$s. Das Plugin erfordert mindestens PHP "
 "Version %2$s."
 
-#. translators: 1: The plugin name, 2: The error string.
-#: fau-orga-breadcrumb.php:172
+#. 1: Server WordPress version number, 2: Required WordPress version number.
+#: fau-orga-breadcrumb.php:130
 #, php-format
-msgid "Plugins: %1$s: %2$s"
-msgstr ""
-
-#: includes/Customizer.php:78
-msgid "None (no faculty assignment or central unit)"
-msgstr "Keine (keine Fakultätszuordnung oder zentrale Einheit)"
-
-#: includes/Customizer.php:93
-msgid "Organizational Assignment"
-msgstr "Organisatorische Zuordnung"
-
-#: includes/Customizer.php:94
 msgid ""
-"Select the organizational unit to which your institution or website belongs."
+"The server is running WordPress version %1$s. The plugin requires at least "
+"WordPress version %2$s."
 msgstr ""
-"Wählen Sie hier die organisatorische Einheit aus, zu der Ihre Einrichtung "
-"oder Ihr Webauftritt gehört."
+"Der Server läuft unter WordPress Version %1$s. Das Plugin erfordert "
+"mindestens WordPress Version %2$s."
 
-#. translators: 1: Line break, 2: Link start tag, 3: Link end tag.
-#: includes/Main.php:75
+#: includes/Settings.php:176
+msgid ""
+"The website has been defined in the Customizer as a central unit. Therefore, "
+"only central units are available for selection."
+msgstr ""
+"Die Website wurde im Customizer als zentrale Einheit definiert. Daher stehen "
+"nur zentrale Einheiten zur Auswahl."
+
+#: includes/Settings.php:172
+msgid ""
+"The website has been defined in the Customizer as a faculty subunit. "
+"Therefore, only central units and subunits of the faculty are available for "
+"selection."
+msgstr ""
+"Die Website wurde im Customizer als Einrichtung einer Fakultät definiert. "
+"Daher stehen nur zentrale Einrichtungen und der Fakultät untergeordnete "
+"Einrichtungen zur Auswahl zur Verfügung."
+
+#. 1: Line break, 2: Link start tag, 3: Link end tag.
+#: includes/Main.php:80
 #, php-format
 msgid ""
 "The website has not yet been organizationally assigned. %1$sPlease go to the "
@@ -97,44 +159,23 @@ msgstr ""
 "den %2$sFAU.ORG Breadcrumb-Einstellungen%3$s und geben Sie an, zu welcher "
 "Organisationseinheit die Website gehört."
 
-#: includes/Main.php:97
-msgid "Settings"
-msgstr "Einstellungen"
-
-#: includes/OrgaService.php:345
-msgid "Organizational Navigation"
-msgstr "Organisationsnavigation"
-
-#: includes/Settings.php:28
-msgid "FAU.ORG Breadcrumb"
-msgstr "FAU.ORGA Breadcrumb"
-
-#: includes/Settings.php:49
-msgid "FAU.ORG Breadcrumb Settings"
-msgstr "FAU.ORG Breadcrumb Einstellungen"
-
-#: includes/Settings.php:57
-msgid "Institution"
-msgstr ""
-
-#: includes/Settings.php:77
-msgid "Save"
-msgstr "Speichern"
-
-#: includes/Settings.php:123
-msgid "None (No faculty assignment or central unit)"
-msgstr "Keine (keine Fakultätszuordnung oder zentrale Einheit)"
-
-#: includes/Settings.php:154
+#: includes/Settings.php:184
 msgid ""
-"Organizational Assignment: Please select the <strong>next higher</strong> "
-"organizational unit to which the website can be assigned."
+"Warning: The website has been defined as the central FAU portal. The Orga "
+"Breadcrumb will not be displayed."
 msgstr ""
-"Organisatorische Zuordnung: Bitte wählen Sie hier die <strong>"
-"nächsthöhere</strong> Organisationseinheit aus, zu der die Website "
-"zugeordnet werden kann"
+"Warnung: Die Website wurde als zentrales FAU-Portal definiert. Die Orga-"
+"Breadcrumb wird nicht angezeigt."
 
-#: includes/Settings.php:163
+#: includes/Settings.php:180
+msgid ""
+"Warning: The website has been defined in the Customizer as a cooperation. "
+"The Orga Breadcrumb will not be displayed."
+msgstr ""
+"Warnung: Die Website wurde im Customizer als Kooperation definiert. Die Orga-"
+"Breadcrumb wird nicht angezeigt."
+
+#: includes/Settings.php:168
 msgid ""
 "Warning: The website has been defined in the Customizer as a faculty portal. "
 "Therefore, subunits of the faculty are not available for selection. The Orga "
@@ -143,45 +184,3 @@ msgstr ""
 "Warnung: Die Website wurde im Customizer als Fakultätsportal definiert. "
 "Daher stehen Untereinheiten der Fakultät nicht zur Auswahl. Die Orga-"
 "Breadcrumb wird nicht angezeigt."
-
-#: includes/Settings.php:167
-msgid ""
-"The website has been defined in the Customizer as a faculty subunit. "
-"Therefore, only central units and subunits of the faculty are available for "
-"selection."
-msgstr ""
-"Die Website wurde im Customizer als Einrichtung einer Fakultät definiert. "
-"Daher stehen nur zentrale Einrichtungen und der Fakultät untergeordnete "
-"Einrichtungen zur Auswahl zur Verfügung."
-
-#: includes/Settings.php:171
-msgid ""
-"The website has been defined in the Customizer as a central unit. Therefore, "
-"only central units are available for selection."
-msgstr ""
-"Die Website wurde im Customizer als zentrale Einheit definiert. Daher stehen "
-"nur zentrale Einheiten zur Auswahl."
-
-#: includes/Settings.php:175
-msgid ""
-"Warning: The website has been defined in the Customizer as a cooperation. "
-"The Orga Breadcrumb will not be displayed."
-msgstr ""
-"Warnung: Die Website wurde im Customizer als Kooperation definiert. Die Orga-"
-"Breadcrumb wird nicht angezeigt."
-
-#: includes/Settings.php:179
-msgid ""
-"Warning: The website has been defined as the central FAU portal. The Orga "
-"Breadcrumb will not be displayed."
-msgstr ""
-"Warnung: Die Website wurde als zentrales FAU-Portal definiert. Die Orga-"
-"Breadcrumb wird nicht angezeigt."
-
-#: includes/Settings.php:193
-msgid "Aktuell gewählt"
-msgstr ""
-
-#: includes/Settings.php:200
-msgid "Breadcrumb"
-msgstr "Breadcrumb"

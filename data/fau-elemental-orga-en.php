@@ -41,7 +41,7 @@ return [
         'parent' => '1100000000',
     ],
     '1112000000' => [
-        'title' => 'Department of English,American and Romance Studies',
+        'title' => 'Department of English, American and Romance Studies',
         'url' => 'https://www.angam.phil.fau.de',
         'parent' => '1100000000',
     ],
@@ -62,7 +62,7 @@ return [
     ],
     '1116000000' => [
         'title' => 'Department of Media Studies and Art History',
-        'url' => 'https://www.kunstgeschichte.phil.fau.de',
+        'url' => 'https://www.phil.fau.eu/faculty/organisation/departments/',
         'parent' => '1100000000',
     ],
     '1117000000' => [
@@ -87,7 +87,7 @@ return [
     ],
     '1121000000' => [
         'title' => 'Department of Islamic Religious Studies',
-        'url' => 'https://www.dirs.phil.fau.de/',
+        'url' => 'https://www.dirs.phil.fau.eu',
         'parent' => '1100000000',
     ],
     '1122000000' => [
@@ -103,14 +103,14 @@ return [
 
     // === SCHOOL OF LAW AND ECONOMICS ===
     '1200000000' => [
-        'title' => 'School of Law and Economics',
+        'title' => 'Faculty of Business, Economics and Law',
         'url' => 'https://www.rw.fau.eu',
         'parent' => 'fakultaeten',
         'class' => 'rw',
         'faculty' => 'rw'
     ],
     'virt_1200000000_overview' => [
-        'title' => 'School of Law and Economics',
+        'title' => 'Faculty of Business, Economics and Law',
         'url' => 'https://www.rw.fau.eu',
         'parent' => '1200000000',
     ],
@@ -120,7 +120,7 @@ return [
         'parent' => '1200000000',
     ],
     '1212000000' => [
-        'title' => 'School of Business, Economics and Society',
+        'title' => 'School of Business, Economics and Society | WiSo ',
         'url' => 'https://www.wiso.rw.fau.eu',
         'parent' => '1200000000',
     ],
@@ -150,7 +150,7 @@ return [
     ],
     '1311130000' => [
         'title' => 'Institute of Cellular and Molecular Physiology',
-        'url' => 'https://www.physiologie2.med.fau.de/',
+        'url' => 'https://www.physiologie2.med.fau.de/en/',
         'parent' => '1300000000',
     ],
     '1311140000' => [
@@ -189,8 +189,8 @@ return [
         'parent' => '1300000000',
     ],
     '1311370000' => [
-        'title' => 'Nikolaus Fiebiger Center of Molecular Medicine (NFZ)',
-        'url' => 'https://www.em1.med.fau.de/#collapse_12',
+        'title' => 'Nikolaus Fiebiger Center of Molecular Medicine',
+        'url' => 'https://www.med.fau.eu/faculty/institutes-departments/clinical-theoretical-institutes/#collapse_6',
         'parent' => '1300000000',
     ],
     '1311390000' => [
@@ -198,11 +198,11 @@ return [
         'url' => 'https://www.med.fau.de/fakultaet/einrichtungen/medizincampus-oberfranken/',
         'parent' => '1300000000',
     ],
-    '1311400000' => [
-        'title' => 'Medical Institute of Biophysics',
-        'url' => 'https://www.med.fau.de/fakultaet/einrichtungen/klinisch-theoretische-institute/#collapse_4',
-        'parent' => '1300000000',
-    ],
+//    '1311400000' => [
+//        'title' => 'Medical Institute of Biophysics',
+//        'url' => 'https://www.med.fau.de/fakultaet/einrichtungen/klinisch-theoretische-institute/#collapse_4',
+//        'parent' => '1300000000',
+//    ],
 
 
     // === FACULTY OF SCIENCES ===
@@ -262,6 +262,11 @@ return [
         'url' => 'https://www.tf.fau.eu',
         'parent' => '1500000000',
     ],
+    '1518000000' => [
+        'title' => 'Department of Artificial Intelligence in Biomedical Engineering',
+        'url' => 'https://www.aibe.tf.fau.de/',
+        'parent' => '1500000000',
+    ],
     '1511000000' => [
         'title' => 'Department of Chemical and Biological Engineering',
         'url' => 'https://www.cbi.tf.fau.eu',
@@ -287,11 +292,7 @@ return [
         'url' => 'https://www.ww.tf.fau.eu',
         'parent' => '1500000000',
     ],
-    '1518000000' => [
-        'title' => 'Department of Artificial Intelligence in Biomedical Engineering',
-        'url' => 'https://www.aibe.tf.fau.de/',
-        'parent' => '1500000000',
-    ],
+
 
     // === CENTRAL FACILITIES (menu section) ===
     'zentrale_einrichtungen' => [

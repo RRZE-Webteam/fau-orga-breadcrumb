@@ -63,7 +63,7 @@ return [
 
     '1116000000' => [
         'title' => 'Department Medienwissenschaften und Kunstgeschichte',
-        'url' => 'https://www.kunstgeschichte.phil.fau.de',
+        'url' => 'https://www.phil.fau.de/fakultaet/organisation-organe/departments/',
         'parent' => '1100000000',
     ],
     '1117000000' => [
@@ -122,7 +122,7 @@ return [
         'parent' => '1200000000',
     ],
     '1212000000' => [
-        'title' => 'Fachbereich Wirtschafts- und Sozialwissenschaften',
+        'title' => 'Fachbereich Wirtschafts- und Sozialwissenschaften | WiSo ',
         'url' => 'https://www.wiso.rw.fau.de',
         'parent' => '1200000000',
     ],
@@ -192,7 +192,7 @@ return [
     ],
     '1311370000' => [
         'title' => 'Klinisch-Molekularbiologisches Forschungszentrum',
-        'url' => 'http://www.molmed.uni-erlangen.de/',
+        'url' => 'https://www.med.fau.de/fakultaet/einrichtungen/klinisch-theoretische-institute/#collapse_6',
         'parent' => '1300000000',
     ],
     '1311390000' => [
@@ -200,11 +200,11 @@ return [
         'url' => 'https://www.med.fau.de/fakultaet/einrichtungen/medizincampus-oberfranken/',
         'parent' => '1300000000',
     ],
-    '1311400000' => [
-        'title' => 'Medizinisches Institut für Biophysik',
-        'url' => 'https://www.med.fau.de/fakultaet/einrichtungen/klinisch-theoretische-institute/#collapse_4',
-        'parent' => '1300000000',
-    ],
+//    '1311400000' => [
+//        'title' => 'Medizinisches Institut für Biophysik',
+//        'url' => 'https://www.med.fau.de/fakultaet/einrichtungen/klinisch-theoretische-institute/#collapse_4',
+//        'parent' => '1300000000',
+//    ],
 
 
     // === NATURWISSENSCHAFTLICHE FAKULTÄT ===
@@ -264,6 +264,11 @@ return [
         'url' => 'https://www.tf.fau.de',
         'parent' => '1500000000',
     ],
+    '1518000000' => [
+        'title' => 'Department Artificial Intelligence in Biomedical Engineering',
+        'url' => 'https://www.aibe.tf.fau.de/',
+        'parent' => '1500000000',
+    ],
     '1511000000' => [
         'title' => 'Department Chemie- und Bioingenieurwesen',
         'url' => 'https://www.cbi.tf.fau.de/',
@@ -289,11 +294,7 @@ return [
         'url' => 'https://www.ww.tf.fau.de',
         'parent' => '1500000000',
     ],
-    '1518000000' => [
-        'title' => 'Department Artificial Intelligence in Biomedical Engineering',
-        'url' => 'https://www.aibe.tf.fau.de/',
-        'parent' => '1500000000',
-    ],
+
 
     // === ZENTRALE EINRICHTUNGEN ===
     'zentrale_einrichtungen' => [
