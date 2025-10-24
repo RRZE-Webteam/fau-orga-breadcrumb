@@ -256,7 +256,7 @@ final class OrgaService
             if ($faculty !== '') {
                 // In Faculty Child Theme/Elemental: only this faculty and its substructure
                 if ($faculty !== 'zentral') {
-                    // Only display if this organisation belongs to the desired faculty
+                    // Only display if this organization belongs to the desired faculty
                     if (!self::belongsToFaculty($id, $faculty)) {
                         continue;
                     }
@@ -312,7 +312,6 @@ final class OrgaService
             return false;
         }
 
-        // Prüfe: gehört dieser Knoten direkt oder indirekt zu einer Fakultät?
         $row = self::$data[$id];
         if (!empty($row['faculty'])) {
             return true;
@@ -356,7 +355,7 @@ final class OrgaService
     public
     static function breadcrumb(?string $org): ?string
     {
-        // no breadcrumb on type fau.de and cooparation
+        // no breadcrumb on type fau.de and coopecoration
         if (self::isElementalTheme()) {
             $type = self::elementalSiteType();
             if (in_array($type, ['fau', 'cooperation'], true)) {

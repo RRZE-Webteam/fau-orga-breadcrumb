@@ -41,12 +41,20 @@ Formular elements for admin setting
 	  background-color: #fff;
 	}
     }
-    
+
     select {
-	background: none;
+	//background: none;
 	max-width: 35rem;
 	padding: 0;
     }
+
+
+
+	.fau-orga-breadcrumb__customizer-select {
+		background-color: #fff;
+		padding: 0 24px 0 8px;
+	}
+
     
     
     .fau_org_breadcrumb_preview {

@@ -148,7 +148,7 @@ class Customizer
 
         wp_enqueue_script(
             'fau-orga-customizer',
-            FAU_ORGA_BREADCRUMB_PLUGIN_URL . 'build/customizer-orga-sync.js',
+            FAU_ORGA_BREADCRUMB_PLUGIN_URL . 'build/customizer.js',
             ['jquery', 'customize-controls'],
             plugin()->getVersion(),
             true

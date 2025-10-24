@@ -33,7 +33,8 @@ class CustomizeControlSelect extends \WP_Customize_Control
             if (!empty($this->description)) : ?>
                 <span class="description customize-control-description"><?php echo esc_html($this->description); ?></span>
             <?php endif; ?>
-            <select size="8"
+            <select class="fau-orga-breadcrumb__customizer-select"
+                    size="1"
                     id="<?php echo esc_attr($input_id); ?>" <?php echo $describedby_attr; ?> <?php $this->link(); ?>>
                 <?php
                 // Dynamics: For old themes, an HTML string is passed; for new ones, an array!
