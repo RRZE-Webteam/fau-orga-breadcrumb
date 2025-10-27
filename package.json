@@ -1,4 +1,17 @@
 {
+  "name": "fau-orga-breadcrumb",
+  "version": "1.2.0",
+  "text-domain": "fau-orga-breadcrumb",
+  "keywords": [
+    "wordpress",
+    "plugin",
+    "breadcrumb",
+    "fau"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RRZE-Webteam/fau-orga-breadcrumb.git"
+  },
   "engines": {
     "node": ">=23.11.0",
     "npm": ">=10.9.2"

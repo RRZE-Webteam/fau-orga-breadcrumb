@@ -5,12 +5,32 @@ namespace FAU\ORGA\Breadcrumb;
 
 defined('ABSPATH') || exit;
 
+
+/**
+ * This class manages Ajax for selecting the Organization via the WordPress Customizer
+ */
 final class Ajax
 {
+
+    /**
+     * Register AJAX actions used by the Customizer control.
+     *
+     * Hooks AJAX requests to `fau_orga_refresh_orga_options` into the handler.
+     *
+     * @return void
+     */
     public static function register(): void
     {
         add_action('wp_ajax_fau_orga_refresh_orga_options', [self::class, 'refreshOrgaOptions']);
     }
+
+    /**
+     * AJAX handler: returns the `<option>` list for the Customizer select.
+     *
+     * Checks permissions, validates the nonce, filters the request values, and echoes the updated option HTML.
+     *
+     * @return void
+     */
 
     public static function refreshOrgaOptions(): void
     {

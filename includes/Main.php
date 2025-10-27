@@ -18,8 +18,8 @@ class Main
         OrgaService::setData($orgaData);
 
         // Load FAU Elemental ORGA data
-        $elementalData = Data::read('fau-elemental-orga');
-        ElementalMenu::setData($elementalData);
+        $elemental_data = Data::read('fau-elemental-orga');
+        ElementalMenu::setData($elemental_data);
 
         add_action('admin_enqueue_scripts', [$this, 'enqueueAdminScripts']);
         add_action('admin_notices', [$this, 'fau_orga_admin_notice']);

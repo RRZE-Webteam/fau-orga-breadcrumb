@@ -1,0 +1,1 @@
+(()=>{const e=()=>{const e=document.querySelectorAll(".menu-meta-nav__modal__content .menu-modal__breadcrumbs");e.length&&e.forEach(e=>{const t=e.parentNode;t&&t.removeChild(e)})};document.addEventListener("DOMContentLoaded",()=>{e(),"undefined"!=typeof MutationObserver&&new MutationObserver(()=>{e()}).observe(document.body,{childList:!0,subtree:!0})})})();

@@ -11,5 +11,6 @@ module.exports = {
         admin: "./src/admin/index.js",
         frontend: "./src/frontend/index.js",
         customizer: "./src/customizer/index.js",
+        "modal-cleanup": "./src/modal-cleanup/index.js",
     },
 };

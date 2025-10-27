@@ -24,7 +24,7 @@ define('FAU_ORGA_BREADCRUMB_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 /**
  * SPL Autoloader (PSR-4).
- * 
+ *
  * @param string $class The fully-qualified class name.
  * @return void
  */
@@ -49,42 +49,23 @@ spl_autoload_register(function ($class) {
 require_once __DIR__ . '/includes/Ajax.php';
 \FAU\ORGA\Breadcrumb\Ajax::register();
 
-// Register activation hook for the plugin
-register_activation_hook(__FILE__, __NAMESPACE__ . '\activation');
+/**
+ * Registers uninstall Hook
+ *
+ */
 
-// Register deactivation hook for the plugin
-register_deactivation_hook(__FILE__, __NAMESPACE__ . '\deactivation');
+register_uninstall_hook(__FILE__, __NAMESPACE__ . '\uninstall');
 
 /**
  * Add an action hook for the 'plugins_loaded' hook.
- * This code hooks into the 'plugins_loaded' action hook to execute a callback function when
- * WordPress has fully loaded all active plugins and the theme's functions.php file.
+ *
  */
 add_action('plugins_loaded', __NAMESPACE__ . '\loaded');
 
-/**
- * Activation callback function.
- * 
- * @return void
- */
-function activation()
-{
-    // No special actions are required upon activation.
-}
-
-/**
- * Deactivation callback function.
- * 
- * @return void
- */
-function deactivation()
-{
-    // No special actions are required upon deactivation.
-}
 
 /**
  * Instantiate Plugin class.
- * 
+ *
  * @return object Plugin
  */
 function plugin()
@@ -98,7 +79,7 @@ function plugin()
 
 /**
  * Callback function to load the plugin textdomain.
- * 
+ *
  * @return void
  */
 function loadTextdomain()
@@ -126,7 +107,7 @@ function systemRequirements(): string
     // Check if the WordPress version is compatible with the plugin's requirement.
     if (!is_wp_version_compatible(plugin()->getRequiresWP())) {
         $error = sprintf(
-            /* translators: 1: Server WordPress version number, 2: Required WordPress version number. */
+        /* translators: 1: Server WordPress version number, 2: Required WordPress version number. */
             __('The server is running WordPress version %1$s. The plugin requires at least WordPress version %2$s.', 'fau-orga-breadcrumb'),
             wp_get_wp_version(),
             plugin()->getRequiresWP()
@@ -134,7 +115,7 @@ function systemRequirements(): string
     } elseif (!is_php_version_compatible(plugin()->getRequiresPHP())) {
         // Check if the PHP version is compatible with the plugin's requirement.
         $error = sprintf(
-            /* translators: 1: Server PHP version number, 2: Required PHP version number. */
+        /* translators: 1: Server PHP version number, 2: Required PHP version number. */
             __('The server is running PHP version %1$s. The plugin requires at least PHP version %2$s.', 'fau-orga-breadcrumb'),
             phpversion(),
             plugin()->getRequiresPHP()
@@ -153,7 +134,6 @@ function systemRequirements(): string
  */
 function loaded()
 {
-    // Load the plugin text domain for translations.
     loadTextDomain();
 
     // Trigger the 'loaded' method of the main plugin instance.
@@ -175,9 +155,9 @@ function loaded()
                 add_action($tag, function () use ($pluginName, $error) {
                     printf(
                         '<div class="notice notice-error"><p>' .
-                            /* translators: 1: The plugin name, 2: The error string. */
-                            esc_html__('Plugins: %1$s: %2$s', 'fau-orga-breadcrumb') .
-                            '</p></div>',
+                        /* translators: 1: The plugin name, 2: The error string. */
+                        esc_html__('Plugins: %1$s: %2$s', 'fau-orga-breadcrumb') .
+                        '</p></div>',
                         $pluginName,
                         $error
                     );
@@ -194,23 +174,35 @@ function loaded()
 }
 
 
+/**
+ * Enqueue front-end script that removes duplicate Elemental modal breadcrumbs.
+ *
+ * @return void
+ */
+function enqueueModalCleanupScript(): void
+{
+    if (!OrgaService::isElementalTheme()) {
+        return;
+    }
 
-// Removing the FAU Elemental Theme Modal Breadcrumbs
-add_action('wp_footer', function() {
-    ?>
-    <script>
-        function removeThemeModalBreadcrumbs() {
-            document.querySelectorAll('.menu-meta-nav__modal__content .menu-modal__breadcrumbs').forEach(function(bc) {
-                bc.parentNode.removeChild(bc);
-            });
-        }
-        document.addEventListener('DOMContentLoaded', function() {
-            removeThemeModalBreadcrumbs();
-            var observer = new MutationObserver(function() {
-                removeThemeModalBreadcrumbs();
-            });
-            observer.observe(document.body, { childList: true, subtree: true });
-        });
-    </script>
-    <?php
-});
+    $assetPath = FAU_ORGA_BREADCRUMB_PLUGIN_DIR . 'build/modal-cleanup.asset.php';
+    $asset = file_exists($assetPath) ? include $assetPath : [
+        'dependencies' => [],
+        'version' => plugin()->getVersion(),
+    ];
+
+    wp_enqueue_script(
+        'fau-orga-breadcrumb-modal-cleanup',
+        FAU_ORGA_BREADCRUMB_PLUGIN_URL . 'build/modal-cleanup.js',
+        $asset['dependencies'],
+        $asset['version'],
+        true
+    );
+}
+
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\enqueueModalCleanupScript');
+
+function uninstall(): void
+{
+    delete_option('fau_orga_breadcrumb_options');
+}

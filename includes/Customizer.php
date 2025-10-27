@@ -14,12 +14,10 @@ class Customizer
 {
     public function __construct()
     {
-        // Hook into the Customizer
         add_action('customize_register', [$this, 'register']);
 
         // Hook into save action to sanitize (only for FAU-Elemental or child)
         add_action('customize_save_after', [$this, 'saveAfter']);
-        // ENQUEUE-Hook
         add_action('customize_controls_enqueue_scripts', [$this, 'enqueueCustomizerScript']);
     }
 
