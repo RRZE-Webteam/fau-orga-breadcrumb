@@ -1,6 +1,8 @@
 /***************************************************************************
 /* base
 / *************************************************************************/
+
+
 ul.breadcrumblist,
 ol.breadcrumblist {
     margin: 0;
@@ -24,3 +26,62 @@ ol.breadcrumblist {
     }
     
 }
+
+
+/* Theme-Breadcrumb ausblenden */
+.menu-meta-nav__modal__content  .menu-modal__breadcrumbs {
+	display: none !important;
+}
+
+
+/* Styling für Plugin-Breadcrumb in FAU Elemental */
+
+.fau-elemental-breadcrumb  {
+	margin: 0 0 1rem 0;
+	padding: 1.3rem 1.1rem 0.3rem 1.2rem;
+
+	nav.orga-breadcrumb {
+		font-size: 0.9rem;
+		line-height: 1.4;
+		color: #04316a;
+
+		ol.breadcrumblist {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			display: flex;
+			flex-wrap: wrap;
+			//gap: 5px;
+
+			li {
+				display: flex;
+				align-items: center;
+				font-weight: 400;
+
+				a {
+					text-decoration: none;
+					color: #04316a;
+					font-weight: 400;
+
+					&:hover {
+						text-decoration: underline;
+						text-decoration-thickness: 1px;
+					}
+				}
+
+				/* Trenner */
+				&:after {
+					content: "/";
+					margin: 0 0.4rem;
+					color: #041E42;
+				}
+
+				&:last-child:after {
+					content: "";
+					margin: 0;
+				}
+			}
+		}
+	}
+}
+

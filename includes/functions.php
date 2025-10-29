@@ -1,404 +1,264 @@
 <?php
 
-/*-----------------------------------------------------------------------------------*/
-/* Global functions for plugin
-/*-----------------------------------------------------------------------------------*/
-$known_themes = array(
-	'fauthemes' => [
-		'FAU-Einrichtungen',
-		'FAU-Einrichtungen-BETA',
-		'FAU-Medfak',
-		'FAU-RWFak',
-		'FAU-Philfak',
-		'FAU-Techfak',
-		'FAU-Natfak',
-		'FAU-Blog',
-        'FAU Jobportal'
-	],
-	'rrzethemes' => [
-		'RRZE 2019',
-	],
-    );
-$fau_orga_fautheme = get_fau_orga_fautheme();
-
-/*-----------------------------------------------------------------------------------*/
-/* Admin Notice auf der Dashboard, damit man die ORGA Breadcrumb setzt
-/*-----------------------------------------------------------------------------------*/
-function fau_orga_admin_notice(){
-    global $pagenow;
-    global $fau_orga_fautheme;
-    
-    $website_type = get_theme_mod("website_type");
-    
-    if (isset($website_type)) {
-	if (($website_type==-1) || ($website_type==3) || ($website_type==0)) {
-	    return;
-	}	
-    }
-    $form_org = '';
-    $options = get_option( 'fau_orga_breadcrumb_options' );
-    if (isset($options['site-orga'])) {
-	$form_org = esc_attr($options['site-orga']);  
-    }
-    // Wenn wir in einem FAU Theme sind
-    // UND der Website-Type = 1 (Einrichtung einer Fakultät) ist
-    // UND noch keine Zuordnung erfolgte,
-    // dann zeige den Hinweis, dass man doch bitte eine Zuordnung machen soll
-    
-    
-    if (empty($form_org)) {
-	if ( $pagenow == 'index.php' ) {
-	    $user = wp_get_current_user();
-	    if ( in_array( 'administrator', (array) $user->roles ) ) {
-		echo '<div class="notice notice-warning">';
-		echo __('Der Webauftritt ist noch nicht organisatorisch eingeordnet. <br>Bitte rufen Sie die <a href="options-general.php?page=fau_orga_breadcrumb_settings">Einstellung FAU.ORG Breadcrumb</a> auf und geben Sie an, welcher organisatorischen Einheit der Webauftritt angehört.','fau-orga-breadcrumb');
-		echo '</div>';
-
-	    }
-	}
-    } 
-    
-   
-   
-}
- add_action('admin_notices', 'fau_orga_admin_notice');
-
-/*-----------------------------------------------------------------------------------*/
-/* Get FAU.ORG by faculty
-/*-----------------------------------------------------------------------------------*/
-function get_fau_orga_fauorg_by_faculty( $faculty = '') {
-    global $fau_orga_breadcrumb_data;
-    $res = '';
-   // $fauorg = san_fauorg_number($fauorg);
-    if (isset($faculty)) {
-	foreach($fau_orga_breadcrumb_data as $key => $listdata) {
-	    if (isset($listdata['faculty']) && ($listdata['faculty'] == $faculty)) {
-		$res = $key;
-		break;
-	    }
-	}
-    }
-    return $res;
-}
-/*-----------------------------------------------------------------------------------*/
-/* Get child elements
-/*-----------------------------------------------------------------------------------*/
-function get_fau_orga_childs( $fauorg = '000000000') {
-    global $fau_orga_breadcrumb_data;
-    $res = array();
-   // $fauorg = san_fauorg_number($fauorg);
-    if (isset($fauorg)) {
-	foreach($fau_orga_breadcrumb_data as $key => $listdata) {
-	    if (isset($listdata['parent']) && ($listdata['parent'] == $fauorg)) {
-		$res[] = $key;
-	    }
-	}
-    }
-    return $res;
-}
-/*-----------------------------------------------------------------------------------*/
-/* get next upper class
-/*-----------------------------------------------------------------------------------*/
-function get_fau_orga_upperclass( $fauorg = '') {
-    global $fau_orga_breadcrumb_data;
-    $res = '';
-    $fauorg = san_fauorg_number($fauorg);
-    
-    if (isset($fauorg)) {
-	
-	if (isset($fau_orga_breadcrumb_data[$fauorg])) {
-	    
-	    if (isset($fau_orga_breadcrumb_data[$fauorg]['class'])) {
-		$res = $fau_orga_breadcrumb_data[$fauorg]['class'];
-	    } else {
-		$parent = '';
-		if (isset($fau_orga_breadcrumb_data[$fauorg]['parent'])) {
-		    $parent = $fau_orga_breadcrumb_data[$fauorg]['parent'];
-		} 
-		
-		while ($parent) {
-		    
-		    if (isset($fau_orga_breadcrumb_data[$parent]['class'])) {
-			$res = $fau_orga_breadcrumb_data[$parent]['class'];
-			$parent = '';
-			break;
-		    }
-		    if (isset($fau_orga_breadcrumb_data[$parent]['parent'])) {
-			 $parent = $fau_orga_breadcrumb_data[$parent]['parent'];
-		    } else {
-			$parent = '';
-			break;
-		    }
-		}
-	    }
-
-	}
-	
-    }
-    return $res;
-}
-/*-----------------------------------------------------------------------------------*/
-/* create option list for forms
-/*-----------------------------------------------------------------------------------*/
-function get_fau_orga_form_optionlist( $fauorg = '000000000', $preorg = '000000000', $level = 0, $maxdepth = 4) {
-    global $fau_orga_breadcrumb_data;
-    global $fau_orga_breadcrumb_config;
-    
-
-    $fauorg = san_fauorg_number($fauorg);
-    
-    if (isset($preorg)) {
-	$org  = san_fauorg_number($preorg);
-    }
-    
-    $res = '';
-    $faculty = get_fau_faculty_by_theme();
-    $website_type = get_theme_mod("website_type");
-
-    $firstlevel = get_fau_orga_childs($fauorg);
-    
-    if (!empty($firstlevel)) {
-	foreach($firstlevel as $key) {
-	    if (!empty($faculty)) {
-		if (($faculty !== 'zentral')  && isset($fau_orga_breadcrumb_data[$key]['faculty']) && ($fau_orga_breadcrumb_data[$key]['faculty'] !== $faculty)) {
-		    // wenn wir in einem Fakultatstheme sind, dann lasse alle Einrichtungen die zu anderen Fakultaeten gehören, weg
-		    continue;
-		}
-		if (($faculty== 'zentral') && isset($fau_orga_breadcrumb_data[$key]['faculty'])) {
-		    // wenn wir im Zentralbereich sind, dann lasse alle Einträge, die Fakultäten ungeordnet sind, weg
-		    continue;
-		}
-	    }
-	    
-	
-	    
-	    
-	    $orgclass = get_fau_orga_upperclass($key);
-	    
-	    if ($orgclass) {
-		$class = 'depth-'.$level.' '.$orgclass;
-	    } else {
-		$class = 'depth-'.$level;
-	    }
-	    
-	    $res .= '<option class="'.$class.'" value="'.$key.'" '.selected( $org, $key , false);
-	    if (isset($fau_orga_breadcrumb_data[$key]['hide']) && ($fau_orga_breadcrumb_data[$key]['hide']===true)) {
-		 $res .= ' disabled';
-	    }
-	    
-	    $res .= '>'.$fau_orga_breadcrumb_data[$key]['title'].'</option>';
-	    
-	    
-	    if ($level < $maxdepth) {
-		
-		$nextlevel = $level + 1;
-		$sublist = get_fau_orga_childs($key);
-		if (!empty($sublist)) {
-		    $res .= get_fau_orga_form_optionlist($key, $preorg, $nextlevel, $maxdepth);
-		}
-	    }
-
-	}
-    }
-    return $res;
-}
-/*-----------------------------------------------------------------------------------*/
-/* create list for customizer
-/*-----------------------------------------------------------------------------------*/
-function get_fau_orga_breadcrumb_customizer_choices() {
-    global $fau_orga_breadcrumb_data;
-    
-    $res = array();
-    foreach($fau_orga_breadcrumb_data as $key => $listdata) {
-	if (isset($listdata['title'])) {
-	    $res[$key] =  $listdata['title'];
-	}
-    }
-    return $res;
-}
-/*-----------------------------------------------------------------------------------*/
-/* sanitize FAU.ORG Number
-/*-----------------------------------------------------------------------------------*/
-if ( ! function_exists( 'san_fauorg_number' ) ) :  
-    function san_fauorg_number($s){
-	return filter_var(trim($s), FILTER_SANITIZE_NUMBER_INT);
-    }
-endif;    
-/*-----------------------------------------------------------------------------------*/
-/* create breadcrumb
-/*-----------------------------------------------------------------------------------*/
-function get_fau_orga_breadcrumb($form_org) {
-    global $fau_orga_breadcrumb_data;
-
-    if (empty($form_org)) {
-	$form_org = get_fau_orga_by_theme();
-    }
-   
-    $schema_listattr = ' itemprop="itemListElement" itemscope  itemtype="https://schema.org/ListItem"';
-    
-
-    if ((isset($form_org)) && (isset($fau_orga_breadcrumb_data[$form_org]))) {
-	$path = array();
-	$path[] = $fau_orga_breadcrumb_data[$form_org];
-	if (isset($fau_orga_breadcrumb_data[$form_org]['parent'])) {
-	    $parent = $fau_orga_breadcrumb_data[$form_org]['parent'];
-	    
-	    
-	    while(!empty($parent)) {
-		if ((isset($fau_orga_breadcrumb_data[$parent]['hide'])) && ($fau_orga_breadcrumb_data[$parent]['hide']==true)) {
-		    // dont add this to the path
-		} else {
-		    $path[] = $fau_orga_breadcrumb_data[$parent];
-		}
-		if (isset($fau_orga_breadcrumb_data[$parent]['parent'])) {
-		    $parent = $fau_orga_breadcrumb_data[$parent]['parent'];
-		} else {
-		    $parent = '';
-		}
-	    }
-	}
-	
-	$breadcrumb = array_reverse($path);
-	$position = 1;
-	$entry = '';
-	$line = '';
-	
-	foreach ($breadcrumb as  $value) {
-	    $entry = '<li'.$schema_listattr.'>';
-	    if (isset($value['url'])) {
-		$entry .= '<a itemprop="item"  href="'.esc_url($value['url']).'" data-wpel-link="internal">';
-	    } else {
-		$entry .= '<span itemprop="item">';
-	    }
-	    $entry .= '<span itemprop="name">'.$value['title'].'</span>';
-	    if (isset($value['url'])) {
-		$entry .= '</a>';
-	    } else {
-		$entry .= '</span>';
-	    }
-	    $entry .= '<meta itemprop="position" content="'.$position.'" />';
-	    $position++;
-	    $entry .= '</li>';
-	    
-	    $line .= $entry;
-	}
-
-	$res = '<nav class="orga-breadcrumb" aria-label="'.__('Organisatorische Navigation','fau-orga-breadcrumb').'">';
-	$res .= '<ol class="breadcrumblist" itemscope itemtype="https://schema.org/BreadcrumbList">';
-	$res .= $line;
-	$res .= '</ol>';
-	$res .= '</nav>';
-	
-	return $res;
-    }
-    return;
-}
-/*-----------------------------------------------------------------------------------*/
-/* get FAU Theme to find out if the website belongs to a faculty
- * returns
- *     false   if no FAU theme
- *        the string with the faculty nat,phil,tf,rw,med   if one of the faculty theme
- *        the string zentral  if other FAU Theme
+/**
+ * Plugin bootstrap using OrgaService
  */
-/*-----------------------------------------------------------------------------------*/
-function get_fau_orga_fautheme() {
-    global $known_themes;
-    
-    $active_theme = wp_get_theme();
-    if ( $active_theme->exists() ) {
-	$themename = $active_theme->get( 'Name' );
 
+namespace FAU\ORGA\Breadcrumb;
 
-	if (isset($known_themes) && isset($known_themes['fauthemes'])) {
-	    if (in_array($themename, $known_themes['fauthemes'])) {
+defined('ABSPATH') || exit;
 
-		switch($active_theme) {
-		    case 'FAU-Philfak':
-			$res = 'phil';
-			break;
-		    case 'FAU-RWFak':
-			$res = 'rw';
-			break;
-		    case 'FAU-Natfak':
-			$res = 'nat';
-			break;
-		    case 'FAU-Medfak':
-			$res = 'med';
-			break;
-		    case 'FAU-Techfak':
-			$res = 'tf';
-			break;
-		    default:	
-			$res = 'zentral';
-		}
-		return $res;
-	    } 
-	}
+// ===================================================================
+// Legacy wrappers (BC): keep old function names working transparently
+// ===================================================================
+
+/**
+ * Legacy: is FAU-Elemental active?
+ */
+if (!function_exists(__NAMESPACE__ . '\\fau_is_elemental_theme')) {
+    function fau_is_elemental_theme(): bool
+    {
+        return OrgaService::isElementalTheme();
     }
-    return false;
-  
 }
-/*-----------------------------------------------------------------------------------*/
-/* get faculty by theme
-/*-----------------------------------------------------------------------------------*/
-function get_fau_faculty_by_theme() {
 
-    global $fau_orga_breadcrumb_config;
-    $website_type = get_theme_mod("website_type");
-    $faculty = '';
-    if (isset($website_type) ) {
-	if ($website_type===0 ) {
-	    // Fakultaetsportal. Kann nur oberste Ebene auswählen.
-	      $key = $fau_orga_breadcrumb_config['root'];
-	      if (isset($fau_orga_breadcrumb_data[$key])) {
-		$res = '<option value="'.$key.'" '.selected( $org, $key , false).'>'.$fau_orga_breadcrumb_data[$key]['title'].'</option>';
-		  return $res;
-	      }
-	} elseif ($website_type==2) {
-	    $faculty = 'zentral';
-	} else { 
-	    $fau_orga_fautheme = get_fau_orga_fautheme();
-	    if ($fau_orga_fautheme) {
-		$faculty = $fau_orga_fautheme;
-		$debug_website_fakultaet = get_theme_mod('debug_website_fakultaet');
-		if (isset($debug_website_fakultaet) && ($debug_website_fakultaet !== false))  {
-		    $faculty = $debug_website_fakultaet;
-		}
-	    }
-	
-	}
-    } else {
-	$fau_orga_fautheme = get_fau_orga_fautheme();
-	    if ($fau_orga_fautheme) {
-		$faculty = $fau_orga_fautheme;
-	    }
+/**
+ * Legacy: Elemental site type ('fau','faculty','chair','other','cooperation').
+ */
+if (!function_exists(__NAMESPACE__ . '\\fau_elemental_site_type')) {
+    function fau_elemental_site_type(): string
+    {
+        return OrgaService::elementalSiteType();
     }
-    return $faculty;
 }
-/*-----------------------------------------------------------------------------------*/
-/* get fau orga by theme
-/*-----------------------------------------------------------------------------------*/
-function get_fau_orga_by_theme() {
-    $faculty = get_fau_faculty_by_theme();
-    return get_fau_orga_fauorg_by_faculty($faculty);
-}
-/*-----------------------------------------------------------------------------------*/
-/* enqueue with filter by theme
-/*-----------------------------------------------------------------------------------*/
-function fau_orga_enqueue_style($style = 'fau-orga-breadcrumb') {
-    
-    $active_theme = wp_get_theme();
-    $active_theme = $active_theme->get( 'Name' );
-    
-    
-    global $known_themes;
-    
-    if (in_array($active_theme, $known_themes['fauthemes'])) {
-	// No CSS for frontend
-   // } elseif (in_array($active_theme, $known_themes['rrzethemes'])) {
-       // No CSS for frontend
-    } else{
-	wp_enqueue_style($style);
+
+/**
+ * Legacy: Elemental faculty slug ('phil','nat','med','rw','tf' or '').
+ */
+if (!function_exists(__NAMESPACE__ . '\\fau_elemental_faculty_slug')) {
+    function fau_elemental_faculty_slug(): string
+    {
+        return OrgaService::elementalFaculty();
     }
-    
+}
+
+/**
+ * Legacy: map faculty slug to FAU.ORG ID.
+ */
+if (!function_exists(__NAMESPACE__ . '\\get_fau_orga_fauorg_by_faculty')) {
+    function get_fau_orga_fauorg_by_faculty($faculty = ''): string
+    {
+        return OrgaService::getOrgaByFaculty((string) $faculty);
+    }
+}
+
+/**
+ * Legacy: return direct children of an org ID.
+ */
+if (!function_exists(__NAMESPACE__ . '\\get_fau_orga_childs')) {
+    function get_fau_orga_childs($fauorg = OrgaService::ROOT_ID): array
+    {
+        return OrgaService::childrenOf((string) $fauorg);
+    }
+}
+
+/**
+ * Legacy: get nearest upper CSS class for an org ID.
+ */
+if (!function_exists(__NAMESPACE__ . '\\get_fau_orga_upperclass')) {
+    function get_fau_orga_upperclass($fauorg = ''): string
+    {
+        return OrgaService::upperClass((string) $fauorg);
+    }
+}
+
+/**
+ * Legacy: build recursive <option> list for a <select>.
+ */
+if (!function_exists(__NAMESPACE__ . '\\get_fau_orga_form_optionlist')) {
+    function get_fau_orga_form_optionlist(
+        $fauorg   = OrgaService::ROOT_ID,
+        $preorg   = OrgaService::ROOT_ID,
+        $level    = 0,
+        $maxdepth = 4
+    ): string {
+        return OrgaService::buildOptionList((string) $fauorg, (string) $preorg, (int) $level, (int) $maxdepth);
+    }
+}
+
+/**
+ * Legacy: flat key=>label list for Customizer choices.
+ */
+if (!function_exists(__NAMESPACE__ . '\\get_fau_orga_breadcrumb_customizer_choices')) {
+    function get_fau_orga_breadcrumb_customizer_choices(): array
+    {
+        return OrgaService::customizerChoices();
+    }
+}
+
+/**
+ * Legacy: strict sanitizer for FAU.ORG numbers (digits only).
+ */
+if (!function_exists(__NAMESPACE__ . '\\san_fauorg_number')) {
+    function san_fauorg_number($s): string
+    {
+        return OrgaService::sanitizeFauOrgNumber($s);
+    }
+}
+
+/**
+ * Legacy: build breadcrumb HTML (or null if unavailable).
+ */
+if (!function_exists(__NAMESPACE__ . '\\get_fau_orga_breadcrumb')) {
+    function get_fau_orga_breadcrumb($form_org)
+    {
+        return OrgaService::breadcrumb($form_org !== null ? (string) $form_org : null);
+    }
+}
+
+/**
+ * Legacy: resolve faculty by theme/customizer.
+ */
+if (!function_exists(__NAMESPACE__ . '\\get_fau_faculty_by_theme')) {
+    function get_fau_faculty_by_theme(): string
+    {
+        return OrgaService::facultyByTheme();
+    }
+}
+
+/**
+ * Legacy: resolve org by theme/customizer (faculty → FAU.ORG ID).
+ */
+if (!function_exists(__NAMESPACE__ . '\\get_fau_orga_by_theme')) {
+    function get_fau_orga_by_theme(): string
+    {
+        return OrgaService::orgByTheme();
+    }
+}
+
+/**
+ * Legacy: enqueue style based on theme context.
+ */
+if (!function_exists(__NAMESPACE__ . '\\fau_orga_enqueue_style')) {
+    function fau_orga_enqueue_style($style = 'fau-orga-breadcrumb'): void
+    {
+        OrgaService::enqueueStyle((string) $style);
+    }
+}
+
+/**
+ * Legacy: legacy FAU theme → faculty code (or false if not FAU theme).
+ */
+if (!function_exists(__NAMESPACE__ . '\\get_fau_orga_fautheme')) {
+    function get_fau_orga_fautheme()
+    {
+        return OrgaService::getLegacyFauThemeFaculty();
+    }
+}
+
+/**
+ * Legacy wrapper: returns the Elemental menu modal content (breadcrumb + menu).
+ * Delegates to ElementalMenu. Kept for backward compatibility.
+ *
+ * @return string
+ */
+if (!function_exists(__NAMESPACE__ . '\\get_fau_elemental_menu_html')) {
+    function get_fau_elemental_menu_html(): string
+    {
+        // Deprecation hint (visible in logs/tools)
+        if (function_exists('_deprecated_function')) {
+            _deprecated_function(
+                __FUNCTION__,
+                'fau-orga-breadcrumb 1.2.0',
+                '\FAU\ORGA\Breadcrumb\ElementalMenu::renderContentHtml'
+            );
+        }
+
+        // Prefer class-based renderer; fail soft if not available
+        if (class_exists(\FAU\ORGA\Breadcrumb\ElementalMenu::class)) {
+            return ElementalMenu::renderContentHtml();
+        }
+
+        // Fallback: minimal safe output
+        return '';
+    }
+}
+
+/**
+ * Legacy wrapper: renders a subtree of the Elemental menu (ul/li).
+ * Delegates to ElementalMenu::renderTree(). Kept for backward compatibility.
+ *
+ * @param array<string,array<string,mixed>> $menu
+ * @param string|null $parentId
+ * @param int $depth
+ * @return string
+ */
+if (!function_exists(__NAMESPACE__ . '\\render_elemental_menu')) {
+    function render_elemental_menu(array $menu, ?string $parentId = null, int $depth = 0): string
+    {
+        if (function_exists('_deprecated_function')) {
+            _deprecated_function(
+                __FUNCTION__,
+                'fau-orga-breadcrumb 1.2.0',
+                '\FAU\ORGA\Breadcrumb\ElementalMenu::renderTree'
+            );
+        }
+
+        if (class_exists(\FAU\ORGA\Breadcrumb\ElementalMenu::class)) {
+            return ElementalMenu::renderTree($parentId, $depth);
+        }
+
+        return '';
+    }
+}
+
+/**
+ * Legacy wrapper: builds the breadcrumb shown above the Elemental menu.
+ * Delegates to ElementalMenu::renderBreadcrumb(). Kept for backward compatibility.
+ *
+ * @return string
+ */
+if (!function_exists(__NAMESPACE__ . '\\generate_breadcrumb_for_menu')) {
+    function generate_breadcrumb_for_menu(): string
+    {
+        if (function_exists('_deprecated_function')) {
+            _deprecated_function(
+                __FUNCTION__,
+                'fau-orga-breadcrumb 1.2.0',
+                '\FAU\ORGA\Breadcrumb\ElementalMenu::renderBreadcrumb'
+            );
+        }
+
+        if (class_exists(\FAU\ORGA\Breadcrumb\ElementalMenu::class)) {
+            return ElementalMenu::renderBreadcrumb();
+        }
+
+        return '';
+    }
+}
+
+/**
+ * Legacy wrapper: decides whether to show the top-level FAU item.
+ * Delegates to ElementalMenu::shouldShowFauRoot(). Kept for backward compatibility.
+ *
+ * @return bool
+ */
+if (!function_exists(__NAMESPACE__ . '\\should_show_fau_menu_item')) {
+    function should_show_fau_menu_item(): bool
+    {
+        if (function_exists('_deprecated_function')) {
+            _deprecated_function(
+                __FUNCTION__,
+                'fau-orga-breadcrumb 1.2.0',
+                '\FAU\ORGA\Breadcrumb\ElementalMenu::shouldShowFauRoot'
+            );
+        }
+
+        if (class_exists(\FAU\ORGA\Breadcrumb\ElementalMenu::class)) {
+            return ElementalMenu::shouldShowFauRoot();
+        }
+
+        // Conservative default: hide when uncertain
+        return false;
+    }
 }
