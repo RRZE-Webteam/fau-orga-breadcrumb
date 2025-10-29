@@ -14,7 +14,7 @@ class Settings
     public function __construct()
     {
         // FAU Elemental no Settings Page
-        if (OrgaService::isElementalActive()) {
+        if (OrgaService::isElementalTheme()) {
             return;
         }
 
