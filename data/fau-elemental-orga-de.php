@@ -307,6 +307,11 @@ return [
         'url' => 'https://ub.fau.de',
         'parent' => 'zentrale_einrichtungen',
     ],
+    '1351000000' => [
+        'title' => 'Universitätsklinikum Erlangen',
+        'url' => 'https://www.uk-erlangen.de',
+        'parent' => 'zentrale_einrichtungen',
+    ],
     '1011120000' => [
         'title' => 'Regionales Rechenzentrum Erlangen (RRZE)',
         'url' => 'https://www.rrze.fau.de',
