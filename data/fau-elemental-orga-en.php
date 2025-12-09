@@ -481,7 +481,7 @@ return [
     ],
     '005' => [
         'title' => 'FAU Innovation Ecosystem',
-        'url' => 'https://www.new.fau.eu',
+        'url' => 'https://innovation-ecosystem.eu/',
         'parent' => 'innovationsorte',
     ],
 
