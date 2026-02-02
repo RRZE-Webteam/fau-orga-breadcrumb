@@ -42,7 +42,7 @@ return [
     ],
     '1112000000' => [
         'title' => 'Department of English, American and Romance Studies',
-        'url' => 'https://www.angam.phil.fau.de',
+        'url' => 'https://www.phil.fau.eu/faculty/organisation/departments/#collapse_1',
         'parent' => '1100000000',
     ],
     '1113000000' => [

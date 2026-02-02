@@ -42,7 +42,7 @@ return [
     ],
     '1112000000' => [
         'title' => 'Department Anglistik/Amerikanistik und Romanistik',
-        'url' => 'https://www.angam.phil.fau.de',
+        'url' => 'https://www.phil.fau.de/fakultaet/organisation-organe/departments/#panel_c9e9c89f',
         'parent' => '1100000000',
     ],
     '1113000000' => [
