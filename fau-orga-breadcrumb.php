@@ -60,7 +60,8 @@ register_uninstall_hook(__FILE__, __NAMESPACE__ . '\uninstall');
  * Add an action hook for the 'plugins_loaded' hook.
  *
  */
-add_action('plugins_loaded', __NAMESPACE__ . '\loaded');
+// Run after rrze-multilang (priority 11) so its locale filters are in place.
+add_action('plugins_loaded', __NAMESPACE__ . '\loaded', 20);
 
 
 /**
