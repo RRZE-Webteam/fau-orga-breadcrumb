@@ -3,7 +3,7 @@
 /*
 Plugin Name:        FAU ORGA Breadcrumb
 Plugin URI:         https://github.com/RRZE-Webteam/fau-orga-breadcrumb
-Version:            1.2.4
+Version:            1.2.5
 Description:        Displays an organizational breadcrumb
 Author:             RRZE Webteam
 Author URI:         https://www.wp.rrze.fau.de/
@@ -60,7 +60,8 @@ register_uninstall_hook(__FILE__, __NAMESPACE__ . '\uninstall');
  * Add an action hook for the 'plugins_loaded' hook.
  *
  */
-add_action('plugins_loaded', __NAMESPACE__ . '\loaded');
+// Run after rrze-multilang (priority 11) so its locale filters are in place.
+add_action('plugins_loaded', __NAMESPACE__ . '\loaded', 20);
 
 
 /**
