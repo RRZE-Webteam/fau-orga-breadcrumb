@@ -360,7 +360,7 @@ return [
         'parent' => 'profilzentren',
     ],
     '1011311400' => [
-        'title' => 'Licht.Materia.Quantentechnologien (FAU LMQ)',
+        'title' => 'Licht.Materie.Quantentechnologien (FAU LMQ)',
         'url' => 'https://www.lightmatter.fau.de',
         'parent' => 'profilzentren',
     ],
