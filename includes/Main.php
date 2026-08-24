@@ -113,7 +113,7 @@ class Main
     {
         wp_enqueue_style(
             'fau-orga-breadcrumb-admin',
-            plugins_url('build/admin.css', plugin()->getBasename()),
+            plugins_url('build/fau-orga-breadcrumb-admin.css', plugin()->getBasename()),
             [],
             plugin()->getVersion()
         );

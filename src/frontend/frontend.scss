@@ -2,8 +2,5 @@
 // Frontend SASS File FAU Orga Breadcrumb
 //-----------------------------------------------------------------------------------*/
 
-// Base vars definitions
-@import "../sass/base";
-
 // Frontend
-@import "../sass/frontend";
+@use "../sass/frontend";

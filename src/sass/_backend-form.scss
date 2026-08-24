@@ -2,21 +2,23 @@
 Formular elements for admin setting
 */
 
+@use "sass:map";
+@use "base";
 
 .fau_orga_breadcrumb_optionpage {
-  @each $farbtyp, $map in $colormaps {
-    $colorcode: map-get($map, "basis");
+  @each $farbtyp, $color-map in base.$colormaps {
+    $colorcode: map.get($color-map, "basis");
     --color-#{$farbtyp}-basis: #{$colorcode};
-    $colorcode: map-get($map, "basis-kontrast");
+    $colorcode: map.get($color-map, "basis-kontrast");
     --color-#{$farbtyp}-basis-kontrast: #{$colorcode};
-    $colorcode: map-get($map, "ci-hell");
+    $colorcode: map.get($color-map, "ci-hell");
     --color-#{$farbtyp}-ci-hell: #{$colorcode};
-    $colorcode: map-get($map, "ci-hell-kontrast");
+    $colorcode: map.get($color-map, "ci-hell-kontrast");
     --color-#{$farbtyp}-ci-hell-kontrast: #{$colorcode};
   }
 
 
-  @each $farbtyp, $map in $colormaps {
+  @each $farbtyp, $color-map in base.$colormaps {
     option.#{$farbtyp} {
       background-color: var(--color-#{$farbtyp}-ci-hell);
       color: var(--color-#{$farbtyp}-ci-hell-kontrast);

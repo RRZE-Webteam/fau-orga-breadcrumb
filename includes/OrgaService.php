@@ -517,9 +517,9 @@ final class OrgaService
         if (self::isElementalTheme()) {
             wp_enqueue_style(
                 'fau-orga-breadcrumb-elemental',
-                FAU_ORGA_BREADCRUMB_PLUGIN_URL . 'build/frontend.css',
+                FAU_ORGA_BREADCRUMB_PLUGIN_URL . 'build/fau-orga-breadcrumb.css',
                 [],
-                time()
+                plugin()->getVersion()
             );
             return;
         }

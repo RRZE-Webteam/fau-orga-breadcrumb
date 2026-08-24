@@ -3,12 +3,12 @@
 /*
 Plugin Name:        FAU ORGA Breadcrumb
 Plugin URI:         https://github.com/RRZE-Webteam/fau-orga-breadcrumb
-Version:            1.2.6
-Description:        Displays an organizational breadcrumb
-Author:             RRZE Webteam
-Author URI:         https://www.wp.rrze.fau.de/
-License:            GNU General Public License Version 3
-License URI:        https://www.gnu.org/licenses/gpl-3.0.html
+Version:            1.2.7
+Description:        Displays an organizational breadcrumb.
+Author:             RRZE-Webteam <webmaster@fau.de>
+Author URI:         https://www.wp.rrze.fau.de
+License:            GNU General Public License v3
+License URI:        http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain:        fau-orga-breadcrumb
 Domain Path:        /languages
 Requires at least:  6.8
