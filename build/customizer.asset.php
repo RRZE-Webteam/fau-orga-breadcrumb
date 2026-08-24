@@ -1,1 +1,1 @@
-<?php return array('dependencies' => array(), 'version' => '7b787b6630e8eaacc859');
+<?php return array('dependencies' => array('jquery', 'customize-controls'), 'version' => '1.2.6-6');

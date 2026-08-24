@@ -1,34 +1,56 @@
 {
   "name": "fau-orga-breadcrumb",
-  "version": "1.2.0",
-  "text-domain": "fau-orga-breadcrumb",
+  "title": "FAU ORGA Breadcrumb",
+  "version": "1.2.7",
+  "description": "Displays an organizational breadcrumb.",
+  "main": "fau-orga-breadcrumb.php",
+  "textdomain": "fau-orga-breadcrumb",
+  "private": true,
   "keywords": [
     "wordpress",
     "plugin",
     "breadcrumb",
     "fau"
   ],
+  "compatibility": {
+    "wprequires": "6.8",
+    "wptestedup": "7.1",
+    "phprequires": "8.2"
+  },
+  "supports": {
+    "email": "webmaster@fau.de"
+  },
+  "author": {
+    "name": "RRZE-Webteam <webmaster@fau.de>",
+    "url": "https://www.wp.rrze.fau.de"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/RRZE-Webteam/fau-orga-breadcrumb.git"
+    "url": "https://github.com/RRZE-Webteam/fau-orga-breadcrumb",
+    "clone": "https://github.com/RRZE-Webteam/fau-orga-breadcrumb.git",
+    "issues": "https://github.com/RRZE-Webteam/fau-orga-breadcrumb/issues"
   },
+  "license": "GNU General Public License v3",
+  "licenseurl": "http://www.gnu.org/licenses/gpl-3.0.html",
+  "tags": "Plugin, WordPress, Breadcrumb, FAU, FAU.ORG, RRZE",
   "engines": {
-    "node": ">=23.11.0",
-    "npm": ">=10.9.2"
+    "node": ">=22.10.0",
+    "npm": ">=10.9.0"
   },
-  "browserslist": [
-    "extends @wordpress/browserslist-config"
-  ],
   "scripts": {
-    "start": "wp-scripts start",
-    "build": "wp-scripts build",
-    "format": "wp-scripts format src",
-    "lint:js": "wp-scripts lint-js src",
-    "check-engines": "wp-scripts check-engines",
-    "check-licenses": "wp-scripts check-licenses --prod --gpl3",
-    "packages-update": "wp-scripts packages-update"
+    "build": "node scripts/build-assets.js dev",
+    "build:assets:dev": "node scripts/build-assets.js dev",
+    "build:assets:prod": "node scripts/build-assets.js prod",
+    "readme": "node scripts/build-readme.js",
+    "version:dev": "node scripts/build-version.js dev",
+    "version:prod": "node scripts/build-version.js prod",
+    "version:release": "node scripts/build-version.js release",
+    "dev": "npm run build && npm run version:dev && npm run readme",
+    "prod": "node scripts/build-assets.js prod && npm run version:prod && npm run readme",
+    "release": "node scripts/build-assets.js prod && npm run version:release && npm run readme"
   },
   "devDependencies": {
-    "@wordpress/scripts": "latest"
+    "esbuild": "^0.27.2",
+    "sass": "^1.96.0"
   }
 }
