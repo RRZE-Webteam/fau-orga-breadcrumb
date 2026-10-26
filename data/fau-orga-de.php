@@ -219,7 +219,7 @@ return [
     ],
     '1311120000' => [
         'title' => 'Institut für Physiologie und Pathophysiologie',
-        'url' => 'https://www.physiologie1.uni-erlangen.de/',
+        'url' => 'https://www.physiologie1.med.fau.de',
         'parent' => '1311000000'
     ],
     '1311130000' => [
@@ -234,7 +234,7 @@ return [
     ],
     '1311310000' => [
         'title' => 'Institut für Medizininformatik, Biometrie und Epidemiologie',
-        'url' => 'https://www.imbe.med.uni-erlangen.de/',
+        'url' => 'https://www.imbe.med.fau.de/',
         'parent' => '1311000000'
     ],
     '1311320000' => [
@@ -244,7 +244,7 @@ return [
     ],
     '1311330000' => [
         'title' => 'Institut für Rechtsmedizin',
-        'url' => 'https://www.recht.med.uni-erlangen.de/',
+        'url' => 'https://www.recht.med.fau.de/',
         'parent' => '1311000000'
     ],
     '1311340000' => [

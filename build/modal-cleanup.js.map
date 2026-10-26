@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/modal-cleanup/index.js"],
+  "sourcesContent": ["/**\n * Removes duplicate breadcrumbs injected by the FAU Elemental theme's modal navigation.\n */\nconst removeThemeModalBreadcrumbs = () => {\n\tconst nodes = document.querySelectorAll(\n\t\t'.menu-meta-nav__modal__content .menu-modal__breadcrumbs'\n\t);\n\n\tif (!nodes.length) {\n\t\treturn;\n\t}\n\n\tnodes.forEach((breadcrumb) => {\n\t\tconst parent = breadcrumb.parentNode;\n\t\tif (parent) {\n\t\t\tparent.removeChild(breadcrumb);\n\t\t}\n\t});\n};\n\ndocument.addEventListener('DOMContentLoaded', () => {\n\tremoveThemeModalBreadcrumbs();\n\n\tif (typeof MutationObserver === 'undefined') {\n\t\treturn;\n\t}\n\n\tconst observer = new MutationObserver(() => {\n\t\tremoveThemeModalBreadcrumbs();\n\t});\n\n\tobserver.observe(document.body, {\n\t\tchildList: true,\n\t\tsubtree: true,\n\t});\n});\n"],
+  "mappings": ";;AAGA,MAAM,8BAA8B,MAAM;AACzC,UAAM,QAAQ,SAAS;AAAA,MACtB;AAAA,IACD;AAEA,QAAI,CAAC,MAAM,QAAQ;AAClB;AAAA,IACD;AAEA,UAAM,QAAQ,CAAC,eAAe;AAC7B,YAAM,SAAS,WAAW;AAC1B,UAAI,QAAQ;AACX,eAAO,YAAY,UAAU;AAAA,MAC9B;AAAA,IACD,CAAC;AAAA,EACF;AAEA,WAAS,iBAAiB,oBAAoB,MAAM;AACnD,gCAA4B;AAE5B,QAAI,OAAO,qBAAqB,aAAa;AAC5C;AAAA,IACD;AAEA,UAAM,WAAW,IAAI,iBAAiB,MAAM;AAC3C,kCAA4B;AAAA,IAC7B,CAAC;AAED,aAAS,QAAQ,SAAS,MAAM;AAAA,MAC/B,WAAW;AAAA,MACX,SAAS;AAAA,IACV,CAAC;AAAA,EACF,CAAC;",
+  "names": []
+}

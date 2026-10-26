@@ -1,7 +1,7 @@
 {
   "name": "fau-orga-breadcrumb",
   "title": "FAU ORGA Breadcrumb",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "description": "Displays an organizational breadcrumb.",
   "main": "fau-orga-breadcrumb.php",
   "textdomain": "fau-orga-breadcrumb",
