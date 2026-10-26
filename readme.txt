@@ -1,5 +1,5 @@
 === FAU ORGA Breadcrumb ===
-Stable tag: 1.2.7
+Stable tag: 1.2.8
 Plugin URI: https://github.com/RRZE-Webteam/fau-orga-breadcrumb
 GitHub Issue URL: https://github.com/RRZE-Webteam/fau-orga-breadcrumb/issues
 Author: RRZE-Webteam <webmaster@fau.de>
